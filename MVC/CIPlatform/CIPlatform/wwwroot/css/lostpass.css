@@ -1,0 +1,526 @@
+﻿.carousel-control-prev {
+    background: none;
+    border: none;
+}
+
+.carousel-control-next {
+    background: none;
+    border: none;
+}
+
+.carousel-caption h1 {
+    font-size: 50px;
+    color: white;
+    font-family: '';
+    text-align: left;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-bottom: 45px;
+    margin-left: -30px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.carousel-caption p {
+    font-size: 15px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-left: -30px;
+}
+
+.carousel-indicators {
+    visibility: hidden;
+}
+
+.carousel-img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.login-form {
+    width: 100%;
+    margin-left: 1%;
+}
+
+.lbl-forgot {
+    
+    letter-spacing: 0px;
+    
+    font-family: 'Noto Sans', sans-serif;
+    justify-content: center;
+    margin-top: 20%;
+    text-align: center;
+    
+}
+
+.para {
+    text-align: center;
+    letter-spacing: 0px;
+    color: grey;
+    margin-top: 2%;
+    text-align: center;
+    font-size: smaller;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.lbl-email {
+    text-align: left;
+    letter-spacing: 0px;
+    color: grey;
+    font-family: 'Noto Sans', sans-serif;
+    justify-content: center;
+    margin-left: 87px;
+    margin-top: 3%;
+}
+
+.txt-inp {
+    width: 70%;
+    height: 46px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #2B64B11F;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #414141;
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 87px;
+}
+
+
+
+.btn-login {
+    width: 70%;
+    height: 46px;
+    background: #F88634 0% 0% no-repeat padding-box;
+    border: 2px solid #F88634;
+    color: #F88634;
+    border-radius: 24px;
+    margin-top: 30px;
+    margin-left: 88px;
+    text-align: center;
+}
+
+
+
+.lbl-login {
+    text-align: center;
+    letter-spacing: 0px;
+    color: grey;
+    text-decoration: none;
+    margin-left: 47%;
+    font-size: medium;
+}
+
+.btn-login:hover {
+    background-color: #F88632;
+    transition: 0.7s;
+    border-color: #ff6a00;
+    color: white;
+}
+
+
+.lbl-privacy {
+    text-align: center;
+    letter-spacing: 0px;
+    color: grey;
+    text-decoration: none;
+    margin-left: 48%;
+    font-size: medium;
+    
+    
+}
+
+/* For Responsive Design */
+
+@media only screen and (min-width: 360px) and (max-width: 767px) {
+    .lbl-forgot {
+        text-align: center;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        padding-top: 10%;
+        /* padding-left: 1%; */
+    }
+
+    .lbl-email {
+        text-align: left;
+        letter-spacing: 0px;
+        color: grey;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        margin-left: 12%;
+        margin-top: 3%;
+    }
+
+    .txt-inp {
+        width: 70%;
+        height: 46px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 10px #2B64B11F;
+        border: 1px solid #D9D9D9;
+        border-radius: 3px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        margin-left: 12%;
+    }
+
+
+    .btn-login {
+        width: 70%;
+        height: 46px;
+        background: #F8863400 0% 0% no-repeat padding-box;
+        border: 2px solid #F88634;
+        color: #F88634;
+        border-radius: 24px;
+        margin-top: 30px;
+        margin-left: 12%;
+        text-align: center;
+    }
+    
+    .btn-login:hover {
+            background-color: #F88632;
+            transition: 0.7s;
+            border-color: #ff6a00;
+            color: white;
+        }
+
+    .lbl-login {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 40%;
+        margin-top: 18px;
+        font-size: medium;
+    }
+
+    .lbl-privacy {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 35%;
+        font-size: medium;
+        margin-top: 20%;
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .col-lg-4 {
+        height: 600px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 150%;
+        color: white;
+        font-family: '';
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        margin-bottom: 15px;
+        margin-left: -50px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    .carousel-caption p {
+        font-size: 15px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        margin-left: -50px;
+    }
+
+
+   
+
+    .lbl-forgot {
+
+        text-align: center;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        margin-bottom: -1%;
+        padding-left: 40%;
+        text-align: center;
+        
+    }
+
+    .lbl-email {
+        text-align: left;
+        letter-spacing: 0px;
+        color: grey;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        margin-left: 12%;
+        margin-top: 3%;
+    }
+
+    .txt-inp {
+        width: 70%;
+        height: 46px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 10px #2B64B11F;
+        border: 1px solid #D9D9D9;
+        border-radius: 3px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        margin-left: 12%;
+    }
+
+
+    .btn-login {
+        width: 70%;
+        height: 46px;
+        background: #F8863400 0% 0% no-repeat padding-box;
+        border: 2px solid #F88634;
+        color: #F88634;
+        border-radius: 24px;
+        margin-top: 30px;
+        margin-left: 12%;
+        text-align: center;
+    }
+
+    .btn-login:hover {
+            background-color: #F88632;
+            transition: 0.7s;
+            border-color: #ff6a00;
+            color: white;
+        }
+
+    .lbl-login {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 45%;
+        margin-top: 30%;
+        font-size: medium;
+    }
+
+    .lbl-privacy {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 42%;
+        font-size: medium;
+        margin-top: 20%;
+    }
+}
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .col-lg-4 {
+        height: 600px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 140%;
+        color: white;
+        font-family: '';
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        margin-bottom: 15px;
+        margin-left: -50px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        margin-left: -50px;
+    }
+
+
+    .lbl-forgot {
+        text-align: center;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        padding-top: 15%;
+        margin-left: 85px;
+        padding-left: 5%;
+        margin-top: 0%;
+    }
+
+    .lbl-email {
+        text-align: left;
+        letter-spacing: 0px;
+        color: grey;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        margin-left: 12%;
+        margin-top: 3%;
+    }
+
+    .txt-inp {
+        width: 70%;
+        height: 46px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 10px #2B64B11F;
+        border: 1px solid #D9D9D9;
+        border-radius: 3px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        margin-left: 12%;
+    }
+
+
+    .btn-login {
+        width: 70%;
+        height: 46px;
+        background: #F8863400 0% 0% no-repeat padding-box;
+        border: 2px solid #F88634;
+        color: #F88634;
+        border-radius: 24px;
+        margin-top: 30px;
+        margin-left: 12%;
+        text-align: center;
+    }
+
+    .lbl-login {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 40%;
+        margin-top: 20px;
+        font-size: medium;
+    }
+
+    .lbl-privacy {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 33%;
+        font-size: medium;
+        margin-top: 12%;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .col-lg-4 {
+        height: 600px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 160%;
+        color: white;
+        font-family: '';
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        margin-bottom: 15px;
+        margin-left: -50px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        margin-left: -50px;
+    }
+
+
+    .lbl-forgot {
+        text-align: center;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        padding-top: 20%;
+        margin-left: 85px;
+        padding-left: 25%;
+    }
+
+    .lbl-email {
+        text-align: left;
+        letter-spacing: 0px;
+        color: grey;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        margin-left: 12%;
+        margin-top: 3%;
+    }
+
+    .txt-inp {
+        width: 70%;
+        height: 46px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 10px #2B64B11F;
+        border: 1px solid #D9D9D9;
+        border-radius: 3px;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #414141;
+        font-family: 'Noto Sans', sans-serif;
+        margin-left: 12%;
+    }
+
+
+    .btn-login {
+        width: 70%;
+        height: 46px;
+        background: #F8863400 0% 0% no-repeat padding-box;
+        border: 2px solid #F88634;
+        color: #F88634;
+        border-radius: 24px;
+        margin-top: 30px;
+        margin-left: 12%;
+        text-align: center;
+    }
+    .btn-login:hover {
+            background-color: #F88632;
+            transition: 0.7s;
+            border-color: #ff6a00;
+            color: white;
+        }
+
+    .lbl-login {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 45%;
+        margin-top: 20px;
+        font-size: medium;
+    }
+
+    .lbl-privacy {
+        text-align: center;
+        letter-spacing: 0px;
+        color: grey;
+        text-decoration: none;
+        margin-left: 42%;
+        font-size: medium;
+        margin-top: 62%;
+    }
+}
