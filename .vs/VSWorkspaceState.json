@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MVC",
+    "\\MVC\\CIPlatform",
+    "\\MVC\\CIPlatform\\CIPlatform",
+    "\\MVC\\CIPlatform\\CIPlatform\\Views",
+    "\\MVC\\CIPlatform\\CIPlatform\\Views\\Home"
   ],
-  "SelectedNode": "\\CIPlatform.sln",
+  "SelectedNode": "\\MVC\\CIPlatform\\CIPlatform\\Models",
   "PreviewInSolutionExplorer": false
 }

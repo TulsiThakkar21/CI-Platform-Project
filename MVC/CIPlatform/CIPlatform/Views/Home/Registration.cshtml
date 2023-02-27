@@ -1,4 +1,4 @@
-﻿
+﻿@model CIPlatform.Models.RegistrationModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,49 +86,86 @@
 
                 <div class="col-lg-4">
 
+                    @using (Html.BeginForm("Registration","Home", FormMethod.Post)){
+
+                        if(ViewBag.Status!= null)
+                        {
+                            if(ViewBag.Status == 1)
+                            {
+                                <br />
+                                <span class="alert alert-success">Registered Successfully</span>
+                                <br />
+                            }
+                            else if(ViewBag.Status == 0)
+                            {
+                                <br />
+                                <span class="alert alert-danger">Error while registering</span>
+                                <br />
+                            }
+                        }
+
                     <div class="login-form">
 
 
                         <label class="lbl-fname">First Name</label>
                         <br>
 
-                        <input type="text" class="txt-inp" placeholder=" Enter your first name">
+                        @Html.TextBoxFor(u => u.FirstName, new {@class = "txt-inp", @placeholder=" Enter your first name"})
+                        @*<input type="text" class="txt-inp" placeholder=" Enter your first name">*@
 
                         <br>
 
                         <label class="lbl-lname">Last Name</label>
                         <br>
 
-                        <input type="text" class="txt-inp" placeholder=" Enter your last name">
+                        @Html.TextBoxFor(u => u.LastName, new {@class = "txt-inp", @placeholder=" Enter your last name"})
+                        @*<input type="text" class="txt-inp" placeholder=" Enter your last name">*@
 
                         <br>
                         <label class="lbl-ph">Phone Number</label>
                         <br>
-
-                        <input type="number" class="txt-inp" placeholder=" Enter your phone number">
+                        @Html.TextBoxFor(u => u.PhoneNumber, new {@class = "txt-inp", @placeholder=" Enter your phone number"})
+                        @*<input type="number" class="txt-inp" placeholder=" Enter your phone number">*@
 
                         <br>
 
                         <label class="lbl-email">Email Address</label>
                         <br>
-
-                        <input type="text" class="txt-inp" placeholder=" Enter your email address">
+                        @Html.TextBoxFor(u => u.Email, new {@class = "txt-inp", @placeholder=" Enter your email address"})
+                        @*<input type="text" class="txt-inp" placeholder=" Enter your email address">*@
 
                         <br>
                         <label class="lbl-pass">Password</label>
                         <br>
+                        @Html.TextBoxFor(u => u.Password, new {@class = "txt-inp", @placeholder=" Enter your password"})
+                        @*<input type="password" class="txt-inp" placeholder=" Enter your password">*@
+                       
 
-                        <input type="password" class="txt-inp" placeholder=" Enter your password">
+                       @* <label class="lbl-pass">Confirm Password</label>
+                        <br>
+                        @Html.TextBoxFor(u => u.Password, new {@class = "txt-inp", @placeholder=" Enter your confirm password"})*@
+                        @*<input type="password" class="txt-inp" placeholder=" Enter your confirm password">*@
+
+
                         <br>
 
-                        <label class="lbl-pass">Confirm Password</label>
+                        <label class="lbl-lname">City</label>
                         <br>
 
-                        <input type="password" class="txt-inp" placeholder=" Enter your confirm password">
+                        @Html.TextBoxFor(u => u.CityId, new {@class = "txt-inp", @placeholder=" Enter your city id"})
+
+
+                        <br>
+
+                        <label class="lbl-lname">Country</label>
+                        <br>
+
+                        @Html.TextBoxFor(u => u.CountryId, new {@class = "txt-inp", @placeholder=" Enter your country id"})
+
 
                        
                         <br>
-                        <button class="btn-reg">Register</button>
+                        <button type="submit" class="btn-reg">Register</button>
                         <br> <br>
 
                       
@@ -144,7 +181,7 @@
                         <label class="lbl-privacy">Privacy Policy</label>
 
                     </div>
-
+                    }
 
                 </div>
 

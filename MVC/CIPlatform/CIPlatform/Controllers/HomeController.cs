@@ -12,10 +12,28 @@ namespace CIPlatform.Controllers
         {
             _logger = logger;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            LoginModel _loginModel = new LoginModel();
+            return View(_loginModel);
+        }
+        [HttpPost]
+        public IActionResult Index(LoginModel _loginModel)
+        {
+            CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+            var status = _ciplatformDbContext.Users.Where(u=>u.Email==_loginModel.LoginId && u.Password==_loginModel.Password).FirstOrDefault();
+            
+            if(status == null)
+            {
+                ViewBag.LoginStatus = 0;
+            }
+            else
+            {
+                return RedirectToAction("PlatformLandingPage", "Home");
+            }
+            
+            return View(_loginModel);
         }
 
         public IActionResult Privacy()
@@ -33,8 +51,40 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Registration()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Registration(RegistrationModel _registrationModel)
+        {
+            CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+
+            try
+            {
+                var userData = new User()
+                {
+                    FirstName = _registrationModel.FirstName,
+                    LastName = _registrationModel.LastName,
+                    PhoneNumber = _registrationModel.PhoneNumber,
+                    Email = _registrationModel.Email,
+                    Password = _registrationModel.Password,
+                    CityId = _registrationModel.CityId,
+                    CountryId = _registrationModel.CountryId
+
+                };
+                _ciplatformDbContext.Users.Add(userData);
+                _ciplatformDbContext.SaveChanges();
+                ViewBag.Status = 1;
+            }
+            catch
+            {
+                ViewBag.Status = 0;
+            }
+
+
             return View();
         }
 

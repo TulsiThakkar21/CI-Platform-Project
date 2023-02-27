@@ -2718,6 +2718,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0-preview.1.23111.4"
     ]
@@ -2730,11 +2731,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project\\CI-PLATFORM\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+      "projectUniqueName": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
       "projectName": "CIPlatform",
-      "projectPath": "C:\\Project\\CI-PLATFORM\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+      "projectPath": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
       "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-      "outputPath": "C:\\Project\\CI-PLATFORM\\MVC\\CIPlatform\\CIPlatform\\obj\\",
+      "outputPath": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2769,6 +2770,12 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.0-preview.1.23111.4, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[8.0.0-preview.1.23111.4, )"
