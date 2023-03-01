@@ -4,6 +4,10 @@
 @{
 }
 
+@model CIPlatform.Models.ViewModels.ForgotPasswordViewModel;
+@*@model CIPlatform.Models.ForgotPasswordModel
+@model CIPlatform.Models.PasswordReset*@
+
 @{
     ViewData["LostPass"] = "Lost Password";
 }
@@ -98,41 +102,61 @@
 
                 </div>
 
-                <div class="col-lg-4">
+               <div class="col-lg-4">
 
-                    <div class="login-form">
+                    @using (Html.BeginForm("LostPass","Home", FormMethod.Post)){
 
-                        <label class="lbl-forgot">Forgot Password</label>
-                     <br>
-                     <p class="para">
-                        Enter your email address you've using for your account below and we will send you a password 
-                        reset link.
-                     </p>
+                        if(ViewBag.Status!= null)
+                        {
+                            if(ViewBag.Status == 1)
+                            {
+                                <br />
+                                <span class="alert alert-success">Link sent on your mail</span>
+                                <br />
+                            }
+                            else if(ViewBag.Status == 0)
+                            {
+                                <br />
+                                <span class="alert alert-danger">Error</span>
+                                <br />
+                            }
+                        }
+                    @*<form method="post">*@
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                        <div class="login-form">
+                        
+                            <label class="lbl-forgot">Forgot Password</label>
+                         <br>
+                         <p class="para">
+                            Enter your email address you've using for your account below and we will send you a password 
+                            reset link.
+                         </p>
 
-                        <label class="lbl-email">Email Address</label>
-                        <br>
+                            <label class="lbl-email">Email Address</label>
+                            <br>
+                            @Html.TextBoxFor(e => e.ForgotPasswordModel.Email, new {@class = "txt-inp", @placeholder=" Enter your email address..."})
+                            @*<input asp-for="Email" type="text" class="txt-inp" placeholder=" Enter your email address...">*@
+                             @*<span asp-validation-for="Email" class="text-danger"></span>*@
+                            <br>
 
-                        <input type="text" class="txt-inp" placeholder=" Enter your email address...">
+                            <button type="submit" class="btn-login">Reset my password</button>
+                            <br><br><br>
 
-                        <br>
-
-                        <button class="btn-login" asp-controller="Home" asp-action="ResetPass">Reset my password</button>
-                        <br><br><br>
-
-                        <a asp-controller="Home"  asp-action="Index" class="lbl-login">Login</a>
+                            <a asp-controller="Home"  asp-action="Index" class="lbl-login">Login</a>
                         
 
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <a asp-controller="Home"  asp-action="PrivacyPolicy" class="lbl-privacy">Privacy Policy</a>
+                            <br><br><br><br><br><br><br><br><br><br><br><br>
+                            <a asp-controller="Home"  asp-action="PrivacyPolicy" class="lbl-privacy">Privacy Policy</a>
                       
-                        
 
-                    </div>
+                        </div>
 
-
+                    
+                        @*   </form> *@
+                       }
                 </div>
 
-    
+
 
             </div>
         </div>

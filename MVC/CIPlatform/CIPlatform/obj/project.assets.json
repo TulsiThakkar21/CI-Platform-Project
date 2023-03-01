@@ -2731,11 +2731,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+      "projectUniqueName": "C:\\Users\\tatva\\Desktop\\New CI Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
       "projectName": "CIPlatform",
-      "projectPath": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+      "projectPath": "C:\\Users\\tatva\\Desktop\\New CI Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
       "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tatva\\source\\repos\\ci_platform\\MVC\\CIPlatform\\CIPlatform\\obj\\",
+      "outputPath": "C:\\Users\\tatva\\Desktop\\New CI Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
