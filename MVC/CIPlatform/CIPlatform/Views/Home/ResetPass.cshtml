@@ -90,7 +90,7 @@
             <div class="col-lg-4">
 
                 <div class="login-form">
-
+                    <form asp-action="ResetPass" method="post">
                     <p class="paranew">New Password</p>
                     <!-- <label class="lbl-newpass">New Password</label> -->
                     <br>
@@ -101,7 +101,7 @@
                     <label class="lbl-pass">New Password</label>
                     <br>
 
-                    <input type="password" class="txt-inp" placeholder=" Enter your new password">
+                    <input type="password" class="txt-inp" name="pass1" placeholder=" Enter your new password">
 
                     <br><br>
 
@@ -120,7 +120,7 @@
                     <br><br><br><br><br><br><br><br><br>
                     <a asp-controller="Home"  asp-action="PrivacyPolicy" class="paraprivacy">Privacy Policy</a>
                     @*<p class="paraprivacy">Privacy Policy</p>*@
-                    
+                 </form>   
 
                 </div>
 

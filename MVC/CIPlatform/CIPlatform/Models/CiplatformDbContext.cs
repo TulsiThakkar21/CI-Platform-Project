@@ -47,7 +47,7 @@ public partial class CiplatformDbContext : DbContext
 
     public virtual DbSet<MissionTheme> MissionThemes { get; set; }
 
-    public virtual DbSet<PasswordReset> PasswordReset { get; set; }
+    public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<Skill> Skills { get; set; }
 
@@ -636,10 +636,11 @@ public partial class CiplatformDbContext : DbContext
 
         modelBuilder.Entity<PasswordReset>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("password_reset");
+            entity.HasKey(e => e.PassResetId).HasName("PK__password__25C01E959DAD2D88");
 
+            entity.ToTable("password_reset");
+
+            entity.Property(e => e.PassResetId).HasColumnName("pass_resetID");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
@@ -883,7 +884,10 @@ public partial class CiplatformDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
-            entity.Property(e => e.PhoneNumber).HasColumnName("phone_number");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(11)
+                .IsUnicode(false)
+                .HasColumnName("phone_number");
             entity.Property(e => e.ProfileText)
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
@@ -906,12 +910,12 @@ public partial class CiplatformDbContext : DbContext
             entity.HasOne(d => d.City).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__users__city_id__59FA5E80");
+                .HasConstraintName("FK__users__city_id__16CE6296");
 
             entity.HasOne(d => d.Country).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__users__country_i__5AEE82B9");
+                .HasConstraintName("FK__users__country_i__17C286CF");
         });
 
         modelBuilder.Entity<UserSkill>(entity =>

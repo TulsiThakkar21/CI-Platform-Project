@@ -15,8 +15,6 @@ public partial class User
 
     public string Password { get; set; } = null!;
 
-    public int PhoneNumber { get; set; }
-
     public string? Avatar { get; set; }
 
     public string? WhyIVolunteer { get; set; }
@@ -42,6 +40,8 @@ public partial class User
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    public string? PhoneNumber { get; set; }
 
     public virtual City City { get; set; } = null!;
 

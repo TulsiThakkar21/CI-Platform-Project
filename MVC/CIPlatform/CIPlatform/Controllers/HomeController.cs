@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Models;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
@@ -9,6 +10,7 @@ namespace CIPlatform.Controllers
 {
     public class HomeController : Controller
     {
+        CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -25,9 +27,9 @@ namespace CIPlatform.Controllers
         public IActionResult Index(LoginModel _loginModel)
         {
             CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
-            var status = _ciplatformDbContext.Users.Where(u=>u.Email==_loginModel.LoginId && u.Password==_loginModel.Password).FirstOrDefault();
-            
-            if(status == null)
+            var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
+
+            if (status == null)
             {
                 ViewBag.LoginStatus = 0;
             }
@@ -35,7 +37,7 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("PlatformLandingPage", "Home");
             }
-            
+
             return View(_loginModel);
         }
 
@@ -57,6 +59,10 @@ namespace CIPlatform.Controllers
 
             try
             {
+
+                var generated_token = Guid.NewGuid().ToString();  //for token generation
+
+
                 MailMessage newMail = new MailMessage();
                 // use the Gmail SMTP Host
                 SmtpClient client = new SmtpClient("smtp.gmail.com");
@@ -74,7 +80,9 @@ namespace CIPlatform.Controllers
 
                 //var lnkHref = Url.ActionLink("ResetPass", "Home", new { email = passwordReset.Email, token = passwordReset.Token }, "http") + "'>Reset Password</a>";
 
-                var lnkHref =Url.ActionLink("ResetPass", passwordReset.Token,"Home");
+                var lnkHref = Url.ActionLink("ResetPass", "Home", new { id = generated_token });
+
+                //var lnkHref = "<a href=''" + generated_token + "></a>";
 
                 newMail.Body = "<b>Please find the Password Reset Link. </b><br/>" + lnkHref;
 
@@ -92,10 +100,11 @@ namespace CIPlatform.Controllers
                 {
                     var passdata = new PasswordReset()
                     {
+                        PassResetId = passwordReset.PassResetId,
                         Email = passwordReset.Email,
-                        Token = passwordReset.Token
+                        Token = generated_token
                     };
-                    _ciplatformDbContext.PasswordReset.Add(passdata);
+                    _ciplatformDbContext.PasswordResets.Add(passdata);
                     _ciplatformDbContext.SaveChanges();
                     ViewBag.Status = 1;
                 }
@@ -104,12 +113,12 @@ namespace CIPlatform.Controllers
                     ViewBag.Status = 0;
                 }
             }
-           
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 Console.WriteLine("Error -" + ex);
 
-                
+
             }
 
 
@@ -117,15 +126,131 @@ namespace CIPlatform.Controllers
         }
 
 
+
+
+
+
+        //[HttpGet]
+        //public IActionResult ResetPass()
+        //{
+        //    return View();
+        //}
+
+
+
+        //[HttpPost]
+        //public IActionResult ResetPass(LoginModel _loginModel, PasswordReset _passwordReset)
+        //{
+        //    CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+
+        //    var generated_pass = Request.Form["pass1"];
+        //    var current_url = HttpContext.Request.GetDisplayUrl();
+
+        //    // for spliting the url
+
+        //    string path = new Uri(current_url).LocalPath.Substring(21);
+        //    Console.WriteLine(path);
+        //    Console.WriteLine(generated_pass);
+
+
+        //    var generated_token = _ciplatformDbContext.PasswordResets.FirstOrDefault(x => (x.Token == path));
+        //    if (generated_token != null)
+        //    {
+
+        //        var emailtemp = generated_token.Email;
+        //        var check_email = _ciplatformDbContext.Users.FirstOrDefault(u => (u.Email == emailtemp.ToLower()));
+
+        //        if (check_email != null)
+        //        {
+
+        //            check_email.Password = generated_pass;
+        //            _ciplatformDbContext.Users.Update(check_email);
+        //            _ciplatformDbContext.SaveChanges();
+
+        //            return RedirectToAction("Index", "Home");
+
+        //        }
+
+
+        //        else
+        //        {
+        //            return RedirectToAction("ResetPass", "Home");
+
+        //        }
+
+        //    }
+
+
+
+        [HttpGet]
         public IActionResult ResetPass()
         {
             return View();
         }
 
-       
 
 
-        [HttpGet]
+        [HttpPost]
+        public IActionResult ResetPass(LoginModel modellogin, PasswordReset passwordReset)
+        {
+
+
+            var passwd = Request.Form["pass1"];
+            var urlll = HttpContext.Request.GetDisplayUrl();
+            // it will trim the url and only fetch the token from it
+
+            string path = new Uri(urlll).LocalPath.Substring(16);
+            Console.WriteLine(path);
+            Console.WriteLine(passwd);
+            //if (modellogin.Email == passwordReset.Email && path==passwordReset.Token) {
+            // modellogin.Password = passwd;
+
+            //}
+            var user1 = _ciplatformDbContext.PasswordResets.FirstOrDefault(x => (x.Token == path));
+            if (user1 != null)
+            {
+
+                var emailtmp = user1.Email;
+                var user2 = _ciplatformDbContext.Users.FirstOrDefault(u => (u.Email == emailtmp.ToLower()));
+
+                if (user2 != null)
+                {
+
+                    user2.Password = passwd;
+                    _ciplatformDbContext.Users.Update(user2);
+                    _ciplatformDbContext.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+
+                }
+
+
+                else
+                {
+                    return RedirectToAction("ResetPass", "Home");
+
+                }
+
+            }
+
+
+            return View();
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+[HttpGet]
         public IActionResult Registration()
         {
             return View();
@@ -142,13 +267,13 @@ namespace CIPlatform.Controllers
                 {
                     FirstName = _registrationModel.FirstName,
                     LastName = _registrationModel.LastName,
-                    PhoneNumber = _registrationModel.PhoneNumber,
                     Email = _registrationModel.Email,
                     Password = _registrationModel.Password,
                     CityId = _registrationModel.CityId,
                     CountryId = _registrationModel.CountryId
+                    //PhoneNumber = _registrationModel.PhoneNumber.ToString()
 
-                };
+            };
                 _ciplatformDbContext.Users.Add(userData);
                 _ciplatformDbContext.SaveChanges();
                 ViewBag.Status = 1;
