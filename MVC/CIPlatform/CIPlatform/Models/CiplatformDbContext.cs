@@ -381,17 +381,17 @@ public partial class CiplatformDbContext : DbContext
             entity.HasOne(d => d.City).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__city_id__76969D2E");
+                .HasConstraintName("FK__mission__city_id__36470DEF");
 
             entity.HasOne(d => d.Country).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__country__778AC167");
+                .HasConstraintName("FK__mission__country__373B3228");
 
             entity.HasOne(d => d.Theme).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.ThemeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__theme_i__787EE5A0");
+                .HasConstraintName("FK__mission__theme_i__382F5661");
         });
 
         modelBuilder.Entity<MissionApplication>(entity =>

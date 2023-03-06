@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Claims;
 
 
 namespace CIPlatform.Controllers
@@ -26,20 +27,85 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Index(LoginModel _loginModel)
         {
-            CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+           // CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
             var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
 
-            if (status == null)
+            //if (status == null)
+            //{
+            //    ViewBag.LoginStatus = 0;
+            //}
+            //else
+            //{
+
+            //    string UserIDf = user.UserId.ToString();
+
+            //    HttpContext.Session.SetString("userid", UserIDf);
+            //    var abc = HttpContext.Session.GetString("userid");
+
+            //    long abcd = Convert.ToInt64(abc);
+            //    // var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
+            //    //var loginuser = _ciplatformDbContext.Users.Where(u => (u.UserId == abcd)).FirstOrDefault();
+            //    var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
+            //    if (loginuser != null)
+            //    {
+            //        var loginfname = loginuser.FirstName;
+            //        var loginlname = loginuser.LastName;
+
+            //        TempData["fullname"] = loginfname + loginlname;
+
+
+            //    }
+
+
+            //    return RedirectToAction("PlatformLandingPage", "Home", new { @Id = user.UserId });
+            //}
+
+
+            if (status != null)
             {
-                ViewBag.LoginStatus = 0;
+               
+                string UserIDf = status.UserId.ToString();
+
+                HttpContext.Session.SetString("userid", UserIDf);
+                var abc = HttpContext.Session.GetString("userid");
+
+                long abcd = Convert.ToInt64(abc);
+                var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
+                if (loginuser != null)
+                {
+                    var loginfname = loginuser.FirstName;
+                    var loginlname = loginuser.LastName;
+
+                    TempData["fullname"] = loginfname + loginlname;
+
+
+                }
+
+
+                return RedirectToAction("PlatformLandingPage", "Home", new { @Id = status.UserId });
+
             }
             else
             {
-                return RedirectToAction("PlatformLandingPage", "Home");
+
+                return RedirectToAction("Login", "Home");
             }
 
             return View(_loginModel);
         }
+
+        [HttpGet]
+        public IActionResult logoutpage()
+        {
+            HttpContext.Session.Remove("userid");
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            return RedirectToAction("PlatformLandingPage", "Home");
+        }
+
 
         public IActionResult Privacy()
         {
@@ -53,7 +119,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult LostPass(ForgotPasswordModel _forgotPasswordModel, PasswordReset passwordReset)
+        public IActionResult LostPass(ForgotPasswordModel _forgotPasswordModel, PasswordReset passwordReset, User user)
         {
             CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
 
@@ -70,7 +136,7 @@ namespace CIPlatform.Controllers
                 // Follow the RFS 5321 Email Standard
                 newMail.From = new MailAddress("tulsithakkar21@gmail.com", "CI PLATFORM");
 
-                newMail.To.Add("tulsithakkar21@gmail.com");// declare the email subject
+                newMail.To.Add(user.Email);// declare the email subject
 
                 newMail.Subject = "My First Email"; // use HTML for the email body
 
@@ -127,58 +193,6 @@ namespace CIPlatform.Controllers
 
 
 
-
-
-
-        //[HttpGet]
-        //public IActionResult ResetPass()
-        //{
-        //    return View();
-        //}
-
-
-
-        //[HttpPost]
-        //public IActionResult ResetPass(LoginModel _loginModel, PasswordReset _passwordReset)
-        //{
-        //    CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
-
-        //    var generated_pass = Request.Form["pass1"];
-        //    var current_url = HttpContext.Request.GetDisplayUrl();
-
-        //    // for spliting the url
-
-        //    string path = new Uri(current_url).LocalPath.Substring(21);
-        //    Console.WriteLine(path);
-        //    Console.WriteLine(generated_pass);
-
-
-        //    var generated_token = _ciplatformDbContext.PasswordResets.FirstOrDefault(x => (x.Token == path));
-        //    if (generated_token != null)
-        //    {
-
-        //        var emailtemp = generated_token.Email;
-        //        var check_email = _ciplatformDbContext.Users.FirstOrDefault(u => (u.Email == emailtemp.ToLower()));
-
-        //        if (check_email != null)
-        //        {
-
-        //            check_email.Password = generated_pass;
-        //            _ciplatformDbContext.Users.Update(check_email);
-        //            _ciplatformDbContext.SaveChanges();
-
-        //            return RedirectToAction("Index", "Home");
-
-        //        }
-
-
-        //        else
-        //        {
-        //            return RedirectToAction("ResetPass", "Home");
-
-        //        }
-
-        //    }
 
 
 
@@ -242,15 +256,7 @@ namespace CIPlatform.Controllers
 
 
 
-
-
-
-
-
-
-
-
-[HttpGet]
+        [HttpGet]
         public IActionResult Registration()
         {
             return View();
@@ -289,6 +295,10 @@ namespace CIPlatform.Controllers
 
         public IActionResult PlatformLandingPage()
         {
+            CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+
+            var mission_data = _ciplatformDbContext.Missions.ToList();
+            ViewBag.Missions = mission_data;
             return View();
         }
 

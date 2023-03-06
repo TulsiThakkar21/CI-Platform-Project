@@ -3,7 +3,7 @@
 *@
 @{
 }
-
+@model CIPlatform.Models.Mission
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +38,7 @@
 
 <body onload="myFunction()">
 
+   
 
     <header>
         <div class="container-fluid">
@@ -71,17 +72,30 @@
                             <img src="~/NewFolder/user-img.png" alt="" class="user-avatar">
                         </li>
 
-                        <li class="nav-item dropdown">
+                      @*  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Evan Donohue
+                                @TempData["fullname"]
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Volunteering</a>
+                                <a class="dropdown-item" href="#" asp-action="Index" asp-controller="Home">Logout</a>
                                 <a class="dropdown-item" href="#">Sponsered</a>
+                            </div>
+                        </li>*@
 
-                        </li>
+                        <div class="navbar-nav ms-4  uname">
+                        <select name="username" style="border:none; background:none;">
+                            <option value=@TempData["fullname"]>@TempData["fullname"]</option>
+                            <option value="2" style="border:none">Logout</option>
+                            <option value="3" style="border:none">33333</option>
+                            <option value="4" style="border:none">44444</option>
+                        </select>
+                    </div>
+                 @*   <li>
 
+                        <button>Logout</button>
+
+                    </li>*@
 
 
                     </ul>
@@ -262,21 +276,21 @@
 
         <div class="container grid-container ">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
+                 @foreach(var item in ViewBag.Missions)
+            {
+        <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
+                        <button class="missions">@item.MissionType</button>
                         <div class="card-body">
 
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
+                            <h4 class="card-title">@item.Title</h4>
+                            <p class="card-text">@item.ShortDescription</p>
                            <div class="combine" style="display: flex;">
                             <div class="row">
 
                                             <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
+                                                <span class="card-text">@item.OrganizationName</span>
 
                                             </div>
 
@@ -304,7 +318,7 @@
                                             <div class="col-12">
 
                                                 <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
+                                                    <button class="btn-date">From @item.StartDate until @item.EndDate</button>
                                                 </div>
                                             </div>
 
@@ -338,7 +352,9 @@
 
                     </div>
                 </div>
-                  <div class="col-12 col-md-6 col-lg-4">
+    }
+               
+               @*   <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img src="~/NewFolder/imgedu.png" class="card-img-top" alt="...">
                         <button class="missions">Environment</button>
@@ -346,8 +362,7 @@
 
                             <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
+                                tempor incididunt ut labore...</p>
                            <div class="combine" style="display: flex;">
                             <div class="row">
 
@@ -724,7 +739,7 @@
                                 <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
 
                             </button>
-                        </div>
+                        </div>*@
 
                     </div>
                 </div>
