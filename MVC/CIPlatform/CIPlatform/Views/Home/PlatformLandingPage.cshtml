@@ -3,7 +3,10 @@
 *@
 @{
 }
-@model CIPlatform.Models.Mission
+@using CIPlatform.Models.ViewModels
+@model LandingAllModels 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,8 +41,8 @@
 
 <body onload="myFunction()">
 
-   
 
+  
     <header>
         <div class="container-fluid">
 
@@ -83,23 +86,32 @@
                             </div>
                         </li>*@
 
-                        <div class="navbar-nav ms-4  uname">
+                       @* <div class="navbar-nav ms-4  uname">
                         <select name="username" style="border:none; background:none;">
                             <option value=@TempData["fullname"]>@TempData["fullname"]</option>
                             <option value="2" style="border:none">Logout</option>
                             <option value="3" style="border:none">33333</option>
                             <option value="4" style="border:none">44444</option>
                         </select>
-                    </div>
-                 @*   <li>
-
-                        <button>Logout</button>
-
-                    </li>*@
-
+                    </div>*@
 
                     </ul>
+                     <div class="nav-item dropdown" style="margin-right:20%; width:auto;">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["fullname"]
+                        </button>
+                  
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+               </div>
                 </div>
             </nav>
             <hr>
@@ -111,27 +123,106 @@
                             <div class="search-combine">
 
                                 <img src="~/NewFolder/search.png" alt="" class="search-icon">
-
-                                <form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2 search-bar" type="search"
-                                        placeholder="Search mission..." aria-label="Search">
-
-                                </form>
+                                
+                                    @using(Html.BeginForm("PlatformLandingPage" , "Home" , FormMethod.Get))
+                                    
+                                    {
+                                        <form class="form-inline my-2 my-lg-0">
+                                             
+                                            @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
+                                           
+                                           
+                                        </form>
+                                    }
+                             
+                                   @*if(@ViewBag.SearchStatus == 0)
+                                    {
+                                        <div class="alert alert-danger">No Mission Found</div>
+                                    }*@
+    
+                                
+                                 
+                             
                             </div>
 
                         </nav>
                     </div>
                     <div class="col-lg-5 col-sm-6">
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+
+                        <div class="filterbox country">
+                        <div class="navbar-nav ms-4  ">
+                            <select class="filterDropdown" name="Country" style="border:none; background:none;">
+                                <option selected disabled hidden>Country</option>
+                                @foreach (var item in ViewBag.Country)
+                                {
+                                    <option style="border:none">@item.Name</option>
+                               
+                                }
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filterbox">
+                        <div class="navbar-nav ms-4  ">
+                            <select name="City" style="border:none; background:none;">
+                                <option selected disabled hidden>City</option>
+                               @foreach (var item in ViewBag.Cities)
+                                {
+                                    <option style="border:none">@item.Name</option>
+                               
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filterbox">
+                        <div class="navbar-nav ms-4  ">
+
+                            
+                            
+                            <select style="border:none; background:none;" onchange="test()" id="select_id">
+                                <option selected disabled hidden>Theme</option>
+                                                        
+                                
+                                 @foreach (var item in ViewBag.MissionThemes)
+                                {
+                                    <option style="border:none">@item.Title</option>
+
+                                }
+                            </select>
+
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="filterbox">
+                        <div class="navbar-nav ms-4  ">
+                            <select name="skill" style="border:none; background:none;">
+                                <option selected disabled hidden>Skill</option>
+                                @foreach (var item in ViewBag.MissionSkills)
+                                {
+                                    <option style="border:none">@item.Skill</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+                       @* <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Country
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach (var item in ViewBag.Countries)
+                            {
+                                <a class="dropdown-item" href="#">@item.Name</a>
+                            }       
+
+                            
                         </div>
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -139,10 +230,11 @@
                             City
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach (var item in ViewBag.Cities)
+                            {
+                                <a class="dropdown-item" href="#">@item.Name</a>
+                            } 
+                            
                         </div>
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -150,10 +242,11 @@
                             Theme
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach (var item in ViewBag.MissionThemes)
+                            {
+                                <a class="dropdown-item" href="#">@item.Title</a>
+                            } 
+                            
                         </div>
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -161,11 +254,12 @@
                             Skills
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                            @foreach (var item in ViewBag.MissionSkills)
+                            {
+                                <a class="dropdown-item" href="#">@item.Skill</a>
+                            } 
+                            
+                        </div>*@
 
                     </div>
                     <div class="col-lg-1">
@@ -253,6 +347,31 @@
                                 <img src="~/NewFolder/list.png" alt="">
                             </button>
                         </div>
+                       
+                        @using(Html.BeginForm("PlatformLandingPage" , "Home" , FormMethod.Get))
+                        {
+                        if(@ViewBag.SearchStatus == 0)
+                                    {
+                                        @*<div class="alert alert-danger">No Mission Found</div>*@
+
+                                        <div class="container">
+
+                                            <div class="combine">
+                                                <h3 class="no-mission">No Mission Found</h3>
+                                                <button class="submit-btn-body">Submit new mission
+
+                                                    <img src="~/NewFolder/right-arrow.png" alt="">
+
+                                                </button>
+
+                                            </div>
+                
+
+                                        </div>
+                                    }
+    
+                        }
+
                     </div>
 
                     <div class="col-lg-1">
@@ -271,26 +390,28 @@
 
     </header>
 
+ 
+                                    
     <!-- Grid View -->
     <div class="grid-view" id="grdp">
 
         <div class="container grid-container ">
             <div class="row">
-                 @foreach(var item in ViewBag.Missions)
-            {
-        <div class="col-12 col-md-6 col-lg-4">
+                 @foreach(var item in ViewBag.Result)
+               {
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-                        <button class="missions">@item.MissionType</button>
+                        <button class="missions">@item.Title</button>
                         <div class="card-body">
 
-                            <h4 class="card-title">@item.Title</h4>
-                            <p class="card-text">@item.ShortDescription</p>
+                            <h4 class="card-title">@item.m.Title</h4>
+                            <p class="card-text">@item.m.ShortDescription</p>
                            <div class="combine" style="display: flex;">
                             <div class="row">
 
                                             <div class="col-6">
-                                                <span class="card-text">@item.OrganizationName</span>
+                                                <span class="card-text">@item.m.OrganizationName</span>
 
                                             </div>
 
@@ -318,7 +439,7 @@
                                             <div class="col-12">
 
                                                 <div class="card-line">
-                                                    <button class="btn-date">From @item.StartDate until @item.EndDate</button>
+                                                    <button class="btn-date">From  @item.m.StartDate until @item.m.EndDate</button>
                                                 </div>
                                             </div>
 
@@ -353,394 +474,7 @@
                     </div>
                 </div>
     }
-               
-               @*   <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img src="~/NewFolder/imgedu.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
-                        <div class="card-body">
-
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore...</p>
-                           <div class="combine" style="display: flex;">
-                            <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                           </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                    <p class="seatno"> 10</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                    <p class="seatno"> 01/09/2019</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                            <hr class="line-hr">
-
-                            <button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                  <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img src="~/NewFolder/imgchild.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
-                        <div class="card-body">
-
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
-                           <div class="combine" style="display: flex;">
-                           <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                           </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                    <p class="seatno"> 10</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                    <p class="seatno"> 01/09/2019</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                            <hr class="line-hr">
-
-                            <button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="container grid-container">
-                    <div class="row row2">
-                         <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
-                        <div class="card-body">
-
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
-                           <div class="combine" style="display: flex;">
-                            <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                           </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                    <p class="seatno"> 10</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                    <p class="seatno"> 01/09/2019</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                            <hr class="line-hr">
-
-                            <button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                          <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img src="~/NewFolder/imgedu.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
-                        <div class="card-body">
-
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
-                           <div class="combine" style="display: flex;">
-                           <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                           </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                    <p class="seatno"> 10</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                    <p class="seatno"> 01/09/2019</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                            <hr class="line-hr">
-
-                            <button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                         <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img src="~/NewFolder/imgchild.png" class="card-img-top" alt="...">
-                        <button class="missions">Environment</button>
-                        <div class="card-body">
-
-                            <h4 class="card-title">Grow Trees - On the path to <br>environment sustainability</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor
-                                incididunt ut labore...</p>
-                           <div class="combine" style="display: flex;">
-                            <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                           </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                    <p class="seatno"> 10</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                    <p class="seatno"> 01/09/2019</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                            <hr class="line-hr">
-
-                            <button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>
-                        </div>*@
-
+              
                     </div>
                 </div>
 

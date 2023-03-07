@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace CIPlatform.Controllers
@@ -95,12 +96,13 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult logoutpage()
+        public IActionResult Logout()
         {
             HttpContext.Session.Remove("userid");
             if (HttpContext.Session.GetString("userid") == null)
+     
             {
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction("PlatformLandingPage", "Home");
@@ -293,14 +295,56 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult PlatformLandingPage()
+        [HttpGet]
+        public IActionResult PlatformLandingPage(string searching)
         {
-            CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
 
-            var mission_data = _ciplatformDbContext.Missions.ToList();
-            ViewBag.Missions = mission_data;
+            //var missionxx = _ciplatformDbContext.Missions.ToList();
+            var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+            
+            if (missionxx.Count == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
+            var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
+
+            var result = from m in missionxx
+                         join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
+                         where m.ThemeId == mt.MissionThemeId
+                         select new
+                         {
+
+                             m,
+                             mt.Title,
+                             mt.MissionThemeId
+                         };
+
+            ViewBag.Result = result;
+
+            var missionx = _ciplatformDbContext.Missions.ToList();
+            ViewBag.Missions = missionx;
+
+
+            var countryx = _ciplatformDbContext.Countries.ToList();
+            ViewBag.Country = countryx;
+
+
+            var cityx = _ciplatformDbContext.Cities.ToList();
+            ViewBag.Cities = cityx;
+
+            var themex = _ciplatformDbContext.MissionThemes.ToList();
+            ViewBag.MissionThemes = themex;
+
+
+
+            var skillx = _ciplatformDbContext.MissionSkills.ToList();
+            ViewBag.MissionSkills = skillx;
+
+
             return View();
         }
+
+
 
         public IActionResult VolunteeringMission()
         {
@@ -315,55 +359,6 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
-
-
-        //For sending email
-
-        //public IActionResult EmailIndex()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult EmailIndex(EmailModel model)
-        //{
-        //    using (MailMessage mm = new MailMessage(model.Email, model.To))
-        //    {
-        //        mm.Subject = model.Subject;
-        //        mm.Body = model.Body;
-        //        //if (model.Attachment.Length > 0)
-        //        //{
-        //        //    string fileName = Path.GetFileName(model.Attachment.FileName);
-        //        //    mm.Attachments.Add(new Attachment(model.Attachment.OpenReadStream(), fileName));
-        //        //}
-        //        mm.IsBodyHtml = false;
-        //        using (SmtpClient smtp = new SmtpClient())
-        //        {
-        //            smtp.Host = "smtp.gmail.com";
-        //            smtp.EnableSsl = true;
-        //            NetworkCredential NetworkCred = new NetworkCredential(model.Email, model.Password);
-        //            smtp.UseDefaultCredentials = true;
-        //            smtp.Credentials = NetworkCred;
-        //            smtp.Port = 587;
-        //            smtp.Send(mm);
-        //            ViewBag.Message = "Email sent.";
-        //        }
-        //    }
-
-        //    return View();
-        //}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

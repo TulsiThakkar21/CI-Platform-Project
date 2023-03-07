@@ -29,8 +29,49 @@
     color: rgb(149, 146, 146);
 }
 
+/*No mission found */
+.combine {
+    text-align: center;
+}
+
+.no-mission {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.submit-btn-body {
+    width: 250px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #F88634;
+    border-radius: 24px;
+    color: #F88634;
+    text-align: center;
+    margin-top: 3%;
+}
+
 
 /* Search and mission filters css */
+
+
+.filterbox {
+    width: 25%;
+    border-right: 1px solid rgb(236, 234, 234);
+    height: 100%;
+    padding-top: 15px;
+}
+
+.country {
+    border-left: 1px solid rgb(236, 234, 234);
+}
+
+
+
+
+
+
+
+
 .col-lg-5 {
     display: flex;
     margin-left: 8%;
