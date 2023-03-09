@@ -26,6 +26,11 @@
         crossorigin="anonymous"></script>
     <script src="/js/rating.js"></script>
 
+    @*-------Links for checkbox---------*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
 
      <!-- Font Awesome -->
 
@@ -75,25 +80,7 @@
                             <img src="~/NewFolder/user-img.png" alt="" class="user-avatar">
                         </li>
 
-                      @*  <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @TempData["fullname"]
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#" asp-action="Index" asp-controller="Home">Logout</a>
-                                <a class="dropdown-item" href="#">Sponsered</a>
-                            </div>
-                        </li>*@
-
-                       @* <div class="navbar-nav ms-4  uname">
-                        <select name="username" style="border:none; background:none;">
-                            <option value=@TempData["fullname"]>@TempData["fullname"]</option>
-                            <option value="2" style="border:none">Logout</option>
-                            <option value="3" style="border:none">33333</option>
-                            <option value="4" style="border:none">44444</option>
-                        </select>
-                    </div>*@
+                     
 
                     </ul>
                      <div class="nav-item dropdown" style="margin-right:20%; width:auto;">
@@ -150,54 +137,118 @@
                     <div class="col-lg-5 col-sm-6">
 
 
-                        <div class="filterbox country">
-                        <div class="navbar-nav ms-4  ">
-                            <select class="filterDropdown" name="Country" style="border:none; background:none;">
-                                <option selected disabled hidden>Country</option>
+                      @* <li class="nav-item dropdown">*@
+                           <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Country &nbsp; <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+                                
                                 @foreach (var item in ViewBag.Country)
                                 {
-                                    <option style="border:none">@item.Name</option>
-                               
+                                <li class="form-check">
+                                    <input select multiple id="country-select" name="country" onchange="CountryFun()" class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                            @item.Name
+                                        </label>
+                                    </li>
                                 }
                                 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filterbox">
-                        <div class="navbar-nav ms-4  ">
-                            <select name="City" style="border:none; background:none;">
-                                <option selected disabled hidden>City</option>
-                               @foreach (var item in ViewBag.Cities)
-                                {
-                                    <option style="border:none">@item.Name</option>
-                               
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filterbox">
-                        <div class="navbar-nav ms-4  ">
+                            </ul>
+                            </form>
+                      @*  </li>*@
 
+
+                        <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                City &nbsp; <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+
+                                @foreach (var item in ViewBag.Cities)
+                                {
+                                    <li class="form-check">
+                                        <input select multiple id="city-select" name="city" onchange="CityFun()" class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            @item.Name
+                                        </label>
+                                    </li>
+                                }
+
+                            </ul>
+                        </form>
+
+
+                       @* <div class="filterbox">
+                            <div class="navbar-nav ms-4  ">
+                                <select name="City" style="border:none; background:none;">
+                                    <option selected disabled hidden>City</option>
+                                    @foreach (var item in ViewBag.Cities)
+                                    {
+                                        <option style="border:none">@item.Name</option>
+
+                                    }
+                                </select>
+                            </div>
+                        </div>*@
+
+
+                       @* <div class="filterbox country">
+                        <div class="navbar-nav ms-4  ">
                             
-                            
-                            <select style="border:none; background:none;" onchange="test()" id="select_id">
-                                <option selected disabled hidden>Theme</option>
-                                                        
+                                <select id="countryitems" style="border:none; background:none;">
+                                <option selected disabled hidden>Country</option>
+                                @{
+                                            @foreach (var item in ViewBag.Country)
+                                            {
+                                                <option style="border:none" >@item.Name</option>
+
+
+
+                                            }
+                                }
+                              
                                 
-                                 @foreach (var item in ViewBag.MissionThemes)
-                                {
-                                    <option style="border:none">@item.Title</option>
-
-                                }
                             </select>
+                     
 
+                          
+
+                        </div>
+                    </div>*@
+                  
+                    <div class="filterbox">
+                        <div class="navbar-nav ms-4  ">
                            
+                                <form id="filter-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+
+
+                                    <select id="filter-select" name="filter" style="border:none; background:none;" onchange="filterChanged()">
+                                            <option selected disabled hidden>Theme</option>
+
+                                        @{
+
+
+                                            @foreach (var item in ViewBag.MissionThemes)
+                                            {
+                                                <option id=@item.MissionThemeId style="border:none">@item.Title</option>
+
+
+
+
+                                            }
+                                        }
+                            </select>
+
+                           </form>
                         </div>
                         
                     </div>
                     <div class="filterbox">
                         <div class="navbar-nav ms-4  ">
-                            <select name="skill" style="border:none; background:none;">
+                            <select id="filter-dropdown" name="skill" style="border:none; background:none;">
                                 <option selected disabled hidden>Skill</option>
                                 @foreach (var item in ViewBag.MissionSkills)
                                 {
@@ -205,61 +256,9 @@
 
                                 }
                             </select>
+                                
                         </div>
                     </div>
-
-
-
-
-
-                       @* <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Country
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (var item in ViewBag.Countries)
-                            {
-                                <a class="dropdown-item" href="#">@item.Name</a>
-                            }       
-
-                            
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            City
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (var item in ViewBag.Cities)
-                            {
-                                <a class="dropdown-item" href="#">@item.Name</a>
-                            } 
-                            
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Theme
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (var item in ViewBag.MissionThemes)
-                            {
-                                <a class="dropdown-item" href="#">@item.Title</a>
-                            } 
-                            
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Skills
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (var item in ViewBag.MissionSkills)
-                            {
-                                <a class="dropdown-item" href="#">@item.Skill</a>
-                            } 
-                            
-                        </div>*@
 
                     </div>
                     <div class="col-lg-1">
@@ -402,7 +401,9 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
+                        
                         <button class="missions">@item.Title</button>
+                            <p>@item.Name</p>
                         <div class="card-body">
 
                             <h4 class="card-title">@item.m.Title</h4>
@@ -922,6 +923,129 @@
 
         executeRating(ratingStars, ratingResult);
     </script>
+    <script>
+        function filterChanged()
+        {
+            $('#filter-form').change(function () {
+                const filter = $('#filter-select').val();
+
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('filter', filter);
+
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState(null, '', newUrl);
+
+                $('#filter-form').submit();
+            });
+        }
+ 
+        
+
+    </script>
+
+
+    <script>
+
+        var checkboxes = document.querySelectorAll(".checkbox");
+
+        var filtersSection = document.querySelector(".filters-section");
+
+        var listArray = [];
+
+        var filterList = document.querySelector(".filter-list");
+
+        var len = listArray.length;
+
+        for (var checkbox of checkboxes) {
+            checkbox.addEventListener("click", function () {
+                if (this.checked == true) {
+                    addElement(this, this.value);
+                } else {
+                    removeElement(this.value);
+                }
+            });
+        }
+
+        function addElement(current, value) {
+            //let filtersSection = document.querySelector(".filters-section");
+
+            let createdTag = document.createElement("span");
+            createdTag.classList.add("filter-list");
+            createdTag.classList.add("ps-3");
+            createdTag.classList.add("pe-1");
+            createdTag.classList.add("me-2");
+            createdTag.innerHTML = value;
+
+            createdTag.setAttribute("id", value);
+            let crossButton = document.createElement("button");
+            crossButton.classList.add("filter-close-button");
+            let cross = "&times;";
+
+            crossButton.addEventListener("click", function () {
+                let elementToBeRemoved = document.getElementById(value);
+
+                console.log(elementToBeRemoved);
+                console.log(current);
+                elementToBeRemoved.remove();
+
+                current.checked = false;
+            });
+
+            crossButton.innerHTML = cross;
+
+            createdTag.appendChild(crossButton);
+            filtersSection.appendChild(createdTag);
+        }
+
+        function removeElement(value) {
+            let filtersSection = document.querySelector(".filters-section");
+
+            let elementToBeRemoved = document.getElementById(value);
+            filtersSection.removeChild(elementToBeRemoved);
+        }
+
+
+        function CountryFun() {
+            $('#country-form').change(function () {
+
+                
+                const country = $('#country-select').val();
+
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('country', country);
+
+                const newUrl = window.location.pathname + '?' + urlParams.toString() + '&' + urlParams.toString();
+                history.pushState(null, '', newUrl);
+
+
+                $('#country-form').submit();
+            });
+        }
+
+
+
+        function CityFun() {
+            $('#city-form').change(function () {
+
+
+                const city = $('#city-select').val();
+
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('city', city);
+
+                const newUrl = window.location.pathname + '?' + urlParams.toString() + '&' + urlParams.toString();
+                history.pushState(null, '', newUrl);
+
+
+                $('#city-form').submit();
+            });
+        }
+
+
+
+    </script>
+
+   
 
 
 </body>

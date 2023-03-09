@@ -51,6 +51,33 @@
 }
 
 
+/*Country filter*/
+
+.scroll-dropdown {
+    width: 10em !important;
+    padding: 0.7em !important;
+    height: 10em !important;
+    overflow-y: scroll !important;
+}
+
+.filter-list {
+    padding: 6px 10px;
+    background-color: white;
+    border: 1px solid #808080;
+    border-radius: 20px;
+    color: #000;
+    cursor: pointer;
+}
+
+.filter-close-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 5px;
+    color: #888;
+}
+
 /* Search and mission filters css */
 
 

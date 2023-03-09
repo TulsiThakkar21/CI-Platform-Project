@@ -5,7 +5,10 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using CIPlatform.Models.ViewModels;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace CIPlatform.Controllers
@@ -296,7 +299,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string searching)
+        public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city)
         {
 
             //var missionxx = _ciplatformDbContext.Missions.ToList();
@@ -306,17 +309,44 @@ namespace CIPlatform.Controllers
             {
                 ViewBag.SearchStatus = 0;
             }
-            var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
+            //var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
+            var missionthemexx = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
+
+
+
+            //var countryx = _ciplatformDbContext.Countries.ToList();
+            //var filteredCountries = new List<Country>();
+            //foreach (var countryy in countryx)
+            //{
+            //    var filtered = _ciplatformDbContext.Countries
+            //        .Where(c => c.Name.Contains(countryy.Name) || countryy.Name == null)
+            //        .ToList();
+            //    filteredCountries.AddRange(filtered);
+            //}
+            //ViewBag.Country = filteredCountries;
+
+
+            var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(country) || country == null).ToList();
+            ViewBag.Country = countryx;
+
+            var cityx = _ciplatformDbContext.Cities.Where(ci => ci.Name.Contains(city) || city == null).ToList();
+            ViewBag.Cities = cityx;
 
             var result = from m in missionxx
                          join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
                          where m.ThemeId == mt.MissionThemeId
+                         join cnt in countryx on m.CountryId equals cnt.CountryId where m.CountryId == cnt.CountryId
+                         join cit in cityx on m.CityId equals cit.CityId where m.CityId == cit.CityId
+                         where m.CountryId == cnt.CountryId
+                         
                          select new
                          {
 
                              m,
                              mt.Title,
-                             mt.MissionThemeId
+                             mt.MissionThemeId,
+                             cnt.Name,
+                             City = cit.Name
                          };
 
             ViewBag.Result = result;
@@ -325,12 +355,16 @@ namespace CIPlatform.Controllers
             ViewBag.Missions = missionx;
 
 
-            var countryx = _ciplatformDbContext.Countries.ToList();
-            ViewBag.Country = countryx;
+            //var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(countries) || countries == null).ToList();
+            //ViewBag.Country = countryx;
 
 
-            var cityx = _ciplatformDbContext.Cities.ToList();
-            ViewBag.Cities = cityx;
+            // var selectedCountries = landingAllModels.SelectedCountries ?? new List<string>();
+            
+            
+            
+
+
 
             var themex = _ciplatformDbContext.MissionThemes.ToList();
             ViewBag.MissionThemes = themex;
@@ -341,7 +375,21 @@ namespace CIPlatform.Controllers
             ViewBag.MissionSkills = skillx;
 
 
+
+
+            //if (!string.IsNullOrEmpty(filter))
+            //{ 
+            //    item = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
+
+            //}
+
+
+           
+
             return View();
+            //ViewBag.FilterValue = filter;
+          
+              
         }
 
 

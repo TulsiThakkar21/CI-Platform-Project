@@ -5,72 +5,73 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CIPlatform
 build_property.RootNamespace = CIPlatform
-build_property.ProjectDir = C:\Users\tatva\Desktop\New CI Platform\MVC\CIPlatform\CIPlatform\
+build_property.ProjectDir = C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\tatva\Desktop\New CI Platform\MVC\CIPlatform\CIPlatform
+build_property.MSBuildProjectDirectory = C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/EmailIndex.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/EmailIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbWFpbEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/Index.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/LostPass.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/LostPass.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb3N0UGFzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/NoMissionFound.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/NoMissionFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb01pc3Npb25Gb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/PlatformLandingPage.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/PlatformLandingPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQbGF0Zm9ybUxhbmRpbmdQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/Privacy.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/Registration.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/ResetPass.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/ResetPass.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldFBhc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/StoryListing.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/StoryListing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdG9yeUxpc3RpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Home/VolunteeringMission.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Home/VolunteeringMission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWb2x1bnRlZXJpbmdNaXNzaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Shared/Error.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/_ViewImports.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/_ViewStart.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tatva/Desktop/New CI Platform/MVC/CIPlatform/CIPlatform/Views/Shared/_Layout.cshtml]
+[C:/Users/tatva/Desktop/FinalCIPlatform/MVC/CIPlatform/CIPlatform/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-4z7cv35szi

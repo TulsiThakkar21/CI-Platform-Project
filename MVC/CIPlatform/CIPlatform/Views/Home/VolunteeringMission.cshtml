@@ -884,7 +884,7 @@
             <div class="col-lg-12">
                 <div class="grid-view" id="grdp">
 
-                    <div class="container grid-container ">
+                 @*   <div class="container grid-container ">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
                                 <div class="card">
@@ -1208,7 +1208,100 @@
                         </div>
                     </div>
 
+                </div>*@
+
+
+                 @*------------Related; Missions---------*@
+
+
+                    <div class="container grid-container ">
+                        <div class="row">
+                            @foreach (var item in ViewBag.Result)
+                            {
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="card">
+                                        <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
+                                        <button class="missions">@item.Title</button>
+                                        <div class="card-body">
+
+                                            <h4 class="card-title">@item.m.Title</h4>
+                                            <p class="card-text">@item.m.ShortDescription</p>
+                                            <div class="combine" style="display: flex;">
+                                                <div class="row">
+
+                                                    <div class="col-6">
+                                                        <span class="card-text">@item.m.OrganizationName</span>
+
+                                                    </div>
+
+                                                    <div class="col-6" style="margin-left: -12%;">
+                                                        <div class="rating">
+                                                            <span class="rating__result"></span>
+                                                            <i class="rating__star far fa-star"></i>
+                                                            <i class="rating__star far fa-star"></i>
+                                                            <i class="rating__star far fa-star"></i>
+                                                            <i class="rating__star far fa-star"></i>
+                                                            <i class="rating__star far fa-star"></i>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <br>
+
+
+                                            <div class="row">
+
+                                                <div class="col-12">
+
+                                                    <div class="card-line">
+                                                        <button class="btn-date">From  @item.m.StartDate until @item.m.EndDate</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="iconandtext" style="display:flex">
+
+                                                <img class="icons1" src="~/NewFolder/Seats-left.png">
+
+                                                <div class="hssh">
+                                                    <p class="seatno"> 10</p>
+                                                    <p class="seat">Seats Left</p>
+                                                </div>
+                                                <img class="icons" src="~/NewFolder/deadline.png">
+                                                <div class="hssh">
+
+                                                    <p class="seatno"> 01/09/2019</p>
+                                                    <p class="seat">Deadline</p>
+                                                </div>
+                                            </div>
+
+                                            <hr class="line-hr">
+
+                                            <button class="apply-btn">
+                                                Apply
+
+                                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
+
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+
                 </div>
+
+
             </div>
 
         </div>
