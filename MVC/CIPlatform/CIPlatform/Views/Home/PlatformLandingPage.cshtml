@@ -138,7 +138,7 @@
 
 
                       @* <li class="nav-item dropdown">*@
-                           <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+                        <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CountryFun()">
                             <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Country &nbsp; <i class="bi bi-chevron-down"></i>
@@ -148,7 +148,7 @@
                                 @foreach (var item in ViewBag.Country)
                                 {
                                 <li class="form-check">
-                                    <input select multiple id="country-select" name="country" onchange="CountryFun()" class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                                    <input select multiple id="country-select" name="country"  class="form-check-input checkbox" type="checkbox" value="@item.Name">
                                     <label class="form-check-label" for="flexCheckDefault">
                                             @item.Name
                                         </label>
@@ -160,7 +160,7 @@
                       @*  </li>*@
 
 
-                        <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+                        <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CityFun()" select multiple>
                             <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 City &nbsp; <i class="bi bi-chevron-down"></i>
@@ -170,7 +170,7 @@
                                 @foreach (var item in ViewBag.Cities)
                                 {
                                     <li class="form-check">
-                                        <input select multiple id="city-select" name="city" onchange="CityFun()" class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                                        <input  id="city-select" name="city" class="form-check-input checkbox" type="checkbox" value="@item.Name">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             @item.Name
                                         </label>
@@ -329,7 +329,62 @@
                             <label class="explore72"> Explore <b>72 more missions</b> </label>
 
 
+                           @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
                             <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Newest</a>
+                                <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Oldest</a>
+                            </div>
+
+                        </form>
+*@
+                            <div class="filterbox">
+                                <div class="navbar-nav ms-4  ">
+                                    @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
+
+                                    <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
+                                            
+                                            <option id="sortOrder-select" value="" selected disabled hidden>Sort By</option>
+
+
+                                            <option id="sortOrder" value="newest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Newest</option>
+
+
+                                            <option id="sortOrder" value="oldest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Oldest</option>
+
+
+                                    </select>
+
+                            </form>*@
+
+
+                                    <select class="form-control" onchange="location = this.value;">
+                                        <option value="">Sort By</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParamAsc })">Oldest</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParam })">Newest</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.LowestSeats })">Lowest Available Seats</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.HighestSeats })">Highest Available Seats</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineNear })">Nearer Deadline</option>
+                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineFar })">Farther Deadline</option>
+                                        @*@Html.DisplayNameFor(model => model.Mission.StartDate)*@
+                                    </select>
+
+
+
+
+
+
+
+                            </div>
+                            </div>
+
+
+
+                            @* <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sort by
                             </a>
@@ -338,7 +393,12 @@
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                            </div>*@
+                            
+                            
+                            
+                            
+                            
                             <button id="grdbtn" onclick="grid1()">
                                 <img src="~/NewFolder/grid.png" alt="">
                             </button>
@@ -398,10 +458,20 @@
             <div class="row">
                  @foreach(var item in ViewBag.Result)
                {
+
+
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
+                        <div>
+                                <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
+
+                                <button id="favBtn" class="fav-btn">
+                                    <img src="~/NewFolder/heart1.png">
+
+                                </button>
+                        </div>    
                         
+                            
                         <button class="missions">@item.Title</button>
                             <p>@item.Name</p>
                         <div class="card-body">
@@ -440,7 +510,7 @@
                                             <div class="col-12">
 
                                                 <div class="card-line">
-                                                    <button class="btn-date">From  @item.m.StartDate until @item.m.EndDate</button>
+                                            <button class="btn-date">From  @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
                                                 </div>
                                             </div>
 
@@ -452,13 +522,13 @@
                                 <img class="icons1" src="~/NewFolder/Seats-left.png">
 
                                 <div class="hssh">
-                                    <p class="seatno"> 10</p>
+                                        <p class="seatno">@item.m.Availability</p>
                                     <p class="seat">Seats Left</p>
                                 </div>
                                 <img class="icons" src="~/NewFolder/deadline.png">
                                 <div class="hssh">
 
-                                    <p class="seatno"> 01/09/2019</p>
+                                        <p class="seatno">@item.m.EndDate.ToShortDateString()</p>
                                     <p class="seat">Deadline</p>
                                 </div>
                             </div>
@@ -474,6 +544,7 @@
 
                     </div>
                 </div>
+                
     }
               
                     </div>
@@ -1044,6 +1115,16 @@
 
 
     </script>
+
+    @*for fav btn*@
+
+    <script>
+        document.getElementById("favBtn").addEventListener("click", function () {
+            this.classList.add("clicked");
+        });
+    </script>
+
+   
 
    
 

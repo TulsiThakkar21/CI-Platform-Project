@@ -299,7 +299,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city)
+        public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "")
         {
 
             //var missionxx = _ciplatformDbContext.Missions.ToList();
@@ -312,6 +312,46 @@ namespace CIPlatform.Controllers
             //var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
             var missionthemexx = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
 
+            //var items = from i in _ciplatformDbContext.Missions
+            //          select new 
+            //          {
+            //              Id = i.MissionId,
+            //              Name = i.Title,
+
+            //          };
+
+            ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
+            ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
+            ViewBag.DeadlineNear = sortOrder == "near" ? "far" : "near";
+            ViewBag.DeadlineFar = sortOrder == "far" ? "near" : "far";
+
+            switch (sortOrder)
+            {
+                
+                case "Date":
+                    missionxx = missionxx.OrderBy(a => a.StartDate).ToList();
+                    break;
+                case "date_desc":
+                    missionxx = missionxx.OrderByDescending(a => a.StartDate).ToList();
+                    break;
+                case "LowSeats":
+                    missionxx = missionxx.OrderBy(a => a.Availability).ToList();
+                    break;
+                case "HighSeats":
+                    missionxx = missionxx.OrderByDescending(a => a.Availability).ToList();
+                    break;
+                case "near":
+                    missionxx = missionxx.OrderBy(a => a.EndDate).ToList();
+                    break;
+                case "far":
+                    missionxx = missionxx.OrderByDescending(a => a.EndDate).ToList();
+                    break;
+                default:
+                    missionxx= missionxx.ToList();
+                    break;
+            }
 
 
             //var countryx = _ciplatformDbContext.Countries.ToList();
@@ -343,6 +383,8 @@ namespace CIPlatform.Controllers
                          {
 
                              m,
+                             date= m.StartDate,
+                             m.MissionId,
                              mt.Title,
                              mt.MissionThemeId,
                              cnt.Name,
@@ -355,14 +397,17 @@ namespace CIPlatform.Controllers
             ViewBag.Missions = missionx;
 
 
+
+            
+
             //var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(countries) || countries == null).ToList();
             //ViewBag.Country = countryx;
 
 
             // var selectedCountries = landingAllModels.SelectedCountries ?? new List<string>();
-            
-            
-            
+
+
+
 
 
 
@@ -377,24 +422,47 @@ namespace CIPlatform.Controllers
 
 
 
-            //if (!string.IsNullOrEmpty(filter))
-            //{ 
-            //    item = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
+            //for sort by
 
+
+            //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            //var missions = from m in _ciplatformDbContext.Missions
+            //               select m;
+
+            //switch (sortOrder)
+            //{
+            //    case "name_desc":
+            //        missions = missions.OrderByDescending(m => m.Title);
+            //        break;
+            //    case "Date":
+            //        missions = missions.OrderBy(m => m.CreatedAt);
+            //        break;
+            //    case "date_desc":
+            //        missions = missions.OrderByDescending(m => m.CreatedAt);
+            //        break;
+            //    default:
+            //        missions = missions.OrderBy(m => m.Title);
+            //        break;
             //}
+            // IQueryable<Mission> mission_get = this._ciplatformDbContext.Missions;
+            // mission_get = _ciplatformDbContext.Missions.Where(x => x.MissionId == true);
 
 
-           
 
             return View();
-            //ViewBag.FilterValue = filter;
+           
           
               
         }
 
 
 
-        public IActionResult VolunteeringMission()
+
+
+
+    public IActionResult VolunteeringMission()
         {
             return View();
         }

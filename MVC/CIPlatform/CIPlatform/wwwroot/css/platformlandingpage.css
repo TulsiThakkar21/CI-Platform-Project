@@ -29,6 +29,19 @@
     color: rgb(149, 146, 146);
 }
 
+.fav-btn
+{
+    width:50px;
+    height:50px;
+    background:none;
+    border:none;
+    
+
+}
+
+.clicked {
+        background-color: red;
+    }
 /*No mission found */
 .combine {
     text-align: center;
