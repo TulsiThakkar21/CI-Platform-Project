@@ -3,6 +3,7 @@
 *@
 @{
 }
+
 @using CIPlatform.Models.ViewModels
 @model LandingAllModels 
 
@@ -39,6 +40,7 @@
 
 
     <link rel="stylesheet" href="~/css/platformlandingpage.css">
+    <link rel="stylesheet" href="~/css/storylisting.css">
    
 
     <title>Platform Landing Page</title>
@@ -465,21 +467,70 @@
                         <div>
                                 <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
 
-                                <button id="favBtn" class="fav-btn">
+                                @*<button id="favBtn" class="fav-btn">
                                     <img src="~/NewFolder/heart1.png">
 
-                                </button>
+                                </button>*@
+
+                                
+
+                         
+                              @* @{
+                               
+                               
+                               
+                               if (@ViewBag.flag !=null)
+                                {
+                                    <button class"btn btn-primary">
+                                        <a onclick="removeFromFavorites(@item.MissionId)"  class="dropdown-item" asp-controller="Home" asp-action="PlatformLandingPage">Remove from Favorites</a>
+                                    </button>
+                                }
+                                if(@ViewBag.flag == null)
+                                {
+                                    <button class"btn btn-primary">
+                                        <a onclick="addToFavorites(@item.MissionId)"  class="dropdown-item" asp-controller="Home" asp-action="PlatformLandingPage">Add To fav</a>
+                                     </button>
+                                }
+                               
+                               
+                               }
+*@
+
+
+
+
+                                @*<button class="btn btn-primary" onclick="addToFavorites(@item.MissionId)" asp-action="Add" asp-controller="Home">Add to Favorites</button>*@
+                                
+
+
+                              @*  <form method="post" asp-action="AddToFavorites" asp-route-itemId="@item.MissionId">
+                                    <button id="mission-button" type="submit">Add to Favorites</button>
+                                </form>
+*@
+
                         </div>    
                         
                             
                         <button class="missions">@item.Title</button>
+                         <button class"btn btn-primary">
+                                        <a onclick="addToFavorites(@item.MissionId)"  class="dropdown-item" asp-controller="Home" asp-action="PlatformLandingPage">Add To fav</a>
+                                     </button>
+     
+                                  
+                                     <button class"btn btn-primary">
+                                        <a onclick="removeFromFavorites(@item.MissionId)"  class="dropdown-item" asp-controller="Home" asp-action="PlatformLandingPage">Remove from Favorites</a>
+                                     </button>
                             <p>@item.Name</p>
                         <div class="card-body">
+                            
+                            
+
+
 
                             <h4 class="card-title">@item.m.Title</h4>
                             <p class="card-text">@item.m.ShortDescription</p>
-                           <div class="combine" style="display: flex;">
-                            <div class="row">
+                             <div class="combine" style="display: flex;">
+                                    <div class="row">
 
                                             <div class="col-6">
                                                 <span class="card-text">@item.m.OrganizationName</span>
@@ -494,13 +545,13 @@
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
-                                                </div>
+                                                    </div>
 
-                                            </div>
+                                                      </div>
+
+                                                 </div>
 
                                         </div>
-
-                           </div>
                                 
                            <br>
 
@@ -545,10 +596,11 @@
                     </div>
                 </div>
                 
+                
     }
-              
+        
                     </div>
-                </div>
+                     </div>
 
 
                     </div>
@@ -558,6 +610,49 @@
         </div>
 
     </div>
+                   
+        <br />      
+    
+    <div class="pagination">
+                 <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                       <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+
+                        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+                        {
+                            @*<a href="/Home/Landingpage?page=@i&pageSize=@ViewData["PageSize"]">@i</a>*@
+                            <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
+                        }
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                 </a>
+                            </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                   </ul>
+              </nav>
+       </div>
+
+
+
+               
 
 
 
@@ -569,22 +664,25 @@
         <div class="container-fluid">
             <div class="card mb-3 lst-row-lst">
                 <div class="row no-gutters">
+                     @foreach(var item in ViewBag.Result)
+               {
+        
                     <div class="col-md-4">
 
                         <img src="~/NewFolder/lst-img1.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">Environment</button>
+                        <button class="lst-missions">@item.Title</button>
                     </div>
 
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title">Grow Trees - On the path to environment sustainability</h4>
-                            <p class="card-text">This summer we are aiming to plant 40000 trees</p>
+                            <h4 class="card-title">@item.m.Title</h4>
+                            <p class="card-text">@item.m.ShortDescription</p>
 
                             <div class="row">
 
                                 <div class="col-sm-6">
                                     <div class="txt" style="display: flex;">
-                                        <span class="card-text" >Tree Canada</span>
+                                        <span class="card-text" >@item.m.OrganizationName</span>
                                         <div class="star" style="display: flex;">
 
                                             <img src="~/NewFolder/selected-star.png" alt="">
@@ -606,19 +704,19 @@
                                 </div>
 
                                 <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From 10/01/2023 until 25/02/2023</button>
+                                    <button class="lst-btn-date">From @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
                                     <div class="lst-iconandtext" style="display:flex">
 
                                         <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
         
                                         <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>10</b> </p>
+                                            <p class="lst-seatno"><b>@item.m.Availability</b> </p>
                                             <p class="lst-seat">Seats Left</p>
                                         </div>
                                         <img class="lst-icons" src="~/NewFolder/deadline.png">
                                         <div class="lst-hssh">
         
-                                            <p class="lst-seatno-date"><b>09/01/2023</b> </p>
+                                            <p class="lst-seatno-date"><b>@item.m.EndDate.ToShortDateString()</b> </p>
                                             <p class="lst-seat">Deadline</p>
                                         </div>
                                     </div>
@@ -635,307 +733,14 @@
 
                         </div>
                     </div>
+                    }
+                  
                 </div>
 
-
+               
 
                 
             </div>
-
-            <div class="card mb-3 lst-row-lst">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-
-                        <img src="~/NewFolder/listviewimg2.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">Environment</button>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">Grow Trees - On the path to environment sustainability</h4>
-                            <p class="card-text">This summer we are aiming to plant 40000 trees</p>
-
-                            <div class="row">
-
-                                <div class="col-sm-6">
-                                    <div class="txt" style="display: flex;">
-                                        <span class="card-text" >Tree Canada</span>
-                                        <div class="star" style="display: flex;">
-
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-
-                                        </div>
-
-                                        <button class="lst-apply-btn">Apply
-
-                                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                                <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From 10/01/2023 until 25/02/2023</button>
-                                    <div class="lst-iconandtext" style="display:flex">
-
-                                        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-        
-                                        <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>10</b> </p>
-                                            <p class="lst-seat">Seats Left</p>
-                                        </div>
-                                        <img class="lst-icons" src="~/NewFolder/deadline.png">
-                                        <div class="lst-hssh">
-        
-                                            <p class="lst-seatno-date"><b>09/01/2023</b> </p>
-                                            <p class="lst-seat">Deadline</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                
-
-                            </div>
-
-
-                         
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-                
-            </div>
-
-            <div class="card mb-3 lst-row-lst">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-
-                        <img src="~/NewFolder/listvimg3.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">Environment</button>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">Grow Trees - On the path to environment sustainability</h4>
-                            <p class="card-text">This summer we are aiming to plant 40000 trees</p>
-
-                            <div class="row">
-
-                                <div class="col-sm-6">
-                                    <div class="txt" style="display: flex;">
-                                        <span class="card-text" >Tree Canada</span>
-                                        <div class="star" style="display: flex;">
-
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-
-                                        </div>
-
-                                        <button class="lst-apply-btn">Apply
-
-                                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                                <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From 10/01/2023 until 25/02/2023</button>
-                                    <div class="lst-iconandtext" style="display:flex">
-
-                                        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-        
-                                        <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>10</b> </p>
-                                            <p class="lst-seat">Seats Left</p>
-                                        </div>
-                                        <img class="lst-icons" src="~/NewFolder/deadline.png">
-                                        <div class="lst-hssh">
-        
-                                            <p class="lst-seatno-date"><b>09/01/2023</b> </p>
-                                            <p class="lst-seat">Deadline</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                
-
-                            </div>
-
-
-                         
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-                
-            </div>
-            
-            <div class="card mb-3 lst-row-lst">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-
-                        <img src="~/NewFolder/listvimg4.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">Environment</button>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">Grow Trees - On the path to environment sustainability</h4>
-                            <p class="card-text">This summer we are aiming to plant 40000 trees</p>
-
-                            <div class="row">
-
-                                <div class="col-sm-6">
-                                    <div class="txt" style="display: flex;">
-                                        <span class="card-text" >Tree Canada</span>
-                                        <div class="star" style="display: flex;">
-
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-
-                                        </div>
-
-                                        <button class="lst-apply-btn">Apply
-
-                                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                                <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From 10/01/2023 until 25/02/2023</button>
-                                    <div class="lst-iconandtext" style="display:flex">
-
-                                        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-        
-                                        <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>10</b> </p>
-                                            <p class="lst-seat">Seats Left</p>
-                                        </div>
-                                        <img class="lst-icons" src="~/NewFolder/deadline.png">
-                                        <div class="lst-hssh">
-        
-                                            <p class="lst-seatno-date"><b>09/01/2023</b> </p>
-                                            <p class="lst-seat">Deadline</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                
-
-                            </div>
-
-
-                         
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-                
-            </div>
-
-            <div class="card mb-3 lst-row-lst">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-
-                        <img src="~/NewFolder/listvimg5.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">Environment</button>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">Grow Trees - On the path to environment sustainability</h4>
-                            <p class="card-text">This summer we are aiming to plant 40000 trees</p>
-
-                            <div class="row">
-
-                                <div class="col-sm-6">
-                                    <div class="txt" style="display: flex;">
-                                        <span class="card-text" >Tree Canada</span>
-                                        <div class="star" style="display: flex;">
-
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-
-                                        </div>
-
-                                        <button class="lst-apply-btn">Apply
-
-                                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                                <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From 10/01/2023 until 25/02/2023</button>
-                                    <div class="lst-iconandtext" style="display:flex">
-
-                                        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-        
-                                        <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>10</b> </p>
-                                            <p class="lst-seat">Seats Left</p>
-                                        </div>
-                                        <img class="lst-icons" src="~/NewFolder/deadline.png">
-                                        <div class="lst-hssh">
-        
-                                            <p class="lst-seatno-date"><b>09/01/2023</b> </p>
-                                            <p class="lst-seat">Deadline</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                
-
-                            </div>
-
-
-                         
-
-
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -1119,14 +924,35 @@
     @*for fav btn*@
 
     <script>
-        document.getElementById("favBtn").addEventListener("click", function () {
-            this.classList.add("clicked");
-        });
+        //document.getElementById("favBtn").addEventListener("click", function () {
+        //    this.classList.add("clicked");
+        //});
+
+  
+        //function addToFavorites(missionId) {
+
+          
+        //    $.ajax({
+        //        url: '/Favorites/Add',
+        //        type: 'POST',
+        //        data: { missionId: missionId },
+        //        success: function () {
+        //            // Change button color to red
+        //            $('.btn-primary').addClass('btn-danger').removeClass('btn-primary');
+        //        }
+        //    });
+        //}
+
+      
+
+         
+
+
     </script>
 
    
-
-   
+    
+   <script src="~/js/landing.js"></script>
 
 
 </body>

@@ -9,7 +9,7 @@ using CIPlatform.Models.ViewModels;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using System.Security.Principal;
 
 namespace CIPlatform.Controllers
 {
@@ -299,7 +299,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "")
+        public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page=1, int pageSize=6)
         {
 
             //var missionxx = _ciplatformDbContext.Missions.ToList();
@@ -372,12 +372,15 @@ namespace CIPlatform.Controllers
             var cityx = _ciplatformDbContext.Cities.Where(ci => ci.Name.Contains(city) || city == null).ToList();
             ViewBag.Cities = cityx;
 
+            
+
             var result = from m in missionxx
                          join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
                          where m.ThemeId == mt.MissionThemeId
                          join cnt in countryx on m.CountryId equals cnt.CountryId where m.CountryId == cnt.CountryId
                          join cit in cityx on m.CityId equals cit.CityId where m.CityId == cit.CityId
                          where m.CountryId == cnt.CountryId
+                        
                          
                          select new
                          {
@@ -390,6 +393,14 @@ namespace CIPlatform.Controllers
                              cnt.Name,
                              City = cit.Name
                          };
+
+
+            @ViewData["page"] = page;
+            ViewData["PageSize"] = pageSize;
+            ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / pageSize);
+            ViewBag.outputsf = result.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+
 
             ViewBag.Result = result;
 
@@ -458,11 +469,91 @@ namespace CIPlatform.Controllers
         }
 
 
+        //[HttpPost]
+        //public IActionResult AddFavorite(int itemId, int userId)
+        //{
+        //    var item = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(i => i.FavouriteMissionId == itemId);
+        //    var user = _ciplatformDbContext.Users.Include(u => u.FavoriteMissions).FirstOrDefault(u => u.UserId == userId);
+
+        //    if (item == null || user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    user.FavoriteMissions.Add(item);
+        //    _ciplatformDbContext.SaveChanges();
+
+        //    return Ok();
+        //}
+        //[HttpGet]
+        //public IActionResult Add() {
+
+        //    return RedirectToAction("PlatformLandingPage", "Home");
+
+
+        //}
+
+
+
+        [HttpPost]
+        public IActionResult Add(int missionId, LandingAllModels landingAllModels)
+        {
+
+
+            //var  msnid = missionId;
+            //string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = HttpContext.Session.GetString("userid");
+            var userexist = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(x => x.MissionId == missionId && x.UserId == Convert.ToInt32(userId));
+
+            if (userexist == null) {
+                var favorite = new FavoriteMission
+                {
+                    MissionId = missionId,
+                    UserId = Convert.ToInt32(userId),
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                _ciplatformDbContext.FavoriteMissions.Add(favorite);
+                _ciplatformDbContext.SaveChanges();
+
+                 ViewBag.flag = favorite;
+
+            }
+
+            // ViewBag.flag = favorite;
+            //ViewBag.isFav = true;
+            //return RedirectToAction("PlatformLandingPage", "Home");
+            return RedirectToAction("PlatformLandingPage", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int missionId)
+        {
+            //string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = HttpContext.Session.GetString("userid");
+            var favorite = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(f => f.MissionId == missionId && f.UserId == Convert.ToInt32(userId));
+            if (favorite != null)
+            {
+                _ciplatformDbContext.FavoriteMissions.Remove(favorite);
+                _ciplatformDbContext.SaveChanges();
+                // ViewBag.flag = 0;
+                //ViewBag.isFav = false;
+
+              //  ViewBag.flag = null;
+
+         }
 
 
 
 
-    public IActionResult VolunteeringMission()
+            return RedirectToAction("PlatformLandingPage", "Home");
+        }
+
+
+
+
+
+        public IActionResult VolunteeringMission()
         {
             return View();
         }

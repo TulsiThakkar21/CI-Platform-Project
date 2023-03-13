@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+fH7D5ecD1DEOQbR2PeJGMFfhfV4Zwds+YX8PoLlsio=",
+  "Hash": "KQfMlphTKhUVL81rxMtT3ckdd9/F7locwsEtOP2wSkg=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\FinalCIPlatform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\landing.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\FinalCIPlatform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/landing.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\landing.js"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\FinalCIPlatform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",

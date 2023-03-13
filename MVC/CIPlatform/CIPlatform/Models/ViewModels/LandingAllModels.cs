@@ -11,8 +11,12 @@
         public MissionTheme MissionTheme { get; set; }
 
         public MissionSkill MissionSkill { get; set; }
-
         
+        public FavoriteMission FavoriteMission { get; set; }    
+        
+        public User User { get; set; }
+
+       
 
         
 

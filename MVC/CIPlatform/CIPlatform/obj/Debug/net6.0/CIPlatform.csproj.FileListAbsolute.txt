@@ -315,11 +315,6 @@ C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cache
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cs
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets\msbuild.CIPlatform.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets\msbuild.build.CIPlatform.props
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.CIPlatform.props
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.CIPlatform.props
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
@@ -327,7 +322,7 @@ C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\scopedcss\projectbundle\CIPlatform.bundle.scp.css
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.CopyComplete
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.dll
-C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\refint\CIPlatform.dll
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
 C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
+C:\Users\tatva\Desktop\FinalCIPlatform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\ref\CIPlatform.dll
