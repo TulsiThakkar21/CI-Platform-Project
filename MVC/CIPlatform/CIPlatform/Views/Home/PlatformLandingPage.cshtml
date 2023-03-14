@@ -538,14 +538,30 @@
                                             </div>
 
                                             <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
+                                                @*<div class="rating">
+
                                                     <span class="rating__result"></span>
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
-                                                    </div>
+                                                    </div>*@
+
+
+                                            <div id="rating" >
+                                                <i onclick="mecalls(@item.MissionId)" class="far fa-star star" data-value="1"></i>
+                                                <i onclick="mecalls(@item.MissionId)" class="far fa-star star" data-value="2"></i>
+                                                <i onclick="mecalls(@item.MissionId)" class="far fa-star star" data-value="3"></i>
+                                                <i onclick="mecalls(@item.MissionId)" class="far fa-star star" data-value="4"></i>
+                                                <i onclick="mecalls(@item.MissionId)" class="far fa-star star" data-value="5"></i>
+                                            </div>
+
+                                            
+                                           
+                                        
+
+
 
                                                       </div>
 
@@ -943,14 +959,51 @@
         //    });
         //}
 
-      
+        function ratingsFun(missionId) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('missionId', missionId);
+
+            const newUrl = window.location.pathname + '?' + urlParams.toString();
+            history.pushState(null, '', newUrl);
+            alert("hello");
+            $.ajax({
+                url: '/Home/SubmitRating',
+                type: 'POST',
+                data: { ratingValue: ratingValue, missionId: missionId },
+                success: function () {
+                    // Change button color to red
+                    // $('.btn-primary').addClass('btn-danger').removeClass('btn-primary');
+                }
+            });
+        }
 
          
 
 
     </script>
 
-   
+    <script>
+        $(function () {
+            var rating = $("#rating");
+
+            rating.find(".star").click(function () {
+                var star = $(this);
+                var stars = star.data("value");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Rate",
+                    data: { stars: stars },
+                    success: function () {
+                        rating.find(".star").removeClass("fas").addClass("far");
+                        star.prevAll(".star").addBack().removeClass("far").addClass("fas");
+                    }
+                });
+            });
+        });
+
+        
+    </script>
     
    <script src="~/js/landing.js"></script>
 

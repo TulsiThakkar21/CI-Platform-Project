@@ -88,15 +88,15 @@
 
                     @using (Html.BeginForm("Registration","Home", FormMethod.Post)){
 
-                        if(ViewBag.Status!= null)
+                        if (ViewBag.Status != null)
                         {
-                            if(ViewBag.Status == 1)
+                            if (ViewBag.Status == 1)
                             {
                                 <br />
                                 <span class="alert alert-success">Registered Successfully</span>
                                 <br />
                             }
-                            else if(ViewBag.Status == 0)
+                            else if (ViewBag.Status == 0)
                             {
                                 <br />
                                 <span class="alert alert-danger">Error while registering</span>
@@ -110,7 +110,7 @@
                         <label class="lbl-fname">First Name</label>
                         <br>
 
-                        @Html.TextBoxFor(u => u.FirstName, new {@class = "txt-inp", @placeholder=" Enter your first name"})
+                            @Html.TextBoxFor(u => u.FirstName, new {@type="text",@class = "txt-inp", @placeholder=" Enter your first name" } )
                         @*<input type="text" class="txt-inp" placeholder=" Enter your first name">*@
 
                         <br>
@@ -118,32 +118,32 @@
                         <label class="lbl-lname">Last Name</label>
                         <br>
 
-                        @Html.TextBoxFor(u => u.LastName, new {@class = "txt-inp", @placeholder=" Enter your last name"})
+                            @Html.TextBoxFor(u => u.LastName, new {@type="text",@class = "txt-inp", @placeholder=" Enter your last name"})
                         @*<input type="text" class="txt-inp" placeholder=" Enter your last name">*@
 
                         <br>
                         <label class="lbl-ph">Phone Number</label>
                         <br>
-                        @Html.TextBoxFor(u => u.PhoneNumber, new {@class = "txt-inp", @placeholder=" Enter your phone number"})
+                            @Html.TextBoxFor(u => u.PhoneNumber, new {@type="tel",@pattern="[0-9]{10}" ,@class = "txt-inp", @placeholder=" Enter your phone number"})
                         @*<input type="number" class="txt-inp" placeholder=" Enter your phone number">*@
 
                         <br>
 
                         <label class="lbl-email">Email Address</label>
                         <br>
-                        @Html.TextBoxFor(u => u.Email, new {@class = "txt-inp", @placeholder=" Enter your email address"})
+                        @Html.TextBoxFor(u => u.Email, new {@type="email",@class = "txt-inp", @placeholder=" Enter your email address"})
                         @*<input type="text" class="txt-inp" placeholder=" Enter your email address">*@
 
                         <br>
                         <label class="lbl-pass">Password</label>
                         <br>
-                        @Html.TextBoxFor(u => u.Password, new {@class = "txt-inp", @placeholder=" Enter your password"})
+                            @Html.TextBoxFor(u => u.Password, new {@type="password",@class = "txt-inp", @placeholder=" Enter your password"})
                         @*<input type="password" class="txt-inp" placeholder=" Enter your password">*@
                        
 
-                       @* <label class="lbl-pass">Confirm Password</label>
+                        <label class="lbl-pass">Confirm Password</label>
                         <br>
-                        @Html.TextBoxFor(u => u.Password, new {@class = "txt-inp", @placeholder=" Enter your confirm password"})*@
+                            @Html.TextBoxFor(u => u.Password, new {@type="password",@class = "txt-inp", @placeholder=" Enter your confirm password"})
                         @*<input type="password" class="txt-inp" placeholder=" Enter your confirm password">*@
 
 
@@ -192,7 +192,24 @@
 
     </section>
     <!-- Section: Split screen -->
+   @* <script>
 
+        function valcheck(valuew) {
+
+            var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            
+            if ((valuew.match(phoneno))
+                {
+                return true;
+            }
+            else {
+                alert("message");
+                return false;
+            }
+        
+       
+        }
+    </script>*@
 </body>
 
 </html>

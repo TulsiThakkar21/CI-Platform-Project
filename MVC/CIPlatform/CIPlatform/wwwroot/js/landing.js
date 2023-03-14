@@ -37,3 +37,19 @@ function removeFromFavorites(missionId) {
         }
     });
 }
+
+
+function mecalls(missionId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('missionId', missionId);
+
+    const newUrl = window.location.pathname + '?' + urlParams.toString();
+    history.pushState(null, '', newUrl);
+
+    $.ajax({
+        url: '/Home/Rate',
+        type: 'POST',
+        data: { missionId: missionId },
+
+    });
+}

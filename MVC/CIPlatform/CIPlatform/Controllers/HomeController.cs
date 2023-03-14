@@ -10,6 +10,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CIPlatform.Controllers
 {
@@ -274,20 +276,32 @@ namespace CIPlatform.Controllers
 
             try
             {
-                var userData = new User()
+                //var status = _ciplatformDbContext.Users.Where(u => u.Email == _registrationModel.Email && u.PhoneNumber == _registrationModel.PhoneNumber.ToString()).FirstOrDefault();
+                var flag = _ciplatformDbContext.Users.Where(a => a.Email == _registrationModel.Email && a.PhoneNumber == _registrationModel.PhoneNumber.ToString());
+                //if()
+                if (flag.Count()==0)
                 {
-                    FirstName = _registrationModel.FirstName,
-                    LastName = _registrationModel.LastName,
-                    Email = _registrationModel.Email,
-                    Password = _registrationModel.Password,
-                    CityId = _registrationModel.CityId,
-                    CountryId = _registrationModel.CountryId
-                    //PhoneNumber = _registrationModel.PhoneNumber.ToString()
+                    var userData = new User()
+                    {
+                        FirstName = _registrationModel.FirstName,
+                        LastName = _registrationModel.LastName,
+                        Email = _registrationModel.Email,
+                        Password = _registrationModel.Password,
+                        CityId = _registrationModel.CityId,
+                        CountryId = _registrationModel.CountryId,
+                        PhoneNumber = _registrationModel.PhoneNumber.ToString()
 
-            };
-                _ciplatformDbContext.Users.Add(userData);
-                _ciplatformDbContext.SaveChanges();
-                ViewBag.Status = 1;
+                    };
+                    _ciplatformDbContext.Users.Add(userData);
+                    _ciplatformDbContext.SaveChanges();
+                    ViewBag.Status = 1;
+                }
+
+                else { 
+                ViewBag.Status = 0;
+                
+                }
+               
             }
             catch
             {
@@ -548,6 +562,48 @@ namespace CIPlatform.Controllers
 
             return RedirectToAction("PlatformLandingPage", "Home");
         }
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult Rate(int stars, long missionId)
+        {
+
+            var b = missionId;
+            var userId = HttpContext.Session.GetString("userid");
+            //var userexist = _ciplatformDbContext.MissionRatings.FirstOrDefault(x => x.MissionId == missionId && x.UserId == Convert.ToInt32(userId));
+
+            //if (userexist == null)
+            //{
+            HttpContext.Session.SetInt32("missionId",Convert.ToInt32(b) );
+
+            var msnid = HttpContext.Session.GetInt32("missionId");
+
+            var rating = new MissionRating
+                {
+
+                    Rating = stars.ToString(),
+                    UserId = Convert.ToInt32(userId),
+                    MissionId = missionId
+
+
+                };
+
+                _ciplatformDbContext.MissionRatings.Add(rating);
+            var f = missionId;
+                _ciplatformDbContext.SaveChanges();
+            //}
+            return Ok();
+        }
+
+
+
+
+
+
 
 
 

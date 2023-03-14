@@ -65,7 +65,7 @@ public partial class CiplatformDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=PCa127\\sql2017;DataBase=CIPlatformDb;User ID=sa;Password=Tatva@123; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=PCA127\\SQL2017;DataBase=CIPlatformDb;User ID=sa;Password=Tatva@123; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -910,12 +910,10 @@ public partial class CiplatformDbContext : DbContext
 
             entity.HasOne(d => d.City).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CityId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__users__city_id__16CE6296");
 
             entity.HasOne(d => d.Country).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CountryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__users__country_i__17C286CF");
         });
 
