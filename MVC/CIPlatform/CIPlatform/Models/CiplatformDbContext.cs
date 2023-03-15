@@ -907,14 +907,6 @@ public partial class CiplatformDbContext : DbContext
             entity.Property(e => e.WhyIVolunteer)
                 .HasColumnType("text")
                 .HasColumnName("why_i_volunteer");
-
-            entity.HasOne(d => d.City).WithMany(p => p.Users)
-                .HasForeignKey(d => d.CityId)
-                .HasConstraintName("FK__users__city_id__16CE6296");
-
-            entity.HasOne(d => d.Country).WithMany(p => p.Users)
-                .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("FK__users__country_i__17C286CF");
         });
 
         modelBuilder.Entity<UserSkill>(entity =>

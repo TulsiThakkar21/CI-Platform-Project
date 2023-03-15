@@ -43,11 +43,7 @@ public partial class User
 
     public string? PhoneNumber { get; set; }
 
-    public virtual City? City { get; set; }
-
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
-
-    public virtual Country? Country { get; set; }
 
     public virtual ICollection<FavoriteMission> FavoriteMissions { get; } = new List<FavoriteMission>();
 

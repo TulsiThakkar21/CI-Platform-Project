@@ -36,36 +36,7 @@ namespace CIPlatform.Controllers
            // CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
             var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
 
-            //if (status == null)
-            //{
-            //    ViewBag.LoginStatus = 0;
-            //}
-            //else
-            //{
-
-            //    string UserIDf = user.UserId.ToString();
-
-            //    HttpContext.Session.SetString("userid", UserIDf);
-            //    var abc = HttpContext.Session.GetString("userid");
-
-            //    long abcd = Convert.ToInt64(abc);
-            //    // var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
-            //    //var loginuser = _ciplatformDbContext.Users.Where(u => (u.UserId == abcd)).FirstOrDefault();
-            //    var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
-            //    if (loginuser != null)
-            //    {
-            //        var loginfname = loginuser.FirstName;
-            //        var loginlname = loginuser.LastName;
-
-            //        TempData["fullname"] = loginfname + loginlname;
-
-
-            //    }
-
-
-            //    return RedirectToAction("PlatformLandingPage", "Home", new { @Id = user.UserId });
-            //}
-
+           
 
             if (status != null)
             {
@@ -84,7 +55,7 @@ namespace CIPlatform.Controllers
 
                     TempData["fullname"] = loginfname + loginlname;
 
-
+                    ViewBag.LoginStatus = 1;
                 }
 
 
@@ -93,8 +64,8 @@ namespace CIPlatform.Controllers
             }
             else
             {
-
-                return RedirectToAction("Login", "Home");
+                ViewBag.LoginStatus = 0;
+               // return RedirectToAction("Login", "Home");
             }
 
             return View(_loginModel);
@@ -315,6 +286,12 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page=1, int pageSize=6)
         {
+            var ifexist = HttpContext.Session.GetString("userid");
+            if (ifexist == null)
+
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             //var missionxx = _ciplatformDbContext.Missions.ToList();
             var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
@@ -593,7 +570,7 @@ namespace CIPlatform.Controllers
                 };
 
                 _ciplatformDbContext.MissionRatings.Add(rating);
-            var f = missionId;
+                //var f = missionId;
                 _ciplatformDbContext.SaveChanges();
             //}
             return Ok();

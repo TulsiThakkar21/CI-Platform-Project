@@ -1,5 +1,5 @@
 ﻿
-function addToFavorites(missionId) {
+function addToFavorites(missionId, e) {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set('missionId', missionId);
 
@@ -38,18 +38,68 @@ function removeFromFavorites(missionId) {
     });
 }
 
+$(function () {
+    //var rating = $("#rating");
+    var rating = $(this).parent().find(".star");
+    $("#rating .star").click(function () {
+        debugger
+        var star = $(this);
+        var stars = star.data("value");
+        var missionId = star.data("missionid");
 
-function mecalls(missionId) {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('missionId', missionId);
-
-    const newUrl = window.location.pathname + '?' + urlParams.toString();
-    history.pushState(null, '', newUrl);
-
-    $.ajax({
-        url: '/Home/Rate',
-        type: 'POST',
-        data: { missionId: missionId },
-
+        $.ajax({
+            type: "POST",
+            url: "/Home/Rate",
+            data: { stars: stars, missionId: missionId },
+            success: function () {
+                debugger
+                rating.removeClass("far").addClass("fas");
+                star.prevAll(".star").removeClass("far").addClass("fas");
+                star.removeClass("far").addClass("fas");
+            }
+        });
     });
-}
+});
+
+//function mecalls(stars,missionId) {
+//    const urlParams = new URLSearchParams(window.location.search);
+//    urlParams.set('stars', stars , 'missionId', missionId);
+
+//    const newUrl = window.location.pathname + '?' + urlParams.toString();
+//    history.pushState(null, '', newUrl);
+
+//    $.ajax({
+//        url: '/Home/Rate',
+//        type: 'POST',
+//        data: { stars: stars, missionId: missionId },
+
+//    });
+//}
+
+
+//$(function () {
+//    var rating = $("#rating");
+
+//    rating.find(".star").click(function () {
+//        var star = $(this);
+//        var stars = star.data("value");
+//        const urlParams = new URLSearchParams(window.location.search);
+//        var missionid = $(this);
+//        var missionId = missionid.data("value");
+
+
+
+//        $.ajax({
+//            type: "POST",
+//            url: "/Home/Rate",
+//            data: { stars: stars, missionId: missionId },
+//            success: function () {
+//                rating.find(".star").removeClass("fas").addClass("far");
+//                star.prevAll(".star").addBack().removeClass("far").addClass("fas");
+//                missionid.find(".missionid");
+//            }
+//        });
+//    });
+//});
+
+

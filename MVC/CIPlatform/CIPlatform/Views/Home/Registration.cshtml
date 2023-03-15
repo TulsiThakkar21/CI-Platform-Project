@@ -137,35 +137,35 @@
                         <br>
                         <label class="lbl-pass">Password</label>
                         <br>
-                            @Html.TextBoxFor(u => u.Password, new {@type="password",@class = "txt-inp", @placeholder=" Enter your password"})
+                            @Html.TextBoxFor(u => u.Password, new {@id="pass",@type="password",@class = "txt-inp", @placeholder=" Enter your password"})
                         @*<input type="password" class="txt-inp" placeholder=" Enter your password">*@
                        
 
                         <label class="lbl-pass">Confirm Password</label>
                         <br>
-                            @Html.TextBoxFor(u => u.Password, new {@type="password",@class = "txt-inp", @placeholder=" Enter your confirm password"})
+                            @Html.TextBoxFor(u => u.Password, new {@id="conpass",@type="password",@class = "txt-inp", @placeholder=" Enter your confirm password"})
                         @*<input type="password" class="txt-inp" placeholder=" Enter your confirm password">*@
 
 
                         <br>
 
-                        <label class="lbl-lname">City</label>
+                       @* <label class="lbl-lname">City</label>
                         <br>
 
                         @Html.TextBoxFor(u => u.CityId, new {@class = "txt-inp", @placeholder=" Enter your city id"})
 
-
+*@
                         <br>
 
-                        <label class="lbl-lname">Country</label>
+                       @* <label class="lbl-lname">Country</label>
                         <br>
 
                         @Html.TextBoxFor(u => u.CountryId, new {@class = "txt-inp", @placeholder=" Enter your country id"})
-
+*@
 
                        
                         <br>
-                        <button type="submit" class="btn-reg">Register</button>
+                        <button type="submit" class="btn-reg" onclick="return Validate()">Register</button>
                         <br> <br>
 
                       
@@ -192,24 +192,18 @@
 
     </section>
     <!-- Section: Split screen -->
-   @* <script>
+    <script>
 
-        function valcheck(valuew) {
-
-            var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-            
-            if ((valuew.match(phoneno))
-                {
-                return true;
-            }
-            else {
-                alert("message");
-                return false;
-            }
-        
-       
+        function Validate() {
+        var password = document.getElementById("pass").value;
+        var confirmPassword = document.getElementById("conpass").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
         }
-    </script>*@
+        return true;
+    }
+    </script>
 </body>
 
 </html>
