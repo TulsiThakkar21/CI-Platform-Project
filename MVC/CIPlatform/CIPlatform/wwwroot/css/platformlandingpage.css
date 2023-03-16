@@ -532,12 +532,12 @@ hr {
         filter: drop-shadow(1px 1px 4px gold);
     }
 
-
-
+i .fas fa-heart.clicked
+{
+    color:red;
+}
 /* Grid View MQ */
-
 @media only screen and (min-width: 360px) and (max-width: 767px) {
-
     /* Grid View MQ */
 
     .explore72 {

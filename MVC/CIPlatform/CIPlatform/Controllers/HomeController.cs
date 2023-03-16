@@ -286,6 +286,14 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page=1, int pageSize=6)
         {
+
+            //for add to fav
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
+            ViewBag.favlist = favlist;
+            //till here
+
             var ifexist = HttpContext.Session.GetString("userid");
             if (ifexist == null)
 
@@ -363,7 +371,6 @@ namespace CIPlatform.Controllers
             var cityx = _ciplatformDbContext.Cities.Where(ci => ci.Name.Contains(city) || city == null).ToList();
             ViewBag.Cities = cityx;
 
-            
 
             var result = from m in missionxx
                          join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
@@ -486,62 +493,43 @@ namespace CIPlatform.Controllers
 
 
 
+
+
         [HttpPost]
-        public IActionResult Add(int missionId, LandingAllModels landingAllModels)
+        public async Task<IActionResult> AddFav(long missionId)
         {
 
+            var id = HttpContext.Session.GetString("userid");
+            FavoriteMission favoriteMission = await _ciplatformDbContext.FavoriteMissions.FirstOrDefaultAsync(fm => fm.UserId.ToString() == id && fm.MissionId == missionId);
 
-            //var  msnid = missionId;
-            //string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userId = HttpContext.Session.GetString("userid");
-            var userexist = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(x => x.MissionId == missionId && x.UserId == Convert.ToInt32(userId));
+            ViewBag.ids = Convert.ToInt16(id);
+            if (favoriteMission != null)
+            {
+                // Remove the favorite mission from the database if it already exists
+                _ciplatformDbContext.FavoriteMissions.Remove(favoriteMission);
+                await _ciplatformDbContext.SaveChangesAsync();
+                var favlist = _ciplatformDbContext.FavoriteMissions.ToList();
+                ViewBag.favlist = favlist;
+                ViewBag.isLiked = false;
+                return RedirectToAction("PlatformLandingPage", "Home");
 
-            if (userexist == null) {
-                var favorite = new FavoriteMission
-                {
-                    MissionId = missionId,
-                    UserId = Convert.ToInt32(userId),
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                _ciplatformDbContext.FavoriteMissions.Add(favorite);
-                _ciplatformDbContext.SaveChanges();
-
-                 ViewBag.flag = favorite;
+            }
+            else
+            {
+                // Add the favorite mission to the database if it does not exist
+                FavoriteMission newFavoriteMission = new FavoriteMission();
+                newFavoriteMission.MissionId = missionId;
+                newFavoriteMission.UserId = Convert.ToInt32(id);
+                await _ciplatformDbContext.FavoriteMissions.AddAsync(newFavoriteMission);
+                await _ciplatformDbContext.SaveChangesAsync();
+                var favlist = _ciplatformDbContext.FavoriteMissions.ToList();
+                ViewBag.favlist = favlist;
+                ViewBag.isLiked = false;
+                return RedirectToAction("PlatformLandingPage", "Home");
 
             }
 
-            // ViewBag.flag = favorite;
-            //ViewBag.isFav = true;
-            //return RedirectToAction("PlatformLandingPage", "Home");
-            return RedirectToAction("PlatformLandingPage", "Home");
         }
-
-        [HttpPost]
-        public IActionResult Remove(int missionId)
-        {
-            //string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userId = HttpContext.Session.GetString("userid");
-            var favorite = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(f => f.MissionId == missionId && f.UserId == Convert.ToInt32(userId));
-            if (favorite != null)
-            {
-                _ciplatformDbContext.FavoriteMissions.Remove(favorite);
-                _ciplatformDbContext.SaveChanges();
-                // ViewBag.flag = 0;
-                //ViewBag.isFav = false;
-
-              //  ViewBag.flag = null;
-
-         }
-
-
-
-
-            return RedirectToAction("PlatformLandingPage", "Home");
-        }
-
-
-
 
 
 

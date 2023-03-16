@@ -12,8 +12,9 @@
 
         public MissionSkill MissionSkill { get; set; }
         
-        public FavoriteMission FavoriteMission { get; set; }    
-        
+        public FavoriteMission FavoriteMission { get; set; }
+
+        public bool IsFavorite { get; set; }
         public User User { get; set; }
 
        
