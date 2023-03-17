@@ -29,9 +29,10 @@ $(function () {
             url: "/Home/Rate",
             data: { stars: stars, missionId: missionId },
             success: function () {
-                debugger
-                rating.removeClass("far").addClass("fas");
-                star.prevAll(".star").removeClass("far").addClass("fas");
+                console.log("success");
+                //debugger
+                //rating.removeClass("far").addClass("fas");
+                //star.prevAll(".star").removeClass("far").addClass("fas");
                 star.removeClass("far").addClass("fas");
             }
         });

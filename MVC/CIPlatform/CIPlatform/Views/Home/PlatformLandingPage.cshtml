@@ -525,29 +525,94 @@
                                             </div>
 
                                             <div class="col-6" style="margin-left: -12%;">
-                                                @*<div class="rating">
-
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    </div>*@
+                                                
 
 
-                                            <div id="rating" >
+                                           @* <div id="rating" >
                                                 <i  class="rating__star far fa-star star" data-value="1" data-missionid="@item.MissionId"></i>
                                                 <i  class="rating__star far fa-star star" data-value="2" data-missionid="@item.MissionId"></i>
                                                 <i  class="rating__star far fa-star star" data-value="3" data-missionid="@item.MissionId"></i>
                                                 <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.MissionId"></i>
                                                 <i  class="rating__star far fa-star star" data-value="5" data-missionid="@item.MissionId"></i>
-                                            </div>
+                                            </div>*@
 
+                                            @{
+                                                if (@ViewBag.Ratingdata.Count == 0)
+                                                {
+
+                                                    <div id="rating" >
+                                                        <i  class="rating__star far fa-star star" data-value="1" data-missionid="@item.MissionId"></i>
+                                                        <i  class="rating__star far fa-star star" data-value="2" data-missionid="@item.MissionId"></i>
+                                                        <i  class="rating__star far fa-star star" data-value="3" data-missionid="@item.MissionId"></i>
+                                                        <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.MissionId"></i>
+                                                        <i  class="rating__star far fa-star star" data-value="5" data-missionid="@item.MissionId"></i>
+                                                    </div>
+
+
+                                                }
+
+
+
+
+
+
+                                                else 
+                                                {
+                                                    int i = 0;
+
+                                                    for (i = 0; i < @ViewBag.Ratingdata.Count; i++)
+                                                    {
+                                                    //<h1> @ViewBag.Ratingdata[i].MissionId</h1>
+                                                        if (@ViewBag.Ratingdata[i].MissionId == @item.MissionId)
+                                                        {
+                                                            int b = Convert.ToInt32(ViewBag.Ratingdata[i].Rating);
+
+
+
+                                                            for (int j = 1; j <=5; j++)
+                                                            {
+
+                                                                if (j <= b)
+                                                                {
+                                                                    <div id="rating">
+                                                                        <i class="rating__star fas fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div id="rating">
+                                                                    <i class="rating__star far fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
+                                                                </div>
+                                                                }
+
+                                                            }
+                                                            
+
+                                                        }
+
+
+
+
+                                                    }
+
+
+
+
+
+                                                    //@ViewBag.Ratingdata[i].MissionId == item.m.MissionId
+
+
+
+
+                                                }
+
+                                               
+                                            }
+                                           
                                             
                                            
                                         
-
+                                            }
 
 
                                                       </div>

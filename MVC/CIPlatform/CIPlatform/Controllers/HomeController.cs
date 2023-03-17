@@ -286,7 +286,11 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page=1, int pageSize=6)
         {
-
+            var userId = HttpContext.Session.GetString("userid");
+            var userids = Convert.ToInt32(userId);
+            ViewBag.userids = userids;
+            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == userids).ToList();
+            ViewBag.Ratingdata = Ratingdata;
             //for add to fav
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -539,15 +543,22 @@ namespace CIPlatform.Controllers
 
             var b = missionId;
             var userId = HttpContext.Session.GetString("userid");
+        var userids = Convert.ToInt32(userId);
+            ViewBag.userids = userids;
             //var userexist = _ciplatformDbContext.MissionRatings.FirstOrDefault(x => x.MissionId == missionId && x.UserId == Convert.ToInt32(userId));
 
-            //if (userexist == null)
+            // (userexist == null)
             //{
-            HttpContext.Session.SetInt32("missionId",Convert.ToInt32(b) );
+            var isRated = _ciplatformDbContext.MissionRatings.Where(r => r.UserId == userids && r.MissionId == missionId);
 
-            var msnid = HttpContext.Session.GetInt32("missionId");
+            if (isRated == null)
+            {
 
-            var rating = new MissionRating
+                HttpContext.Session.SetInt32("missionId", Convert.ToInt32(b));
+
+                var msnid = HttpContext.Session.GetInt32("missionId");
+
+                var rating = new MissionRating
                 {
 
                     Rating = stars.ToString(),
@@ -560,8 +571,25 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.MissionRatings.Add(rating);
                 //var f = missionId;
                 _ciplatformDbContext.SaveChanges();
+
+            }
+            else {
+            
+                var ratinguserdata = _ciplatformDbContext.MissionRatings.Where(y => y.MissionId == missionId && y.UserId== userids).ToList();
+
+                var query = from r in ratinguserdata select r;
+                foreach (MissionRating r in query) { 
+                   r.Rating = stars.ToString();
+                }
+
+                _ciplatformDbContext.SaveChanges();
+            }
+           
+           
+
+          
             //}
-            return Ok();
+            return RedirectToAction("PlatformLandingPage" , "Home");
         }
 
 
