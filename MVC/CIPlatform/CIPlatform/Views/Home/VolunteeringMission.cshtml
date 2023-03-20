@@ -4,6 +4,11 @@
 @{
 }
 
+
+@using CIPlatform.Models.ViewModels
+@model LandingAllModels 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +46,94 @@
     <!-- <script src="/js/rating.js"></script> -->
 
     <title>Volunteering Mission Page</title>
+
+    @*style*@
+
+    <style>
+    /* Style the dropdown button */
+
+
+    .scroll-dropdown{
+width: 10em !important;
+padding: 0.7em !important;
+height: 10em !important;
+overflow-y: scroll !important;
+}
+
+.filter-list {
+padding: 6px 10px;
+background-color: white;
+border: 1px solid #808080;
+border-radius: 20px;
+color: #000;
+cursor: pointer;
+}
+
+.filter-close-button {
+background-color: transparent;
+border: none;
+cursor: pointer;
+font-size: 18px;
+margin-left: 5px;
+color: #888;
+}
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        max-height: 200px;
+        border: 1px solid #ddd;
+    }
+
+    /* Checkbox styling */
+    .dropdown-content input[type="checkbox"] {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    /* Add a grey background color to dropdown links on hover */
+    .dropdown-content input[type="checkbox"]:hover {
+        background-color: #ddd;
+    }
+
+    /* Style the selected item */
+    .selected {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+
+
 </head>
 
 <body>
@@ -73,7 +166,8 @@
                                 <a class="dropdown-item" href="#">Volunteering</a>
                                 <a class="dropdown-item" href="#">Sponsered</a>
 </div>
-                        </li>
+     
+</div>                  </li>
 
 
                         <li>
@@ -385,15 +479,84 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <button class="fav-btn">
+                            @*<button class="fav-btn">
 
                                 <img src="~/NewFolder/add1.png" alt="">
                                 &nbsp;
                                 Recommend to a Co-Worker
 
-                            </button>
+                            </button>*@
 
-                        </div>
+
+                             <!-- Button trigger modal -->
+
+                           
+
+                        <span>Recommend to a Co-Worker
+                                <div id="dropdownrecmd" style="display : none">
+                                <li class="nav-item dropdown" id="menu2">
+                                <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Country &nbsp; <i class="bi
+                                bi-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+                                @* @foreach (var Country in Model.Country)
+                                {*@
+                                <li>
+                                <ul>
+                                @foreach (var itm in ViewBag.userslist)
+                                {
+                                <li class="form-check">
+                                <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                @itm.FirstName
+                                </label>
+                                <button id="btn_" onclick="rccall(@itm.m.MissionId)">submit</button>
+                                </li>
+                                }
+
+
+                                </ul>
+                                </li>
+
+                                 }
+                                </ul>
+                                </li>
+                                </div>
+                        </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       @*     <button type="button" onClick="recommendto()" asp-action="VolunteeringMission" asp-controller="Home" class="fav-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <img src="~/NewFolder/add1.png" alt="">
+                                        &nbsp;
+                                  Recommend to a Co-Worker
+                                </button>*@
+
+            @*                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  </div>
+                   </div>
+                    </div>*@
+
+                  
 
 
                     </div>
@@ -798,6 +961,81 @@
 
                 <div class="row right-down">
                     <div class="col" style="width: 100%; padding: 5%;">
+
+
+
+
+
+                            <li class="nav-item dropdown">
+                                <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Users &nbsp; <i class="bi
+            bi-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+                                   @* @foreach (var item in ViewBag.userslist)
+                                    {*@
+                                        <li class="form-check">
+                                            <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                               user1
+                                            </label>
+                                        </li>
+                                         <li class="form-check">
+                                            <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                               user1
+                                            </label>
+                                        </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            user1
+                                        </label>
+                                    </li>
+                                   @* }*@
+                                </ul>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="info">
                             <h3>Recent Volunteers</h3>
                             <hr>
@@ -875,34 +1113,104 @@
 
 
         </div>
+
+        @*-----------------------------------------Related Missions-------------------------------------------*@
+
         <br>
         <hr style="color: grey;">
         <h1 style="text-align: center;">Related Missions</h1>
         <br>
         <div class="row">
 
+
+
+
+
             <div class="col-lg-12">
                 <div class="grid-view" id="grdp">
 
-                 @*   <div class="container grid-container ">
+
+
+
+                   <div class="container grid-container ">
                         <div class="row">
+
+                                 @foreach (var itemsname in ViewBag.Result2)
+                                        {
+
                             <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
                                 <div class="card">
                                     <img src="~/NewFolder/related-1.png" class="card-img-top" alt="...">
-                                    <button class="missions">Environment</button>
+                                    <button class="missions">@itemsname.Title</button>
                                     <div class="card-body">
 
-                                        <h4 class="card-title">Grow Trees - On the path to <br>environment
-                                            sustainability</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod
-                                            tempor
-                                            incididunt ut labore...</p>
+                                        <h4 class="card-title">@itemsname.m.Title</h4>
+
+                                        @{
+
+
+
+                                  
+                                 
+
+                                        if (@ViewBag.favlist.Count == 0)
+                                        {
+                                            <i onclick="likeMission(@itemsname.m.MissionId)" class="far fa-heart"></i>
+
+                                        }
+
+                                        else
+                                        {
+
+
+
+                                            var v = ViewBag.favlist;
+
+                                            for (var i = 0; i < v.Count; i++)
+                                            {
+
+
+                                                                    if (@ViewBag.favlist[i].MissionId == itemsname.m.MissionId && @ViewBag.favlist[i].UserId == ViewBag.ids)
+                                                {
+                                                    <i onclick="likeMission(@itemsname.m.MissionId)" style="color:red" class="fas fa-heart"></i>
+                                                    break;
+
+                                                }
+                                                else
+
+                                                {
+
+
+                                                    if (i == v.Count - 1)
+                                                    {
+                                                        <i onclick="likeMission(@itemsname.m.MissionId)" class="far fa-heart"></i>
+
+                                                    }
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                        
+                                    
+                                    }
+                                 
+                                     
+
+
+
+
+
+
+
+                                        <p class="card-text">@itemsname.m.ShortDescription</p>
 
                                         <div class="row">
 
                                             <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
+                                                <span class="card-text">@itemsname.m.OrganizationName</span>
 
                                             </div>
 
@@ -939,7 +1247,7 @@
                                             <div class="col-12">
 
                                                 <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
+                                                    <button class="btn-date">@itemsname.m.StartDate until @itemsname.m.EndDate</button>
                                                 </div>
                                             </div>
 
@@ -952,7 +1260,7 @@
                                                 <img src="~/NewFolder/Already-volunteered.png" alt=""
                                                     style="height: 30%; width: 30%;">
                                                 <div class="already-vol">
-                                                    <p>250</p>
+                                                    <p>@itemsname.m.Availability</p>
                                                     <p>Already volunteered</p>
                                                 </div>
 
@@ -994,7 +1302,7 @@
                                 </div>
                             </div>
 
-
+@*
                             <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
                                 <div class="card">
                                     <img src="~/NewFolder/re-3.png" class="card-img-top" alt="...">
@@ -1102,9 +1410,9 @@
 
                                 </div>
                             </div>
+*@
 
-
-                            <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
+                     @*       <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
                                 <div class="card">
                                     <img src="~/NewFolder/re-2.png" class="card-img-top" alt="...">
                                     <button class="missions">Environment</button>
@@ -1200,21 +1508,21 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>*@
 
 
 
-
+}
                         </div>
                     </div>
 
-                </div>*@
+                </div>
 
 
                  @*------------Related; Missions---------*@
 
 
-                    <div class="container grid-container ">
+                   @* <div class="container grid-container ">
                         <div class="row">
                             @foreach (var item in ViewBag.Result)
                             {
@@ -1296,7 +1604,7 @@
                             }
 
                         </div>
-                    </div>
+                    </div>*@
 
 
                 </div>
@@ -1398,7 +1706,9 @@
 
     </script>
 
-
+     <script src="~/js/landing.js"></script>
+   
+    
 </body>
 
 </html>

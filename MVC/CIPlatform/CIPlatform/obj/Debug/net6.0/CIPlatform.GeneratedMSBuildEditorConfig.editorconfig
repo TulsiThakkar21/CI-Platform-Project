@@ -5,6 +5,7 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CIPlatform
 build_property.RootNamespace = CIPlatform
@@ -37,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tatva/Desktop/CIP-PROJECT/MVC/CIPlatform/CIPlatform/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tatva/Desktop/CIP-PROJECT/MVC/CIPlatform/CIPlatform/Views/Home/Recommend.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNvbW1lbmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tatva/Desktop/CIP-PROJECT/MVC/CIPlatform/CIPlatform/Views/Home/Registration.cshtml]

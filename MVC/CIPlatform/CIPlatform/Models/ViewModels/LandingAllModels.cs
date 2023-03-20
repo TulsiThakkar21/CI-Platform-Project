@@ -17,6 +17,12 @@
         public bool IsFavorite { get; set; }
         public User User { get; set; }
 
+       // public List<MissionRating> missionRatings { get; set; }
+
+    
+
+        public List<User> UsersList { get; set; }
+
        
 
         

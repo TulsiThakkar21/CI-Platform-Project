@@ -1,0 +1,304 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+@using CIPlatform.Models.ViewModels
+@model LandingAllModels 
+*@
+
+@*<html>
+    <head>
+
+        <style>
+
+        .scroll-dropdown {
+            width: 10em !important;
+            padding: 0.7em !important;
+            height: 10em !important;
+            overflow-y: scroll !important;
+        }
+
+        .filter-list {
+            padding: 6px 10px;
+            background-color: white;
+            border: 1px solid #808080;
+            border-radius: 20px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .filter-close-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 5px;
+            color: #888;
+        }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+
+
+        <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Users &nbsp; <i class="bi
+            bi-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+                @foreach (var item in ViewBag.userslist)
+                {
+                    <li class="form-check">
+                        <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            @item.FirstName
+                        </label>
+                    </li>
+                }
+            </ul>
+        </li>
+
+
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+
+   @* <script>
+
+
+        var checkboxes = document.querySelectorAll(".checkbox");
+
+        var filtersSection = document.querySelector(".filters-section");
+
+        var listArray = [];
+
+        var filterList = document.querySelector(".filter-list");
+
+        var len = listArray.length;
+
+        for (var checkbox of checkboxes) {
+            checkbox.addEventListener("click", function () {
+                if (this.checked == true) {
+                    alert("123");
+                    addElement(this, this.value);
+                } else {
+                    removeElement(this.value);
+                }
+            });
+        }
+
+        function addElement(current, value) {
+            //let filtersSection = document.querySelector(".filters-section");
+
+            let createdTag = document.createElement("span");
+            createdTag.classList.add("filter-list");
+            createdTag.classList.add("ps-3");
+            createdTag.classList.add("pe-1");
+            createdTag.classList.add("me-2");
+            createdTag.innerHTML = value;
+
+            createdTag.setAttribute("id", value);
+            let crossButton = document.createElement("button");
+            crossButton.classList.add("filter-close-button");
+            let cross = "&times;";
+
+            crossButton.addEventListener("click", function () {
+                let elementToBeRemoved = document.getElementById(value);
+
+                console.log(elementToBeRemoved);
+                console.log(current);
+                elementToBeRemoved.remove();
+
+                current.checked = false;
+            });
+
+            crossButton.innerHTML = cross;
+
+            createdTag.appendChild(crossButton);
+            filtersSection.appendChild(createdTag);
+        }
+
+        function removeElement(value) {
+            let filtersSection = document.querySelector(".filters-section");
+
+            let elementToBeRemoved = document.getElementById(value);
+            filtersSection.removeChild(elementToBeRemoved);
+        }
+
+    </script>*@
+@*    <script src="~/js/landing.js"></script>
+
+</body>
+
+
+</html>*@
+
+
+ <!-- Modal -->
+      
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+        
+
+                      
+
+
+                   @*    <form>
+                                               <select multiple id="myDropdown">
+                                   
+                                                    @{
+                                                     if(ViewBag.userslist != null){
+                                             
+                                                     foreach (var item in ViewBag.userslist)
+                                                    {
+                                                        
+                                                        <input type="checkbox" name="categories" onchange="newcall()" id="selecteditm" class="messageCheckbox"/>
+                                                        
+                                                        <label>@item.FirstName</label>
+                                                        //<option>@item.FirstName</option>
+                                                         
+                                                    }
+                                        
+                                                    }
+
+                                                    }
+                                                   </select>
+                                       
+                                   
+                                                <button type="button" onclick="showDropdown()">Open Dropdown</button>
+                                            </form>*@
+
+                                        @*    <form>*@
+                                               @*   @foreach (var itemss in ViewBag.userslist)
+                                                    {
+                                                        var a = @itemss.FirstName;
+                                              <input type="checkbox" id="myCheckbox" name="product1" value="@a" onchange="asdfg(e)" >
+                                                <label>@a</label>
+
+        </form>
+
+
+        }*@
+   
+
+                              @*
+                                                   <div id="itemForm">
+                                                  
+                                                  @foreach (var itemss in ViewBag.userslist)
+        {
+            
+
+
+                                                <div class="item">
+                                                        <label for="@itemss.FirstName">@itemss.FirstName</label>
+                                                    <input id="@itemss.UserId" type="checkbox" value="@itemss.FirstName">
+                                                    </div>
+        }
+
+
+
+
+
+
+
+        <button id="submit" onclick=" getData()" type="submit">Subscribe</button>
+    </div>*@
+                  
+    
+     @foreach (var itemss in ViewBag.userslist)
+        {
+        <label><input type="checkbox" id="@itemss.UserId" value="@itemss.FirstName">@itemss.FirstName</label>
+        }
+@*<label><input type="checkbox" id="checkbox2" value="checkbox2value"> Checkbox 2</label>*@
+<button id="displayChecked">Submit</button>
+
+
+
+
+
+
+
+  <script src="~/js/landing.js"></script>
+@*<script src="~/js/volunteer.js"></script>*@
+
+
+
+
+
+
+  @*  <li class="nav-item dropdown">
+        <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Country &nbsp; <i class="bi
+            bi-chevron-down"></i>
+        </button>
+        <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+            @foreach (var item in ViewBag.userslist)
+            {
+                <li class="form-check">
+                    <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        @item.FirstName
+                    </label>
+                </li>
+            }
+        </ul>
+    </li>
+
+
+
+
+ 
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div> *@ 
+
+
+
+           
+
+
+
+
+
+           
+
+
+            
+
+

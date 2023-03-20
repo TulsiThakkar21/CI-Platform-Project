@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DucXwB89y/N+xdyzJcQNOiCARnbDx2m4o9zlp2AEbR4=",
+  "Hash": "hH1d9DhJOJxH29FrSdFqt7ALicuoRnNvSpLy8VZJ7Bc=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/volunteer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\volunteer.js"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
