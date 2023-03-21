@@ -13,16 +13,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -35,15 +26,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    
 
-    <!-- Font Awesome -->
+    @*-------Links for checkbox---------*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
+
+     <!-- Font Awesome -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
+
+
     <link rel="stylesheet" href="~/css/platformlandingpage.css">
     <link rel="stylesheet" href="~/css/volLanding.css">
-    <!-- <script src="/js/rating.js"></script> -->
+   
 
     <title>Volunteering Mission Page</title>
 
@@ -346,6 +346,11 @@ color: #888;
 
             <div class="col-md-6 first-col ">
                 <img id="changingimg" class="main-img" src="~/NewFolder/Layer 126.png" style="height: 80%;">
+
+                
+               
+                    
+           
                 <div class="container text-center my-3">
 
                     <div class="row mx-auto my-auto justify-content-center">
@@ -417,18 +422,18 @@ color: #888;
                     </div>
 
                 </div>
+                
             </div>
 
 
 
             <div class="col-md-6 right-div ">
+                 @foreach(var item in ViewBag.result)
 
+                {
                 <div class="txt">
-                    <h1 class="main-txt">CSR initiative stands for Coffee & <br> Farmer Equity</h1>
-                    <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book.</p>
+                    <h1 class="main-txt">@item.m.Title</h1>
+                    <p class="para">@item.m.ShortDescription</p>
                     <br>
                     <div class="hr-btn">
                         <hr class="hr-line">
@@ -441,7 +446,7 @@ color: #888;
                         <div class="col-6 img-and-txt" style="display: flex;">
                             <img class="icons1" src="~/NewFolder/Seats-left.png">
                             <div class="hssh">
-                                <p class="seatno"><b>10</b> </p>
+                                <p class="seatno"><b>@item.m.Availability</b> </p>
                                 <p class="seat">Seats Left</p>
                             </div>
                         </div>
@@ -458,7 +463,7 @@ color: #888;
 
                         </div>
 
-
+                       
 
                     </div>
 
@@ -479,52 +484,63 @@ color: #888;
                         </div>
 
                         <div class="col-sm-6">
-                            @*<button class="fav-btn">
+                            <button class="fav-btn">
 
                                 <img src="~/NewFolder/add1.png" alt="">
                                 &nbsp;
                                 Recommend to a Co-Worker
 
-                            </button>*@
 
 
-                             <!-- Button trigger modal -->
 
-                           
-
-                        <span>Recommend to a Co-Worker
-                                <div id="dropdownrecmd" style="display : none">
-                                <li class="nav-item dropdown" id="menu2">
-                                <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Country &nbsp; <i class="bi
-                                bi-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-                                @* @foreach (var Country in Model.Country)
-                                {*@
-                                <li>
-                                <ul>
-                                @foreach (var itm in ViewBag.userslist)
-                                {
-                                <li class="form-check">
-                                <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                @itm.FirstName
-                                </label>
-                                <button id="btn_" onclick="rccall(@itm.m.MissionId)">submit</button>
-                                </li>
-                                }
+                                    <div id="dropdownrecmd" style="display : none">
+                                        <li class="nav-item dropdown" id="menu2">
+                                         <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Country &nbsp; <i class="bi
+                                            bi-chevron-down"></i>
+                                            </button>
+                                        <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+                                
+                                    <li>
+                                    <ul>
+                                 @foreach (var itm in ViewBag.userslist)
+                                  {
+                                      <li class="form-check">
+                                       <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          @itm.FirstName
+                                     </label>
+                                             <button id="btn_" onclick="rccall(@item.m.MissionId)">submit</button>
+                                       </li>
+                                  }
 
 
-                                </ul>
-                                </li>
+                                    </ul>
+                                    </li>
 
                                  }
                                 </ul>
                                 </li>
                                 </div>
-                        </span>
+
+
+
+
+
+
+
+
+                            </button>
+
+
+                             <!-- Button trigger modal -->
+
+                           
+@*
+                        <span>Recommend to a Co-Worker
+                                
+                        </span>*@
 
 
 
@@ -641,7 +657,7 @@ color: #888;
 
             </div>
 
-
+            }
 
 
         </div>
@@ -937,18 +953,7 @@ color: #888;
                                         <i class="rating__star far fa-star"></i>
                                         <i class="rating__star far fa-star"></i>
                                     </div>
-                                    <!-- <div class="star-s" style="display: flex;">
-
-                                        <img src="~/NewFolder/selected-star.png" alt="">
-                                        <img src="~/NewFolder/selected-star.png" alt="">
-                                        <img src="~/NewFolder/selected-star.png" alt="">
-                                        <img src="~/NewFolder/selected-star.png" alt="">
-                                        <img src="~/NewFolder/selected-star.png" alt="">
-
-                                        <div class="p-div">
-                                            <p class="by-125">(by 125 volunteers)</p>
-                                        </div>
-                                    </div> -->
+                                   
 
 
 
@@ -973,8 +978,7 @@ color: #888;
             bi-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-                                   @* @foreach (var item in ViewBag.userslist)
-                                    {*@
+                                
                                         <li class="form-check">
                                             <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">

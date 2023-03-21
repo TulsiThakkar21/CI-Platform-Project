@@ -33,7 +33,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Index(LoginModel _loginModel)
         {
-           // CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+           
             var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
 
            
@@ -65,7 +65,7 @@ namespace CIPlatform.Controllers
             else
             {
                 ViewBag.LoginStatus = 0;
-               // return RedirectToAction("Login", "Home");
+               
             }
 
             return View(_loginModel);
@@ -120,13 +120,10 @@ namespace CIPlatform.Controllers
 
                 newMail.IsBodyHtml = true;
 
-                // var lnkHref = "<a asp-controller='Home'  asp-action='ResetPass' " + Url.Action("ResetPass/" + passwordReset.Token, "Home", new { email = passwordReset.Email, code = passwordReset.Token }, "http") +  "'>Reset Password</a>";
-
-                //var lnkHref = Url.ActionLink("ResetPass", "Home", new { email = passwordReset.Email, token = passwordReset.Token }, "http") + "'>Reset Password</a>";
-
+                
                 var lnkHref = Url.ActionLink("ResetPass", "Home", new { id = generated_token });
 
-                //var lnkHref = "<a href=''" + generated_token + "></a>";
+               
 
                 newMail.Body = "<b>Please find the Password Reset Link. </b><br/>" + lnkHref;
 
@@ -170,10 +167,6 @@ namespace CIPlatform.Controllers
         }
 
 
-
-
-
-
         [HttpGet]
         public IActionResult ResetPass()
         {
@@ -194,10 +187,7 @@ namespace CIPlatform.Controllers
             string path = new Uri(urlll).LocalPath.Substring(16);
             Console.WriteLine(path);
             Console.WriteLine(passwd);
-            //if (modellogin.Email == passwordReset.Email && path==passwordReset.Token) {
-            // modellogin.Password = passwd;
-
-            //}
+            
             var user1 = _ciplatformDbContext.PasswordResets.FirstOrDefault(x => (x.Token == path));
             if (user1 != null)
             {
@@ -247,9 +237,9 @@ namespace CIPlatform.Controllers
 
             try
             {
-                //var status = _ciplatformDbContext.Users.Where(u => u.Email == _registrationModel.Email && u.PhoneNumber == _registrationModel.PhoneNumber.ToString()).FirstOrDefault();
+                
                 var flag = _ciplatformDbContext.Users.Where(a => a.Email == _registrationModel.Email && a.PhoneNumber == _registrationModel.PhoneNumber.ToString());
-                //if()
+             
                 if (flag.Count()==0)
                 {
                     var userData = new User()
@@ -283,225 +273,7 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page=1, int pageSize=6)
-        //{
-        //    var userId = HttpContext.Session.GetString("userid");
-        //    var userids = Convert.ToInt32(userId);
-        //    ViewBag.userids = userids;
-        //    var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == userids).ToList();
-        //    landingAllModels.missionRatings = Ratingdata;
-        //    //for add to fav
-        //    var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-        //    ViewBag.ids = Convert.ToInt32(ids);
-        //    var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
-        //    ViewBag.favlist = favlist;
-        //    //till here
-
-        //    var ifexist = HttpContext.Session.GetString("userid");
-        //    if (ifexist == null)
-
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    //var missionxx = _ciplatformDbContext.Missions.ToList();
-        //    var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
-
-        //    if (missionxx.Count == 0)
-        //    {
-        //        ViewBag.SearchStatus = 0;
-        //    }
-        //    //var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
-        //    var missionthemexx = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
-
-        //    //var items = from i in _ciplatformDbContext.Missions
-        //    //          select new 
-        //    //          {
-        //    //              Id = i.MissionId,
-        //    //              Name = i.Title,
-
-        //    //          };
-
-        //    ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
-        //    ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
-        //    ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
-        //    ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
-        //    ViewBag.DeadlineNear = sortOrder == "near" ? "far" : "near";
-        //    ViewBag.DeadlineFar = sortOrder == "far" ? "near" : "far";
-
-        //    switch (sortOrder)
-        //    {
-
-        //        case "Date":
-        //            missionxx = missionxx.OrderBy(a => a.StartDate).ToList();
-        //            break;
-        //        case "date_desc":
-        //            missionxx = missionxx.OrderByDescending(a => a.StartDate).ToList();
-        //            break;
-        //        case "LowSeats":
-        //            missionxx = missionxx.OrderBy(a => a.Availability).ToList();
-        //            break;
-        //        case "HighSeats":
-        //            missionxx = missionxx.OrderByDescending(a => a.Availability).ToList();
-        //            break;
-        //        case "near":
-        //            missionxx = missionxx.OrderBy(a => a.EndDate).ToList();
-        //            break;
-        //        case "far":
-        //            missionxx = missionxx.OrderByDescending(a => a.EndDate).ToList();
-        //            break;
-        //        default:
-        //            missionxx= missionxx.ToList();
-        //            break;
-        //    }
-
-
-        //    //var countryx = _ciplatformDbContext.Countries.ToList();
-        //    //var filteredCountries = new List<Country>();
-        //    //foreach (var countryy in countryx)
-        //    //{
-        //    //    var filtered = _ciplatformDbContext.Countries
-        //    //        .Where(c => c.Name.Contains(countryy.Name) || countryy.Name == null)
-        //    //        .ToList();
-        //    //    filteredCountries.AddRange(filtered);
-        //    //}
-        //    //ViewBag.Country = filteredCountries;
-
-
-        //    var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(country) || country == null).ToList();
-        //    ViewBag.Country = countryx;
-
-        //    var cityx = _ciplatformDbContext.Cities.Where(ci => ci.Name.Contains(city) || city == null).ToList();
-        //    ViewBag.Cities = cityx;
-
-
-        //    var result = from m in missionxx
-        //                 join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
-        //                 where m.ThemeId == mt.MissionThemeId
-        //                 join cnt in countryx on m.CountryId equals cnt.CountryId where m.CountryId == cnt.CountryId
-        //                 join cit in cityx on m.CityId equals cit.CityId where m.CityId == cit.CityId
-        //                 where m.CountryId == cnt.CountryId
-
-
-        //                 select new
-        //                 {
-
-        //                     m,
-        //                     date= m.StartDate,
-        //                     m.MissionId,
-        //                     mt.Title,
-        //                     mt.MissionThemeId,
-        //                     cnt.Name,
-        //                     City = cit.Name
-        //                 };
-
-
-        //    @ViewData["page"] = page;
-        //    ViewData["PageSize"] = pageSize;
-        //    ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / pageSize);
-        //    ViewBag.outputsf = result.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-
-
-
-        //    ViewBag.Result = result;
-
-        //    var missionx = _ciplatformDbContext.Missions.ToList();
-        //    ViewBag.Missions = missionx;
-
-
-
-
-
-        //    //var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(countries) || countries == null).ToList();
-        //    //ViewBag.Country = countryx;
-
-
-        //    // var selectedCountries = landingAllModels.SelectedCountries ?? new List<string>();
-
-
-
-
-
-
-        //    var themex = _ciplatformDbContext.MissionThemes.ToList();
-        //    ViewBag.MissionThemes = themex;
-
-
-
-        //    var skillx = _ciplatformDbContext.MissionSkills.ToList();
-        //    ViewBag.MissionSkills = skillx;
-
-
-
-
-        //    //for sort by
-
-
-        //    //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        //    //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
-        //    //var missions = from m in _ciplatformDbContext.Missions
-        //    //               select m;
-
-        //    //switch (sortOrder)
-        //    //{
-        //    //    case "name_desc":
-        //    //        missions = missions.OrderByDescending(m => m.Title);
-        //    //        break;
-        //    //    case "Date":
-        //    //        missions = missions.OrderBy(m => m.CreatedAt);
-        //    //        break;
-        //    //    case "date_desc":
-        //    //        missions = missions.OrderByDescending(m => m.CreatedAt);
-        //    //        break;
-        //    //    default:
-        //    //        missions = missions.OrderBy(m => m.Title);
-        //    //        break;
-        //    //}
-        //    // IQueryable<Mission> mission_get = this._ciplatformDbContext.Missions;
-        //    // mission_get = _ciplatformDbContext.Missions.Where(x => x.MissionId == true);
-
-
-
-        //    return View();
-
-
-
-        //}
-
-
-
-
-        //[HttpPost]
-        //public IActionResult AddFavorite(int itemId, int userId)
-        //{
-        //    var item = _ciplatformDbContext.FavoriteMissions.FirstOrDefault(i => i.FavouriteMissionId == itemId);
-        //    var user = _ciplatformDbContext.Users.Include(u => u.FavoriteMissions).FirstOrDefault(u => u.UserId == userId);
-
-        //    if (item == null || user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    user.FavoriteMissions.Add(item);
-        //    _ciplatformDbContext.SaveChanges();
-
-        //    return Ok();
-        //}
-        //[HttpGet]
-        //public IActionResult Add() {
-
-        //    return RedirectToAction("PlatformLandingPage", "Home");
-
-
-        //}
-
-
-
-
-
-        //======================================================TRIAL=======================================================
+      
 
         [HttpGet]
         public IActionResult PlatformLandingPage(string searching, LandingAllModels landingAllModels, string filter, string country, string city, string sortOrder = "", int page = 1, int pageSize = 6)
@@ -509,8 +281,10 @@ namespace CIPlatform.Controllers
             var userId = HttpContext.Session.GetString("userid");
             var userids = Convert.ToInt32(userId);
             ViewBag.userids = userids;
+           
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == userids).ToList();
             ViewBag.Ratingdata = Ratingdata;
+            
             //for add to fav
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -530,23 +304,16 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            //var missionxx = _ciplatformDbContext.Missions.ToList();
+           
             var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
 
             if (missionxx.Count == 0)
             {
                 ViewBag.SearchStatus = 0;
             }
-            //var missionthemexx = _ciplatformDbContext.MissionThemes.ToList();
+            
             var missionthemexx = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
 
-            //var items = from i in _ciplatformDbContext.Missions
-            //          select new 
-            //          {
-            //              Id = i.MissionId,
-            //              Name = i.Title,
-
-            //          };
 
             ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
@@ -582,16 +349,6 @@ namespace CIPlatform.Controllers
             }
 
 
-            //var countryx = _ciplatformDbContext.Countries.ToList();
-            //var filteredCountries = new List<Country>();
-            //foreach (var countryy in countryx)
-            //{
-            //    var filtered = _ciplatformDbContext.Countries
-            //        .Where(c => c.Name.Contains(countryy.Name) || countryy.Name == null)
-            //        .ToList();
-            //    filteredCountries.AddRange(filtered);
-            //}
-            //ViewBag.Country = filteredCountries;
 
 
             var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(country) || country == null).ToList();
@@ -640,13 +397,6 @@ namespace CIPlatform.Controllers
 
 
 
-            //var countryx = _ciplatformDbContext.Countries.Where(c => c.Name.Contains(countries) || countries == null).ToList();
-            //ViewBag.Country = countryx;
-
-
-            // var selectedCountries = landingAllModels.SelectedCountries ?? new List<string>();
-
-
 
 
 
@@ -662,49 +412,11 @@ namespace CIPlatform.Controllers
 
 
 
-            //for sort by
-
-
-            //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
-            //var missions = from m in _ciplatformDbContext.Missions
-            //               select m;
-
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        missions = missions.OrderByDescending(m => m.Title);
-            //        break;
-            //    case "Date":
-            //        missions = missions.OrderBy(m => m.CreatedAt);
-            //        break;
-            //    case "date_desc":
-            //        missions = missions.OrderByDescending(m => m.CreatedAt);
-            //        break;
-            //    default:
-            //        missions = missions.OrderBy(m => m.Title);
-            //        break;
-            //}
-            // IQueryable<Mission> mission_get = this._ciplatformDbContext.Missions;
-            // mission_get = _ciplatformDbContext.Missions.Where(x => x.MissionId == true);
-
-
-
             return View();
 
 
 
         }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -780,7 +492,7 @@ namespace CIPlatform.Controllers
                 };
 
                 _ciplatformDbContext.MissionRatings.Add(rating);
-                //var f = missionId;
+               
                 _ciplatformDbContext.SaveChanges();
 
             }
@@ -841,8 +553,8 @@ namespace CIPlatform.Controllers
                     newMail.To.Add(s);// declare the email subject
                     newMail.Subject = "My First Email";
                     newMail.IsBodyHtml = true;
-                    var lnkHref = Url.ActionLink("Volunteeringpage", "Home", new { id = MissionId });
-                    newMail.Body = "<b>Please find the Password Reset Link. </b><br/>" + lnkHref;
+                    var lnkHref = Url.ActionLink("VolunteeringMission", "Home", new { id = MissionId });
+                    newMail.Body = "<b>Hey, Click the below link to find mission as per your skills...</b><br/>" + lnkHref;
                     client.EnableSsl = true;
                     client.Port = 587;
                     client.Credentials = new System.Net.NetworkCredential("tulsithakkar21@gmail.com", "gcfxdmdfccmpzjce");
