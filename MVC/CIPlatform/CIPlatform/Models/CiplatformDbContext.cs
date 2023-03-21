@@ -209,6 +209,10 @@ public partial class CiplatformDbContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValueSql("('pending')")
                 .HasColumnName("approval_status");
+            entity.Property(e => e.CommentText)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("comment_text");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
@@ -348,7 +352,6 @@ public partial class CiplatformDbContext : DbContext
             entity.Property(e => e.EndDate)
                 .HasColumnType("datetime")
                 .HasColumnName("end_date");
-            entity.Property(e => e.IsFavorite).HasColumnName("isFavorite");
             entity.Property(e => e.MissionType)
                 .HasMaxLength(20)
                 .IsUnicode(false)

@@ -532,13 +532,11 @@ namespace CIPlatform.Controllers
         public IActionResult Recommendedto(string checkbox_value, int MissionId)
         {
 
-            //string[] authorsList = checkbox_value.Split(", ");
-
-            //var a = authorsList[0];
-            string[] authorsList = { "," };
+            
+            string[] usersList = { "," };
             int count = 30;
-            string[] author = checkbox_value.Split(",", count, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string s in author)
+            string[] users = checkbox_value.Split(",", count, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in users)
             {
                 var k = s;
                 Console.WriteLine(k);
@@ -551,7 +549,7 @@ namespace CIPlatform.Controllers
                     SmtpClient client = new SmtpClient("smtp.gmail.com");
                     newMail.From = new MailAddress("tulsithakkar21@gmail.com", "CI PLATFORM");
                     newMail.To.Add(s);// declare the email subject
-                    newMail.Subject = "My First Email";
+                    newMail.Subject = "Recommended Mission";
                     newMail.IsBodyHtml = true;
                     var lnkHref = Url.ActionLink("VolunteeringMission", "Home", new { id = MissionId });
                     newMail.Body = "<b>Hey, Click the below link to find mission as per your skills...</b><br/>" + lnkHref;
@@ -584,8 +582,8 @@ namespace CIPlatform.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult VolunteeringMission(int id)
+
+        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId)
         {
 
             var userslist = _ciplatformDbContext.Users.ToList();
@@ -600,27 +598,65 @@ namespace CIPlatform.Controllers
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
             ViewBag.Ratingdata = Ratingdata;
             var b = id;
+
+           
+            if (id == 0)
+            {
+                id = MissionId;
+            }
             var missionthemelist = _ciplatformDbContext.MissionThemes.ToList();
             var citylist = _ciplatformDbContext.Cities.ToList();
             var countrylist = _ciplatformDbContext.Countries.ToList();
             var specificmission = _ciplatformDbContext.Missions.Where(a => a.MissionId == b).ToList();
 
-            var result = from m in specificmission
-                         join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
-                         where m.ThemeId == mt.MissionThemeId
-                         join cty in citylist on m.CityId equals cty.CityId
-                         where cty.CityId == m.CityId
-                         select new
-                         {
+            var documentlist = _ciplatformDbContext.MissionDocuments.Where(a => a.MissionId == b).ToList();
 
-                             m,
-                             mt.Title,
-                             mt.MissionThemeId,
-                             cty.CityId,
-                             cty.Name,
 
-                         };
-            ViewBag.Result = result;
+            if (documentlist.Count != 0)
+            {
+                var result = from m in specificmission
+                             join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
+                             where m.ThemeId == mt.MissionThemeId
+                             join cty in citylist on m.CityId equals cty.CityId
+                             where cty.CityId == m.CityId
+                             join docs in documentlist on m.MissionId equals docs.MissionId
+                             where m.MissionId == docs.MissionId
+                             select new
+                             {
+
+                                 m,
+                                 mt.Title,
+                                 mt.MissionThemeId,
+                                 cty.CityId,
+                                 cty.Name,
+                                 docs.DocumentName,
+                                 docs.DocumentPath
+
+                             };
+                ViewBag.Result = result;
+            }
+
+            else
+            {
+                var result = from m in specificmission
+                             join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
+                             where m.ThemeId == mt.MissionThemeId
+                             join cty in citylist on m.CityId equals cty.CityId
+                             where cty.CityId == m.CityId
+                             
+                             select new
+                             {
+
+                                 m,
+                                 mt.Title,
+                                 mt.MissionThemeId,
+                                 cty.CityId,
+                                 cty.Name,
+                                 
+
+                             };
+                ViewBag.Result = result;
+            }
 
             ViewBag.specificmission = specificmission;
 
@@ -689,6 +725,60 @@ namespace CIPlatform.Controllers
                               cty.Name
                           };
             ViewBag.Result2 = result2;
+
+
+
+
+            //for comments
+
+
+            var cmtlist = _ciplatformDbContext.Comments.Where(a => a.MissionId == id).ToList();
+            var usrlist = _ciplatformDbContext.Users.ToList();
+            string processedData = commenttext;
+
+            ViewBag.ids = Convert.ToInt32(ids);
+
+            var comnt = from c in cmtlist
+                        join u in usrlist on c.UserId equals u.UserId
+                        where c.UserId == u.UserId
+
+                        select new
+                        {
+                            c,
+                            u
+                        };
+            ViewBag.comnt = comnt;
+            if (commenttext != null)
+            {
+
+                var cmnt = new Comment
+                {
+                    CommentText = commenttext,
+                    UserId = ids,
+                    MissionId = id
+                };
+
+                _ciplatformDbContext.Comments.Add(cmnt);
+
+                _ciplatformDbContext.SaveChanges();
+
+            }
+
+
+
+
+            return View();
+
+
+
+
+
+
+
+
+
+
+
 
 
 

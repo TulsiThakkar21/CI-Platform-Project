@@ -276,73 +276,7 @@ color: #888;
 
         <div class="row no-gutters">
 
-            <!-- <div class="col-md-6 first-col bg-primary">
-
-                <img src="~/NewFolder/Layer 126@2x.png" alt="" class="main-img">
-
-                <div class="container text-center my-3 car-class">
-
-                    <div class="row mx-auto my-auto justify-content-center">
-                      <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                          <div class="carousel-item active">
-                            <div class="col-sm-3">
-                              <div class="card" style="width: 75%;">
-                                <div class="card-img">
-                                  <img src="~/NewFolder/vol-carousel-1.png">
-                                </div>
-                
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-sm-3">
-                              <div class="card" style="width: 75%;">
-                                <div class="card-img">
-                                  <img src="~/NewFolder/vol-carrousel-2.png" >
-                                </div>
-                
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-sm-3">
-                              <div class="card" style="width: 75%;">
-                                <div class="card-img">
-                                  <img src="~/NewFolder/volcarousel-3.png">
-                                </div>
-                
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-sm-3">
-                              <div class="card" style="width: 75%;">
-                                <div class="card-img">
-                                  <img src="~/NewFolder/vol-carousel-4.png" >
-                                </div>
-                
-                              </div>
-                            </div>
-                          </div>
-                
-                        </div>
-                        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </a>
-                      </div>
-                    </div>
-                
-                  </div>
-                
-
-
-
-
-            </div> -->
+          
 
             <div class="col-md-6 first-col ">
                 <img id="changingimg" class="main-img" src="~/NewFolder/Layer 126.png" style="height: 80%;">
@@ -484,45 +418,42 @@ color: #888;
                         </div>
 
                         <div class="col-sm-6">
-                            <button class="fav-btn">
+                          
 
-                                <img src="~/NewFolder/add1.png" alt="">
-                                &nbsp;
-                                Recommend to a Co-Worker
-
-
-
-
-                                    <div id="dropdownrecmd" style="display : none">
-                                        <li class="nav-item dropdown" id="menu2">
-                                         <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                               
+                        <div id="dropdownrecmd">
+                                    <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
+                                        <button class="nav-link bg-transparent text-dark fav-btn1" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Country &nbsp; <i class="bi
-                                            bi-chevron-down"></i>
-                                            </button>
-                                        <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-                                
+                                            <img class="img1" src="~/NewFolder/add1.png">
+                                            Recommend to a Co-Worker &nbsp;&nbsp;
+                                            <i class="bi bi-chevron-down"></i>
+
+                                     </button>
+                                    <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+
                                     <li>
                                     <ul>
-                                 @foreach (var itm in ViewBag.userslist)
-                                  {
-                                      <li class="form-check">
-                                       <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          @itm.FirstName
-                                     </label>
-                                             <button id="btn_" onclick="rccall(@item.m.MissionId)">submit</button>
-                                       </li>
-                                  }
+                                    @foreach (var itm in ViewBag.userslist)
+                                    {
+                                            <li class="form-check">
+                                            <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            @itm.FirstName
+                                            </label>
 
+                                            </li>
+                                    }
+                                    <br>
+                                     <button id="btn_" onclick="rccall(@item.m.MissionId)">Submit</button>
 
                                     </ul>
                                     </li>
 
-                                 }
-                                </ul>
-                                </li>
-                                </div>
+                                    
+                                    </ul>
+                                    </li>
+                                    </div>
 
 
 
@@ -531,7 +462,7 @@ color: #888;
 
 
 
-                            </button>
+                          
 
 
                              <!-- Button trigger modal -->
@@ -599,12 +530,13 @@ color: #888;
                         <div class="col-lg-3 col-xs-6 col-md-6">
 
                             <div class="box1">
+                                
                                 <div class="all-content">
                                     <img src="~/NewFolder/pin1.png" class="pin-img" alt="">
                                     <p class="city">City</p>
-                                    <p class="london">London</p>
+                                    <p class="london">@item.Name</p>
                                 </div>
-
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-xs-6 col-md-6">
@@ -612,7 +544,7 @@ color: #888;
                                 <div class="all-content">
                                     <img src="~/NewFolder/web.png" class="pin-img" alt="">
                                     <p class="city">Theme</p>
-                                    <p class="london">Environment</p>
+                                    <p class="london">@item.Title</p>
                                 </div>
                             </div>
                         </div>
@@ -621,7 +553,7 @@ color: #888;
                                 <div class="all-content">
                                     <img src="~/NewFolder/calender.png" class="pin-img" alt="">
                                     <p class="city">Date</p>
-                                    <p class="london">Ongoing Opportunity</p>
+                                    <p class="london">@item.m.StartDate.ToShortDateString()</p>
                                 </div>
 
                             </div>
@@ -631,7 +563,7 @@ color: #888;
                                 <div class="all-content">
                                     <img src="~/NewFolder/add1.png" class="pin-img" alt="">
                                     <p class="city">Organization</p>
-                                    <p class="london">CSE Network</p>
+                                    <p class="london">@item.m.OrganizationName</p>
                                 </div>
                             </div>
                         </div>
@@ -665,7 +597,8 @@ color: #888;
         <div class="row">
 
             <div class="col-md-8">
-
+                 @foreach(var item in ViewBag.result)
+                 {
 
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#mission" class="active links1">Mission</a></li>
@@ -677,21 +610,9 @@ color: #888;
                 <div class="tab-content">
                     <div id="mission" class="tab-pane fade show active">
                         <h3>Introduction</h3>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        <p class="para-lorem">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum. </p>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            <br>
+                        <p class="para-lorem">@item.m.Description</p>
+                       
+                            
                         <h3>Challenge</h3>
 
                         <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -726,11 +647,11 @@ color: #888;
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
 
-                                <button class="doc-btn">
+                              <button class="doc-btn">
 
-                                    <img src="~/NewFolder/doc.png" alt="">&nbsp;
-                                    at_accusamus.doc
+                                    <img src="~/NewFolder/doc.png"> <a href="@item.DocumentPath" target="_blank">@item.DocumentName</a>
                                 </button>
+                           
                             </div>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -754,155 +675,53 @@ color: #888;
 
 
                     <div id="org" class="tab-pane fade">
-                        <h3>Introduction</h3>
+                        <h3>Organization Details</h3>
 
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            <br>
-                        <h3>Challenge</h3>
-
-
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        <p class="para-lorem">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum. </p>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-
-                        <h3>Documents</h3>
-
-                        <div class="row">
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/pdf.png" alt="">&nbsp;
-                                    lorem-ipsum.pdf
-
-                                </button>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/doc.png" alt="">&nbsp;
-                                    at_accusamus.doc
-                                </button>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/xlsx.png" alt="">&nbsp;
-                                    important_doc.xls
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
+                        <p class="para-lorem">@item.m.OrganizationDetail</p>
+                        
+                        
 
 
                     </div>
 
 
-                    <div id="comm" class="tab-pane fade">
-                        <h3>Introduction</h3>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        <p class="para-lorem">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum. </p>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            <br>
-                        <h3>Challenge</h3>
-
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                        <p class="para-lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            <br>
-                        </p>
-
-                        <h3>Documents</h3>
-
-                        <div class="row">
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/pdf.png" alt="">&nbsp;
-                                    lorem-ipsum.pdf
-
-                                </button>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/doc.png" alt="">&nbsp;
-                                    at_accusamus.doc
-                                </button>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <button class="doc-btn">
-
-                                    <img src="~/NewFolder/xlsx.png" alt="">&nbsp;
-                                    important_doc.xls
-
-                                </button>
-
-                            </div>
-
-                        </div>
+                   <div id="comm" class="tab-pane fade">
+                                            <textarea id="textAreas"></textarea>
+                                            <br>
+                                            <br>
+                                            <button onclick="commentadd(@item.m.MissionId)" id="submitButton">Submit</button>
 
 
+                                            <br>
+                                            <br>
+                                            <div class="col-12 strylistmaindiv">
+                                                
 
-                    </div>
 
-                </div>
+                                            @{
+                                                      foreach (var itemss in ViewBag.comnt)
+                                                        {
+                                                           <div class="d-flex strylistsubdv">
+                                                            <div>
+                                                    <img class="stryposterimg" src="/NewFolder/user-img.png">
+                                                </div>
+                                             
+                                                 <br>
+                                                    <div>
+                                                   
 
+                                                        <span class="strypstrname">@itemss.u.FirstName</span>
+                                                        <br>
+
+                                                        <h5 class="timestmp">@itemss.c.CreatedAt</h5>
+
+                                                        <h5 class="cmnt" id="processedData">@itemss.c.CommentText</h5>
+                                                    </div>
+                                                        </div>
+                                                        }
+                                            }
+                           </div>
+                           </div>
 
 
 
@@ -910,7 +729,8 @@ color: #888;
 
 
             </div>
-
+            }
+  </div>
             <div class="col-md-4">
 
                 <div class="row right-down">
@@ -971,38 +791,7 @@ color: #888;
 
 
 
-                            <li class="nav-item dropdown">
-                                <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Users &nbsp; <i class="bi
-            bi-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-                                
-                                        <li class="form-check">
-                                            <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                               user1
-                                            </label>
-                                        </li>
-                                         <li class="form-check">
-                                            <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                               user1
-                                            </label>
-                                        </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input checkbox" type="checkbox" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            user1
-                                        </label>
-                                    </li>
-                                   @* }*@
-                                </ul>
-                            </li>
-
-
-
+                           
 
 
 
@@ -1115,8 +904,7 @@ color: #888;
 
             </div>
 
-
-        </div>
+      
 
         @*-----------------------------------------Related Missions-------------------------------------------*@
 
@@ -1228,15 +1016,7 @@ color: #888;
                                                     <i class="rating__star far fa-star"></i>
                                                     <i class="rating__star far fa-star"></i>
                                                 </div>
-                                                <!-- <div class="star" style="display: flex; margin-left: 0%; margin-bottom: 10%;">
-            
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                    
-                                                </div> -->
+                                             
 
                                             </div>
 
@@ -1306,213 +1086,6 @@ color: #888;
                                 </div>
                             </div>
 
-@*
-                            <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
-                                <div class="card">
-                                    <img src="~/NewFolder/re-3.png" class="card-img-top" alt="...">
-                                    <button class="missions">Environment</button>
-                                    <div class="card-body">
-
-                                        <h4 class="card-title">Grow Trees - On the path to <br>environment
-                                            sustainability</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod
-                                            tempor
-                                            incididunt ut labore...</p>
-
-                                        <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-                                                <!-- <div class="star" style="display: flex; margin-left: 0%; margin-bottom: 10%;">
-            
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                                                    <img src="~/NewFolder/selected-star.png" alt="">
-                    
-                                                </div> -->
-
-                                            </div>
-
-                                        </div>
-
-
-                                        <br><br>
-
-
-                                        <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        <div class="row">
-
-                                            <div class="col-6 already-vol-main" style="display: flex;">
-
-                                                <img src="~/NewFolder/Already-volunteered.png" alt=""
-                                                    style="height: 30%; width: 30%;">
-                                                <div class="already-vol">
-                                                    <p>250</p>
-                                                    <p>Already volunteered</p>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div class="col-6 already-vol-main" style="display: flex;">
-                                                <img src="~/NewFolder/mission.png" alt="" class="mission-img"
-                                                    style="height: 30%; width: 30%;">
-                                                <div class="hssh">
-                                                    <div class="progress" style="width: 100%;">
-                                                        <div class="progress-bar w-75" role="progressbar"
-                                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
-                                                    </div>
-                                                    <p class="achieved">8000 achieved</p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <hr class="line-hr">
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-12" style="text-align: center;">
-                                                <button class="apply-btn" style="margin-left: 0%;">Apply
-
-                                                    <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-*@
-
-                     @*       <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
-                                <div class="card">
-                                    <img src="~/NewFolder/re-2.png" class="card-img-top" alt="...">
-                                    <button class="missions">Environment</button>
-                                    <div class="card-body">
-
-                                        <h4 class="card-title">Grow Trees - On the path to <br>environment
-                                            sustainability</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod
-                                            tempor
-                                            incididunt ut labore...</p>
-
-                                        <div class="row">
-
-                                            <div class="col-6">
-                                                <span class="card-text">Tree Canada</span>
-
-                                            </div>
-
-                                            <div class="col-6" style="margin-left: -12%;">
-                                                <div class="rating">
-                                                    <span class="rating__result"></span>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                    <i class="rating__star far fa-star"></i>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-
-                                        <br><br>
-
-
-                                        <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                                    <button class="btn-date">From 10/01/2023 until 25/02/2023</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        <div class="row">
-
-                                            <div class="col-6 already-vol-main" style="display: flex;">
-
-                                                <img src="~/NewFolder/Already-volunteered.png" alt=""
-                                                    style="height: 30%; width: 30%;">
-                                                <div class="already-vol">
-                                                    <p>250</p>
-                                                    <p>Already volunteered</p>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div class="col-6 already-vol-main" style="display: flex;">
-                                                <img src="~/NewFolder/mission.png" alt="" class="mission-img"
-                                                    style="height: 30%; width: 30%;">
-                                                <div class="hssh">
-                                                    <div class="progress" style="width: 100%;">
-                                                        <div class="progress-bar w-75" role="progressbar"
-                                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
-                                                    </div>
-                                                    <p class="achieved">8000 achieved</p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <hr class="line-hr">
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-12" style="text-align: center;">
-                                                <button class="apply-btn" style="margin-left: 0%;">Apply
-
-                                                    <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                    </div>
-
-                                </div>
-                            </div>*@
 
 
 
@@ -1523,92 +1096,6 @@ color: #888;
                 </div>
 
 
-                 @*------------Related; Missions---------*@
-
-
-                   @* <div class="container grid-container ">
-                        <div class="row">
-                            @foreach (var item in ViewBag.Result)
-                            {
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="card">
-                                        <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-                                        <button class="missions">@item.Title</button>
-                                        <div class="card-body">
-
-                                            <h4 class="card-title">@item.m.Title</h4>
-                                            <p class="card-text">@item.m.ShortDescription</p>
-                                            <div class="combine" style="display: flex;">
-                                                <div class="row">
-
-                                                    <div class="col-6">
-                                                        <span class="card-text">@item.m.OrganizationName</span>
-
-                                                    </div>
-
-                                                    <div class="col-6" style="margin-left: -12%;">
-                                                        <div class="rating">
-                                                            <span class="rating__result"></span>
-                                                            <i class="rating__star far fa-star"></i>
-                                                            <i class="rating__star far fa-star"></i>
-                                                            <i class="rating__star far fa-star"></i>
-                                                            <i class="rating__star far fa-star"></i>
-                                                            <i class="rating__star far fa-star"></i>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <br>
-
-
-                                            <div class="row">
-
-                                                <div class="col-12">
-
-                                                    <div class="card-line">
-                                                        <button class="btn-date">From  @item.m.StartDate until @item.m.EndDate</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="iconandtext" style="display:flex">
-
-                                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                                <div class="hssh">
-                                                    <p class="seatno"> 10</p>
-                                                    <p class="seat">Seats Left</p>
-                                                </div>
-                                                <img class="icons" src="~/NewFolder/deadline.png">
-                                                <div class="hssh">
-
-                                                    <p class="seatno"> 01/09/2019</p>
-                                                    <p class="seat">Deadline</p>
-                                                </div>
-                                            </div>
-
-                                            <hr class="line-hr">
-
-                                            <button class="apply-btn">
-                                                Apply
-
-                                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            }
-
-                        </div>
-                    </div>*@
 
 
                 </div>
@@ -1645,7 +1132,7 @@ color: #888;
     </script>
 
 
-    <script>
+  <script>
 
         const ratingStars = [...document.getElementsByClassName("rating__star")];
         const ratingResult = document.querySelector(".rating__result");

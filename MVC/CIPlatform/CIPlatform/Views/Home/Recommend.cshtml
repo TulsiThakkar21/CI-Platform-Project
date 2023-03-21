@@ -1,4 +1,4 @@
-﻿@*
+﻿@*@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -8,7 +8,7 @@
 @model LandingAllModels 
 *@
 
-@*<html>
+<html>
     <head>
 
         <style>
@@ -88,7 +88,7 @@
 
 
 
-   @* <script>
+    <script>
 
 
         var checkboxes = document.querySelectorAll(".checkbox");
@@ -150,22 +150,23 @@
             filtersSection.removeChild(elementToBeRemoved);
         }
 
-    </script>*@
-@*    <script src="~/js/landing.js"></script>
+    </script>
+
+   <script src="~/js/landing.js"></script>
 
 </body>
 
 
-</html>*@
+</html>
 
 
  <!-- Modal -->
       
-                  <div class="modal-header">
+           @*       <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body">*@
         
 
                       
@@ -237,8 +238,8 @@
         {
         <label><input type="checkbox" id="@itemss.UserId" value="@itemss.FirstName">@itemss.FirstName</label>
         }
-@*<label><input type="checkbox" id="checkbox2" value="checkbox2value"> Checkbox 2</label>*@
-<button id="displayChecked">Submit</button>
+
+       <button id="displayChecked">Submit</button>
 
 
 

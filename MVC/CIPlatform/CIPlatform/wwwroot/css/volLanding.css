@@ -14,6 +14,67 @@
     width: 100%;
 }
 
+
+/*for comments*/
+#commentscontent {
+    display: none;
+}
+
+/* #entercomment{
+
+} */
+
+#postcomnt {
+    border: 2px solid #F88634;
+    border-radius: 20px;
+    background: none;
+    padding: 6px;
+    color: #F88634;
+    font-size: 1vw;
+}
+
+.strylistmaindiv {
+    background-color: rgb(245, 244, 244);
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 10px;
+}
+
+.strylistsubdv {
+    background-color: white;
+    font-weight: 700;
+    margin-top: 1.5vw;
+}
+
+.stryposterimg {
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+
+
+.timestmp {
+    font-size: small;
+    font-weight: 500;
+}
+
+.cmnt {
+    font-size: 0.8vw;
+    font-weight: 500;
+}
+
+.rightclass {
+    margin-left: 10px !important;
+}
+
+#entercomment {
+    height: 6vw;
+}
+
 /* Carousel CSS */
 
 
@@ -154,6 +215,18 @@
     color: grey;
     text-align: center;
     margin-top: 10%;
+    margin-left: 12%;
+    padding: 1%;
+}
+.fav-btn1 {
+    width: 130%;
+    height: auto;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid grey;
+    border-radius: 24px;
+    color: grey;
+    text-align: center;
+    margin-top: 18%;
     margin-left: 12%;
     padding: 1%;
 }

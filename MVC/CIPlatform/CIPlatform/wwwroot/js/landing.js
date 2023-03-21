@@ -39,47 +39,6 @@ $(function () {
     });
 });
 
-//function recommendto() {
-
-//    $.ajax({
-//        url: '/Home/Recommend',
-//        type: 'POST',
-//        data: {  },
-//        success: function (data) {
-
-//            //console.log("success");
-
-//            document.querySelector("#exampleModal .modal-content").innerHTML = data;
-
-//            const displayCheckedButton = document.querySelector('#displayChecked');
-//            displayCheckedButton.addEventListener('click', displayCheckedCheckboxes);
-
-
-//            function displayCheckedCheckboxes() {
-//                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//                checkboxes.forEach((checkbox) => {
-//                    if (checkbox.checked) {
-
-//                        checkbox += $(this).val() + ",";
-//                        checkbox.push($(this).val());
-//                        /*var yes = checkbox.value;*/ // or display on the page
-//                    }
-//                   // alert(yes);
-//                    alert(checkbox);
-//                    console.log(checkbox);
-//                    //var abc[] = checkbox.value;
-//                });
-//            }
-
-//        },
-//        error: function () {
-//            // Handle error response from the server, e.g. show an error message to the user
-//            /*alert('Error: Could not like mission.');*/
-//            console.log("fail");
-//        }
-//    });
-//}
-
 
 
 
@@ -106,9 +65,10 @@ function rccall(MissionId) {
             checkbox_value: checkbox_value,
             MissionId: MissionId
         },
-        success: function () {
+        success: function (data) {
             location.reload();
             console.log("success");
+            
         },
         error: function () {
             // Handle error response from the server, e.g. show an error message to the user
@@ -119,31 +79,10 @@ function rccall(MissionId) {
     });
 
 
-    //console.log(typeof (checked_Val));
+   
 
 
 }
-
-
-
-
-
-
-function showDropdown() {
-    var dropdown = document.getElementById("myDropdown");
-    dropdown.classList.toggle("show");
-    var checkboxes = dropdown.getElementsByTagName("input");
-    for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].addEventListener("click", function () {
-            this.parentElement.classList.toggle("selected");
-        });
-    }
-}
-
-
-
-
-
 
 
 
@@ -205,3 +144,27 @@ function showDropdown() {
     let elementToBeRemoved = document.getElementById(value);
     filtersSection.removeChild(elementToBeRemoved);
         }
+
+
+
+
+
+function commentadd(MissionId) {
+    var commenttext = document.getElementById('textAreas').value;
+    $.ajax({
+        url: '/Home/VolunteeringMission',
+        type: "POST",
+        data: {
+            commenttext: commenttext,
+            MissionId: MissionId
+        },
+        success: function () {
+            document.getElementById("processedData").innerHTML = response.processedData;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+
+}

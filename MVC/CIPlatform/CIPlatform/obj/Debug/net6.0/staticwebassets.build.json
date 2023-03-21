@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hH1d9DhJOJxH29FrSdFqt7ALicuoRnNvSpLy8VZJ7Bc=",
+  "Hash": "NjtHBlLcoWRL8ArxQQqgOVx7XOgsxojf49bIGRCrGQc=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1428,6 +1428,23 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel-active-login.png"
     },
     {
+      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\CI-SRS-Final-23.docx",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/CI-SRS-Final-23.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\CI-SRS-Final-23.docx"
+    },
+    {
       "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\cropped-img-story.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -1477,6 +1494,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\NewFolder\\deadline.png"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Doc 1_Tulsi.pdf",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/Doc 1_Tulsi.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\Doc 1_Tulsi.pdf"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\CIP-PROJECT\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\doc.png",
