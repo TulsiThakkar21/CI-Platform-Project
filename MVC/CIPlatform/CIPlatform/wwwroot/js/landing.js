@@ -168,3 +168,32 @@ function commentadd(MissionId) {
 
 
 }
+
+
+
+function addstory() {
+   // var missiondd = document.getElementById('exampleFormControlSelect1').value;
+    var storyTitle = document.getElementById('sTitle').value;
+    var pubDate = document.getElementById('sPDate').value;
+    var desc = document.getElementById('sDesc').value;
+    
+    $.ajax({
+        url: '/Home/ShareYourStory',
+        type: "POST",
+        data: {
+           // missiondd : missiondd
+            storyTitle: storyTitle,
+            pubDate: pubDate,
+            desc: desc
+            
+        },
+        success: function () {
+            document.getElementById("sTitle").innerHTML = response.sTitle;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+
+}

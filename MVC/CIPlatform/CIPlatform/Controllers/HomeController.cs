@@ -770,11 +770,45 @@ namespace CIPlatform.Controllers
             return View();
 
 
+           
+        }
 
 
 
 
 
+        public IActionResult StoryListing()
+        {
+
+            var storyList = _ciplatformDbContext.Stories.ToList();
+            var usrlist = _ciplatformDbContext.Users.ToList();
+            var missionList = _ciplatformDbContext.Missions.ToList();
+            var missionThemeList = _ciplatformDbContext.MissionThemes.ToList();
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+
+            
+
+
+            var stories = from s in storyList
+                        join u in usrlist on s.UserId equals u.UserId
+                        where s.UserId == u.UserId
+                        join m in missionList on s.MissionId equals m.MissionId
+                        where s.MissionId == m.MissionId
+                        join mt in missionThemeList on m.ThemeId equals mt.MissionThemeId
+                        where m.ThemeId == mt.MissionThemeId
+
+                          select new
+                        {
+                            s,
+                            u,
+                            m,
+                            mt
+                        };
+
+            ViewBag.stories = stories;
 
 
 
@@ -787,18 +821,60 @@ namespace CIPlatform.Controllers
         }
 
 
+        public IActionResult ShareYourStory(string storyTitle, string missionDD, int id, string desc, DateTime pubDate)
+        {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+            var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+            
+            ViewBag.appliedmission = appliedmission;
 
 
-     
+            var missionList = _ciplatformDbContext.Missions.ToList();
+
+            if (storyTitle != null)
+            {
+
+                var story = new Story
+                {
+                    
+                    Title = storyTitle,
+                    Description = desc,
+                    PublishedAt = pubDate,
+                    UserId = ids,
+                    MissionId = 2
+                };
+
+                _ciplatformDbContext.Stories.Add(story);
+
+                _ciplatformDbContext.SaveChanges();
+
+            }
+
+
+
+            var finallist = from a in appliedmission
+                            join m in missionList on a.MissionId equals m.MissionId
+                            where a.MissionId == m.MissionId
+                            select new
+                            {
+                                a,
+                                m
+                            };
+
+
+
+            ViewBag.finallist = finallist;
+            return View();
+        }
+
 
         public IActionResult NoMissionFound()
         {
             return View();
         }
-        public IActionResult StoryListing()
-        {
-            return View();
-        }
+       
 
 
 

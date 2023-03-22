@@ -1,0 +1,298 @@
+﻿        @*
+            For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+        *@
+        @{
+        }
+@using CIPlatform.Models.ViewModels
+@model LandingAllModels 
+
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+           <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    
+
+    @*-------Links for checkbox---------*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
+
+     <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+             <link rel="stylesheet" href="~/css/platformlandingpage.css">
+             <link rel="stylesheet" href="~/css/sharestory.css">
+
+             <!-- datepicker -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap- 
+            datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512- 
+            GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFai
+            oypzbDOQykoRg==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    
+    
+   
+
+            <title>Share your story</title>
+        </head>
+
+      
+
+
+            <header>
+                <div class="container-fluid">
+
+
+                    <nav class="navbar navbar-expand-md navbar-light ">
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+
+                                <li class="nav-item stories">
+                                    <a class="nav-link" href="#">Stories</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Policy
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Volunteering</a>
+                                        <a class="dropdown-item" href="#">Sponsered</a>
+
+                                </li>
+                                <li>
+                                    <img src="/images/user-img.png" alt="" class="user-avatar">
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Evan Donohue
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Volunteering</a>
+                                        <a class="dropdown-item" href="#">Sponsered</a>
+
+                                </li>
+
+
+
+                            </ul>
+
+                        </div>
+                    </nav>
+                    <hr>
+    
+
+                    <br>
+
+
+
+                </div>
+
+
+            </header>
+            <body>
+
+                <div class="container">
+                     
+                    <div class="row">
+                      
+                        <div class="col-12">
+                            <h1 style="color: grey;">Share your story</h1>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="main-row">
+                        
+                        <div class="row" style="color: grey;">
+                            <div class="col-md-4">
+                                <label>Select Mission</label>
+                                  <select  class="form-control" id="exampleFormControlSelect1" style="color: grey;">
+
+                        @foreach(var appm in ViewBag.finallist)
+                        {
+                               <option>@appm.m.Title</option>
+                                
+                        }
+                     
+                                 
+                                  </select>
+                            </div>
+                            <div class="col-md-4 ">
+                                <label>My Story Title</label>
+                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Date</label>
+                                <section class="container">
+                    
+                                    <form class="row" >
+                                      <!-- <label for="date" class="col-1 col-form-label">Date</label> -->
+                                      <!-- <div class="col-12" > -->
+                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
+                                      <!-- </div> -->
+                                    </form>
+                                  </section>
+                            </div>
+                        </div>
+                        <br>
+              
+              
+
+                    </div>
+
+                    <div class="row" style="color: grey;">
+
+                        <div class="col-12">
+                            <label>My Story</label>
+                            <br>
+                            <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
+                     
+                            </textarea>
+
+                        </div>
+
+                    </div>
+        <br>
+                    <div class="row"  style="color: grey;">
+
+                        <div class="col-12">
+                            <label>Enter Video URL</label>
+                            <input type="text" class="form-control" placeholder="Enter story title">
+                        </div>
+                    </div>
+        <br>
+                    <div class="row" style="color: grey;">
+                        <div class="col-12">
+                            <label>Upload your photos</label>
+                            <!-- <div class="dotted-box"> -->
+
+                        
+                                <!-- <div class="file-upload-wrapper">
+                                    <input type="file" id="input-file-now" class="file-upload" />
+                                  </div> -->
+
+                                  <div class="drag-image">
+                                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                    <h6>Drag & Drop File Here</h6>
+                                    <span>OR</span>
+                                    <button>Browse File</button>
+                                    <input type="file" hidden>
+                                  </div>
+                            <!-- </div> -->
+                    
+                        </div>
+                    </div>
+        <br><br><br>
+                    <div class="row">
+
+                        <div class="col-4">
+                            <button class="btn-cancle">Cancel</button>
+                        </div>
+
+                        <div class="col-4">
+                    
+                        </div>
+
+                        <div class="col-4">
+                            <button class="btn-save">Save</button>&nbsp;&nbsp;&nbsp;
+                            <button onclick="addstory()" class="btn-submit">Submit</button>
+                        </div>
+
+                    </div>
+                 
+                </div>
+
+
+
+        <script>
+            // $('.file-upload').file_upload();
+
+            const dropArea = document.querySelector(".drag-image"),
+        dragText = dropArea.querySelector("h6"),
+        button = dropArea.querySelector("button"),
+        input = dropArea.querySelector("input");
+        let file; 
+
+        button.onclick = ()=>{
+          input.click(); 
+        }
+
+        input.addEventListener("change", function(){
+ 
+          file = this.files[0];
+          dropArea.classList.add("active");
+          viewfile();
+        });
+
+        dropArea.addEventListener("dragover", (event)=>{
+          event.preventDefault();
+          dropArea.classList.add("active");
+          dragText.textContent = "Release to Upload File";
+        });
+
+
+        dropArea.addEventListener("dragleave", ()=>{
+          dropArea.classList.remove("active");
+          dragText.textContent = "Drag & Drop to Upload File";
+        }); 
+
+        dropArea.addEventListener("drop", (event)=>{
+          event.preventDefault(); 
+   
+          file = event.dataTransfer.files[0];
+          viewfile(); 
+        });
+
+        function viewfile(){
+          let fileType = file.type; 
+          let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+          if(validExtensions.includes(fileType)){ 
+            let fileReader = new FileReader(); 
+            fileReader.onload = ()=>{
+              let fileURL = fileReader.result; 
+               let imgTag = `<img src="${fileURL}" alt="image">`;
+              dropArea.innerHTML = imgTag; 
+            }
+            fileReader.readAsDataURL(file);
+          }else{
+            alert("This is not an Image File!");
+            dropArea.classList.remove("active");
+            dragText.textContent = "Drag & Drop to Upload File";
+          }
+        }
+        </script>
+
+
+         <script src="~/js/landing.js"></script>
+
+            </body>
+
+            </html>
