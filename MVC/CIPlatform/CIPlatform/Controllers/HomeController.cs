@@ -583,8 +583,11 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId)
+        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching)
         {
+
+
+            
 
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
@@ -765,6 +768,34 @@ namespace CIPlatform.Controllers
             }
 
 
+            // for search
+
+            var search = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+
+            if (search.Count == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
+
+
+            // for skills
+
+            var skillsList = _ciplatformDbContext.Skills.ToList();
+            var missionskillList = _ciplatformDbContext.MissionSkills.Where(a => a.MissionId == id).ToList();
+
+
+            var skilldata = from s in skillsList
+                            join ms in missionskillList on s.SkillId equals ms.SkillId
+                            where ms.SkillId == s.SkillId
+                            select new
+                            {
+                                s,
+                                ms
+                            };
+
+            ViewBag.skilldata = skilldata;
+
+
 
 
             return View();
@@ -777,7 +808,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult StoryListing()
+        public IActionResult StoryListing(String searching)
         {
 
             var storyList = _ciplatformDbContext.Stories.ToList();
@@ -811,6 +842,14 @@ namespace CIPlatform.Controllers
             ViewBag.stories = stories;
 
 
+            // for search
+
+            var search = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+
+            if (search.Count == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
 
 
 

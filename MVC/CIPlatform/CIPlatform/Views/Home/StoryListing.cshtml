@@ -59,7 +59,7 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item stories">
-                            <a class="nav-link" href="#">Stories</a>
+                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
@@ -102,11 +102,22 @@
 
                                 <img src="~/NewFolder/search.png" alt="" class="search-icon">
 
+                            @using (Html.BeginForm("StoryListing", "Home", FormMethod.Get))
+
+                            {
                                 <form class="form-inline my-2 my-lg-0">
+
+                                    @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
+
+
+                                </form>
+                            }
+
+                                @*<form class="form-inline my-2 my-lg-0">
                                     <input class="form-control mr-sm-2 search-bar" type="search"
                                         placeholder="Search mission..." aria-label="Search">
 
-                                </form>
+                                </form>*@
                             </div>
 
                         </nav>
@@ -249,15 +260,18 @@
                     
                     
                     <div class="row">
-                        <div class="col-12 content">
+                    <div class="col-12 content">
                             <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad 
                                 minim veniam.</p>
                                 <br>
-                                <button class="share-btn" asp-action="ShareYourStory" asp-controller="Home">Share your story &nbsp;
+                       @* <button class="share-btn">*@
+                             &nbsp;
+
+                            <a asp-action="ShareYourStory" class="share-btn" asp-controller="Home">Share your story</a>
                                     @*<img src="~/NewFolder/right-arrow2.png" alt="">*@
     
-                                </button>
+                                @*</button>*@
                         </div>
                     </div>
 

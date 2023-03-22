@@ -172,7 +172,7 @@ function commentadd(MissionId) {
 
 
 function addstory() {
-   // var missiondd = document.getElementById('exampleFormControlSelect1').value;
+   // var missiondd = document.querySelector('#select1').value;
     var storyTitle = document.getElementById('sTitle').value;
     var pubDate = document.getElementById('sPDate').value;
     var desc = document.getElementById('sDesc').value;
