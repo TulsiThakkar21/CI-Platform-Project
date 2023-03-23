@@ -134,13 +134,14 @@
                         <div class="row" style="color: grey;">
                             <div class="col-md-4">
                                 <label>Select Mission</label>
-                                  <select  class="form-control" id="exampleFormControlSelect1" style="color: grey;">
+                                  <select  class="form-control" id="exampleFormControlSelect12" style="color: grey;">
 
-                        @foreach(var appm in ViewBag.finallist)
-                        {
-                               <option>@appm.m.Title</option>
+                                 @foreach(var appm in ViewBag.finallist)
+                                  {
+
+                               <option value="@appm.m.Title">@appm.m.Title</option>
                                 
-                        }
+                                   }
                      
                                  
                                   </select>

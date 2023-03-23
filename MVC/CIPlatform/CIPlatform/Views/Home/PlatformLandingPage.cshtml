@@ -344,8 +344,8 @@
 
                         </form>
 *@
-                            <div class="filterbox">
-                                <div class="navbar-nav ms-4  ">
+                            <div class="filterbox col-md-6 col-sm-6 col-xs-6">
+                                <div class="navbar-nav ms-4">
                                     @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
 
                                     <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
@@ -519,26 +519,26 @@
                              <div class="combine" style="display: flex;">
                                     <div class="row">
                                         @*<div class="d-flex">*@
-                                            <div class="col-6">
+                                            <div class="col-6 d-flex">
                                                 <span class="card-text">@item.m.OrganizationName</span>
 
-                                            </div>
+                                           </div>
                                         
 
-                                            
+                                            <div id="rating" class="col-6 d-flex">
                                             @{
                                                 if (@ViewBag.Ratingdata.Count == 0)
                                                 {
                                                         
                                                    
                                                     
-                                                    <div id="rating" class="d-flex">
+                                                    //<div id="rating" class="d-flex">
                                                         <i  class="rating__star far fa-star star" data-value="1" data-missionid="@item.MissionId"></i>
                                                         <i  class="rating__star far fa-star star" data-value="2" data-missionid="@item.MissionId"></i>
                                                         <i  class="rating__star far fa-star star" data-value="3" data-missionid="@item.MissionId"></i>
                                                         <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.MissionId"></i>
                                                         <i  class="rating__star far fa-star star" data-value="5" data-missionid="@item.MissionId"></i>
-                                                    </div>
+                                                    //</div>
                                                   
 
 
@@ -568,15 +568,15 @@
                                                                 if (j <= b)
                                                                 {
 
-                                                                    <div id="rating" class="d-flex">
+                                                                   // <div id="rating" class="d-flex">
                                                                         <i class="rating__star fas fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
-                                                                    </div>
+                                                                   // </div>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <div class="row d-flex" id="rating">
+                                                                  //  <div class="row d-flex" id="rating">
                                                                     <i class="rating__star far fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
-                                                                </div>
+                                                                //</div>
                                                                 }
 
                                                             }
@@ -603,9 +603,9 @@
                                                
                                             }
 
+</div>
 
-
-
+ 
 
 
 

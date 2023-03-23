@@ -172,7 +172,8 @@ function commentadd(MissionId) {
 
 
 function addstory() {
-   // var missiondd = document.querySelector('#select1').value;
+   /* var missiondd = document.getElementById('#exampleFormControlSelect12').value;*/
+   var abcd= $('#exampleFormControlSelect12').val();
     var storyTitle = document.getElementById('sTitle').value;
     var pubDate = document.getElementById('sPDate').value;
     var desc = document.getElementById('sDesc').value;
@@ -181,10 +182,11 @@ function addstory() {
         url: '/Home/ShareYourStory',
         type: "POST",
         data: {
-           // missiondd : missiondd
+     /*       missiondd : missiondd*/
             storyTitle: storyTitle,
             pubDate: pubDate,
-            desc: desc
+            desc: desc,
+            abcd: abcd
             
         },
         success: function () {

@@ -860,7 +860,7 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult ShareYourStory(string storyTitle, string missionDD, int id, string desc, DateTime pubDate)
+        public IActionResult ShareYourStory(string storyTitle,string abcd , int id, string desc, DateTime pubDate)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -868,6 +868,12 @@ namespace CIPlatform.Controllers
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
             
             ViewBag.appliedmission = appliedmission;
+            var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(abcd)).ToList();
+            long missinids = 0;
+            missionidfinal.ForEach(mission => missinids = mission.MissionId);
+
+
+
 
 
             var missionList = _ciplatformDbContext.Missions.ToList();
@@ -877,12 +883,12 @@ namespace CIPlatform.Controllers
 
                 var story = new Story
                 {
-                    
+
                     Title = storyTitle,
                     Description = desc,
                     PublishedAt = pubDate,
                     UserId = ids,
-                    MissionId = 2
+                    MissionId = missinids
                 };
 
                 _ciplatformDbContext.Stories.Add(story);
