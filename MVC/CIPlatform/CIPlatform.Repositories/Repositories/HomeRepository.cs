@@ -86,16 +86,34 @@ namespace CIPlatform.Repository.Repositories
         }
 
 
+        public IEnumerable<City> GetCityRecords()
+        {
+
+            return _db.Cities.ToList();
+        }
+
+        public IEnumerable<Country> GetCountryRecords()
+        {
+            return _db.Countries.ToList();
+        }
+
+        public IEnumerable<Mission> GetSpecificMission(int id)
+        {
+            var b = id;
+            //var specificmission = _db.Missions.Where(a => a.MissionId == b).ToList();
+            
+            //return specificmission;
+
+            return _db.Missions.Where(a => a.MissionId == b)
+                .Include(t1 => t1.City)
+                .Include(t2 => t2.Country)
+                .Include(t3 => t3.Theme) .ToList();
+        }
 
 
 
-        //{
-        // return _db.MissionThemes
-        // .Include(t1 => t1.Missions)
 
 
-        // .ToList();
-        //}
 
 
 

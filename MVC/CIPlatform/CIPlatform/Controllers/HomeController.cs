@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using CIPlatform.Entities.Models;
 using CIPlatform.Repository.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CIPlatform.Controllers
 {
@@ -39,25 +40,28 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Index(LoginModel _loginModel)
         {
-           
-            var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
 
-           
+            //  var status = _ciplatformDbContext.Users.Where(u => u.Email == _loginModel.LoginId && u.Password == _loginModel.Password).FirstOrDefault();
+
+            var status = _homeRepository.UserDataforLogin(_loginModel.LoginId, _loginModel.Password);
 
             if (status != null)
             {
-               
-                string UserIDf = status.UserId.ToString();
+
+                // string UserIDf = status.UserId.ToString();
+
+                var a = status.UserId.ToString();
+                string UserIDf = a;
 
                 HttpContext.Session.SetString("userid", UserIDf);
                 var abc = HttpContext.Session.GetString("userid");
 
                 long abcd = Convert.ToInt64(abc);
-                var loginuser = _ciplatformDbContext.Users.FirstOrDefault(x => (x.UserId == abcd));
-                if (loginuser != null)
+             
+                if (status != null)
                 {
-                    var loginfname = loginuser.FirstName;
-                    var loginlname = loginuser.LastName;
+                    var loginfname = status.FirstName;
+                    var loginlname = status.LastName;
 
                     TempData["fullname"] = loginfname + loginlname;
 
@@ -65,7 +69,7 @@ namespace CIPlatform.Controllers
                 }
 
 
-                return RedirectToAction("PlatformLandingPage", "Home", new { @Id = status.UserId });
+                return RedirectToAction("PlatformLandingPage", "Home", new { @Id = a });
 
             }
             else
@@ -618,59 +622,72 @@ namespace CIPlatform.Controllers
             {
                 id = MissionId;
             }
-            var missionthemelist = _ciplatformDbContext.MissionThemes.ToList();
-            var citylist = _ciplatformDbContext.Cities.ToList();
-            var countrylist = _ciplatformDbContext.Countries.ToList();
-            var specificmission = _ciplatformDbContext.Missions.Where(a => a.MissionId == b).ToList();
-
-            var documentlist = _ciplatformDbContext.MissionDocuments.Where(a => a.MissionId == b).ToList();
 
 
-            if (documentlist.Count != 0)
-            {
-                var result = from m in specificmission
-                             join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
-                             where m.ThemeId == mt.MissionThemeId
-                             join cty in citylist on m.CityId equals cty.CityId
-                             where cty.CityId == m.CityId
-                             join docs in documentlist on m.MissionId equals docs.MissionId
-                             where m.MissionId == docs.MissionId
-                             select new
-                             {
 
-                                 m,
-                                 mt.Title,
-                                 mt.MissionThemeId,
-                                 cty.CityId,
-                                 cty.Name,
-                                 docs.DocumentName,
-                                 docs.DocumentPath
 
-                             };
-                ViewBag.Result = result;
-            }
+            var specificmission = _homeRepository.GetSpecificMission(id);
+            var citylist = _homeRepository.GetCityRecords();
+            var countrylist = _homeRepository.GetCountryRecords();
+            var missionthemelist = _homeRepository.GetMissionThemes();
 
-            else
-            {
-                var result = from m in specificmission
-                             join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
-                             where m.ThemeId == mt.MissionThemeId
-                             join cty in citylist on m.CityId equals cty.CityId
-                             where cty.CityId == m.CityId
-                             
-                             select new
-                             {
 
-                                 m,
-                                 mt.Title,
-                                 mt.MissionThemeId,
-                                 cty.CityId,
-                                 cty.Name,
-                                 
 
-                             };
-                ViewBag.Result = result;
-            }
+
+
+            //var missionthemelist = _ciplatformDbContext.MissionThemes.ToList();
+            //var citylist = _ciplatformDbContext.Cities.ToList();
+            //var countrylist = _ciplatformDbContext.Countries.ToList();
+            //var specificmission = _ciplatformDbContext.Missions.Where(a => a.MissionId == b).ToList();
+
+            // var documentlist = _ciplatformDbContext.MissionDocuments.Where(a => a.MissionId == b).ToList();
+
+
+            //if (documentlist.Count != 0)
+            //{
+            //    var result = from m in specificmission
+            //                 join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
+            //                 where m.ThemeId == mt.MissionThemeId
+            //                 join cty in citylist on m.CityId equals cty.CityId
+            //                 where cty.CityId == m.CityId
+            //                 join docs in documentlist on m.MissionId equals docs.MissionId
+            //                 where m.MissionId == docs.MissionId
+            //                 select new
+            //                 {
+
+            //                     m,
+            //                     mt.Title,
+            //                     mt.MissionThemeId,
+            //                     cty.CityId,
+            //                     cty.Name,
+            //                     docs.DocumentName,
+            //                     docs.DocumentPath
+
+            //                 };
+            //    ViewBag.Result = result;
+            //}
+
+            //else
+            //{
+            //    var result = from m in specificmission
+            //                 join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
+            //                 where m.ThemeId == mt.MissionThemeId
+            //                 join cty in citylist on m.CityId equals cty.CityId
+            //                 where cty.CityId == m.CityId
+
+            //                 select new
+            //                 {
+
+            //                     m,
+            //                     mt.Title,
+            //                     mt.MissionThemeId,
+            //                     cty.CityId,
+            //                     cty.Name,
+
+
+            //                 };
+            //    ViewBag.Result = result;
+            //}
 
             ViewBag.specificmission = specificmission;
 

@@ -23,8 +23,14 @@ namespace CIPlatform.Repository.Repositories
 
             IEnumerable<Mission> GetMissionWithMissionThemeRecords();
 
+            IEnumerable<Mission> GetSpecificMission(int id);
 
-        }
+            IEnumerable<City> GetCityRecords();
+
+            IEnumerable<Country> GetCountryRecords();
+
+
+    }
     }
 
 
