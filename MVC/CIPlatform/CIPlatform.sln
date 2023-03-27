@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIPlatform", "CIPlatform\CIPlatform.csproj", "{3B90AE84-D7D0-4D48-9D8F-36E8E1E79EED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CIPlatform", "CIPlatform\CIPlatform.csproj", "{3B90AE84-D7D0-4D48-9D8F-36E8E1E79EED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CIPlatform.Entities", "CIPlatform.Entities\CIPlatform.Entities.csproj", "{3BBC9A09-782A-49EB-A149-8F729D83BF85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIPlatform.Repository", "CIPlatform.Repositories\CIPlatform.Repository.csproj", "{B8019205-B123-4522-AE2D-718CFBCB04BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{3B90AE84-D7D0-4D48-9D8F-36E8E1E79EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B90AE84-D7D0-4D48-9D8F-36E8E1E79EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B90AE84-D7D0-4D48-9D8F-36E8E1E79EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBC9A09-782A-49EB-A149-8F729D83BF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBC9A09-782A-49EB-A149-8F729D83BF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBC9A09-782A-49EB-A149-8F729D83BF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBC9A09-782A-49EB-A149-8F729D83BF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8019205-B123-4522-AE2D-718CFBCB04BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8019205-B123-4522-AE2D-718CFBCB04BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8019205-B123-4522-AE2D-718CFBCB04BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8019205-B123-4522-AE2D-718CFBCB04BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

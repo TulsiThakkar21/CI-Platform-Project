@@ -458,7 +458,7 @@
 
         <div class="container grid-container ">
             <div class="row">
-                 @foreach(var item in ViewBag.Result)
+                 @foreach(var item in ViewBag.outputsf)
                {
 
 
@@ -468,12 +468,12 @@
                                 <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
 
                         </div>
-                         <button class="missions">@item.Title</button>
+                            <button class="missions">@item.Theme.Title</button>
                             @{
 
                                 if (@ViewBag.favlist.Count == 0)
                                 {
-                                    <i onclick="likeMission(@item.m.MissionId)" class="far fa-heart"></i>
+                                    <i onclick="likeMission(@item.MissionId)" class="far fa-heart"></i>
                                 }
 
                                 else
@@ -484,9 +484,9 @@
                                     for (var i = 0; i < v.Count; i++)
                                     {
 
-                                        if (@ViewBag.favlist[i].MissionId == item.m.MissionId && @ViewBag.favlist[i].UserId == ViewBag.ids)
+                                        if (@ViewBag.favlist[i].MissionId == item.MissionId && @ViewBag.favlist[i].UserId == ViewBag.ids)
                                         {
-                                            <i onclick="likeMission(@item.m.MissionId)" style="color:red" class="fas fa-heart"></i>
+                                            <i onclick="likeMission(@item.MissionId)" style="color:red" class="fas fa-heart"></i>
                                             break;
 
                                         }
@@ -496,7 +496,7 @@
                                         {
                                             if (i == v.Count - 1)
                                             {
-                                                <i onclick="likeMission(@item.m.MissionId)" class="far fa-heart"></i>
+                                                <i onclick="likeMission(@item.MissionId)" class="far fa-heart"></i>
                                             }
 
                                         }
@@ -510,17 +510,17 @@
                             }
 
 
-                            <p>@item.Name</p>
+                            @*<p>@item.Name</p>*@
                         <div class="card-body">
                             
                            
-                            <h4 class="card-title">@item.m.Title</h4>
-                            <p class="card-text">@item.m.ShortDescription</p>
+                            <h4 class="card-title">@item.Title</h4>
+                            <p class="card-text">@item.ShortDescription</p>
                              <div class="combine" style="display: flex;">
                                     <div class="row">
                                         @*<div class="d-flex">*@
                                             <div class="col-6 d-flex">
-                                                <span class="card-text">@item.m.OrganizationName</span>
+                                                <span class="card-text">@item.OrganizationName</span>
 
                                            </div>
                                         
@@ -640,7 +640,7 @@
                                             <div class="col-12">
 
                                                 <div class="card-line">
-                                            <button class="btn-date">From  @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
+                                            <button class="btn-date">From  @item.StartDate.ToShortDateString() until @item.EndDate.ToShortDateString()</button>
                                                 </div>
                                             </div>
 
@@ -652,18 +652,19 @@
                                 <img class="icons1" src="~/NewFolder/Seats-left.png">
 
                                 <div class="hssh">
-                                        <p class="seatno">@item.m.Availability</p>
+                                        <p class="seatno">@item.Availability</p>
                                     <p class="seat">Seats Left</p>
                                 </div>
                                 <img class="icons" src="~/NewFolder/deadline.png">
                                 <div class="hssh">
 
-                                        <p class="seatno">@item.m.EndDate.ToShortDateString()</p>
+                                        <p class="seatno">@item.EndDate.ToShortDateString()</p>
                                     <p class="seat">Deadline</p>
                                 </div>
                             </div>
 
-                            <hr class="line-hr">
+                           @* <hr class="line-hr">*@
+                           <hr>
 
                             @*<button class="apply-btn">Apply
 
@@ -672,7 +673,7 @@
                             </button>*@
 
 
-                            <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.m.MissionId">
+                            <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
                                 <button type="submit" class="apply-btn">
 
                                 Apply <img src="~/NewFolder/right-arrow.png">
@@ -745,7 +746,7 @@
 
     <!-- List View -->
 
-    <div class="list-view active" id="listp">
+   @* <div class="list-view active" id="listp">
 
        
         <div class="container-fluid">
@@ -834,7 +835,7 @@
                 
             </div>
         </div>
-        </div>
+        </div>*@
         <!-- Javascript -->
 
 

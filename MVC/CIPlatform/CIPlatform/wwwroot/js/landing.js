@@ -19,7 +19,7 @@ $(function () {
     //var rating = $("#rating");
     var rating = $(this).parent().find(".star");
     $("#rating .star").click(function () {
-        debugger
+        //debugger
         var star = $(this);
         var stars = star.data("value");
         var missionId = star.data("missionid");

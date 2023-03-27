@@ -1,0 +1,15 @@
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\CIPlatform.Repository.deps.json
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\CIPlatform.Repository.dll
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\CIPlatform.Repository.pdb
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\CIPlatform.Entities.dll
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\CIPlatform.Entities.pdb
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.csproj.AssemblyReference.cache
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfoInputs.cache
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfo.cs
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.csproj.CoreCompileInputs.cache
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.csproj.CopyComplete
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.dll
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\refint\CIPlatform.Repository.dll
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.pdb
+C:\Users\tatva\Desktop\TrialCIP\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\ref\CIPlatform.Repository.dll

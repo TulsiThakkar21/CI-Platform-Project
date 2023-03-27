@@ -1,3 +1,5 @@
+using CIPlatform.Repository.Repositories;
+using CIPlatform.Entities.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
+
+builder.Services.AddDbContext<CiplatformDbContext>();
+builder.Services.AddScoped<IHomeRepository, HomeRepository>();
 
 var app = builder.Build();
 

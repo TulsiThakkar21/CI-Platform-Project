@@ -286,7 +286,7 @@
 <div class="main">
     <div class="row" style="width: 100%;">
            @{
-                foreach (var itemss in ViewBag.stories)
+     foreach (var itemss in ViewBag.listofstories)
                 {
         <div class="col-md-6 col-lg-4 main-card">
 
@@ -299,20 +299,20 @@
                 
                 <div class="row">
                     <div class="col-12" style="text-align: center; margin-top: -3%;">
-                        <button class="round-btn">@itemss.m.Title</button>
+                                        <button class="round-btn">@itemss.Mission.Title</button>
                     </div>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title" id="processedStoryData">@itemss.s.Title</h5>
-                  <p class="card-text" style="text-align: justify; font-size: small;">@itemss.s.Description</p>
+                  <h5 class="card-title" id="processedStoryData">@itemss.Title</h5>
+                  <p class="card-text" style="text-align: justify; font-size: small;">@itemss.Description</p>
                     <br>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-3" style="width: 50%;">
                             <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
                         </div>
                         <div class="col-lg-8 col-md-5 col-sm-3" style="margin-top: 3%; width: 50%;">
-                            <p class="vol-name">@itemss.u.FirstName</p>
-                            <p class="vol-name">@itemss.s.PublishedAt.ToShortDateString()</p>
+                            <p class="vol-name">@itemss.User.FirstName</p>
+                            <p class="vol-name">@itemss.PublishedAt.ToShortDateString()</p>
                         </div>
                       
                    

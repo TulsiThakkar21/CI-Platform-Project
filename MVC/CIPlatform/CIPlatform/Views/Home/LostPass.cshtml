@@ -4,8 +4,9 @@
 @{
 }
 
-@*@model CIPlatform.Models.ViewModels.ForgotPasswordViewModel;*@
-@model CIPlatform.Models.ForgotPasswordModel
+@using CIPlatform.Entities.Models
+@model ForgotPasswordModel
+@*@using CIPlatform.Models*@
 
 
 @{
@@ -134,6 +135,7 @@
 
                             <label class="lbl-email">Email Address</label>
                             <br>
+
                             @Html.TextBoxFor(u => u.Email, new {@class = "txt-inp", @placeholder=" Enter your email address..."})
                             @*<input asp-for="Email" type="text" class="txt-inp" placeholder=" Enter your email address...">*@
                              @*<span asp-validation-for="Email" class="text-danger"></span>*@

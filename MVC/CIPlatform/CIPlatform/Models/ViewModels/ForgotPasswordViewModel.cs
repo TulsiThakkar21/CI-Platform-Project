@@ -1,4 +1,6 @@
-﻿namespace CIPlatform.Models.ViewModels
+﻿using CIPlatform.Entities.Models;
+
+namespace CIPlatform.Models.ViewModels
 {
     public class ForgotPasswordViewModel
     {

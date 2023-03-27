@@ -6,23 +6,29 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using CIPlatform.Models.ViewModels;
+using CIPlatform.Entities.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using CIPlatform.Entities.Models;
+using CIPlatform.Repository.Repositories;
 
 namespace CIPlatform.Controllers
 {
     public class HomeController : Controller
     {
-        CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
+        //CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
         private readonly ILogger<HomeController> _logger;
+        public CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
 
-        public HomeController(ILogger<HomeController> logger)
+        public IHomeRepository _homeRepository;
+        public HomeController(IHomeRepository loginRepository, ILogger<HomeController> logger)
         {
             _logger = logger;
+            _homeRepository = loginRepository;
         }
         [HttpGet]
         public IActionResult Index()
@@ -358,37 +364,42 @@ namespace CIPlatform.Controllers
             ViewBag.Cities = cityx;
 
 
-            var result = from m in missionxx
-                         join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
-                         where m.ThemeId == mt.MissionThemeId
-                         join cnt in countryx on m.CountryId equals cnt.CountryId
-                         where m.CountryId == cnt.CountryId
-                         join cit in cityx on m.CityId equals cit.CityId
-                         where m.CityId == cit.CityId
-                         where m.CountryId == cnt.CountryId
+            //var result = from m in missionxx
+            //             join mt in missionthemexx on m.ThemeId equals mt.MissionThemeId
+            //             where m.ThemeId == mt.MissionThemeId
+            //             join cnt in countryx on m.CountryId equals cnt.CountryId
+            //             where m.CountryId == cnt.CountryId
+            //             join cit in cityx on m.CityId equals cit.CityId
+            //             where m.CityId == cit.CityId
+            //             where m.CountryId == cnt.CountryId
 
 
-                         select new
-                         {
+            //             select new
+            //             {
 
-                             m,
-                             date = m.StartDate,
-                             m.MissionId,
-                             mt.Title,
-                             mt.MissionThemeId,
-                             cnt.Name,
-                             City = cit.Name
-                         };
+            //                 m,
+            //                 date = m.StartDate,
+            //                 m.MissionId,
+            //                 mt.Title,
+            //                 mt.MissionThemeId,
+            //                 cnt.Name,
+            //                 City = cit.Name
+            //             };
+
+            var mission = _homeRepository.GetMission();
+            var mt = _homeRepository.GetMissionThemes();
+            var outputsf = _homeRepository.GetMissionWithMissionThemeRecords();
+
 
 
             @ViewData["page"] = page;
             ViewData["PageSize"] = pageSize;
             ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / pageSize);
-            ViewBag.outputsf = result.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.outputsf = outputsf.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
 
 
-            ViewBag.Result = result;
+            //ViewBag.Result = outputsf;
 
             var missionx = _ciplatformDbContext.Missions.ToList();
             ViewBag.Missions = missionx;
@@ -805,59 +816,70 @@ namespace CIPlatform.Controllers
         }
 
 
-
-
-
-        public IActionResult StoryListing(String searching)
+        public IActionResult StoryListing()
         {
+            var listofstories = _homeRepository.GetStories();
+            var user = _homeRepository.GetUsers();
+            var mis = _homeRepository.GetMission();
+            var res = _homeRepository.GetTable1WithTable2Records();
 
-            var storyList = _ciplatformDbContext.Stories.ToList();
-            var usrlist = _ciplatformDbContext.Users.ToList();
-            var missionList = _ciplatformDbContext.Missions.ToList();
-            var missionThemeList = _ciplatformDbContext.MissionThemes.ToList();
-
-            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-            ViewBag.ids = Convert.ToInt32(ids);
-
-
-            
+            ViewBag.listofstories = res;
+            return View(listofstories);
 
 
-            var stories = from s in storyList
-                        join u in usrlist on s.UserId equals u.UserId
-                        where s.UserId == u.UserId
-                        join m in missionList on s.MissionId equals m.MissionId
-                        where s.MissionId == m.MissionId
-                        join mt in missionThemeList on m.ThemeId equals mt.MissionThemeId
-                        where m.ThemeId == mt.MissionThemeId
-
-                          select new
-                        {
-                            s,
-                            u,
-                            m,
-                            mt
-                        };
-
-            ViewBag.stories = stories;
-
-
-            // for search
-
-            var search = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
-
-            if (search.Count == 0)
-            {
-                ViewBag.SearchStatus = 0;
-            }
-
-
-
-
-
-
-            return View();
         }
+
+
+        //public IActionResult StoryListing(String searching)
+        //{
+
+        //    var storyList = _ciplatformDbContext.Stories.ToList();
+        //    var usrlist = _ciplatformDbContext.Users.ToList();
+        //    var missionList = _ciplatformDbContext.Missions.ToList();
+        //    var missionThemeList = _ciplatformDbContext.MissionThemes.ToList();
+
+        //    var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+        //    ViewBag.ids = Convert.ToInt32(ids);
+
+
+
+
+
+        //    var stories = from s in storyList
+        //                join u in usrlist on s.UserId equals u.UserId
+        //                where s.UserId == u.UserId
+        //                join m in missionList on s.MissionId equals m.MissionId
+        //                where s.MissionId == m.MissionId
+        //                join mt in missionThemeList on m.ThemeId equals mt.MissionThemeId
+        //                where m.ThemeId == mt.MissionThemeId
+
+        //                  select new
+        //                {
+        //                    s,
+        //                    u,
+        //                    m,
+        //                    mt
+        //                };
+
+        //    ViewBag.stories = stories;
+
+
+        //    // for search
+
+        //    var search = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+
+        //    if (search.Count == 0)
+        //    {
+        //        ViewBag.SearchStatus = 0;
+        //    }
+
+
+
+
+
+
+        //    return View();
+        //}
 
 
         public IActionResult ShareYourStory(string storyTitle,string abcd , int id, string desc, DateTime pubDate)
