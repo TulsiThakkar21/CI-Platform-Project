@@ -239,3 +239,40 @@ function newselecId(s) {
     });
             
 }
+
+
+
+function editstory() {
+
+    //const selectElement = document.getElementById("exampleFormControlSelect12");
+    //const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+
+    var appliedMission = $('#exampleFormControlSelect12').val();
+    var storyTitle = document.getElementById('sTitle').value;
+    var pubDate = document.getElementById('sPDate').value;
+    var desc = document.getElementById('sDesc').value;
+    var vid = document.getElementById('vidUrl').value;
+
+    $.ajax({
+        url: '/Home/SaveStory',
+        type: "POST",
+        data: {
+            /*       missiondd : missiondd*/
+            storyTitle: storyTitle,
+            pubDate: pubDate,
+            desc: desc,
+            vid: vid,
+            appliedMission: appliedMission,
+          /*  selectedOptionId : selectedOptionId*/
+
+        },
+        success: function () {
+            document.getElementById("sTitle").innerHTML = response.sTitle;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+}

@@ -998,7 +998,7 @@ namespace CIPlatform.Controllers
 
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
 
-            //ViewBag.appliedmission = appliedmission;
+            
             var missionidfinal = _ciplatformDbContext.Missions.Where(a => a.Title.Contains(appliedMission)).ToList();
             long missinids = 0;
             missionidfinal.ForEach(mission => missinids = mission.MissionId);
@@ -1016,7 +1016,7 @@ namespace CIPlatform.Controllers
 
 
 
-            //ViewBag.finallist = finallist;
+            
 
             var data = _ciplatformDbContext.Stories.Where(a => a.MissionId == selectedOptionId && a.UserId == ids).ToList().FirstOrDefault();
 
@@ -1050,10 +1050,26 @@ namespace CIPlatform.Controllers
             
         }
 
-        //public IActionResult SaveStory() {
-        
-        //return RedirectToAction()
-        //}
+        public IActionResult SaveStory(string storyTitle, string appliedMission, int id, string desc, DateTime pubDate, string vid)
+        {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var storydata = _ciplatformDbContext.Stories.Where(y => y.MissionId == 2 && y.UserId == ids).ToList();
+
+            var query = from s in storydata select s;
+            foreach (Story s in query)
+            {
+                s.Title = storyTitle;
+                s.Description = desc;
+                s.PublishedAt = pubDate;
+                s.VidUrl = vid;
+                s.UserId = ids;
+                s.MissionId = 2;
+            }
+
+            _ciplatformDbContext.SaveChanges();
+            return RedirectToAction("ShareYourStory", "Home");
+        }
 
         public IActionResult NoMissionFound()
         {

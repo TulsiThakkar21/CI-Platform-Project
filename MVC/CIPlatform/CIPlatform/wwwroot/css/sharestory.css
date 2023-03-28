@@ -32,6 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
 }
 
     .drag-image.active {
@@ -81,7 +82,10 @@ body {
         object-fit: cover;
         border-radius: 5px;
     }
-
+.all-btns
+{
+    margin-top:8%;
+}
 .btn-cancle {
     width: 40%;
     height: 48px;
