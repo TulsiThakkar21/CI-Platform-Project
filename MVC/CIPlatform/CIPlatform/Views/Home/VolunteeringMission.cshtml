@@ -151,7 +151,6 @@
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
 
@@ -160,35 +159,37 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Policy
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Volunteering</a>
                                 <a class="dropdown-item" href="#">Sponsered</a>
-                            </div>
 
-                </div>                  </li>
+                        </li>
+                        <li>
+                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+                        </li>
 
+                     
 
-                <li>
-                    <img src="~/NewFolder/user-img.png" alt="" class="user-avatar">
-                </li>
+                    </ul>
+                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Evan Donohue
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Volunteering</a>
-                        <a class="dropdown-item" href="#">Sponsered</a>
-                    </div>
-                </li>
-
-
-
-                </ul>
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["fullname"]
+                        </button>
+                  
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+               </div>
 
         </div>
         </nav>

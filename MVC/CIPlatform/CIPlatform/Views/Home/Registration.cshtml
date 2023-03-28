@@ -91,21 +91,23 @@
 
                     @using (Html.BeginForm("Registration","Home", FormMethod.Post)){
 
-                        if (ViewBag.Status != null)
+                        @*if (ViewBag.Status != null)
                         {
                             if (ViewBag.Status == 1)
                             {
                                 <br />
+                                
                                 <span class="alert alert-success">Registered Successfully</span>
                                 <br />
                             }
                             else if (ViewBag.Status == 0)
                             {
                                 <br />
+                               
                                 <span class="alert alert-danger">Error while registering</span>
                                 <br />
                             }
-                        }
+                        }*@
 
                     <div class="login-form">
 
@@ -129,7 +131,7 @@
                         <br>
                             @Html.TextBoxFor(u => u.PhoneNumber, new {@type="tel",@pattern="[0-9]{10}" ,@class = "txt-inp", @placeholder=" Enter your phone number"})
                         @*<input type="number" class="txt-inp" placeholder=" Enter your phone number">*@
-
+                        @*<span asp-validation-for="PhoneNumber" class="text-danger" style="font-size:12px;"></span>*@
                         <br>
 
                         <label class="lbl-email">Email Address</label>

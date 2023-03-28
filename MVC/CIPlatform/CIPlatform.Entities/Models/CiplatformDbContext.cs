@@ -717,6 +717,10 @@ public partial class CiplatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.VidUrl)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("vid_url");
 
             entity.HasOne(d => d.Mission).WithMany(p => p.Stories)
                 .HasForeignKey(d => d.MissionId)

@@ -66,6 +66,8 @@ namespace CIPlatform.Controllers
                     TempData["fullname"] = loginfname + loginlname;
 
                     ViewBag.LoginStatus = 1;
+
+
                 }
 
 
@@ -75,6 +77,7 @@ namespace CIPlatform.Controllers
             else
             {
                 ViewBag.LoginStatus = 0;
+                return RedirectToAction("Index", "Home");
                
             }
 
@@ -265,12 +268,15 @@ namespace CIPlatform.Controllers
                     };
                     _ciplatformDbContext.Users.Add(userData);
                     _ciplatformDbContext.SaveChanges();
-                    ViewBag.Status = 1;
+                    //ViewBag.Status = 1;
+
+                    return RedirectToAction("Index", "Home");
                 }
 
                 else { 
-                ViewBag.Status = 0;
-                
+               // ViewBag.Status = 0;
+                    return RedirectToAction("Registration", "Home");
+
                 }
                
             }
@@ -325,38 +331,7 @@ namespace CIPlatform.Controllers
             var missionthemexx = _ciplatformDbContext.MissionThemes.Where(i => i.Title.Contains(filter) || filter == null).ToList();
 
 
-            ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
-            ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
-            ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
-            ViewBag.DeadlineNear = sortOrder == "near" ? "far" : "near";
-            ViewBag.DeadlineFar = sortOrder == "far" ? "near" : "far";
-
-            switch (sortOrder)
-            {
-
-                case "Date":
-                    missionxx = missionxx.OrderBy(a => a.StartDate).ToList();
-                    break;
-                case "date_desc":
-                    missionxx = missionxx.OrderByDescending(a => a.StartDate).ToList();
-                    break;
-                case "LowSeats":
-                    missionxx = missionxx.OrderBy(a => a.Availability).ToList();
-                    break;
-                case "HighSeats":
-                    missionxx = missionxx.OrderByDescending(a => a.Availability).ToList();
-                    break;
-                case "near":
-                    missionxx = missionxx.OrderBy(a => a.EndDate).ToList();
-                    break;
-                case "far":
-                    missionxx = missionxx.OrderByDescending(a => a.EndDate).ToList();
-                    break;
-                default:
-                    missionxx = missionxx.ToList();
-                    break;
-            }
+            
 
 
 
@@ -393,6 +368,56 @@ namespace CIPlatform.Controllers
             var mission = _homeRepository.GetMission();
             var mt = _homeRepository.GetMissionThemes();
             var outputsf = _homeRepository.GetMissionWithMissionThemeRecords();
+
+
+
+            //SortBy
+
+            ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
+            ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
+            ViewBag.DeadlineNear = sortOrder == "near" ? "far" : "near";
+            ViewBag.DeadlineFar = sortOrder == "far" ? "near" : "far";
+
+            switch (sortOrder)
+            {
+
+                case "Date":
+                    outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
+                    break;
+                case "date_desc":
+                    outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
+                    break;
+                case "LowSeats":
+                    outputsf = outputsf.OrderBy(a => a.Availability).ToList();
+                    break;
+                case "HighSeats":
+                    outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
+                    break;
+                case "near":
+                    outputsf = outputsf.OrderBy(a => a.EndDate).ToList();
+                    break;
+                case "far":
+                    outputsf = outputsf.OrderByDescending(a => a.EndDate).ToList();
+                    break;
+                default:
+                    outputsf = outputsf.ToList();
+                    break;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -899,7 +924,7 @@ namespace CIPlatform.Controllers
         //}
 
 
-        public IActionResult ShareYourStory(string storyTitle,string abcd , int id, string desc, DateTime pubDate)
+        public IActionResult ShareYourStory(string storyTitle,string appliedMission , int id, string desc, DateTime pubDate, string vid, int selectedOptionId)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -907,7 +932,7 @@ namespace CIPlatform.Controllers
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
             
             ViewBag.appliedmission = appliedmission;
-            var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(abcd)).ToList();
+            var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(appliedMission)).ToList();
             long missinids = 0;
             missionidfinal.ForEach(mission => missinids = mission.MissionId);
 
@@ -926,6 +951,7 @@ namespace CIPlatform.Controllers
                     Title = storyTitle,
                     Description = desc,
                     PublishedAt = pubDate,
+                    VidUrl = vid,
                     UserId = ids,
                     MissionId = missinids
                 };
@@ -950,9 +976,84 @@ namespace CIPlatform.Controllers
 
 
             ViewBag.finallist = finallist;
+
+
+
+            //Edit
+
+            
+
+
+
+
             return View();
         }
 
+      
+        public IActionResult EditStory(int selectedOptionId, string appliedMission)
+        {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+
+            var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+
+            //ViewBag.appliedmission = appliedmission;
+            var missionidfinal = _ciplatformDbContext.Missions.Where(a => a.Title.Contains(appliedMission)).ToList();
+            long missinids = 0;
+            missionidfinal.ForEach(mission => missinids = mission.MissionId);
+
+            var missionList = _ciplatformDbContext.Missions.ToList();
+
+            var finallist = from a in appliedmission
+                            join m in missionList on a.MissionId equals m.MissionId
+                            where a.MissionId == m.MissionId
+                            select new
+                            {
+                                a,
+                                m
+                            };
+
+
+
+            //ViewBag.finallist = finallist;
+
+            var data = _ciplatformDbContext.Stories.Where(a => a.MissionId == selectedOptionId && a.UserId == ids).ToList().FirstOrDefault();
+
+            
+            if (data != null)
+            {
+                var fetchStoryDetails = new Story
+                {
+
+                    Title = data.Title,
+                    Description = data.Description,
+                    PublishedAt = data.PublishedAt,
+                    VidUrl = data.VidUrl,
+                    UserId = ids,
+                    MissionId = missinids
+                };
+
+                //ViewBag.fetchStoryDetails = fetchStoryDetails;
+                //ViewBag.checkempty = 1;
+                return Json(fetchStoryDetails);
+            }
+            else
+            {
+
+                //ViewBag.checkempty = 0;
+                return Json(null);
+            }
+
+         
+
+            
+        }
+
+        //public IActionResult SaveStory() {
+        
+        //return RedirectToAction()
+        //}
 
         public IActionResult NoMissionFound()
         {

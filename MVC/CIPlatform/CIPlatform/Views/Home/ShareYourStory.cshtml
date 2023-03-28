@@ -3,6 +3,7 @@
         *@
         @{
         }
+@using CIPlatform.Entities.Models
 @using CIPlatform.Models.ViewModels
 @model LandingAllModels 
 
@@ -86,25 +87,32 @@
 
                                 </li>
                                 <li>
-                                    <img src="/images/user-img.png" alt="" class="user-avatar">
-                                </li>
+                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+                        </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Evan Donohue
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Volunteering</a>
-                                        <a class="dropdown-item" href="#">Sponsered</a>
+                     
 
-                                </li>
+                    </ul>
+                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["fullname"]
+                        </button>
+                  
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+               </div>
 
 
 
-                            </ul>
-
-                        </div>
+                            
                     </nav>
                     <hr>
     
@@ -134,21 +142,32 @@
                         <div class="row" style="color: grey;">
                             <div class="col-md-4">
                                 <label>Select Mission</label>
-                                  <select  class="form-control" id="exampleFormControlSelect12" style="color: grey;">
-
+                                  <select onchange="newselecId(this)"  class="form-control" id="exampleFormControlSelect12" style="color: grey;">
+                                      <option selected disabled hidden>Select </option>
                                  @foreach(var appm in ViewBag.finallist)
                                   {
 
-                               <option value="@appm.m.Title">@appm.m.Title</option>
+                                        <option id="@appm.m.MissionId" value="@appm.m.Title">@appm.m.Title</option>
                                 
                                    }
                      
                                  
                                   </select>
                             </div>
+                    @{
+
+
+                        if(@ViewBag.checkempty == 1)
+                        {
+
+                            Story story = ViewBag.fetchStoryDetails;
+
+                            //foreach(var items in ViewBag.fetchStoryDetails)
+                            //      {
                             <div class="col-md-4 ">
+                                
                                 <label>My Story Title</label>
-                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
+                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle" value="@story.Title">
                             </div>
                             <div class="col-md-4">
                                 <label>Date</label>
@@ -157,17 +176,18 @@
                                     <form class="row" >
                                       <!-- <label for="date" class="col-1 col-form-label">Date</label> -->
                                       <!-- <div class="col-12" > -->
-                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
+                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;" value="@story.PublishedAt">
                                       <!-- </div> -->
                                     </form>
                                   </section>
                             </div>
-                        </div>
+                            
+                     
                         <br>
               
               
 
-                    </div>
+                  
 
                     <div class="row" style="color: grey;">
 
@@ -175,30 +195,76 @@
                             <label>My Story</label>
                             <br>
                             <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
-                     
+                                @story.Description
                             </textarea>
 
                         </div>
 
                     </div>
-        <br>
+                <br>
                     <div class="row"  style="color: grey;">
 
                         <div class="col-12">
                             <label>Enter Video URL</label>
-                            <input type="text" class="form-control" placeholder="Enter story title">
+                            <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url" value="@story.VidUrl">
                         </div>
                     </div>
-        <br>
+                            }
+                        
+                        else
+                        {
+                            <div class="col-md-4 ">
+                                
+                                <label>My Story Title</label>
+                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Date</label>
+                                <section class="container">
+                    
+                                    <form class="row" >
+                                     
+                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
+                                      
+                                    </form>
+                                  </section>
+                            </div>
+                            
+                     
+                        <br>
+              
+              
+
+                  
+
+                    <div class="row" style="color: grey;">
+
+                        <div class="col-12">
+                            <label>My Story</label>
+                            <br>
+                            <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
+                                
+                            </textarea>
+
+                        </div>
+
+                    </div>
+                <br>
+                    <div class="row"  style="color: grey;">
+
+                        <div class="col-12">
+                            <label>Enter Video URL</label>
+                            <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url">
+                        </div>
+                    </div>
+                        }
+                        }
+                    
+                <br>
                     <div class="row" style="color: grey;">
                         <div class="col-12">
                             <label>Upload your photos</label>
-                            <!-- <div class="dotted-box"> -->
-
-                        
-                                <!-- <div class="file-upload-wrapper">
-                                    <input type="file" id="input-file-now" class="file-upload" />
-                                  </div> -->
+                          
 
                                   <div class="drag-image">
                                     <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -207,11 +273,11 @@
                                     <button>Browse File</button>
                                     <input type="file" hidden>
                                   </div>
-                            <!-- </div> -->
+                       
                     
                         </div>
                     </div>
-        <br><br><br>
+         <br><br><br>
                     <div class="row">
 
                         <div class="col-4">
@@ -228,7 +294,7 @@
                         </div>
 
                     </div>
-                 
+                    
                 </div>
 
 

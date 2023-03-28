@@ -173,10 +173,11 @@ function commentadd(MissionId) {
 
 function addstory() {
    /* var missiondd = document.getElementById('#exampleFormControlSelect12').value;*/
-   var abcd= $('#exampleFormControlSelect12').val();
+    var appliedMission= $('#exampleFormControlSelect12').val();
     var storyTitle = document.getElementById('sTitle').value;
     var pubDate = document.getElementById('sPDate').value;
     var desc = document.getElementById('sDesc').value;
+    var vid = document.getElementById('vidUrl').value;
     
     $.ajax({
         url: '/Home/ShareYourStory',
@@ -186,7 +187,8 @@ function addstory() {
             storyTitle: storyTitle,
             pubDate: pubDate,
             desc: desc,
-            abcd: abcd
+            vid: vid,
+            appliedMission: appliedMission
             
         },
         success: function () {
@@ -198,4 +200,42 @@ function addstory() {
     });
 
 
+}
+
+
+
+
+
+
+
+
+function newselecId(s) {
+  /*  var adID = console.log(s[s.selectedIndex].id);*/
+    /*   var newappMissionID = $(this).find('option:selected').attr('id');*/
+    const selectElement = document.getElementById("exampleFormControlSelect12");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+    console.log(selectedOptionId);
+
+    $.ajax({
+        url: '/Home/EditStory',
+        type: "POST",
+        data: {
+           
+            selectedOptionId: selectedOptionId
+
+        }, 
+        success: function (data) {
+            var a = new Date(data.publishedAt).toISOString().slice(0, 10);
+
+            document.getElementById("sTitle").value = data.title;
+            document.getElementById("sPDate").value = a;
+            document.getElementById("sDesc").innerHTML = data.description;
+            document.getElementById("vidUrl").value = data.vidUrl;
+            console.log(data);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+            
 }

@@ -55,11 +55,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item stories">
-                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                            <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
@@ -69,26 +69,31 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Volunteering</a>
                                 <a class="dropdown-item" href="#">Sponsered</a>
-</div>
+
                         </li>
                         <li>
-                            <img src="~/NewFolder/user-img.png" alt="" class="user-avatar">
+                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-username" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Evan Donohue
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Volunteering</a>
-                                <a class="dropdown-item" href="#">Sponsered</a>
-
-                        </li>
-
-
+                     
 
                     </ul>
+                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["fullname"]
+                        </button>
+                  
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+               </div>
 
                 </div>
             </nav>
@@ -305,7 +310,8 @@
                 <div class="card-body">
                   <h5 class="card-title" id="processedStoryData">@itemss.Title</h5>
                   <p class="card-text" style="text-align: justify; font-size: small;">@itemss.Description</p>
-                    <br>
+                  <a class="card-text" style="text-align: justify; font-size: medium; color:blue;" href="@itemss.VidUrl">@itemss.VidUrl</a>
+                    <br><br>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-3" style="width: 50%;">
                             <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
