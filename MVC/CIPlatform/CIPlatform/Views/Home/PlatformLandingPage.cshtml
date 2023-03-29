@@ -5,7 +5,7 @@
 }
 
 @using CIPlatform.Models.ViewModels
-@model LandingAllModels 
+@model LandingAllModels
 
 
 <!DOCTYPE html>
@@ -15,17 +15,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
 
     @*-------Links for checkbox---------*@
 
@@ -33,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 
 
-     <!-- Font Awesome -->
+    <!-- Font Awesome -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -41,7 +41,7 @@
 
     <link rel="stylesheet" href="~/css/platformlandingpage.css">
     <link rel="stylesheet" href="~/css/storylisting.css">
-   
+
 
     <title>Platform Landing Page</title>
 </head>
@@ -49,7 +49,7 @@
 <body onload="myFunction()">
 
 
-  
+
     <header>
         <div class="container-fluid">
 
@@ -57,8 +57,8 @@
             <nav class="navbar navbar-expand-md navbar-light ">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -70,7 +70,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Policy
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,25 +82,25 @@
                             <img src="~/NewFolder/user-img.png" alt="" class="user-avatar">
                         </li>
 
-                     
+
 
                     </ul>
-                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                    <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @TempData["fullname"]
-                        </button>
-                  
+                            <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @TempData["fullname"]
+                            </button>
+
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
                         </ul>
-               </div>
+                    </div>
                 </div>
             </nav>
             <hr>
@@ -112,21 +112,21 @@
                             <div class="search-combine">
 
                                 <img src="~/NewFolder/search.png" alt="" class="search-icon">
-                                
-                                    @using(Html.BeginForm("PlatformLandingPage" , "Home" , FormMethod.Get))
-                                    
-                                    {
-                                        <form class="form-inline my-2 my-lg-0">
-                                             
-                                            @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
-                                           
-                                           
-                                        </form>
-                                    }
-                             
-                                
-                                 
-                             
+
+                                @using (Html.BeginForm("PlatformLandingPage", "Home", FormMethod.Get))
+
+                                {
+                                    <form class="form-inline my-2 my-lg-0">
+
+                                        @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
+
+
+                                    </form>
+                                }
+
+
+
+
                             </div>
 
                         </nav>
@@ -134,132 +134,199 @@
                     <div class="col-lg-5 col-sm-6">
 
 
-                      @* <li class="nav-item dropdown">*@
-                        <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CountryFun()">
+                        @* <li class="nav-item dropdown">*@
+                        @* <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CountryFun()">
                             <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Country &nbsp; <i class="bi bi-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-                                
-                                @foreach (var item in ViewBag.Country)
-                                {
-                                <li class="form-check">
-                                    <input select multiple id="country-select" name="country"  class="form-check-input checkbox" type="checkbox" value="@item.Name">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                            @item.Name
-                                        </label>
-                                    </li>
-                                }
-                                
-                            </ul>
-                            </form>
-                      @*  </li>*@
-
-
-                        <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CityFun()" select multiple>
-                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                City &nbsp; <i class="bi bi-chevron-down"></i>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Country &nbsp; <i class="bi bi-chevron-down"></i>
                             </button>
                             <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
 
-                                @foreach (var item in ViewBag.Cities)
-                                {
-                                    <li class="form-check">
-                                        <input  id="city-select" name="city" class="form-check-input checkbox" type="checkbox" value="@item.Name">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            @item.Name
-                                        </label>
-                                    </li>
-                                }
+                            @foreach (var item in ViewBag.Country)
+                            {
+                            <li class="form-check">
+                            <input select multiple id="country-select" name="country"  class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            @item.Name
+                            </label>
+                            </li>
+                            }
 
                             </ul>
-                        </form>
+                            </form>*@
+                        @*  </li>*@
 
 
-                       @* <div class="filterbox">
+                        @* <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CityFun()" select multiple>
+                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            City &nbsp; <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+
+                            @foreach (var item in ViewBag.Cities)
+                            {
+                            <li class="form-check">
+                            <input  id="city-select" name="city" class="form-check-input checkbox" type="checkbox" value="@item.Name">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            @item.Name
+                            </label>
+                            </li>
+                            }
+
+                            </ul>
+                            </form>*@
+
+
+                        @* <div class="filterbox">
                             <div class="navbar-nav ms-4  ">
-                                <select name="City" style="border:none; background:none;">
-                                    <option selected disabled hidden>City</option>
+                            <select name="City" style="border:none; background:none;">
+                            <option selected disabled hidden>City</option>
+                            @foreach (var item in ViewBag.Cities)
+                            {
+                            <option style="border:none">@item.Name</option>
+
+                            }
+                            </select>
+                            </div>
+                            </div>*@
+
+
+                        @* <div class="filterbox country">
+                            <div class="navbar-nav ms-4  ">
+
+                            <select id="countryitems" style="border:none; background:none;">
+                            <option selected disabled hidden>Country</option>
+                            @{
+                            @foreach (var item in ViewBag.Country)
+                            {
+                            <option style="border:none" >@item.Name</option>
+
+
+
+                            }
+                            }
+
+
+                            </select>
+
+
+
+
+                            </div>
+                            </div>*@
+                        <div class="filterbox">
+                            <div class=" dropdown uname">
+                                <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Country <i class="bi bi-chevron-down "></i>
+                                </button>
+                                <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach (var item in ViewBag.Country)
+                                    {
+                                        <li class="dropdown">
+                                            <div class="check-box">
+                                                <span>
+                                                    <input type="checkbox" class="checkbox" name="filcountry" value="@item.CountryId" onclick="FilterCountry(@item.CountryId)">
+                                                    <label for="@item.Name"> @item.Name</label>
+                                                </span>
+                                            </div>
+
+                                        </li>
+                                    }
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="filterbox">
+                            <div class=" dropdown uname">
+                                <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    City <i class="bi bi-chevron-down "></i>
+                                </button>
+                                <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     @foreach (var item in ViewBag.Cities)
                                     {
-                                        <option style="border:none">@item.Name</option>
+                                        <li class="dropdown">
+                                            <div class="check-box">
+                                                <span>
+                                                    <input type="checkbox" class="checkbox" name="filcity" value="@item.CityId" onclick="FilterCity(@item.CityId)">
+                                                    <label for="@item.Name"> @item.Name</label>
+                                                </span>
+                                            </div>
 
+                                        </li>
                                     }
-                                </select>
+                                </ul>
+
                             </div>
-                        </div>*@
-
-
-                       @* <div class="filterbox country">
-                        <div class="navbar-nav ms-4  ">
-                            
-                                <select id="countryitems" style="border:none; background:none;">
-                                <option selected disabled hidden>Country</option>
-                                @{
-                                            @foreach (var item in ViewBag.Country)
-                                            {
-                                                <option style="border:none" >@item.Name</option>
-
-
-
-                                            }
-                                }
-                              
-                                
-                            </select>
-                     
-
-                          
-
                         </div>
-                    </div>*@
-                  
-                    <div class="filterbox">
-                        <div class="navbar-nav ms-4  ">
-                           
-                                <form id="filter-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
+                        <div class="filterbox">
+                            <div class=" dropdown uname">
+                                <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Theme <i class="bi bi-chevron-down "></i>
+                                </button>
+                                <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach (var item in ViewBag.MissionThemes)
+                                    {
+                                        <li class="dropdown">
+                                            <div class="check-box">
+                                                <span>
+                                                    <input type="checkbox" class="checkbox" name="subcats" value="@item.MissionThemeId" onclick="SortBySubcat(@item.MissionThemeId)">
+                                                    <label for="@item.Title"> @item.Title</label>
+                                                </span>
+                                            </div>
+
+                                        </li>
+                                    }
+                                </ul>
+
+                            </div>
+                        </div>
+                        @* <div class="filterbox">
+                            <div class="navbar-nav ms-4  ">
+
+                            <form id="filter-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
 
 
-                                    <select id="filter-select" name="filter" style="border:none; background:none;" onchange="filterChanged()">
-                                            <option selected disabled hidden>Theme</option>
+                            <select id="filter-select" name="filter" style="border:none; background:none;" onchange="filterChanged()">
+                            <option selected disabled hidden>Theme</option>
 
-                                        @{
-
-
-                                            @foreach (var item in ViewBag.MissionThemes)
-                                            {
-                                                <option id=@item.MissionThemeId style="border:none">@item.Title</option>
+                            @{
 
 
+                            @foreach (var item in ViewBag.MissionThemes)
+                            {
+                            <option id=@item.MissionThemeId style="border:none">@item.Title</option>
 
 
-                                            }
-                                        }
+
+
+                            }
+                            }
                             </select>
 
-                           </form>
-                        </div>
-                        
-                    </div>
-                    <div class="filterbox">
-                        <div class="navbar-nav ms-4  ">
+                            </form>
+                            </div>
+
+                            </div>
+                            <div class="filterbox">
+                            <div class="navbar-nav ms-4  ">
                             <select id="filter-dropdown" name="skill" style="border:none; background:none;">
-                                <option selected disabled hidden>Skill</option>
-                                @foreach (var item in ViewBag.MissionSkills)
-                                {
-                                    <option style="border:none">@item.Skill</option>
+                            <option selected disabled hidden>Skill</option>
+                            @foreach (var item in ViewBag.MissionSkills)
+                            {
+                            <option style="border:none">@item.Skill</option>
 
-                                }
+                            }
                             </select>
-                                
-                        </div>
-                    </div>
+
+                            </div>
+                            </div>*@
 
                     </div>
                     <div class="col-lg-1">
-
                     </div>
 
 
@@ -272,49 +339,57 @@
                 <div class="row">
                     <div class="col-lg-11">
 
-                        <button class="search-history">Tree Plantation
+                        <button class="search-history">
+                            Tree Plantation
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="btn-s-short">Canada
+                        <button class="btn-s-short">
+                            Canada
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="btn-s-short">Toronto
+                        <button class="btn-s-short">
+                            Toronto
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="btn-s-short">Montreal
+                        <button class="btn-s-short">
+                            Montreal
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="search-history">Environment
+                        <button class="search-history">
+                            Environment
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="btn-s-short">Nutrition
+                        <button class="btn-s-short">
+                            Nutrition
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="search-history">Anthropology
+                        <button class="search-history">
+                            Anthropology
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
                         </button>
 
-                        <button class="btn-s-long">Environmental Science
+                        <button class="btn-s-long">
+                            Environmental Science
 
                             <img src="~/NewFolder/cancel1.png" alt="cancel" class="img-cancel">
 
@@ -326,37 +401,37 @@
                             <label class="explore72"> Explore <b>72 more missions</b> </label>
 
 
-                           @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
-                            <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
+                                <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sort by
-                            </a>
+                                </a>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Newest</a>
                                 <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Oldest</a>
-                            </div>
+                                </div>
 
-                        </form>
-*@
+                                </form>
+                            *@
                             <div class="filterbox col-md-6 col-sm-6 col-xs-6">
                                 <div class="navbar-nav ms-4">
                                     @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
 
-                                    <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
-                                            
-                                            <option id="sortOrder-select" value="" selected disabled hidden>Sort By</option>
+                                        <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
+
+                                        <option id="sortOrder-select" value="" selected disabled hidden>Sort By</option>
 
 
-                                            <option id="sortOrder" value="newest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Newest</option>
+                                        <option id="sortOrder" value="newest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Newest</option>
 
 
-                                            <option id="sortOrder" value="oldest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Oldest</option>
+                                        <option id="sortOrder" value="oldest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Oldest</option>
 
 
-                                    </select>
+                                        </select>
 
-                            </form>*@
+                                        </form>*@
 
 
                                     <select class="form-control" onchange="location = this.value;">
@@ -376,7 +451,7 @@
 
 
 
-                            </div>
+                                </div>
                             </div>
 
 
@@ -384,18 +459,18 @@
                             @* <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sort by
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
-                            </div>*@
-                            
-                            
-                            
-                            
-                            
+                                </div>*@
+
+
+
+
+
                             <button id="grdbtn" onclick="grid1()">
                                 <img src="~/NewFolder/grid.png" alt="">
                             </button>
@@ -403,35 +478,35 @@
                                 <img src="~/NewFolder/list.png" alt="">
                             </button>
                         </div>
-                       
-                        @using(Html.BeginForm("PlatformLandingPage" , "Home" , FormMethod.Get))
+
+                        @using (Html.BeginForm("PlatformLandingPage", "Home", FormMethod.Get))
                         {
-                        if(@ViewBag.SearchStatus == 0)
-                                    {
-                                        @*<div class="alert alert-danger">No Mission Found</div>*@
+                            if (@ViewBag.SearchStatus == 0)
+                            {
+                                @*<div class="alert alert-danger">No Mission Found</div>*@
 
-                                        <div class="container">
+                                <div class="container">
 
-                                            <div class="combine">
-                                                <h3 class="no-mission">No Mission Found</h3>
-                                                <button class="submit-btn-body">Submit new mission
+                                    <div class="combine">
+                                        <h3 class="no-mission">No Mission Found</h3>
+                                        <button class="submit-btn-body">
+                                            Submit new mission
 
-                                                    <img src="~/NewFolder/right-arrow.png" alt="">
+                                            <img src="~/NewFolder/right-arrow.png" alt="">
 
-                                                </button>
+                                        </button>
 
-                                            </div>
-                
+                                    </div>
 
-                                        </div>
-                                    }
-    
+
+                                </div>
+                            }
+
                         }
 
                     </div>
 
                     <div class="col-lg-1">
-
                     </div>
                 </div>
             </div>
@@ -446,410 +521,169 @@
 
     </header>
 
- 
-                                    
+
+
     <!-- Grid View -->
     <div class="grid-view" id="grdp">
 
         <div class="container grid-container ">
-            <div class="row">
-                 @foreach(var item in ViewBag.outputsf)
-               {
-
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div>
-                                <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-
-                        </div>
-                            <button class="missions">@item.Theme.Title</button>
-                            @{
-
-                                if (@ViewBag.favlist.Count == 0)
-                                {
-                                    <i onclick="likeMission(@item.MissionId)" class="far fa-heart"></i>
-                                }
-
-                                else
-                                {
-
-                                    var v = ViewBag.favlist;
-
-                                    for (var i = 0; i < v.Count; i++)
-                                    {
-
-                                        if (@ViewBag.favlist[i].MissionId == item.MissionId && @ViewBag.favlist[i].UserId == ViewBag.ids)
-                                        {
-                                            <i onclick="likeMission(@item.MissionId)" style="color:red" class="fas fa-heart"></i>
-                                            break;
-
-                                        }
-
-                                        else
-
-                                        {
-                                            if (i == v.Count - 1)
-                                            {
-                                                <i onclick="likeMission(@item.MissionId)" class="far fa-heart"></i>
-                                            }
-
-                                        }
-
-                                    }
-
-                                }
-
-
-
-                            }
-
-
-                            @*<p>@item.Name</p>*@
-                        <div class="card-body">
-                            
-                           
-                            <h4 class="card-title">@item.Title</h4>
-                            <p class="card-text">@item.ShortDescription</p>
-                             <div class="combine" style="display: flex;">
-                                    <div class="row">
-                                        @*<div class="d-flex">*@
-                                            <div class="col-6 d-flex">
-                                                <span class="card-text">@item.OrganizationName</span>
-
-                                           </div>
-                                        
-
-                                            <div id="rating" class="col-6 d-flex">
-                                            @{
-                                                if (@ViewBag.Ratingdata.Count == 0)
-                                                {
-                                                        
-                                                   
-                                                    
-                                                    //<div id="rating" class="d-flex">
-                                                        <i  class="rating__star far fa-star star" data-value="1" data-missionid="@item.MissionId"></i>
-                                                        <i  class="rating__star far fa-star star" data-value="2" data-missionid="@item.MissionId"></i>
-                                                        <i  class="rating__star far fa-star star" data-value="3" data-missionid="@item.MissionId"></i>
-                                                        <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.MissionId"></i>
-                                                        <i  class="rating__star far fa-star star" data-value="5" data-missionid="@item.MissionId"></i>
-                                                    //</div>
-                                                  
-
-
-                                                }
-
-
-
-
-
-
-                                                else 
-                                                {
-                                                    int i = 0;
-
-                                                    for (i = 0; i < @ViewBag.Ratingdata.Count; i++)
-                                                    {
-                                                    
-                                                        if (@ViewBag.Ratingdata[i].MissionId == @item.MissionId)
-                                                        {
-                                                            int b = Convert.ToInt32(ViewBag.Ratingdata[i].Rating);
-
-
-
-                                                            for (int j = 1; j <=5; j++)
-                                                            {
-
-                                                                if (j <= b)
-                                                                {
-
-                                                                   // <div id="rating" class="d-flex">
-                                                                        <i class="rating__star fas fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
-                                                                   // </div>
-                                                                }
-                                                                else
-                                                                {
-                                                                  //  <div class="row d-flex" id="rating">
-                                                                    <i class="rating__star far fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
-                                                                //</div>
-                                                                }
-
-                                                            }
-                                                            
-
-                                                        }
-
-
-
-
-                                                    }
-
-
-
-
-
-                                                    //@ViewBag.Ratingdata[i].MissionId == item.m.MissionId
-
-
-
-
-                                                }
-
-                                               
-                                            }
-
-</div>
-
- 
-
-
-
-
-                                           @* <div class="col-6" style="margin-left: -12%;">*@
-                                            @* <div style="display:flex">    *@
-
-                                       
-                                            
-                                           
-                                        
-                                            
-
-
-                                                   
-
-                                                @* </div>*@
-                                            </div>
-
-
-
-
-                                            </div>
-
-                                        </div>
-                                
-                           <br>
-
-
-                             <div class="row">
-
-                                            <div class="col-12">
-
-                                                <div class="card-line">
-                                            <button class="btn-date">From  @item.StartDate.ToShortDateString() until @item.EndDate.ToShortDateString()</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                            <div class="iconandtext" style="display:flex">
-
-                                <img class="icons1" src="~/NewFolder/Seats-left.png">
-
-                                <div class="hssh">
-                                        <p class="seatno">@item.Availability</p>
-                                    <p class="seat">Seats Left</p>
-                                </div>
-                                <img class="icons" src="~/NewFolder/deadline.png">
-                                <div class="hssh">
-
-                                        <p class="seatno">@item.EndDate.ToShortDateString()</p>
-                                    <p class="seat">Deadline</p>
-                                </div>
-                            </div>
-
-                           @* <hr class="line-hr">*@
-                           <hr>
-
-                            @*<button class="apply-btn">Apply
-
-                                <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-                            </button>*@
-
-
-                            <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
-                                <button type="submit" class="apply-btn">
-
-                                Apply <img src="~/NewFolder/right-arrow.png">
-                                </button>
-                            </a>
-                        </div>
-
-                    </div>
-             @*   </div>*@
-                
-                
-    }
-        
-                    </div>
-                     </div>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
+    <div id="filter_products">
+        <partial name="_Grid" />
     </div>
-                   
-        <br />      
-    
-    <div class="pagination">
-                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                       <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
+     </div>
+      </div>
+    @* <div class="pagination">
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+        </a>
+        </li>
 
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
+        <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+        </a>
+        </li>
 
-                        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
-                        {
-                            @*<a href="/Home/Landingpage?page=@i&pageSize=@ViewData["PageSize"]">@i</a>*@
-                            <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
-                        }
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                 </a>
-                            </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                   </ul>
-              </nav>
-       </div>
-
+        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+        {
+        @*<a href="/Home/Landingpage?page=@i&pageSize=@ViewData["PageSize"]">@i</a>*@
+    @*         <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
+        }
+        <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+        </a>
+        </li>
+        <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+        </a>
+        </li>
+        </ul>*@
+    @*</nav>
+        </div>*@
 
 
-               
+
 
 
 
     <!-- List View -->
+    @* <div class="list-view active" id="listp">
 
-   @* <div class="list-view active" id="listp">
 
-       
         <div class="container-fluid">
-            <div class="card mb-3 lst-row-lst">
-                <div class="row no-gutters">
-                     @foreach(var item in ViewBag.Result)
-               {
-        
-                    <div class="col-md-4">
+        <div class="card mb-3 lst-row-lst">
+        <div class="row no-gutters">
+        @foreach(var item in ViewBag.Result)
+        {
 
-                        <img src="~/NewFolder/lst-img1.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-                        <button class="lst-missions">@item.Title</button>
-                    </div>
+        <div class="col-md-4">
 
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">@item.m.Title</h4>
-                            <p class="card-text">@item.m.ShortDescription</p>
+        <img src="~/NewFolder/lst-img1.png" class="card-img" alt="..." style="margin-bottom: -2%;">
+        <button class="lst-missions">@item.Title</button>
+        </div>
 
-                            <div class="row">
+        <div class="col-md-8">
+        <div class="card-body">
+        <h4 class="card-title">@item.m.Title</h4>
+        <p class="card-text">@item.m.ShortDescription</p>
 
-                                <div class="col-sm-6">
-                                    <div class="txt" style="display: flex;">
-                                        <span class="card-text" >@item.m.OrganizationName</span>
-                                        <div class="star" style="display: flex;">
+        <div class="row">
 
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
-                                            <img src="~/NewFolder/selected-star.png" alt="">
+        <div class="col-sm-6">
+        <div class="txt" style="display: flex;">
+        <span class="card-text" >@item.m.OrganizationName</span>
+        <div class="star" style="display: flex;">
 
-                                        </div>
+        <img src="~/NewFolder/selected-star.png" alt="">
+        <img src="~/NewFolder/selected-star.png" alt="">
+        <img src="~/NewFolder/selected-star.png" alt="">
+        <img src="~/NewFolder/selected-star.png" alt="">
+        <img src="~/NewFolder/selected-star.png" alt="">
 
-                                        <button class="lst-apply-btn">Apply
+        </div>
 
-                                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
+        <button class="lst-apply-btn">Apply
 
-                                        </button>
+        <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
 
-                                    </div>
+        </button>
 
-                                </div>
+        </div>
 
-                                <div class=" col-sm-6 ">
-                                    <button class="lst-btn-date">From @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
-                                    <div class="lst-iconandtext" style="display:flex">
+        </div>
 
-                                        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-        
-                                        <div class="lst-hssh">
-                                            <p class="lst-seatno"><b>@item.m.Availability</b> </p>
-                                            <p class="lst-seat">Seats Left</p>
-                                        </div>
-                                        <img class="lst-icons" src="~/NewFolder/deadline.png">
-                                        <div class="lst-hssh">
-        
-                                            <p class="lst-seatno-date"><b>@item.m.EndDate.ToShortDateString()</b> </p>
-                                            <p class="lst-seat">Deadline</p>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class=" col-sm-6 ">
+        <button class="lst-btn-date">From @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
+        <div class="lst-iconandtext" style="display:flex">
 
+        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
 
-                                
+        <div class="lst-hssh">
+        <p class="lst-seatno"><b>@item.m.Availability</b> </p>
+        <p class="lst-seat">Seats Left</p>
+        </div>
+        <img class="lst-icons" src="~/NewFolder/deadline.png">
+        <div class="lst-hssh">
 
-                            </div>
-
-
-                         
-
-
-                        </div>
-                    </div>
-                    }
-                  
-                </div>
-
-               
-
-                
-            </div>
+        <p class="lst-seatno-date"><b>@item.m.EndDate.ToShortDateString()</b> </p>
+        <p class="lst-seat">Deadline</p>
+        </div>
+        </div>
+        </div>
 
 
 
-                
-            </div>
+
+        </div>
+
+
+
+
+
+        </div>
+        </div>
+        }
+
+        </div>
+
+
+
+
+        </div>
+
+
+
+
+        </div>
         </div>
         </div>*@
-        <!-- Javascript -->
+    <!-- Javascript -->
 
 
-        <script>
-            function myFunction() {
-                document.getElementById('listp').style.display = "none";
-            }
-            function list1() {
-                document.getElementById('grdp').style.display = "none";
-                document.getElementById('listp').style.display = "block";
-            }
-            function grid1() {
-                document.getElementById('listp').style.display = "none";
-                document.getElementById('grdp').style.display = "block";
-            }
+    <script>
+        function myFunction() {
+            document.getElementById('listp').style.display = "none";
+        }
+        function list1() {
+            document.getElementById('grdp').style.display = "none";
+            document.getElementById('listp').style.display = "block";
+        }
+        function grid1() {
+            document.getElementById('listp').style.display = "none";
+            document.getElementById('grdp').style.display = "block";
+        }
 
-        </script>
+    </script>
 
-        <script>
+    <script>
 
         const ratingStars = [...document.getElementsByClassName("rating__star")];
         const ratingResult = document.querySelector(".rating__result");
@@ -897,8 +731,8 @@
                 $('#filter-form').submit();
             });
         }
- 
-        
+
+
 
     </script>
 
@@ -967,7 +801,7 @@
         function CountryFun() {
             $('#country-form').change(function () {
 
-                
+
                 const country = $('#country-select').val();
 
                 const urlParams = new URLSearchParams(window.location.search);
@@ -1004,17 +838,17 @@
 
     </script>
 
-   
 
 
 
 
 
-   
 
 
-    
-   <script src="~/js/landing.js"></script>
+
+    <script src="~/js/Filter.js"></script>
+
+    <script src="~/js/landing.js"></script>
 
 
 </body>

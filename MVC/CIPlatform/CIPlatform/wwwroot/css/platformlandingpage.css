@@ -1,4 +1,12 @@
-﻿.navbar {
+﻿.uname1
+{
+    background:none;
+    border:none;
+    margin-bottom:15%;
+}
+
+
+.navbar {
     width: 100%;
 }
 
@@ -138,12 +146,13 @@
     margin-left: 15%;
     height: 25px;
     width: 25px;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .search-bar {
     border: none;
     margin-left: 5%;
+    margin-top: 5%;
 }
 
 .all-dropdown {

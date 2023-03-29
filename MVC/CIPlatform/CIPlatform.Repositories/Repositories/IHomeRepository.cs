@@ -21,9 +21,9 @@ namespace CIPlatform.Repository.Repositories
 
             IEnumerable<MissionTheme> GetMissionThemes();
 
-            IEnumerable<Mission> GetMissionWithMissionThemeRecords();
-
-            IEnumerable<Mission> GetSpecificMission(int id);
+        ////IEnumerable<Mission> GetMissionWithMissionThemeRecords();
+        List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr);
+        IEnumerable<Mission> GetSpecificMission(int id);
 
             IEnumerable<City> GetCityRecords();
 

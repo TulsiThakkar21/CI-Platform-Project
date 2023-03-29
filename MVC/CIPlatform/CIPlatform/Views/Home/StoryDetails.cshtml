@@ -1,0 +1,360 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@using CIPlatform.Models.ViewModels
+@model LandingAllModels
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+    @*-------Links for checkbox---------*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+
+    <link rel="stylesheet" href="~/css/platformlandingpage.css">
+    <link rel="stylesheet" href="~/css/volLanding.css">
+
+
+    <title>Story Details</title>
+
+    </head>
+
+<body>
+
+
+    <header>
+        <div class="container-fluid">
+
+
+            <nav class="navbar navbar-expand-md navbar-light ">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item stories">
+                            <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Policy
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Volunteering</a>
+                                <a class="dropdown-item" href="#">Sponsered</a>
+
+                        </li>
+                        <li>
+                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+                        </li>
+
+                     
+
+                    </ul>
+                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["fullname"]
+                        </button>
+                  
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+               </div>
+
+        </div>
+        </nav>
+        <hr />
+        </div>
+    </header>
+
+    <br />
+        <div class="container-fluid">
+
+        <div class="row no-gutters">
+
+
+
+            <div class="col-md-6 first-col ">
+                <img id="changingimg" class="main-img" src="~/NewFolder/storydetailmainimg.png" style="height: 80%;">
+
+
+
+
+
+                <div class="container text-center my-3">
+
+                    <div class="row mx-auto my-auto justify-content-center">
+                        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <div class="col-sm-3">
+                                        <div class="card" style="width: 75%;">
+                                            <div class="card-img">
+                                                <button style="background: none; border: none;" id="unique1"
+                                                        onclick="function1()">
+                                                    <img src="~/NewFolder/vol-carousel-1.png" class="img-fluid">
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-sm-3">
+                                        <div class="card" style="width: 75%;">
+                                            <div class="card-img">
+                                                <button style="background: none; border: none;" id="unique2"
+                                                        onclick="function2()">
+                                                    <img src="~/NewFolder/vol-carrousel-2.png" class="img-fluid">
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-sm-3">
+                                        <div class="card" style="width: 75%;">
+                                            <div class="card-img">
+                                                <button style="background: none; border: none;" id="unique3"
+                                                        onclick="function3()">
+                                                    <img src="~/NewFolder/volcarousel-3.png" class="img-fluid">
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-sm-3">
+                                        <div class="card" style="width: 75%;">
+                                            <div class="card-img">
+                                                <button style="background: none; border: none;" id="unique4"
+                                                        onclick="function4()">
+                                                    <img src="~/NewFolder/vol-carousel-4.png" class="img-fluid">
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
+                               data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
+                               data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 right-div ">
+               @* @foreach (var item in ViewBag.specificmission)
+
+                {*@
+                    <div class="txt">
+                        <div class="col-4">
+                           <img src="~/NewFolder/volunteer2.png" alt="" class="vol-img" style="margin-left:-5%;">
+                            <p class="vol-name" style="margin-left:-7%;">Charles Vigue</p>
+                        </div>
+                        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <br />
+                          <p class="para">   Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. </p>
+                          <br /> 
+                          <p class="para"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste 
+                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                        <br>
+                     
+                            <div class="row">
+                                <div id="dropdownrecmd">
+                                    <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
+                                        <button class="nav-link bg-transparent text-dark fav-btn" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:10%; width:40%; margin-left:-1%; margin-top:5%; margin-bottom:-15%;">
+                                            <img class="img1" src="~/NewFolder/add1.png">
+                                            Recommend to a Co-Worker &nbsp;&nbsp;
+                                            <i class="bi bi-chevron-down"></i>
+
+                                        </button>
+                                        <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+
+                                            <li>
+                                                <ul>
+                                                  @*  @foreach (var itm in ViewBag.userslist)
+                                                    {
+                                                        <li class="form-check">
+                                                            <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                @itm.FirstName
+                                                            </label>
+
+                                                        </li>
+                                                    }*@
+                                                    <br>
+                                                    @*<button id="btn_" onclick="rccall(@item.MissionId)">Submit</button>*@
+
+                                                </ul>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+                                </div>
+
+
+                                <div class="col apply-row">
+                                    <button class="apply-btn" style="margin-left:45%;">
+                                        Open Mission
+
+                                        <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
+
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                
+
+
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-8">
+                   @* @foreach (var item in ViewBag.specificmission)
+                    {
+*@
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#mission" class="active links1" style="margin-left: 0%;">Grow Trees - On the path to environment sustainbability</a></li>
+                           
+                        </ul>
+
+                        <div class="tab-content">
+                           <br />
+                        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <br />
+                          <p class="para">   Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. </p>
+                          <br /> 
+                          <p class="para"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste 
+                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                        <br>
+
+                        <p class="para">We use these technologies for a number of purposes, such as:</p>
+
+                        <br />
+
+                        <p class="para">But I must explain to you how all this mistaken idea of 
+                            denouncing pleasure and praising pain. At vero eos et accusamus et iusto 
+                            odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
+                            atque excepturi sint occaecati cupiditate non provident, similique sunt 
+                            in culpa qui officia deserunt mollitia animi. On the other hand, 
+                            we denounce with righteous indignation and dislike men who are so beguiled 
+                            and demoralized But I must explain to you how all this mistaken idea of 
+                            denouncing pleasure and praising pain. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+
+
+                            </div>
+
+
+                            
+
+
+
+
+
+
+                        </div>
+                    
+                </div>
+                <div class="col-md-4">
+                  
+
+                </div>
+
+
+
+              
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <br />
+    <hr>
+<footer>
+                
+    <div class="footer">
+        
+        <a href="#" class="privacyp" style="color: grey; text-decoration: none; margin-left: 2%;">Privacy Policy</a>
+       
+
+
+    </div>
+</footer>
+<br>
+
+    </body>
+    </html>

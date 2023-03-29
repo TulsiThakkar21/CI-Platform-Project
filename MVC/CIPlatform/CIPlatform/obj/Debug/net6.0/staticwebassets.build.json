@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fxDTQaB/QigSyJp3zN/mtbbzvjbGxacAvzxfvRr08Ts=",
+  "Hash": "5nL+4LTXFQsIRP8ELqcWVKuqLb1R46La6treUwhBzNk=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -236,6 +236,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\Filter.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/Filter.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Filter.js"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\landing.js",
@@ -2123,6 +2140,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\NewFolder\\star-empty.png"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\storydetailmainimg.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/storydetailmainimg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\storydetailmainimg.png"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\TrialCIP\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user-img.png",

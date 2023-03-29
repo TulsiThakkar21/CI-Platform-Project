@@ -276,3 +276,28 @@ function editstory() {
     });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// upload imgs

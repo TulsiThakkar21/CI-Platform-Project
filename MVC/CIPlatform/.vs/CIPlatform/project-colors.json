@@ -15,7 +15,17 @@
       "ProjectGuid": "919fd655-f067-4ba2-b932-d926e85dd6b4",
       "DisplayName": "Script Documents",
       "ColorIndex": 1
+    },
+    "b8019205-b123-4522-ae2d-718cfbcb04bf": {
+      "ProjectGuid": "b8019205-b123-4522-ae2d-718cfbcb04bf",
+      "DisplayName": "CIPlatform.Repository",
+      "ColorIndex": 2
+    },
+    "3bbc9a09-782a-49eb-a149-8f729d83bf85": {
+      "ProjectGuid": "3bbc9a09-782a-49eb-a149-8f729d83bf85",
+      "DisplayName": "CIPlatform.Entities",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

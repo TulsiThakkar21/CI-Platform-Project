@@ -289,6 +289,7 @@
             </div>
 <br>
 <div class="main">
+
     <div class="row" style="width: 100%;">
            @{
      foreach (var itemss in ViewBag.listofstories)
@@ -297,7 +298,8 @@
 
          
 
-            <div class="card " style="width:100%;">
+            <div class="card " style="width:100%;" >
+         <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="">
                 
                     <img class="card-img-top" src="~/NewFolder/imgenv.png" alt="Card image cap">
          
@@ -327,11 +329,14 @@
                     </div>
                   <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 </div>
+                </a>
               </div>
               
         </div>
+        
         }
               }
+              
       </div>
       
 

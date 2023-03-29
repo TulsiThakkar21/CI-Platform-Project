@@ -72,18 +72,69 @@ namespace CIPlatform.Repository.Repositories
             return _db.MissionThemes.ToList();
 
         }
-
-        public IEnumerable<Mission> GetMissionWithMissionThemeRecords()
+        List<Mission> FinalMissionList = new List<Mission>();
+        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr)
 
         {
-            return _db.Missions
+            if (themefilter != null)
+            {
+                foreach (var theme in themefilter)
+                {
+                    var mission = _db.Missions
+                    .Where(a => a.ThemeId == Convert.ToInt64(theme) || theme == null)
+
+                    //where m.ThemeId == mt.MissionThemeId
+                    .ToList();
+                    FinalMissionList.AddRange(mission);
+
+                }
+
+            }
 
 
-            //.Where(a => a.ThemeId == MissionTheme.MissionThemeId)
-            .Include(t2 => t2.Theme)
-            //where m.ThemeId == mt.MissionThemeId
-            .ToList();
+            if (cityidarr != null)
+            {
+                foreach (var city in cityidarr)
+                {
+                    var mission = _db.Missions
+                    .Where(a => a.CityId == Convert.ToInt64(city) || city == null)
+
+                    //where m.ThemeId == mt.MissionThemeId
+                    .ToList();
+                    FinalMissionList.AddRange(mission);
+
+                }
+
+            }
+
+            if (countryidarr != null)
+            {
+                foreach (var country in countryidarr)
+                {
+                    var mission = _db.Missions
+                    .Where(a => a.CountryId == Convert.ToInt64(country) || country == null)
+
+                    //where m.ThemeId == mt.MissionThemeId
+                    .ToList();
+                    FinalMissionList.AddRange(mission);
+
+                }
+
+            }
+
+            return FinalMissionList;
         }
+        //public IEnumerable<Mission> GetMissionWithMissionThemeRecords()
+
+        //{
+        //    return _db.Missions
+
+
+        //    //.Where(a => a.ThemeId == MissionTheme.MissionThemeId)
+        //    .Include(t2 => t2.Theme)
+        //    //where m.ThemeId == mt.MissionThemeId
+        //    .ToList();
+        //}
 
 
         public IEnumerable<City> GetCityRecords()
