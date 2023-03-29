@@ -273,7 +273,7 @@
                        @* <button class="share-btn">*@
                              &nbsp;
 
-                            <a asp-action="ShareYourStory" class="share-btn" asp-controller="Home">Share your story</a>
+                            <a asp-action="ShareYourStory" class="share-btn" asp-controller="Home" asp-route-id="">Share your story</a>
                                     @*<img src="~/NewFolder/right-arrow2.png" alt="">*@
     
                                 @*</button>*@
@@ -299,7 +299,7 @@
          
 
             <div class="card " style="width:100%;" >
-         <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="">
+         <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="@itemss.StoryId">
                 
                     <img class="card-img-top" src="~/NewFolder/imgenv.png" alt="Card image cap">
          
@@ -312,8 +312,7 @@
                 <div class="card-body">
                   <h5 class="card-title" id="processedStoryData">@itemss.Title</h5>
                   <p class="card-text" style="text-align: justify; font-size: small;">@itemss.Description</p>
-                  <a class="card-text" style="text-align: justify; font-size: medium; color:blue; height:auto; width:auto;" href="@itemss.VidUrl">@itemss.VidUrl</a>
-                    <br><br>
+                    <br>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-3" style="width: 50%;">
                             <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">

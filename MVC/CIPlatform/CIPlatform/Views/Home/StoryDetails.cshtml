@@ -200,27 +200,39 @@
 
 
             <div class="col-md-6 right-div ">
-               @* @foreach (var item in ViewBag.specificmission)
+                @foreach (var item in ViewBag.specificStory)
 
-                {*@
+                {
                     <div class="txt">
                         <div class="col-4">
                            <img src="~/NewFolder/volunteer2.png" alt="" class="vol-img" style="margin-left:-5%;">
-                            <p class="vol-name" style="margin-left:-7%;">Charles Vigue</p>
+                            <p class="vol-name" style="margin-left:-7%; font-size:large;">@item.User.FirstName @item.User.LastName</p>
                         </div>
-                        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <br>
+                        <h1 style="color:grey">@item.Title</h1>
                         <br />
-                          <p class="para">   Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. </p>
+                          <p class="para" style="font-size:large;">@item.Description</p>
                           <br /> 
-                          <p class="para"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste 
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+
+
+                          <div style="display:flex">
+                              <h5 style="color:grey;"><b>Here you can find video link for this story:</b></h5>            
+                               <a class="card-text" style="text-align: justify; font-size: large; color:blue; height:auto; width:auto; margin-left: 3%;" href="@item.VidUrl" target="_blank">@item.VidUrl</a>
+                        </div>
+
+
+                        <br>
+                        <div style="display:flex">
+                        <h5 style="color:grey;" ><b>Story Published At : </b></h5>
+                        <p class="para" style="font-size:large;">&nbsp;&nbsp;@item.PublishedAt.ToShortDateString()</p>
+                          </div>
                         <br>
                      
                             <div class="row">
-                                <div id="dropdownrecmd">
+                                  <div id="dropdownrecmd">
                                     <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
-                                        <button class="nav-link bg-transparent text-dark fav-btn" id="navbarDropdown"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:10%; width:40%; margin-left:-1%; margin-top:5%; margin-bottom:-15%;">
+                                        <button class="nav-link bg-transparent text-dark fav-btn1" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:10%; width:40%; margin-top:5%; margin-left:1%;">
                                             <img class="img1" src="~/NewFolder/add1.png">
                                             Recommend to a Co-Worker &nbsp;&nbsp;
                                             <i class="bi bi-chevron-down"></i>
@@ -230,7 +242,7 @@
 
                                             <li>
                                                 <ul>
-                                                  @*  @foreach (var itm in ViewBag.userslist)
+                                                    @foreach (var itm in ViewBag.user)
                                                     {
                                                         <li class="form-check">
                                                             <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
@@ -239,9 +251,9 @@
                                                             </label>
 
                                                         </li>
-                                                    }*@
+                                                    }
                                                     <br>
-                                                    @*<button id="btn_" onclick="rccall(@item.MissionId)">Submit</button>*@
+                                                    <button id="btn_" onclick="rccall(@item.Mission.MissionId)">Submit</button>
 
                                                 </ul>
                                             </li>
@@ -253,7 +265,7 @@
 
 
                                 <div class="col apply-row">
-                                    <button class="apply-btn" style="margin-left:45%;">
+                                    <button class="apply-btn" style="margin-left:45%; margin-top:-50%">
                                         Open Mission
 
                                         <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
@@ -266,7 +278,8 @@
 
 
                         </div>
-
+                        }
+                        
                     </div>
 
                 
@@ -276,40 +289,47 @@
             <br>
             <div class="row">
 
-                <div class="col-md-8">
-                   @* @foreach (var item in ViewBag.specificmission)
+                <div class="col-12">
+                    @foreach (var item in ViewBag.specificStory)
                     {
-*@
+
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#mission" class="active links1" style="margin-left: 0%;">Grow Trees - On the path to environment sustainbability</a></li>
+                            <li class="active"><a data-toggle="tab" href="#mission" class="active links1" style="margin-left: 0%;">@item.Mission.Title</a></li>
                            
                         </ul>
 
                         <div class="tab-content">
-                           <br />
-                        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <br />
-                          <p class="para">   Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. </p>
-                          <br /> 
-                          <p class="para"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste 
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                         <br />
+                         <div style="display:flex">
+                        <h5 style="margin-top:1%; color:grey;"><b>Short Description: </b></h5>
+                        <p class="para" style="font-size:large; margin-top:1%;">&nbsp;&nbsp; @item.Mission.ShortDescription</p>
+                        </div>
+                        
+                        <div style="display:flex">
+                        <h5 style="margin-top:1%; color:grey;"><b>Organization Name: </b></h5>
+                        <p class="para" style="font-size:large; margin-top:1%;">&nbsp;&nbsp; @item.Mission.OrganizationName</p>
+                        </div>
+                          
+                        <div style="display:flex">
+                            
+                            <h5 style="margin-top:1%; width:auto; color:grey;"><b>Description: </b></h5>
+
+                           
+                           
+                            <p class="para" style="font-size:medium; margin-top:1%; text-align:justify; margin-left:5%;"> @item.Mission.Description</p>
+
+                           
+
+                        </div>
+                        
+                         
                         <br>
 
-                        <p class="para">We use these technologies for a number of purposes, such as:</p>
+                        
 
-                        <br />
+                       
 
-                        <p class="para">But I must explain to you how all this mistaken idea of 
-                            denouncing pleasure and praising pain. At vero eos et accusamus et iusto 
-                            odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
-                            atque excepturi sint occaecati cupiditate non provident, similique sunt 
-                            in culpa qui officia deserunt mollitia animi. On the other hand, 
-                            we denounce with righteous indignation and dislike men who are so beguiled 
-                            and demoralized But I must explain to you how all this mistaken idea of 
-                            denouncing pleasure and praising pain. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-
-
+                       
                             </div>
 
 
@@ -318,15 +338,12 @@
 
 
 
-
+                        }
 
                         </div>
                     
                 </div>
-                <div class="col-md-4">
-                  
-
-                </div>
+                
 
 
 
@@ -355,6 +372,56 @@
     </div>
 </footer>
 <br>
+
+<script>
+
+
+    function rccall(MissionId) {
+        debugger
+    var checkbox_value = "";
+    var checked_Val = [];
+    $(":checkbox").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            checkbox_value += $(this).val() + ",";
+            checked_Val.push($(this).val());
+        }
+
+    });
+
+    alert(checkbox_value);
+    console.log(checkbox_value);
+
+
+    $.ajax({
+        url: '/Home/Recommendedto',
+        type: 'POST',
+        data: {
+            checkbox_value: checkbox_value,
+            MissionId: MissionId
+        },
+        success: function (data) {
+            location.reload();
+            console.log("success");
+            
+        },
+        error: function () {
+            // Handle error response from the server, e.g. show an error message to the user
+            /*alert('Error: Could not like mission.');*/
+            console.log("fail");
+            location.reload();
+        }
+    });
+
+
+   
+
+
+}
+
+
+</script>
+
 
     </body>
     </html>

@@ -1182,8 +1182,19 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult StoryDetails()
+        public IActionResult StoryDetails(int id)
         {
+            var specificStory = _homeRepository.GetSpecificStory(id);
+            var mis = _homeRepository.GetMission();
+            var user = _homeRepository.GetUsers();
+            ViewBag.specificStory = specificStory;
+
+
+            //recom to co-w
+            
+            ViewBag.user = user;
+
+
             return View();
         }
 

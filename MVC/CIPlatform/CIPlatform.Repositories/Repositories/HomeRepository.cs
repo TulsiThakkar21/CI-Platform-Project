@@ -162,7 +162,15 @@ namespace CIPlatform.Repository.Repositories
         }
 
 
+        public IEnumerable<Story> GetSpecificStory(int id)
+            {
+            var b = id;
 
+            return _db.Stories.Where(a => a.StoryId == b)
+                .Include(t1 => t1.Mission)
+                .Include(t2 => t2.User)
+                .ToList();
+        }
 
 
 
