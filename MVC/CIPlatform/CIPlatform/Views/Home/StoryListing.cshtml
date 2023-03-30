@@ -82,7 +82,7 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
                         <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @TempData["fullname"]
+                        @ViewBag.fullname
                         </button>
                   
                         </a>
@@ -299,7 +299,7 @@
          
 
             <div class="card " style="width:100%;" >
-         <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="@itemss.StoryId">
+            <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="@itemss.StoryId">
                 
                     <img class="card-img-top" src="~/NewFolder/imgenv.png" alt="Card image cap">
          

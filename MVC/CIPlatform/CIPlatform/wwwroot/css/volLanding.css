@@ -356,6 +356,14 @@
 .links3 {
     margin-left: 55%;
 }
+.pagination {
+    justify-content: center;
+}
+
+.page-link {
+    color: grey;
+}
+
 
 h3 {
     margin-top: 2%;

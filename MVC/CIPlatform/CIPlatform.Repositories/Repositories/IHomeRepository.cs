@@ -22,14 +22,21 @@ namespace CIPlatform.Repository.Repositories
             IEnumerable<MissionTheme> GetMissionThemes();
 
         ////IEnumerable<Mission> GetMissionWithMissionThemeRecords();
-            List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr);
+            //List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr);
             IEnumerable<Mission> GetSpecificMission(int id);
 
             IEnumerable<City> GetCityRecords();
 
             IEnumerable<Country> GetCountryRecords();
 
-            IEnumerable<Story> GetSpecificStory(int id);
+        List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr);
+
+        IEnumerable<Story> GetSpecificStory(int id);
+
+            public string GetLoginUser(int ids);
+        IEnumerable<MissionSkill> GetSkillandMissionSkill();
+
+        
     }
     }
 

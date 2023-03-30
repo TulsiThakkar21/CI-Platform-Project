@@ -31,10 +31,18 @@ function FilterCity(s) {
             filtercity += (comma + e.value);
         }
     });
+    var url = '';
+    if ($('grdp').attr('id')) {
+        url = '/Home/_Grid';
+    } else {
+        url = '/Home/_List';
+    }
+
+  
 
     jQuery.ajax({
         type: "GET",
-        url: '/Home/_Grid',
+        url: url,
         data: { filtercity: filtercity, },
         success: function (data) {
             $('#filter_products').html(data);
@@ -62,3 +70,26 @@ function FilterCountry(s) {
         }
     });
 }
+
+
+function FilterSkill(s) {
+    var filterSkill = '';
+    $('[name="filskill"]').each(function (i, e) {
+        if ($(e).is(':checked')) {
+
+            var comma = filterSkill.length === 0 ? '' : ',';
+            filterSkill += (comma + e.value);
+        }
+    });
+
+    jQuery.ajax({
+        type: "GET",
+        url: '/Home/_Grid',
+        data: { filterSkill: filterSkill, },
+        success: function (data) {
+            $('#filter_products').html(data);
+            console.log("successs");
+        }
+    });
+}
+

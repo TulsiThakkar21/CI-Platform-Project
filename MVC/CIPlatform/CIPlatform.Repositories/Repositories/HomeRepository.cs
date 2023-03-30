@@ -73,7 +73,7 @@ namespace CIPlatform.Repository.Repositories
 
         }
         List<Mission> FinalMissionList = new List<Mission>();
-        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr)
+        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr)
 
         {
             if (themefilter != null)
@@ -122,8 +122,33 @@ namespace CIPlatform.Repository.Repositories
 
             }
 
+            if (skillidarr != null)
+            {
+                foreach (var skill in skillidarr)
+                {
+                    var mission = _db.Missions
+
+                    .Where(a => a.MissionId == Convert.ToInt64(skill) || skill == null)
+
+                    //where m.ThemeId == mt.MissionThemeId
+                    .ToList();
+                    FinalMissionList.AddRange(mission);
+
+                }
+
+            }
+
             return FinalMissionList;
         }
+
+        public IEnumerable<MissionSkill> GetSkillandMissionSkill()
+        {
+            return _db.MissionSkills
+            .Include(t1 => t1.Skill)
+            .ToList();
+        }
+
+
         //public IEnumerable<Mission> GetMissionWithMissionThemeRecords()
 
         //{
@@ -158,7 +183,7 @@ namespace CIPlatform.Repository.Repositories
             return _db.Missions.Where(a => a.MissionId == b)
                 .Include(t1 => t1.City)
                 .Include(t2 => t2.Country)
-                .Include(t3 => t3.Theme) .ToList();
+                .Include(t3 => t3.Theme).ToList();
         }
 
 
@@ -172,7 +197,19 @@ namespace CIPlatform.Repository.Repositories
                 .ToList();
         }
 
+        public string GetLoginUser(int ids)
+        {
+            var loginuser = _db.Users.FirstOrDefault(x => (x.UserId == ids));
 
+            var loginfname = loginuser.FirstName;
+            var loginlname = loginuser.LastName;
+
+            return loginfname + loginlname;
+
+
+        }
+
+       
 
 
 

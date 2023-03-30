@@ -178,7 +178,7 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
                         <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @TempData["fullname"]
+                        @ViewBag.fullname
                         </button>
                   
                         </a>
@@ -747,7 +747,8 @@
 
 
                             <div id="comm" class="tab-pane fade">
-                                <textarea id="textAreas"></textarea>
+                                <br>
+                                <textarea class="col-12" id="textAreas"></textarea>
                                 <br>
                                 <br>
                                 <button onclick="commentadd(@item.MissionId)" id="submitButton">Submit</button>
@@ -904,70 +905,25 @@
                                 <div class="info">
                                     <h3>Recent Volunteers</h3>
                                     <hr>
+                                    
                                     <div class="row" style="text-align: center;">
+                                        @foreach(var user in ViewBag.userlist)
+                                        {
                                         <div class="col-4">
 
                                             <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
-                                            <p class="vol-name">Andrew Johnson</p>
+                                            <p class="vol-name">@user.FirstName</p>
 
                                         </div>
 
-                                        <div class="col-4">
-                                            <img src="~/NewFolder/volunteer2.png" alt="" class="vol-img">
-                                            <p class="vol-name">Charles Vigue</p>
-
-                                        </div>
-
-                                        <div class="col-4">
-
-                                            <img src="~/NewFolder/volunteer3.png" alt="" class="vol-img">
-                                            <p class="vol-name">Kathryn Roberts</p>
-                                        </div>
-
+                                        <br />
+                                     
+                                        }
                                     </div>
-
-                                    <div class="row" style="text-align: center;">
-                                        <div class="col-4">
-
-                                            <img src="~/NewFolder/volunteer4.png" alt="" class="vol-img">
-                                            <p class="vol-name">Estella Fowles</p>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <img src="~/NewFolder/volunteer5.png" alt="" class="vol-img">
-                                            <p class="vol-name">Rose Lewis</p>
-
-                                        </div>
-
-                                        <div class="col-4">
-
-                                            <img src="~/NewFolder/volunteer6.png" alt="" class="vol-img">
-                                            <p class="vol-name">Raymond Pabon</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row" style="text-align: center;">
-                                        <div class="col-4">
-
-                                            <img src="~/NewFolder/volunteer7.png" alt="" class="vol-img">
-                                            <p class="vol-name">Travis Steen</p>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <img src="~/NewFolder/volunteer8.png" alt="" class="vol-img">
-                                            <p class="vol-name">Sarah Santillan</p>
-
-                                        </div>
-
-                                        <div class="col-4">
-
-                                            <img src="~/NewFolder/volunteer9.png" alt="" class="vol-img">
-                                            <p class="vol-name">Linda Richards</p>
-                                        </div>
-
-                                    </div>
+                                    
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -976,6 +932,7 @@
 
                 </div>
 
+                
 
 
                 @*-----------------------------------------Related Missions-------------------------------------------*@

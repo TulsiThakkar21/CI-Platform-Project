@@ -1,5 +1,6 @@
 using CIPlatform.Repository.Repositories;
 using CIPlatform.Entities.Models;
+using CIPlatform.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseSession();
+
 app.UseStaticFiles();
 
 

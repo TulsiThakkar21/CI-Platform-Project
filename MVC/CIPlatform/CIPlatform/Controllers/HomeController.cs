@@ -26,11 +26,15 @@ namespace CIPlatform.Controllers
         public CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
 
         public IHomeRepository _homeRepository;
+        
         public HomeController(IHomeRepository loginRepository, ILogger<HomeController> logger)
         {
             _logger = logger;
             _homeRepository = loginRepository;
+            
         }
+
+       
         [HttpGet]
         public IActionResult Index()
         {
@@ -77,7 +81,7 @@ namespace CIPlatform.Controllers
             else
             {
                 ViewBag.LoginStatus = 0;
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
                
             }
 
@@ -268,14 +272,14 @@ namespace CIPlatform.Controllers
                     };
                     _ciplatformDbContext.Users.Add(userData);
                     _ciplatformDbContext.SaveChanges();
-                    //ViewBag.Status = 1;
+                    ViewBag.Status = 1;
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                 }
 
                 else { 
-               // ViewBag.Status = 0;
-                    return RedirectToAction("Registration", "Home");
+                    ViewBag.Status = 0;
+                    //return RedirectToAction("Registration", "Home");
 
                 }
                
@@ -292,15 +296,20 @@ namespace CIPlatform.Controllers
       
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
-
+           
+            
 
 
             int count = 30;
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
@@ -317,7 +326,7 @@ namespace CIPlatform.Controllers
             var outputsf = new List<Mission>();
             var citylists = _ciplatformDbContext.Cities.ToList();
 
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry))
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry)|| !string.IsNullOrEmpty(filterskill))
             {
                 string[] cityidarr = null;
                 if (filtercity != null)
@@ -335,7 +344,12 @@ namespace CIPlatform.Controllers
                 {
                     countryidarr = filtercountry.Split(",");
                 }
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr);
+                string[] skillidarr = null;
+                if (filterskill != null)
+                {
+                    countryidarr = filterskill.Split(",");
+                }
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
             }
             else
             {
@@ -363,19 +377,19 @@ namespace CIPlatform.Controllers
             {
 
                 case "Date":
-                    missionxx = missionxx.OrderBy(a => a.StartDate).ToList();
+                    outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
                     break;
                 case "date_desc":
-                    missionxx = missionxx.OrderByDescending(a => a.StartDate).ToList();
+                    outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
                     break;
                 case "LowSeats":
-                    missionxx = missionxx.OrderBy(a => a.Availability).ToList();
+                    outputsf = outputsf.OrderBy(a => a.Availability).ToList();
                     break;
                 case "HighSeats":
-                    missionxx = missionxx.OrderByDescending(a => a.Availability).ToList();
+                    outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
                     break;
                 default:
-                    missionxx = missionxx.ToList();
+                    outputsf = outputsf.ToList();
                     break;
             }
 
@@ -395,7 +409,7 @@ namespace CIPlatform.Controllers
             ViewData["PageSize"] = pageSize;
             if (pageSize != null && page != null)
             {
-                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / (int)pageSize);
+                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)outputsf.Count / (int)pageSize);
                 ViewBag.outputsf = outputsf.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
 
             }
@@ -416,21 +430,26 @@ namespace CIPlatform.Controllers
 
 
 
-            var skillx = _ciplatformDbContext.MissionSkills.ToList();
+            var skillx = _homeRepository.GetSkillandMissionSkill();
             ViewBag.MissionSkills = skillx;
 
+            var totalmissions = outputsf.Count();
+            ViewBag.Totalmissions = totalmissions;
 
             return View();
 
         }
         
-        public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
 
             int count = 30;
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
@@ -447,7 +466,11 @@ namespace CIPlatform.Controllers
             var outputsf = new List<Mission>();
             var citylists = _ciplatformDbContext.Cities.ToList();
 
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry))
+            //if (subcats_id.Count().ToString() == "2")
+            //{
+            //    return RedirectToAction("NoMissionFound", "Home");
+            //}
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
             {
                 string[] cityidarr = null;
                 if (filtercity != null)
@@ -465,7 +488,162 @@ namespace CIPlatform.Controllers
                 {
                     countryidarr = filtercountry.Split(",");
                 }
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr);
+                string[] skillidarr = null;
+                if (filterskill != null)
+                {
+                    countryidarr = filterskill.Split(",");
+                }
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
+
+               
+            }
+
+            else
+            {
+                outputsf = missionxx;
+            }
+
+            if (outputsf.Count() == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
+            //if (!string.IsNullOrEmpty(filtercity))
+            //{
+
+            // outputsf = _loginRepository.GetMissionWithMissionThemeRecords(cityidarr);
+            //}
+            //else
+            //{
+            // outputsf = missionxx;
+            //}
+
+
+
+            ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
+            ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
+
+            switch (sortOrder)
+            {
+
+                case "Date":
+                    outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
+                    break;
+                case "date_desc":
+                    outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
+                    break;
+                case "LowSeats":
+                    outputsf = outputsf.OrderBy(a => a.Availability).ToList();
+                    break;
+                case "HighSeats":
+                    outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
+                    break;
+                default:
+                    outputsf = outputsf.ToList();
+                    break;
+            }
+
+
+            //var missionthemexx = _db.MissionThemes.Where(a => a.Title.Contains(filter) || filter == null).ToList();
+
+            if (missionxx.Count == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
+
+
+            var mission = _homeRepository.GetMission();
+            var mt = _homeRepository.GetMissionThemes();
+
+            @ViewData["page"] = page;
+            ViewData["PageSize"] = pageSize;
+            if (pageSize != null && page != null)
+            {
+                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)outputsf.Count / (int)pageSize);
+                ViewBag.outputsf = outputsf.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
+
+            }
+
+            var missionx = _ciplatformDbContext.Missions.ToList();
+            ViewBag.Missions = missionx;
+
+
+            var countryx = _ciplatformDbContext.Countries.ToList();
+            ViewBag.Country = countryx;
+
+
+            var cityx = _ciplatformDbContext.Cities.ToList();
+            ViewBag.Cities = cityx;
+
+            var themex = _ciplatformDbContext.MissionThemes.ToList();
+            ViewBag.MissionThemes = themex;
+
+
+
+            var skillx = _homeRepository.GetSkillandMissionSkill();
+            ViewBag.MissionSkills = skillx;
+
+
+
+            return View();
+
+
+        }
+
+
+
+
+        public IActionResult _List(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        {
+
+            int count = 30;
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+            var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
+            ViewBag.favlist = favlist;
+            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            ViewBag.Ratingdata = Ratingdata;
+
+            var abc = HttpContext.Session.GetString("userid");
+            if (abc == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+
+            var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+            var outputsf = new List<Mission>();
+            var citylists = _ciplatformDbContext.Cities.ToList();
+
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
+            {
+                string[] cityidarr = null;
+                if (filtercity != null)
+                {
+                    cityidarr = filtercity.Split(",");
+                }
+
+                string[] themefilter = null;
+                if (subcats_id != null)
+                {
+                    themefilter = subcats_id.Split(",");
+                }
+                string[] countryidarr = null;
+                if (filtercountry != null)
+                {
+                    countryidarr = filtercountry.Split(",");
+                }
+                string[] skillidarr = null;
+                if (filterskill != null)
+                {
+                    skillidarr = filterskill.Split(",");
+                }
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
             }
             else
             {
@@ -493,19 +671,19 @@ namespace CIPlatform.Controllers
             {
 
                 case "Date":
-                    missionxx = missionxx.OrderBy(a => a.StartDate).ToList();
+                    outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
                     break;
                 case "date_desc":
-                    missionxx = missionxx.OrderByDescending(a => a.StartDate).ToList();
+                    outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
                     break;
                 case "LowSeats":
-                    missionxx = missionxx.OrderBy(a => a.Availability).ToList();
+                    outputsf = outputsf.OrderBy(a => a.Availability).ToList();
                     break;
                 case "HighSeats":
-                    missionxx = missionxx.OrderByDescending(a => a.Availability).ToList();
+                    outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
                     break;
                 default:
-                    missionxx = missionxx.ToList();
+                    outputsf = outputsf.ToList();
                     break;
             }
 
@@ -525,7 +703,7 @@ namespace CIPlatform.Controllers
             ViewData["PageSize"] = pageSize;
             if (pageSize != null && page != null)
             {
-                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / (int)pageSize);
+                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)outputsf.Count / (int)pageSize);
                 ViewBag.outputsf = outputsf.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
 
             }
@@ -546,7 +724,10 @@ namespace CIPlatform.Controllers
 
 
 
-            var skillx = _ciplatformDbContext.MissionSkills.ToList();
+            //var skillx = _ciplatformDbContext.MissionSkills.ToList();
+            //ViewBag.MissionSkills = skillx;
+
+            var skillx = _homeRepository.GetSkillandMissionSkill();
             ViewBag.MissionSkills = skillx;
 
 
@@ -555,6 +736,7 @@ namespace CIPlatform.Controllers
 
 
         }
+
 
 
 
@@ -652,17 +834,7 @@ namespace CIPlatform.Controllers
             return RedirectToAction("PlatformLandingPage" , "Home");
         }
 
-        //[HttpPost]
-        //public IActionResult Recommend(string[] selectedValues)
-        //{
-        //    var userslist = _ciplatformDbContext.Users.ToList();
-        //    ViewBag.userslist = userslist;
-
-
-        //    return PartialView("Recommend", userslist);
-
-        //    //return RedirectToAction("VolunteeringMission", "Home");
-        //}
+       
 
 
         [HttpPost]
@@ -720,7 +892,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching)
+        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9)
         {
 
 
@@ -733,6 +905,9 @@ namespace CIPlatform.Controllers
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
@@ -946,6 +1121,19 @@ namespace CIPlatform.Controllers
             ViewBag.skilldata = skilldata;
 
 
+            // for recent vol
+
+            var userList = _homeRepository.GetUsers();
+            //ViewBag.userlist = userList;
+
+            @ViewData["page"] = page;
+            ViewData["PageSize"] = pageSize;
+            if (pageSize != null && page != null)
+            {
+                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)missionxx.Count / (int)pageSize);
+                ViewBag.userlist = userList.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
+
+            }
 
 
             return View();
@@ -963,6 +1151,13 @@ namespace CIPlatform.Controllers
             var res = _homeRepository.GetTable1WithTable2Records();
 
             ViewBag.listofstories = res;
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+
             return View(listofstories);
 
 
@@ -1025,6 +1220,8 @@ namespace CIPlatform.Controllers
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
 
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
             
@@ -1184,6 +1381,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryDetails(int id)
         {
+
             var specificStory = _homeRepository.GetSpecificStory(id);
             var mis = _homeRepository.GetMission();
             var user = _homeRepository.GetUsers();
@@ -1194,9 +1392,30 @@ namespace CIPlatform.Controllers
             
             ViewBag.user = user;
 
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+            //int pageViews = HttpContext.Session.GetInt32("PageViews") ?? 0;
+            //pageViews++;
+            //HttpContext.Session.SetInt32("PageViews", pageViews);
+
+
+            //_next(context);
+            //ViewBag.pageViews = pageViews;
 
             return View();
         }
+
+
+     
+
+
+
+
+
+
 
 
         public IActionResult NoMissionFound()

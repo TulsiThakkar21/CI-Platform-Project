@@ -89,7 +89,7 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
                             <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @TempData["fullname"]
+                                @ViewBag.fullname
                             </button>
 
                         </a>
@@ -134,87 +134,6 @@
                     <div class="col-lg-5 col-sm-6">
 
 
-                        @* <li class="nav-item dropdown">*@
-                        @* <form id="country-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CountryFun()">
-                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Country &nbsp; <i class="bi bi-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-
-                            @foreach (var item in ViewBag.Country)
-                            {
-                            <li class="form-check">
-                            <input select multiple id="country-select" name="country"  class="form-check-input checkbox" type="checkbox" value="@item.Name">
-                            <label class="form-check-label" for="flexCheckDefault">
-                            @item.Name
-                            </label>
-                            </li>
-                            }
-
-                            </ul>
-                            </form>*@
-                        @*  </li>*@
-
-
-                        @* <form id="city-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="CityFun()" select multiple>
-                            <button class="nav-link dropdown-toggle border-0 bg-transparent p-3 text-dark" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            City &nbsp; <i class="bi bi-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
-
-                            @foreach (var item in ViewBag.Cities)
-                            {
-                            <li class="form-check">
-                            <input  id="city-select" name="city" class="form-check-input checkbox" type="checkbox" value="@item.Name">
-                            <label class="form-check-label" for="flexCheckDefault">
-                            @item.Name
-                            </label>
-                            </li>
-                            }
-
-                            </ul>
-                            </form>*@
-
-
-                        @* <div class="filterbox">
-                            <div class="navbar-nav ms-4  ">
-                            <select name="City" style="border:none; background:none;">
-                            <option selected disabled hidden>City</option>
-                            @foreach (var item in ViewBag.Cities)
-                            {
-                            <option style="border:none">@item.Name</option>
-
-                            }
-                            </select>
-                            </div>
-                            </div>*@
-
-
-                        @* <div class="filterbox country">
-                            <div class="navbar-nav ms-4  ">
-
-                            <select id="countryitems" style="border:none; background:none;">
-                            <option selected disabled hidden>Country</option>
-                            @{
-                            @foreach (var item in ViewBag.Country)
-                            {
-                            <option style="border:none" >@item.Name</option>
-
-
-
-                            }
-                            }
-
-
-                            </select>
-
-
-
-
-                            </div>
-                            </div>*@
                         <div class="filterbox">
                             <div class=" dropdown uname">
                                 <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -284,6 +203,31 @@
 
                             </div>
                         </div>
+
+                    <div class="filterbox">
+                            <div class=" dropdown uname">
+                            <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Skill <i class="bi bi-chevron-down "></i>
+                            </button>
+                            <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @foreach (var item in ViewBag.MissionSkills)
+                            {
+                            <li class="dropdown">
+                            <div class="check-box">
+                            <span>
+                            <input type="checkbox" id="@item.MissionId" name="filskill" class="checkbox" value="@item.MissionId" onclick="FilterSkill(@item.MissionId)">
+                            <label for="@item.Skill.SkillName"> @item.Skill.SkillName</label>
+                            </span>
+                            </div>
+
+                            </li>
+                            }
+                            </ul>
+
+                            </div>
+
+
                         @* <div class="filterbox">
                             <div class="navbar-nav ms-4  ">
 
@@ -398,7 +342,10 @@
                         <a href="#" class="clear-all">Clear all</a>
                         <br>
                         <div style="display: flex;">
-                            <label class="explore72"> Explore <b>72 more missions</b> </label>
+                            
+                                <label class="explore72"> Explore <b>@ViewBag.Totalmissions</b> missions</label>
+                            
+                            
 
 
                             @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
@@ -531,8 +478,30 @@
         <partial name="_Grid" />
     </div>
      </div>
-      </div>
-    @* <div class="pagination">
+    
+
+   
+
+ 
+
+       
+
+          
+
+    <!-- List View -->
+    
+     <div class="list-view active" id="listp">
+          
+
+        <div class="container-fluid">
+            <div id="filter_products">
+        <partial name="_List" />
+    </div>
+    </div>
+    </div>
+
+               @*----PAGINATION----*@
+          <div class="pagination">
         <nav aria-label="Page navigation example">
         <ul class="pagination">
         <li class="page-item">
@@ -551,8 +520,8 @@
 
         @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
         {
-        @*<a href="/Home/Landingpage?page=@i&pageSize=@ViewData["PageSize"]">@i</a>*@
-    @*         <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
+        
+             <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
         }
         <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
@@ -565,106 +534,17 @@
         <span class="sr-only">Next</span>
         </a>
         </li>
-        </ul>*@
-    @*</nav>
-        </div>*@
-
-
-
-
-
-
-    <!-- List View -->
-    @* <div class="list-view active" id="listp">
-
-
-        <div class="container-fluid">
-        <div class="card mb-3 lst-row-lst">
-        <div class="row no-gutters">
-        @foreach(var item in ViewBag.Result)
-        {
-
-        <div class="col-md-4">
-
-        <img src="~/NewFolder/lst-img1.png" class="card-img" alt="..." style="margin-bottom: -2%;">
-        <button class="lst-missions">@item.Title</button>
+        </ul>
+    </nav>
         </div>
 
-        <div class="col-md-8">
-        <div class="card-body">
-        <h4 class="card-title">@item.m.Title</h4>
-        <p class="card-text">@item.m.ShortDescription</p>
-
-        <div class="row">
-
-        <div class="col-sm-6">
-        <div class="txt" style="display: flex;">
-        <span class="card-text" >@item.m.OrganizationName</span>
-        <div class="star" style="display: flex;">
-
-        <img src="~/NewFolder/selected-star.png" alt="">
-        <img src="~/NewFolder/selected-star.png" alt="">
-        <img src="~/NewFolder/selected-star.png" alt="">
-        <img src="~/NewFolder/selected-star.png" alt="">
-        <img src="~/NewFolder/selected-star.png" alt="">
-
-        </div>
-
-        <button class="lst-apply-btn">Apply
-
-        <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
-        </button>
-
-        </div>
-
-        </div>
-
-        <div class=" col-sm-6 ">
-        <button class="lst-btn-date">From @item.m.StartDate.ToShortDateString() until @item.m.EndDate.ToShortDateString()</button>
-        <div class="lst-iconandtext" style="display:flex">
-
-        <img class="lst-icons1" src="~/NewFolder/Seats-left.png">
-
-        <div class="lst-hssh">
-        <p class="lst-seatno"><b>@item.m.Availability</b> </p>
-        <p class="lst-seat">Seats Left</p>
-        </div>
-        <img class="lst-icons" src="~/NewFolder/deadline.png">
-        <div class="lst-hssh">
-
-        <p class="lst-seatno-date"><b>@item.m.EndDate.ToShortDateString()</b> </p>
-        <p class="lst-seat">Deadline</p>
-        </div>
-        </div>
-        </div>
-
-
-
-
-        </div>
+        
+          
 
 
 
 
 
-        </div>
-        </div>
-        }
-
-        </div>
-
-
-
-
-        </div>
-
-
-
-
-        </div>
-        </div>
-        </div>*@
     <!-- Javascript -->
 
 
@@ -683,39 +563,7 @@
 
     </script>
 
-    <script>
 
-        const ratingStars = [...document.getElementsByClassName("rating__star")];
-        const ratingResult = document.querySelector(".rating__result");
-
-        printRatingResult(ratingResult);
-
-        //function executeRating(stars, result) {
-        //    const starClassActive = "rating__star fas fa-star";
-        //    const starClassUnactive = "rating__star far fa-star";
-        //    const starsLength = stars.length;
-        //    let i;
-        //    stars.map((star) => {
-        //        star.onclick = () => {
-        //            i = stars.indexOf(star);
-
-        //            if (star.className.indexOf(starClassUnactive) !== -1) {
-        //                // printRatingResult(result, i + 1);
-        //                for (i; i >= 0; --i) stars[i].className = starClassActive;
-        //            } else {
-        //                // printRatingResult(result, i);
-        //                for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
-        //            }
-        //        };
-        //    });
-        //}
-
-        function printRatingResult(result, num = 0) {
-            // result.textContent = `${num}/5`;
-        }
-
-        //executeRating(ratingStars, ratingResult);
-    </script>
     <script>
         function filterChanged()
         {

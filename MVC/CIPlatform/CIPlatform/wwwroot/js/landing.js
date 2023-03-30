@@ -6,11 +6,13 @@
         data: { missionId: missionId, id: id },
         success: function () {
             console.log("success");
+            location.reload();
         },
         error: function () {
             // Handle error response from the server, e.g. show an error message to the user
             /*alert('Error: Could not like mission.');*/
             console.log("fail");
+
         }
     });
 }
@@ -34,6 +36,7 @@ $(function () {
                 //rating.removeClass("far").addClass("fas");
                 //star.prevAll(".star").removeClass("far").addClass("fas");
                 star.removeClass("far").addClass("fas");
+                location.reload();
             }
         });
     });
@@ -160,6 +163,7 @@ function commentadd(MissionId) {
         },
         success: function () {
             document.getElementById("processedData").innerHTML = response.processedData;
+            location.reload();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
