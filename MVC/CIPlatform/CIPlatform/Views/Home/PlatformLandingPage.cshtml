@@ -474,7 +474,7 @@
     <div class="grid-view" id="grdp">
 
         <div class="container grid-container ">
-    <div id="filter_products">
+            <div id="filter_products-grid">
         <partial name="_Grid" />
     </div>
      </div>
@@ -494,7 +494,7 @@
           
 
         <div class="container-fluid">
-            <div id="filter_products">
+                <div id="filter_products-list">
         <partial name="_List" />
     </div>
     </div>
@@ -683,11 +683,162 @@
         }
 
 
-
+       
     </script>
 
 
 
+        <script>
+            var linkurl;
+            function SortBySubcat(s) {
+                var subcats_id = '';
+
+                $('[name="subcats"]').each(function (i, e) {
+                    if ($(e).is(':checked')) {
+
+                        var comma = subcats_id.length === 0 ? '' : ',';
+                        subcats_id += (comma + e.value);
+                    }
+                    var b = document.getElementById('listp').style.display;
+                    if (b == 'none') {
+                        linkurl = '/Home/_Grid'
+                    }
+                    else {
+                        linkurl = '/Home/_List'
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: linkurl,
+                    data: { subcats_id: subcats_id, },
+                    success: function (data) {
+                        if (linkurl == '/Home/_Grid') {
+
+                            $('#filter_products-grid').html(data);
+                        }
+                        else {
+                            $('#filter_products-list').html(data);
+                        }
+
+                        console.log("successs");
+                    }
+                });
+            }
+
+            function FilterCountry(s) {
+                var filterCountry = '';
+                $('[name="filcountry"]').each(function (i, e) {
+                    if ($(e).is(':checked')) {
+
+                        var comma = filterCountry.length === 0 ? '' : ',';
+                        filterCountry += (comma + e.value);
+                    }
+                    var b = document.getElementById('listp').style.display;
+                    if (b == 'none') {
+                        linkurl = '/Home/_Grid'
+                    }
+                    else {
+                        linkurl = '/Home/_List'
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: linkurl,
+                    data: { filterCountry: filterCountry, },
+                    success: function (data) {
+
+                        if (linkurl == '/Home/_Grid') {
+
+                            $('#filter_products-grid').html(data);
+                        }
+                        else {
+                            $('#filter_products-list').html(data);
+                        }
+
+
+                        console.log("successs");
+                    }
+                });
+            }
+            function FilterSkill(s) {
+    var filterSkill = '';
+    $('[name="filskill"]').each(function (i, e) {
+        if ($(e).is(':checked')) {
+
+            var comma = filterSkill.length === 0 ? '' : ',';
+            filterSkill += (comma + e.value);
+        }
+        var b = document.getElementById('listp').style.display;
+        if (b == 'none') {
+            linkurl = '/Home/_Grid'
+        }
+        else {
+            linkurl = '/Home/_List'
+        }
+    });
+
+    jQuery.ajax({
+        type: "GET",
+        url: linkurl,
+        data: { filterSkill: filterSkill, },
+        success: function (data) {
+            if (linkurl == '/Home/_Grid') {
+
+                $('#filter_products-grid').html(data);
+            }
+            else {
+                $('#filter_products-list').html(data);
+            }
+
+            console.log("successs");
+        }
+    });
+}
+
+
+            function FilterCity(s) {
+                var filtercity = '';
+                $('[name="filcity"]').each(function (i, e) {
+                    if ($(e).is(':checked')) {
+
+                        var comma = filtercity.length === 0 ? '' : ',';
+                        filtercity += (comma + e.value);
+                    }
+                    var b = document.getElementById('listp').style.display;
+                    if (b == 'none') {
+                        linkurl = '/Home/_Grid'
+                    }
+                    else {
+                        linkurl = '/Home/_List'
+                    }
+                });
+
+
+
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: linkurl,
+                    data: { filtercity: filtercity, },
+                    success: function (data) {
+
+                        if (linkurl == '/Home/_Grid') {
+
+                            $('#filter_products-grid').html(data);
+                        }
+                        else {
+                            $('#filter_products-list').html(data);
+                        }
+
+
+                        console.log("successs");
+                    }
+                });
+            }
+
+        </script>
 
 
 

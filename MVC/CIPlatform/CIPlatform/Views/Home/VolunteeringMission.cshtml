@@ -159,7 +159,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Policy
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -171,118 +171,118 @@
                             <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
                         </li>
 
-                     
+
 
                     </ul>
-                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                    <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ViewBag.fullname
-                        </button>
-                  
+                            <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @ViewBag.fullname
+                            </button>
+
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
                         </ul>
-               </div>
+                    </div>
 
-        </div>
-        </nav>
-        <hr>
-        <!-- <div class="line1"></div> -->
-        <div class="container-fluid">
-            <div class="row row-search">
-                <div class="col-lg-6 col-sm-6">
-                    <nav class="navbar navbar-expand-lg navbar-light  search-nav">
+                </div>
+            </nav>
+            <hr>
+            <!-- <div class="line1"></div> -->
+            <div class="container-fluid">
+                <div class="row row-search">
+                    <div class="col-lg-6 col-sm-6">
+                        <nav class="navbar navbar-expand-lg navbar-light  search-nav">
 
-                        <div class="search-combine">
+                            <div class="search-combine">
 
-                            <img src="~/NewFolder/search.png" alt="" class="search-icon">
+                                <img src="~/NewFolder/search.png" alt="" class="search-icon">
 
-                            @using (Html.BeginForm("VolunteeringMission", "Home", FormMethod.Get))
+                                @using (Html.BeginForm("VolunteeringMission", "Home", FormMethod.Get))
 
-                            {
-                                <form class="form-inline my-2 my-lg-0">
+                                {
+                                    <form class="form-inline my-2 my-lg-0">
 
-                                    @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
-
-
-                                </form>
-                            }
+                                        @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
 
 
+                                    </form>
+                                }
 
 
-                            @*<form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2 search-bar" type="search"
-                            placeholder="Search mission..." aria-label="Search">
 
-                            </form>*@
+
+                                @*<form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2 search-bar" type="search"
+                                placeholder="Search mission..." aria-label="Search">
+
+                                </form>*@
+                            </div>
+
+                        </nav>
+                    </div>
+                    <div class="col-lg-5 col-sm-6">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Country
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
 
-                    </nav>
-                </div>
-                <div class="col-lg-5 col-sm-6">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            City
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Country
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Theme
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Skills
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-1">
                     </div>
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        City
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Theme
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Skills
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
 
                 </div>
-                <div class="col-lg-1">
-                </div>
-
-
-
-
             </div>
-        </div>
-        <hr class="hr2">
+            <hr class="hr2">
 
         </div>
     </header>
@@ -570,15 +570,81 @@
 
 
 
-                                <div class="star" style="display: flex;">
+                                @*<div class="star" style="display: flex;">
 
-                                    <img src="~/NewFolder/star-empty.png" alt="">
-                                    <img src="~/NewFolder/star-empty.png" alt="">
-                                    <img src="~/NewFolder/star-empty.png" alt="">
-                                    <img src="~/NewFolder/star-empty.png" alt="">
-                                    <img src="~/NewFolder/star-empty.png" alt="">
+                            <img src="~/NewFolder/star-empty.png" alt="">
+                            <img src="~/NewFolder/star-empty.png" alt="">
+                            <img src="~/NewFolder/star-empty.png" alt="">
+                            <img src="~/NewFolder/star-empty.png" alt="">
+                            <img src="~/NewFolder/star-empty.png" alt="">
+
+                            </div>*@
+
+                                <div id="rating" class="col-6 d-flex" style="margin-left:41%;">
+                                    @{
+                                        @if (ViewBag.missionapplication.Count == 0)
+                                        {
+                                            <div class="d-flex">
+                                                <img class="ratingclass" src="~/NewFolder/star-empty.png">
+                                                <img class="ratingclass" src="~/NewFolder/star-empty.png">
+                                                <img class="ratingclass" src="~/NewFolder/star-empty.png">
+                                                <img class="ratingclass" src="~/NewFolder/star-empty.png">
+                                                <img class="ratingclass" src="~/NewFolder/star-empty.png">
+                                            </div>
+                                        }
+
+                                        else
+                                        {
+
+
+                                            if (@ViewBag.Ratingdata.Count == 0)
+                                            {
+                                                <div id="rating">
+                                                    <i class="rating__star far fa-star star" data-value="1" data-missionid="@item.m.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="2" data-missionid="@item.m.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="3" data-missionid="@item.m.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.m.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="5" data-missionid="@item.m.MissionId"></i>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                int i = 0;
+                                                for (i = 0; i < @ViewBag.Ratingdata.Count; i++)
+                                                {
+                                                    //<h1> @ViewBag.Ratingdata[i].MissionId</h1>
+                                                    if (@ViewBag.Ratingdata[i].MissionId == @item.MissionId)
+                                                    {
+                                                        int b = Convert.ToInt32(ViewBag.Ratingdata[i].Rating);
+                                                        for (int j = 1; j <= 5; j++)
+                                                        {
+                                                            if (j <= b)
+                                                            {
+                                                                <div id="rating">
+                                                                    <i class="rating__star fas fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div id="rating">
+                                                                    <i class="rating__star far fa-star star" data-value="@j" data-missionid="@item.MissionId"></i>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+
+                                            }
+                                        }
+                                    }
 
                                 </div>
+
+
+
+
+
                                 <!-- <hr class="hr-line-star2"> -->
                             </div>
                             <br>
@@ -629,14 +695,47 @@
                             </div>
                             <br><br><br>
                             <div class="row">
-                                <div class="col apply-row">
-                                    <button class="apply-btn">
-                                        Apply Now
+                                @*<div class="col apply-row">
+                            <button class="apply-btn">
+                            Apply Now
 
-                                        <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
+                            <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
 
-                                    </button>
-                                </div>
+                            </button>
+                            </div>*@
+
+                                @{
+                                    if (ViewBag.missionapplication.Count == 0)
+                                    {
+                                        var a = item.EndDate;
+                                        var res = DateTime.Compare(ViewBag.currentDate, item.EndDate);
+                                        if (res == 1)
+                                        {
+                                            <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
+                                                <button disabled type="submit" class="apply-btn" style="border-color : grey ; color : grey">
+
+                                                    No longer available 
+                                                </button>
+                                            </a>
+                                        }
+                                        else { 
+                                        <button type="submit" class="btn btn-outline-secondary apply-btn" onclick="applyformission(@item.MissionId)">
+
+                                            Apply Now <img src="~/NewFolder/right-arrow.png">
+
+
+                                        </button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <button disabled type="submit" class="btn btn-outline-secondary apply-btn" style="border: 2px solid grey">
+
+                                            Already Applied
+
+                                        </button>
+                                    }
+                                }
 
 
 
@@ -832,16 +931,17 @@
                                         </div>
                                         <div class="col-9">
 
-                                            <div class="rating" style="margin-left: -4%;">
-                                                <span class="rating__result"></span>
-                                                <i class="rating__star far fa-star"></i>
-                                                <i class="rating__star far fa-star"></i>
-                                                <i class="rating__star far fa-star"></i>
-                                                <i class="rating__star far fa-star"></i>
-                                                <i class="rating__star far fa-star"></i>
-                                            </div>
+                                            @*<div class="rating" style="margin-left: -4%;">
+                                        <span class="rating__result"></span>
+                                        <i class="rating__star far fa-star"></i>
+                                        <i class="rating__star far fa-star"></i>
+                                        <i class="rating__star far fa-star"></i>
+                                        <i class="rating__star far fa-star"></i>
+                                        <i class="rating__star far fa-star"></i>
+                                        </div>*@
 
 
+                                          
 
 
 
@@ -905,22 +1005,22 @@
                                 <div class="info">
                                     <h3>Recent Volunteers</h3>
                                     <hr>
-                                    
+
                                     <div class="row" style="text-align: center;">
-                                        @foreach(var user in ViewBag.userlist)
+                                        @foreach (var user in ViewBag.finalresult)
                                         {
-                                        <div class="col-4">
+                                            <div class="col-4">
 
-                                            <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
-                                            <p class="vol-name">@user.FirstName</p>
+                                                <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
+                                                <p class="vol-name">@user.FirstName</p>
 
-                                        </div>
+                                            </div>
 
-                                        <br />
-                                     
+                                            <br />
+
                                         }
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -932,7 +1032,7 @@
 
                 </div>
 
-                
+
 
 
                 @*-----------------------------------------Related Missions-------------------------------------------*@
@@ -1229,6 +1329,32 @@
 
     <script src="~/js/landing.js"></script>
 
+    <script>
+        $(function () {
+            //var rating = $("#rating");
+            var rating = $(this).parent().find(".star");
+            $("#rating .star").click(function () {
+                //debugger
+                var star = $(this);
+                var stars = star.data("value");
+                var missionId = star.data("missionid");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Rate",
+                    data: { stars: stars, missionId: missionId },
+                    success: function () {
+                        console.log("success");
+                        //debugger
+                        //rating.removeClass("far").addClass("fas");
+                        //star.prevAll(".star").removeClass("far").addClass("fas");
+                        star.removeClass("far").addClass("fas");
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

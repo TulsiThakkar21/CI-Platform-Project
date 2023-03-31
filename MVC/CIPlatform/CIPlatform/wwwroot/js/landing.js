@@ -17,30 +17,30 @@
     });
 }
 
-$(function () {
-    //var rating = $("#rating");
-    var rating = $(this).parent().find(".star");
-    $("#rating .star").click(function () {
-        //debugger
-        var star = $(this);
-        var stars = star.data("value");
-        var missionId = star.data("missionid");
+//$(function () {
+//    //var rating = $("#rating");
+//    var rating = $(this).parent().find(".star");
+//    $("#rating .star").click(function () {
+//        //debugger
+//        var star = $(this);
+//        var stars = star.data("value");
+//        var missionId = star.data("missionid");
 
-        $.ajax({
-            type: "POST",
-            url: "/Home/Rate",
-            data: { stars: stars, missionId: missionId },
-            success: function () {
-                console.log("success");
-                //debugger
-                //rating.removeClass("far").addClass("fas");
-                //star.prevAll(".star").removeClass("far").addClass("fas");
-                star.removeClass("far").addClass("fas");
-                location.reload();
-            }
-        });
-    });
-});
+//        $.ajax({
+//            type: "POST",
+//            url: "/Home/Rate",
+//            data: { stars: stars, missionId: missionId },
+//            success: function () {
+//                console.log("success");
+//                //debugger
+//                //rating.removeClass("far").addClass("fas");
+//                //star.prevAll(".star").removeClass("far").addClass("fas");
+//                star.removeClass("far").addClass("fas");
+//                location.reload();
+//            }
+//        });
+//    });
+//});
 
 
 
@@ -283,11 +283,36 @@ function editstory() {
 
 
 
+function applyformission(missionidforapply) {
+
+    $.ajax({
+
+        url: '/Home/VolunteeringMission',
+        type: 'POST',
+        data: { missionidforapply: missionidforapply },
+        success: function () {
+            console.log("success");
+
+            location.reload();
+            location.reload();
+        }
+
+
+    });
+}
 
 
 
+function onCancel() {
+   
+    document.getElementById('exampleFormControlSelect12').value = "";
+    document.getElementById('sTitle').value = "";
+    document.getElementById('sPDate').value = "";
+    document.getElementById('sDesc').value = "";
+    document.getElementById('vidUrl').value = "";
 
 
+}
 
 
 

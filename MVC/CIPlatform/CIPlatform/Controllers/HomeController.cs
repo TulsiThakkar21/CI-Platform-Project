@@ -296,7 +296,7 @@ namespace CIPlatform.Controllers
       
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id= 0)
         {
            
             
@@ -312,7 +312,12 @@ namespace CIPlatform.Controllers
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            
+            
+            //var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            //ViewBag.Ratingdata = Ratingdata;
+
+            var Ratingdata = _ciplatformDbContext.MissionRatings.ToList();
             ViewBag.Ratingdata = Ratingdata;
 
             var abc = HttpContext.Session.GetString("userid");
@@ -320,7 +325,7 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-
+         
 
             var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
             var outputsf = new List<Mission>();
@@ -394,6 +399,9 @@ namespace CIPlatform.Controllers
             }
 
 
+            var currentDate = DateTime.Now;
+            
+            ViewBag.currentDate = currentDate;
             //var missionthemexx = _db.MissionThemes.Where(a => a.Title.Contains(filter) || filter == null).ToList();
 
             if (missionxx.Count == 0)
@@ -436,11 +444,14 @@ namespace CIPlatform.Controllers
             var totalmissions = outputsf.Count();
             ViewBag.Totalmissions = totalmissions;
 
+            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+            ViewBag.missionapplication = missionapplication;
+
             return View();
 
         }
         
-        public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
 
             int count = 30;
@@ -450,9 +461,14 @@ namespace CIPlatform.Controllers
             var fullname = _homeRepository.GetLoginUser(ids);
             ViewBag.fullname = fullname;
 
+            var currentDate = DateTime.Now;
+          
+
+            ViewBag.currentDate = currentDate;
+
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            var Ratingdata = _ciplatformDbContext.MissionRatings.ToList();
             ViewBag.Ratingdata = Ratingdata;
 
             var abc = HttpContext.Session.GetString("userid");
@@ -585,6 +601,8 @@ namespace CIPlatform.Controllers
             ViewBag.MissionSkills = skillx;
 
 
+            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids ).ToList();
+            ViewBag.missionapplication = missionapplication;
 
             return View();
 
@@ -606,7 +624,7 @@ namespace CIPlatform.Controllers
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            var Ratingdata = _ciplatformDbContext.MissionRatings.ToList();
             ViewBag.Ratingdata = Ratingdata;
 
             var abc = HttpContext.Session.GetString("userid");
@@ -892,7 +910,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9)
+        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9, int missionidforapply=0)
         {
 
 
@@ -900,7 +918,9 @@ namespace CIPlatform.Controllers
 
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
+            var currentDate = DateTime.Now;
 
+            ViewBag.currentDate = currentDate;
 
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -910,8 +930,7 @@ namespace CIPlatform.Controllers
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
-            ViewBag.Ratingdata = Ratingdata;
+            
             var b = id;
 
            
@@ -1124,8 +1143,11 @@ namespace CIPlatform.Controllers
             // for recent vol
 
             var userList = _homeRepository.GetUsers();
-            //ViewBag.userlist = userList;
+            var missionapply = _ciplatformDbContext.MissionApplications.Where(a=>a.MissionId == id && a.UserId == ids).ToList();
 
+            var finalresult = from u in userList join m in missionapply on u.UserId equals m.UserId where u.UserId == m.UserId select new { u.FirstName, m };
+            //ViewBag.userlist = userList;
+            ViewBag.finalresult = finalresult;
             @ViewData["page"] = page;
             ViewData["PageSize"] = pageSize;
             if (pageSize != null && page != null)
@@ -1135,6 +1157,38 @@ namespace CIPlatform.Controllers
 
             }
 
+
+
+            //ratings
+
+            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids && a.MissionId == id).ToList();
+
+            ViewBag.missionapplication = missionapplication;
+
+            var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+            ViewBag.Ratingdata = Ratingdata;
+
+
+            // applied mission
+
+
+            if (missionidforapply != 0)
+            {
+                var appliedmission = new MissionApplication
+                {
+
+                    UserId = ids,
+                    MissionId = missionidforapply,
+                    CreatedAt = DateTime.Now,
+                    AppliedAt = DateTime.Now,
+
+
+
+                };
+                _ciplatformDbContext.MissionApplications.Add(appliedmission);
+                _ciplatformDbContext.SaveChanges();
+
+            }
 
             return View();
 
@@ -1397,20 +1451,13 @@ namespace CIPlatform.Controllers
             var fullname = _homeRepository.GetLoginUser(ids);
             ViewBag.fullname = fullname;
 
-            //int pageViews = HttpContext.Session.GetInt32("PageViews") ?? 0;
-            //pageViews++;
-            //HttpContext.Session.SetInt32("PageViews", pageViews);
-
-
-            //_next(context);
-            //ViewBag.pageViews = pageViews;
+            
 
             return View();
         }
 
 
-     
-
+       
 
 
 
