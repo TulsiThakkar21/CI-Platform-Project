@@ -7,7 +7,7 @@
 @{
     ViewData["ResetPass"] = "Reset Password";
 }
-
+@model CIPlatform.Entities.Models.PasswordReset
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,7 @@
                         Please enter a new password in the fields below.
                     </p>
 
-                    <label class="lbl-pass">New Password</label>
+                    @*<label class="lbl-pass">New Password</label>
                     <br>
 
                     <input type="password" class="txt-inp" name="pass1" placeholder=" Enter your new password">
@@ -109,10 +109,21 @@
                     <br>
 
                     <input type="password" class="txt-inp" placeholder=" Enter your confirm new password">
+*@
+
+                            <div>
+                                <label asp-for="Password" class="form-label">Password</label>
+                                <input asp-for="Password" id="pass" type="password" class="form-control" placeholder="Enter your Password">
+                                <span asp-validation-for="Password" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
+                            </div>
+                            <br />
+                            <label asp-for="ConfirmPassword" class="form-label">Confirm New Password</label>
+                            <input asp-for="ConfirmPassword" id="confirmpass" type="password" class="form-control" placeholder="Enter your Confirm Password">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                     <br><br>
 
-                    <button class="btn-chngpass">Change password</button>
+                        <button class="btn-chngpass" onclick="return Validate()">Change password</button>
                     <br> <br>
                     <a asp-controller="Home"  asp-action="Index" class="lbl-login">Login</a>
 
@@ -131,6 +142,18 @@
 
         </div>
 
+
+    <script>
+
+        function Validate() {
+            var password = document.getElementById("pass").value;
+            var confirmPassword = document.getElementById("confirmpass").value;
+            if (password != confirmPassword) {
+                alert("Password do not match");
+                return false;
+            }
+            return true;
+        }</script>
 
 </body>
 

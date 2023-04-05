@@ -3525,11 +3525,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+      "projectUniqueName": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
       "projectName": "CIPlatform.Entities",
-      "projectPath": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+      "projectPath": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
       "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
+      "outputPath": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

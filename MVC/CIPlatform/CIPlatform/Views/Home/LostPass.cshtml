@@ -133,12 +133,11 @@
                             reset link.
                          </p>
 
-                            <label class="lbl-email">Email Address</label>
-                            <br>
-
-                            @Html.TextBoxFor(u => u.Email, new {@class = "txt-inp", @placeholder=" Enter your email address..."})
-                            @*<input asp-for="Email" type="text" class="txt-inp" placeholder=" Enter your email address...">*@
-                             @*<span asp-validation-for="Email" class="text-danger"></span>*@
+                            <div>
+                                <label asp-for="Email" class="form-label">Email address</label>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="Enter your Email address">
+                                <span asp-validation-for="Email" class="text-danger" style="font-size:12px;"></span>
+                            </div>
                             <br>
 
                             <button type="submit" class="btn-login">Reset my password</button>

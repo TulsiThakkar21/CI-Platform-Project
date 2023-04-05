@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using CIPlatform.Entities.Models;
 using CIPlatform.Repository.Repositories;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Identity;
 
 namespace CIPlatform.Controllers
 {
@@ -255,34 +256,39 @@ namespace CIPlatform.Controllers
             try
             {
                 
-                var flag = _ciplatformDbContext.Users.Where(a => a.Email == _registrationModel.Email && a.PhoneNumber == _registrationModel.PhoneNumber.ToString());
-             
-                if (flag.Count()==0)
+                var flag = _ciplatformDbContext.Users.Where(a => a.Email == _registrationModel.Email);
+
+                if (_registrationModel.Email != null && _registrationModel.PhoneNumber != null && _registrationModel.Password != null)
                 {
-                    var userData = new User()
+
+
+                    if (flag.Count() == 0)
                     {
-                        FirstName = _registrationModel.FirstName,
-                        LastName = _registrationModel.LastName,
-                        Email = _registrationModel.Email,
-                        Password = _registrationModel.Password,
-                        CityId = _registrationModel.CityId,
-                        CountryId = _registrationModel.CountryId,
-                        PhoneNumber = _registrationModel.PhoneNumber.ToString()
+                        var userData = new User()
+                        {
+                            FirstName = _registrationModel.FirstName,
+                            LastName = _registrationModel.LastName,
+                            Email = _registrationModel.Email,
+                            Password = _registrationModel.Password,
+                            CityId = _registrationModel.CityId,
+                            CountryId = _registrationModel.CountryId,
+                            PhoneNumber = _registrationModel.PhoneNumber
 
-                    };
-                    _ciplatformDbContext.Users.Add(userData);
-                    _ciplatformDbContext.SaveChanges();
-                    ViewBag.Status = 1;
+                        };
+                        _ciplatformDbContext.Users.Add(userData);
+                        _ciplatformDbContext.SaveChanges();
+                        ViewBag.Status = 1;
 
-                    //return RedirectToAction("Index", "Home");
+                        //return RedirectToAction("Index", "Home");
+                    }
+
+                    else
+                    {
+                        ViewBag.Status = 0;
+                        //return RedirectToAction("Registration", "Home");
+
+                    }
                 }
-
-                else { 
-                    ViewBag.Status = 0;
-                    //return RedirectToAction("Registration", "Home");
-
-                }
-               
             }
             catch
             {
@@ -293,7 +299,10 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-      
+
+
+
+
 
         [HttpGet]
         public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id= 0)
@@ -678,6 +687,10 @@ namespace CIPlatform.Controllers
             // outputsf = missionxx;
             //}
 
+            if (outputsf.Count() == 0)
+            {
+                ViewBag.SearchStatus = 0;
+            }
 
 
             ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
@@ -913,8 +926,14 @@ namespace CIPlatform.Controllers
         public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9, int missionidforapply=0)
         {
 
+            // progress bar
+            var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
+            TempData.Clear();
+            TempData["ProgressBarValue"] = progressBar.GoalValue;
 
-            
+            var progressData = _ciplatformDbContext.GoalMissions.Where(a => a.MissionId == id).ToList();
+            ViewBag.progressData = progressData;
+
 
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
@@ -1457,10 +1476,75 @@ namespace CIPlatform.Controllers
         }
 
 
-       
+
+        public IActionResult EditProfile()
+        {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+
+            var data = _ciplatformDbContext.Users.Where(a => a.UserId == ids).ToList();
+
+
+            if (data != null)
+            {
+                foreach (var a in data)
+                {
+
+                    ViewBag.FirstName = a.FirstName;
+                    ViewBag.LastName = a.LastName;
+                    ViewBag.EmployeeId = Convert.ToInt32(a.EmployeeId);
+                    ViewBag.Title = a.Title;
+                    ViewBag.Department = a.Department;
+                    ViewBag.ProfileText = a.ProfileText;
+                    ViewBag.WhyIVolunteer = a.WhyIVolunteer;
+                    ViewBag.CityId = Convert.ToInt32(a.CityId);
+                    ViewBag.LinkedInUrl = a.LinkedInUrl;
+
+                }
+
+
+                return View();
+
+
+            }
+            else
+            {
+                return View();
+
+            }
+
+        }
 
 
 
+        public IActionResult SaveUserData(string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
+        {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+            var userData = _ciplatformDbContext.Users.Where(y => y.UserId == ids).ToList();
+
+            var query = from u in userData select u;
+
+            foreach (User u in query)
+            {
+                u.FirstName = firstname;
+                u.LastName = lastname;
+                u.EmployeeId = empId;
+                u.Title = title;
+                u.Department = dept;
+                u.ProfileText = profile;
+                u.WhyIVolunteer = whyI;
+                u.CityId = cityId;
+                u.LinkedInUrl = linkedInurl;
+                u.UserId = ids;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+            return RedirectToAction("EditProfile", "Home");
+        }
 
 
 

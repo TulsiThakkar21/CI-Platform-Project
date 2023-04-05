@@ -1,5 +1,29 @@
 ﻿ @*ListView*@
 
+ @using (Html.BeginForm("_List", "Home", FormMethod.Get))
+{
+    @if (ViewBag.SearchStatus == 0)
+    {
+        @*<div class="alert alert-danger">No Mission Found</div>*@
+
+        <div class="container">
+
+            <div class="combine">
+                <h3 class="no-mission">No Mission Found</h3>
+                <button class="submit-btn-body">
+                    Submit new mission
+
+                    <img src="~/NewFolder/right-arrow.png" alt="">
+
+                </button>
+
+            </div>
+
+
+        </div>
+    }
+
+}
         
             @foreach(var item in ViewBag.outputsf)
             {

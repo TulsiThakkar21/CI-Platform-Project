@@ -183,7 +183,8 @@ namespace CIPlatform.Repository.Repositories
             return _db.Missions.Where(a => a.MissionId == b)
                 .Include(t1 => t1.City)
                 .Include(t2 => t2.Country)
-                .Include(t3 => t3.Theme).ToList();
+                .Include(t3 => t3.Theme)
+                .Include(t4=> t4.GoalMissions).ToList();
         }
 
 

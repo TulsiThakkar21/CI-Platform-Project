@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JU8f17ZQf+Hb0BslOm22WsQ3B7cX8glUVIz/66GyR3k=",
+  "Hash": "pgAuU2WSYGcuJV8B5ZNWwHDN1dbNyg6/jxRCzC677k8=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CIPlatform\\wwwroot",
       "Source": "CIPlatform",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
+      "OriginalItemSpec": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,30 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\loginstyle.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\editprofile.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "css/editprofile.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\editprofile.css"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\loginstyle.css",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/loginstyle.css",
       "AssetKind": "All",
@@ -68,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\loginstyle.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\lostpass.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\lostpass.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/lostpass.css",
       "AssetKind": "All",
@@ -85,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\lostpass.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\nomissionfound.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\nomissionfound.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/nomissionfound.css",
       "AssetKind": "All",
@@ -102,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\nomissionfound.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\platformlandingpage.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\platformlandingpage.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/platformlandingpage.css",
       "AssetKind": "All",
@@ -119,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\platformlandingpage.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\registration.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\registration.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/registration.css",
       "AssetKind": "All",
@@ -136,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\registration.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\resetpass.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\resetpass.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/resetpass.css",
       "AssetKind": "All",
@@ -153,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\resetpass.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\sharestory.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\sharestory.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/sharestory.css",
       "AssetKind": "All",
@@ -170,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\sharestory.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\site.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -187,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\storylisting.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\storylisting.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/storylisting.css",
       "AssetKind": "All",
@@ -204,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\storylisting.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\volLanding.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\volLanding.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/volLanding.css",
       "AssetKind": "All",
@@ -221,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\volLanding.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\favicon.ico",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -238,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\Filter.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\Filter.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/Filter.js",
       "AssetKind": "All",
@@ -255,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\js\\Filter.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\landing.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\landing.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/landing.js",
       "AssetKind": "All",
@@ -272,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\js\\landing.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -289,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/volunteer.js",
       "AssetKind": "All",
@@ -306,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\js\\volunteer.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -323,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -340,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -357,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -374,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -391,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -408,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -425,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -442,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -459,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -476,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -493,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -510,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -527,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -544,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -561,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -578,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -595,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -612,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -629,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -646,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -663,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -680,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -697,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -714,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -731,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -748,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -765,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -782,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -799,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -816,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -833,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -850,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -867,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -884,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -901,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -918,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -935,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -952,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -969,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -986,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -1003,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1020,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1037,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1054,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1071,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1088,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1105,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1122,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1139,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1156,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1173,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1190,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1207,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1224,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1241,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1258,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1275,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\add1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\add1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/add1.png",
       "AssetKind": "All",
@@ -1292,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\add1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Already-volunteered.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Already-volunteered.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/Already-volunteered.png",
       "AssetKind": "All",
@@ -1309,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\Already-volunteered.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\bell.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\bell.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/bell.png",
       "AssetKind": "All",
@@ -1326,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\bell.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\calender.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\calender.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/calender.png",
       "AssetKind": "All",
@@ -1343,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\calender.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\cancel1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\cancel1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/cancel1.png",
       "AssetKind": "All",
@@ -1360,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\cancel1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel2.png",
       "AssetKind": "All",
@@ -1377,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel2-resized.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel2-resized.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel2-resized.png",
       "AssetKind": "All",
@@ -1394,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel2-resized.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel3.png",
       "AssetKind": "All",
@@ -1411,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel3-resized.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel3-resized.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel3-resized.png",
       "AssetKind": "All",
@@ -1428,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel3-resized.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel4.png",
       "AssetKind": "All",
@@ -1445,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel-active-login.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\carousel-active-login.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/carousel-active-login.png",
       "AssetKind": "All",
@@ -1462,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\carousel-active-login.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\CI-SRS-Final-23.docx",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\CI-SRS-Final-23.docx",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/CI-SRS-Final-23.docx",
       "AssetKind": "All",
@@ -1479,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\CI-SRS-Final-23.docx"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\cropped-img-story.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\cropped-img-story.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/cropped-img-story.png",
       "AssetKind": "All",
@@ -1496,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\cropped-img-story.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "AssetKind": "All",
@@ -1513,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\deadline.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\deadline.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/deadline.png",
       "AssetKind": "All",
@@ -1530,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\deadline.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Doc 1_Tulsi.pdf",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Doc 1_Tulsi.pdf",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/Doc 1_Tulsi.pdf",
       "AssetKind": "All",
@@ -1547,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\Doc 1_Tulsi.pdf"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\doc.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\doc.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/doc.png",
       "AssetKind": "All",
@@ -1564,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\doc.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\grid.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\grid.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/grid.png",
       "AssetKind": "All",
@@ -1581,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\grid.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\growlistimg1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\growlistimg1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/growlistimg1.png",
       "AssetKind": "All",
@@ -1598,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\growlistimg1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\heart1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\heart1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/heart1.png",
       "AssetKind": "All",
@@ -1615,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\heart1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgchild.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgchild.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/imgchild.png",
       "AssetKind": "All",
@@ -1632,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\imgchild.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgedu.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgedu.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/imgedu.png",
       "AssetKind": "All",
@@ -1649,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\imgedu.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgenv.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\imgenv.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/imgenv.png",
       "AssetKind": "All",
@@ -1666,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\imgenv.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Layer 126.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Layer 126.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/Layer 126.png",
       "AssetKind": "All",
@@ -1683,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\Layer 126.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Layer 126@2x.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Layer 126@2x.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/Layer 126@2x.png",
       "AssetKind": "All",
@@ -1700,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\Layer 126@2x.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\list.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\list.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/list.png",
       "AssetKind": "All",
@@ -1717,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\list.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listviewimg1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listviewimg1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/listviewimg1.png",
       "AssetKind": "All",
@@ -1734,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\listviewimg1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listviewimg2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listviewimg2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/listviewimg2.png",
       "AssetKind": "All",
@@ -1751,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\listviewimg2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/listvimg3.png",
       "AssetKind": "All",
@@ -1768,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\listvimg3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/listvimg4.png",
       "AssetKind": "All",
@@ -1785,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\listvimg4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg5.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\listvimg5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/listvimg5.png",
       "AssetKind": "All",
@@ -1802,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\listvimg5.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\logo.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\logo.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/logo.png",
       "AssetKind": "All",
@@ -1819,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\lst-img1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\lst-img1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/lst-img1.png",
       "AssetKind": "All",
@@ -1836,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\lst-img1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\mission.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\mission.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/mission.png",
       "AssetKind": "All",
@@ -1853,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\mission.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\organization.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\organization.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/organization.png",
       "AssetKind": "All",
@@ -1870,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\organization.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\pdf.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\pdf.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/pdf.png",
       "AssetKind": "All",
@@ -1887,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\pdf.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\pin1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\pin1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/pin1.png",
       "AssetKind": "All",
@@ -1904,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\pin1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/re-2.png",
       "AssetKind": "All",
@@ -1921,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/re-3.png",
       "AssetKind": "All",
@@ -1938,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/related-1.png",
       "AssetKind": "All",
@@ -1955,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\related-1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/related-2.png",
       "AssetKind": "All",
@@ -1972,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\related-2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\related-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/related-3.png",
       "AssetKind": "All",
@@ -1989,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\related-3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\resized-carousel-vol-3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\resized-carousel-vol-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/resized-carousel-vol-3.png",
       "AssetKind": "All",
@@ -2006,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\resized-carousel-vol-3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/re-vol-2.png",
       "AssetKind": "All",
@@ -2023,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-vol-2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/re-vol-3.png",
       "AssetKind": "All",
@@ -2040,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-vol-3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\re-vol-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/re-vol-4.png",
       "AssetKind": "All",
@@ -2057,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-vol-4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\right-arrow.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\right-arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/right-arrow.png",
       "AssetKind": "All",
@@ -2074,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\right-arrow.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\search.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\search.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/search.png",
       "AssetKind": "All",
@@ -2091,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\search.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Seats-left.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\Seats-left.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/Seats-left.png",
       "AssetKind": "All",
@@ -2108,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\Seats-left.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\selected-star.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\selected-star.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/selected-star.png",
       "AssetKind": "All",
@@ -2125,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\selected-star.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\star-empty.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\star-empty.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/star-empty.png",
       "AssetKind": "All",
@@ -2142,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\star-empty.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\storydetailmainimg.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\storydetailmainimg.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/storydetailmainimg.png",
       "AssetKind": "All",
@@ -2159,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\storydetailmainimg.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user-img.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user-img.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/user-img.png",
       "AssetKind": "All",
@@ -2176,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\user-img.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user-img-large.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user-img-large.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/user-img-large.png",
       "AssetKind": "All",
@@ -2193,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\user-img-large.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carousel-1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carousel-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/vol-carousel-1.png",
       "AssetKind": "All",
@@ -2210,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\vol-carousel-1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volcarousel-3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volcarousel-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volcarousel-3.png",
       "AssetKind": "All",
@@ -2227,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volcarousel-3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carousel-4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carousel-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/vol-carousel-4.png",
       "AssetKind": "All",
@@ -2244,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\vol-carousel-4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carrousel-2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\vol-carrousel-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/vol-carrousel-2.png",
       "AssetKind": "All",
@@ -2261,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\vol-carrousel-2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer1.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer1.png",
       "AssetKind": "All",
@@ -2278,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer1.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer2.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer2.png",
       "AssetKind": "All",
@@ -2295,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer2.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer3.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer3.png",
       "AssetKind": "All",
@@ -2312,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer3.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer4.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer4.png",
       "AssetKind": "All",
@@ -2329,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer4.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer5.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer5.png",
       "AssetKind": "All",
@@ -2346,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer5.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer6.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer6.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer6.png",
       "AssetKind": "All",
@@ -2363,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer6.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer7.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer7.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer7.png",
       "AssetKind": "All",
@@ -2380,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer7.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer8.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer8.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer8.png",
       "AssetKind": "All",
@@ -2397,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer8.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer9.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\volunteer9.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/volunteer9.png",
       "AssetKind": "All",
@@ -2414,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\volunteer9.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\web.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\web.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/web.png",
       "AssetKind": "All",
@@ -2431,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\web.png"
     },
     {
-      "Identity": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\xlsx.png",
+      "Identity": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\xlsx.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\monclone\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "NewFolder/xlsx.png",
       "AssetKind": "All",

@@ -124,48 +124,45 @@
                                 
                             }
                         }
-                      
 
 
 
+                        <form class="mailpass" method="post">
 
-                    <div class="login-form">
+                            <div class="mail">
 
-                        <label class="lbl-email">Email Address</label>
-                        <br>
+                                <div>
+                                    <label asp-for="LoginId" id="regemail" class="form-label-email">Email Address</label>
+                                    <input asp-for="LoginId" type="email" placeholder="Enter your email" class="form-control">
+                                    <span asp-validation-for="LoginId" class="text-danger" style="font-size:12px;"></span>
+                                </div>
+                                <br>
+                                <label asp-for="Password" class="form-label">Password</label>
+                                <input asp-for="Password" type="password" placeholder="Enter your password" class="form-control">
+                                <span asp-validation-for="Password" class="text-danger" style="font-size:12px;"></span>
 
-                        @Html.TextBoxFor(u => u.LoginId, new {@class = "txt-inp", @placeholder=" Enter your email address", @type="email"})
-                        
-                        @*<input type="text" asp-for="User.Email" class="txt-inp" placeholder=" Enter your email address">*@
+                               
 
-                        <br>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn-login">Login</button>
+                            <br>
 
-                        <label class="lbl-pass">Password</label>
-                        <br>
-                            @Html.TextBoxFor(u => u.Password, new {@class = "txt-inp", @placeholder=" Enter your password", @type="password"})
-                        @*<input type="password" asp-for="User.Password" name="password" class="txt-inp" placeholder=" Enter your password">*@
-                        <br>
+                            <br>
+                            <div class="lost">
 
-                        <button type="submit" class="btn-login">
+                                <a asp-controller="Home" asp-action="LostPass" class="lbl-losspass">Lost your password?</a> <br>
+                                <span class="lbl-acc">
+                                    Don't have an account?
+                                    <a asp-controller="Home" asp-action="Registration">Create an account</a>
+                                </span><br>
 
-                            <lable class="lbl-login">Login</lable>
+                            </div>
 
-                        </button>
-                        <br><br>
-                        <a asp-controller="Home"  asp-action="LostPass" class="lbl-losspass"> Lost your password?</a>
-                        @*<label class="lbl-losspass ">Lost your password?</label>*@
+                        </form>
 
-                        <br>
-                        <span>
-                            <label class="lbl-acc">Don't have an account?</label>
-                            <a asp-controller="Home" asp-action="Registration">Create an account</a>
-                        </span>
 
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <a asp-controller="Home"  asp-action="PrivacyPolicy" class="lbl-privacy">Privacy Policy</a>
-                      
-
-                    </div>
+                   
                     }
                 </div>
 

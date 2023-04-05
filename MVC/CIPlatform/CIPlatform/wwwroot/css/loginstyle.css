@@ -1,4 +1,112 @@
-﻿* {
+﻿
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.carousel-caption h5 {
+    margin-left: 0.5%;
+    /* width: 70%;
+height: 30%; */
+    font-size: 35px;
+    text-align: left;
+}
+
+.carousel-caption p {
+    margin-left: 0.5%;
+    text-align: left;
+    margin-bottom: 10%;
+}
+
+.carousel-indicators {
+    visibility: hidden;
+}
+
+
+.mailpass {
+    width: 90%;
+    margin-top: 25%;
+    margin-left: 12%;
+}
+
+.form-label-email {
+    padding-top: 20%;
+    margin-top: 5%;
+    color: #414141;
+    font-size: medium;
+}
+
+.carousel-items {
+    height: 100vh;
+}
+
+.image {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.form-control {
+    margin-top: 1%;
+    width: 80%;
+    height: 50px;
+}
+
+.btn {
+    width: 81%;
+    color: #F88634;
+    border: 1px solid #F88634;
+    height: 40px;
+    border-radius: 50px;
+    margin-top: 8%;
+}
+
+.lost {
+    margin-top: 2%;
+    text-align: center;
+    font-size: small;
+    margin-left: -15%;
+}
+
+.acc {
+    margin-top: 10%;
+}
+
+.privacy {
+    margin-left: 68%;
+    text-align: center;
+    font-size: small;
+    color: black;
+    margin-top: -2%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (min-width:300px) and (max-width:991px) {
+    .mailpass {
+        margin-top: -12%;
+    }
+
+    .privacy {
+        margin-left: 2%;
+        text-align: center;
+        font-size: small;
+        color: black;
+        margin-top: 20%;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1200px) {
+    .mailpass {
+        margin-top: -12%;
+    }
+}
+
+
+
+* {
     padding: 0;
     margin: 0;
 }
@@ -89,13 +197,13 @@
 }
 
 .btn-login {
-    width: 70%;
+    width: 60%;
     height: 46px;
     background: #F8863400 0% 0% no-repeat padding-box;
     border: 2px solid #F88634;
     border-radius: 24px;
     margin-top: 30px;
-    margin-left: 88px;
+    margin-left: 20%;
     color: #F88634;
 }
 
@@ -115,7 +223,7 @@
     letter-spacing: 0px;
     color: #414141;
     text-decoration: none;
-    margin-left: 40%;
+    margin-left: 20%;
     font-size: medium;
 }
 
@@ -124,7 +232,7 @@
     letter-spacing: 0px;
     color: #414141;
     text-decoration: none;
-    margin-left: 27%;
+    margin-left: 17%;
     margin-top: 10px;
     font-size: medium;
 }

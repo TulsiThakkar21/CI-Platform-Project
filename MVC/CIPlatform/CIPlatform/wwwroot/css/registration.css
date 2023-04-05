@@ -1,4 +1,120 @@
-﻿* {
+﻿.mailpass3 {
+    width: 90%;
+    margin-top: 50%;
+    margin-left: 12%;
+}
+
+.image {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.lost1 {
+    margin-top: 1%;
+    text-align: center;
+    font-size: small;
+}
+
+.acc1 {
+    margin-top: 5%;
+}
+
+.privacy2 {
+    margin-left: 67%;
+    text-align: center;
+    font-size: small;
+    color: black;
+    margin-top: -1%;
+}
+
+.form-label {
+    margin-top: 5%;
+    color: #414141;
+    font-size: small;
+}
+
+.formcontrol {
+    height: 5% !important;
+}
+
+.form-control1 {
+    width: 80%;
+    height: 30px;
+}
+
+@media screen and (min-width:360px) and (max-width:1200px) {
+    .mailpass3 {
+        width: 80%;
+        margin-top: 1%;
+        margin-left: 18%;
+    }
+
+    .formcontrol {
+        height: 5%;
+    }
+
+    .lost1 {
+        margin-top: -2%;
+        text-align: center;
+        font-size: small;
+    }
+
+    .privacy2 {
+        margin-left: 2%;
+        text-align: center;
+        font-size: small;
+        color: black;
+        margin-top: 20%;
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width:1400px) {
+
+    .mailpass3 {
+        width: 80%;
+        margin-top: -2%;
+        margin-left: 18%;
+    }
+
+    .lost1 {
+        margin-top: -2%;
+        text-align: center;
+        font-size: small;
+    }
+
+    .privacy2 {
+        margin-top: -4%;
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width:1330px) {
+    .privacy2 {
+        display: none;
+    }
+}
+
+@media screen and (min-width:1401px) and (max-width:1536px) {
+    .lost1 {
+        margin-top: -3%;
+        text-align: center;
+        font-size: small;
+    }
+
+    .mailpass3 {
+        width: 80%;
+        margin-top: -2%;
+        margin-left: 18%;
+    }
+
+    .privacy2 {
+        margin-top: -4%;
+    }
+}
+
+
+
+
+{
     padding: 0;
     margin: 0;
 }
@@ -155,12 +271,12 @@
     text-align: center;
 }
 
-.btn-reg:hover {
-    background-color: #F88632;
-    transition: 0.7s;
-    border-color: #ff6a00;
-    color: white;
-}
+    .btn-reg:hover {
+        background-color: #F88632;
+        transition: 0.7s;
+        border-color: #ff6a00;
+        color: white;
+    }
 
 .lbl-losspass {
     text-align: center;
@@ -342,7 +458,7 @@ a {
         text-decoration: none;
         margin-left: 37%;
         margin-top: 18px;
-        font-size: small; 
+        font-size: small;
     }
 
     .lbl-ar {

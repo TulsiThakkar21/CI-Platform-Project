@@ -401,14 +401,35 @@
                             </div>
 
                             <div class="col-6" style="display: flex;">
-                                <img src="~/NewFolder/mission.png" alt="" class="mission-img">
-                                <div class="hssh">
-                                    <div class="progress">
-                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="achieved">8000 achieved</p>
-                                </div>
+                                
+                                
+                                @{
+                                   
+                                        
+                                    
+                                    if (ViewBag.progressData.Count != 0)
+                                            {
+                                                <img src="~/NewFolder/mission.png" alt="" class="mission-img">
+                                                <div class="hssh">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: @(TempData["ProgressBarValue"])%;" aria-valuenow="@TempData["ProgressBarValue"]" aria-valuemin="0" aria-valuemax="100"></div>
+
+                                                    </div>
+
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <img class="mission-img" src="~/NewFolder/deadline.png">
+                                                <div class="hssh">
+
+                                                    <p class="seatno">@item.EndDate.ToShortDateString()</p>
+                                                    <p class="seat">Deadline</p>
+                                                </div>
+                                            }
+                                    }
+
+                              
 
                             </div>
 
@@ -600,11 +621,11 @@
                                             if (@ViewBag.Ratingdata.Count == 0)
                                             {
                                                 <div id="rating">
-                                                    <i class="rating__star far fa-star star" data-value="1" data-missionid="@item.m.MissionId"></i>
-                                                    <i class="rating__star far fa-star star" data-value="2" data-missionid="@item.m.MissionId"></i>
-                                                    <i class="rating__star far fa-star star" data-value="3" data-missionid="@item.m.MissionId"></i>
-                                                    <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.m.MissionId"></i>
-                                                    <i class="rating__star far fa-star star" data-value="5" data-missionid="@item.m.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="1" data-missionid="@item.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="2" data-missionid="@item.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="3" data-missionid="@item.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="4" data-missionid="@item.MissionId"></i>
+                                                    <i class="rating__star far fa-star star" data-value="5" data-missionid="@item.MissionId"></i>
                                                 </div>
                                             }
                                             else
@@ -714,17 +735,18 @@
                                             <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
                                                 <button disabled type="submit" class="apply-btn" style="border-color : grey ; color : grey">
 
-                                                    No longer available 
+                                                    No longer available
                                                 </button>
                                             </a>
                                         }
-                                        else { 
-                                        <button type="submit" class="btn btn-outline-secondary apply-btn" onclick="applyformission(@item.MissionId)">
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-outline-secondary apply-btn" onclick="applyformission(@item.MissionId)">
 
-                                            Apply Now <img src="~/NewFolder/right-arrow.png">
+                                                Apply Now <img src="~/NewFolder/right-arrow.png">
 
 
-                                        </button>
+                                            </button>
                                         }
                                     }
                                     else
@@ -941,7 +963,7 @@
                                         </div>*@
 
 
-                                          
+
 
 
 

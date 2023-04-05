@@ -316,7 +316,46 @@ function onCancel() {
 
 
 
+function editUser() {
 
+
+    var firstname = document.getElementById('fname').value;
+    var lastname = document.getElementById('lname').value;
+    var empId = document.getElementById('empid').value;
+    var title = document.getElementById('title').value;
+    var dept = document.getElementById('dept').value;
+    var profile = document.getElementById('profiletxt').value;
+    var whyI = document.getElementById('why').value;
+    var cityId = document.getElementById('cityid').value;
+    var linkedInurl = document.getElementById('link').value;
+
+    $.ajax({
+        url: '/Home/SaveUserData',
+        type: "POST",
+        data: {
+
+            firstname: firstname,
+            lastname: lastname,
+            empId: empId,
+            title: title,
+            dept: dept,
+            profile: profile,
+            whyI: whyI,
+            cityId: cityId,
+            linkedInurl: linkedInurl
+
+
+
+        },
+        success: function () {
+            document.getElementById("fname").innerHTML = response.fname;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+}
 
 
 
