@@ -358,7 +358,37 @@ function editUser() {
 }
 
 
+function changeuserpass() {
 
+    var input1 = $("#newpass").val();
+
+    $.ajax({
+
+        url: '/Home/ChangeUserPass',
+        type: 'POST',
+        data: { input1: input1 },
+        success: function () {
+            console.log("success");
+
+            //location.reload();
+            //location.reload();
+        }
+
+
+    });
+    //$('#change-form').change(function () {
+    //    const newpass = $('#newpass').val();
+
+    //    const urlParams = new URLSearchParams(window.location.search);
+    //    urlParams.set('newpass', newpass);
+
+    //    const newUrl = window.location.pathname + '?' + urlParams.toString();
+    //    history.pushState(null, '', newUrl);
+
+    //    $('#change-form').submit();
+    //});
+
+}
 
 
 

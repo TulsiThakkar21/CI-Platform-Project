@@ -13,7 +13,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using CIPlatform.Entities.Models;
 using CIPlatform.Repository.Repositories;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Identity;
@@ -1439,7 +1438,7 @@ namespace CIPlatform.Controllers
         }
 
 
-
+       
 
 
 
@@ -1546,8 +1545,43 @@ namespace CIPlatform.Controllers
             return RedirectToAction("EditProfile", "Home");
         }
 
+        
+        public IActionResult ChangeUserPass(string input1)
+        {
+            
+            ChangePassUserModel _ch = new ChangePassUserModel();
+            //var passwd = Request.Form["newpass"];
+
+            //var passwd = _changePassUserModel.NewPassword;
+
+            //var passwd = input1;
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
 
 
+
+            var user = _ciplatformDbContext.Users.FirstOrDefault(u => (u.UserId == ids));
+
+            if (user != null)
+            {
+
+                user.Password = input1;
+                _ciplatformDbContext.Users.Update(user);
+                _ciplatformDbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+
+            }
+
+            else
+            {
+                return RedirectToAction("EditProfile", "Home");
+
+            }
+
+            
+        }
 
         public IActionResult NoMissionFound()
         {

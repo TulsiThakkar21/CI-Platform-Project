@@ -232,6 +232,11 @@
                         <p class="para" style="font-size:large;">&nbsp;&nbsp;@item.PublishedAt.ToShortDateString()</p>
                           </div>
                         <br>
+                        <div style="display:flex">
+                            <h5 style="color:grey;"><b>Why I Voulnteer : </b></h5>
+                            <p class="para" style="font-size:large;">&nbsp;&nbsp;@item.User.WhyIVolunteer</p>
+                        </div>
+                        <br>
                      
                             <div class="row">
                                   <div id="dropdownrecmd">
@@ -270,12 +275,13 @@
 
 
                                 <div class="col apply-row">
+                                <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.Mission.MissionId">
                                     <button class="apply-btn" style="margin-left:45%; margin-top:-50%">
                                         Open Mission
 
                                         <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">
-
                                     </button>
+                                </a>
                                 </div>
 
 
