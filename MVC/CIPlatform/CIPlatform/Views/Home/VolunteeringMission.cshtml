@@ -401,35 +401,35 @@
                             </div>
 
                             <div class="col-6" style="display: flex;">
-                                
-                                
+
+
                                 @{
-                                   
-                                        
-                                    
+
+
+
                                     if (ViewBag.progressData.Count != 0)
-                                            {
-                                                <img src="~/NewFolder/mission.png" alt="" class="mission-img">
-                                                <div class="hssh">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: @(TempData["ProgressBarValue"])%;" aria-valuenow="@TempData["ProgressBarValue"]" aria-valuemin="0" aria-valuemax="100"></div>
+                                    {
+                                        <img src="~/NewFolder/mission.png" alt="" class="mission-img">
+                                        <div class="hssh">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: @(TempData["ProgressBarValue"])%;" aria-valuenow="@TempData["ProgressBarValue"]" aria-valuemin="0" aria-valuemax="100"></div>
 
-                                                    </div>
+                                            </div>
 
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <img class="mission-img" src="~/NewFolder/deadline.png">
-                                                <div class="hssh">
-
-                                                    <p class="seatno">@item.EndDate.ToShortDateString()</p>
-                                                    <p class="seat">Deadline</p>
-                                                </div>
-                                            }
+                                        </div>
                                     }
+                                    else
+                                    {
+                                        <img class="mission-img" src="~/NewFolder/deadline.png">
+                                        <div class="hssh">
 
-                              
+                                            <p class="seatno">@item.EndDate.ToShortDateString()</p>
+                                            <p class="seat">Deadline</p>
+                                        </div>
+                                    }
+                                }
+
+
 
                             </div>
 
@@ -1090,10 +1090,6 @@
                                                     <h4 class="card-title">@itemsname.m.Title</h4>
 
                                                     @{
-
-
-
-
 
 
                                                         if (@ViewBag.favlist.Count == 0)

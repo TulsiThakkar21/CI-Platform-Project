@@ -36,6 +36,10 @@ namespace CIPlatform.Repository.Repositories
             public string GetLoginUser(int ids);
         IEnumerable<MissionSkill> GetSkillandMissionSkill();
 
+        IEnumerable<GoalMission>GetGoalMissions();
+
+        IEnumerable<GoalMission> GetTimeGoalBased(int id);
+
         
     }
     }

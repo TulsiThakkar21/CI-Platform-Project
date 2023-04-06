@@ -1599,7 +1599,9 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.Users.Update(user);
                 _ciplatformDbContext.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+
+                return View("Index");
+               
 
             }
 

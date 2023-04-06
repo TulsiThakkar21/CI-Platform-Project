@@ -211,8 +211,17 @@ namespace CIPlatform.Repository.Repositories
         }
 
        
+        public IEnumerable<GoalMission> GetGoalMissions()
+        {
+            return _db.GoalMissions.ToList();
+        }
 
-
+        public IEnumerable<GoalMission> GetTimeGoalBased(int id)
+        {
+            return _db.GoalMissions.Where(a => a.MissionId == id)
+                .Include(t1 => t1.Mission)
+                .ToList();
+        }
 
     }
 
