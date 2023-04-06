@@ -306,8 +306,19 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id= 0)
         {
-           
+            //var goalmissionlist = _homeRepository.GetGoalMissions();
+            //var timegoalbased = _homeRepository.GetTimeGoalBased(id);
+
+            //ViewBag.timegoalbased = timegoalbased;
             
+            // progress bar
+            var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
+            TempData.Clear();
+            TempData["ProgressBarValue"] = progressBar.GoalValue;
+
+            var progressData = _ciplatformDbContext.GoalMissions.Where(a => a.MissionId == id).ToList();
+            ViewBag.progressData = progressData;
+
 
 
             int count = 30;
@@ -461,6 +472,22 @@ namespace CIPlatform.Controllers
         
         public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
+            // progress bar
+
+            //var goalmissionlist = _homeRepository.GetGoalMissions();
+            //var timegoalbased = _homeRepository.GetTimeGoalBased(id);
+
+            //ViewBag.goalmissionlist = goalmissionlist;
+
+
+
+            var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
+            TempData.Clear();
+            TempData["ProgressBarValue"] = progressBar.GoalValue;
+
+            var progressData = _ciplatformDbContext.GoalMissions.Where(a => a.MissionId == id).ToList();
+            ViewBag.progressData = progressData;
+
 
             int count = 30;
 
@@ -622,6 +649,8 @@ namespace CIPlatform.Controllers
 
         public IActionResult _List(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
+         
+
 
             int count = 30;
 
