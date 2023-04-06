@@ -1317,21 +1317,37 @@ namespace CIPlatform.Controllers
         //}
 
 
-        public IActionResult ShareYourStory(string storyTitle,string appliedMission , int id, string desc, DateTime pubDate, string vid, int selectedOptionId)
+
+
+        public IActionResult ShareYourStory(string videourl,int missiondd, string storyTitle, string abcd, int id, string desc, DateTime pubDate, string newArray, int selectedOptionId = 0)
         {
+
+
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
-            var fullname = _homeRepository.GetLoginUser(ids);
-            ViewBag.fullname = fullname;
 
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
-            
+
             ViewBag.appliedmission = appliedmission;
-            var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(appliedMission)).ToList();
+            var missionidfinal = _ciplatformDbContext.Missions.Where(a => a.Title.Contains(abcd)).ToList();
             long missinids = 0;
             missionidfinal.ForEach(mission => missinids = mission.MissionId);
+            var storylist = _ciplatformDbContext.Stories.Where(a => a.Status == "Draft");
+            ViewBag.medias = _ciplatformDbContext.MissionMedia.ToList();
+            if (selectedOptionId != 0)
+            {
+                var draftedstory = _ciplatformDbContext.Stories.Where(a => a.MissionId == selectedOptionId && a.UserId == ids).ToList();
 
 
+
+                var query = from r in draftedstory select r;
+                foreach (Story r in query)
+                {
+                    r.Status = "Save";
+                }
+
+                _ciplatformDbContext.SaveChanges();
+            }
 
 
 
@@ -1339,22 +1355,41 @@ namespace CIPlatform.Controllers
 
             if (storyTitle != null)
             {
-
-                var story = new Story
+                var isstoryexist = _ciplatformDbContext.Stories.Where(a => a.MissionId == missiondd && a.UserId == ids).ToList();
+                if (isstoryexist.Count == 0)
                 {
+                    var story = new Story
+                    {
 
-                    Title = storyTitle,
-                    Description = desc,
-                    PublishedAt = pubDate,
-                    VidUrl = vid,
-                    UserId = ids,
-                    MissionId = missinids
-                };
+                        Title = storyTitle,
+                        Description = desc,
+                        PublishedAt = pubDate,
+                        UserId = ids,
+                        MissionId = missiondd
+                    };
 
-                _ciplatformDbContext.Stories.Add(story);
+                    _ciplatformDbContext.Stories.Add(story);
 
-                _ciplatformDbContext.SaveChanges();
+                    _ciplatformDbContext.SaveChanges();
+                }
 
+                else
+                {
+                    var query = from s in isstoryexist select s;
+                    foreach (Story s in query)
+                    {
+                        s.Title = storyTitle;
+                        s.Description = desc;
+                        s.PublishedAt = pubDate;
+                        s.VidUrl = videourl;
+                        s.UserId = ids;
+                        s.MissionId = missiondd;
+                    }
+
+                    _ciplatformDbContext.SaveChanges();
+
+
+                }
             }
 
 
@@ -1362,6 +1397,8 @@ namespace CIPlatform.Controllers
             var finallist = from a in appliedmission
                             join m in missionList on a.MissionId equals m.MissionId
                             where a.MissionId == m.MissionId
+                            //join s in storylist on a.MissionId equals s.MissionId
+
                             select new
                             {
                                 a,
@@ -1372,19 +1409,130 @@ namespace CIPlatform.Controllers
 
             ViewBag.finallist = finallist;
 
+            if (newArray != null)
+            {
+
+                string[] imgdata = newArray.Split(",", StringSplitOptions.RemoveEmptyEntries);
 
 
-            //Edit
+                // Save the images to disk or database
+                foreach (var image in imgdata)
+                {
 
-            
+                    var fileName = Path.GetFileName(image);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "~/NewFolder/", fileName);
+
+                    string substring = filePath.Substring(63);
+                    string imgname = filePath.Substring(74);
+
+                    ViewBag.substring = substring;
+                    ViewBag.isempty = 1;
 
 
+                    var imgdb = new MissionMedium
+                    {
+                        MissionId = 5,
+                        MediaName = imgname,
 
+                        MediaType = "png",
+                        MediaPath = substring
+
+                    };
+
+                    _ciplatformDbContext.MissionMedia.Add(imgdb);
+                    _ciplatformDbContext.SaveChanges();
+
+                }
+
+            }
+
+
+            var abc = HttpContext.Session.GetString("userid");
+            if (abc == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
 
             return View();
         }
 
-      
+
+
+
+
+
+
+
+
+
+        //public IActionResult ShareYourStory(string storyTitle,string appliedMission , int id, string desc, DateTime pubDate, string vid, int selectedOptionId)
+        //{
+        //    var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+        //    ViewBag.ids = Convert.ToInt32(ids);
+        //    var fullname = _homeRepository.GetLoginUser(ids);
+        //    ViewBag.fullname = fullname;
+
+        //    var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+
+        //    ViewBag.appliedmission = appliedmission;
+        //    var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(appliedMission)).ToList();
+        //    long missinids = 0;
+        //    missionidfinal.ForEach(mission => missinids = mission.MissionId);
+
+
+
+
+
+        //    var missionList = _ciplatformDbContext.Missions.ToList();
+
+        //    if (storyTitle != null)
+        //    {
+
+        //        var story = new Story
+        //        {
+
+        //            Title = storyTitle,
+        //            Description = desc,
+        //            PublishedAt = pubDate,
+        //            VidUrl = vid,
+        //            UserId = ids,
+        //            MissionId = missinids
+        //        };
+
+        //        _ciplatformDbContext.Stories.Add(story);
+
+        //        _ciplatformDbContext.SaveChanges();
+
+        //    }
+
+
+
+        //    var finallist = from a in appliedmission
+        //                    join m in missionList on a.MissionId equals m.MissionId
+        //                    where a.MissionId == m.MissionId
+        //                    select new
+        //                    {
+        //                        a,
+        //                        m
+        //                    };
+
+
+
+        //    ViewBag.finallist = finallist;
+
+
+
+        //    //Edit
+
+
+
+
+
+
+        //    return View();
+        //}
+
+
         public IActionResult EditStory(int selectedOptionId, string appliedMission)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));

@@ -71,7 +71,7 @@ function rccall(MissionId) {
         success: function (data) {
             location.reload();
             console.log("success");
-            
+
         },
         error: function () {
             // Handle error response from the server, e.g. show an error message to the user
@@ -82,7 +82,7 @@ function rccall(MissionId) {
     });
 
 
-   
+
 
 
 }
@@ -90,30 +90,30 @@ function rccall(MissionId) {
 
 
 
-    var checkboxes = document.querySelectorAll(".checkbox");
+var checkboxes = document.querySelectorAll(".checkbox");
 
-    var filtersSection = document.querySelector(".filters-section");
+var filtersSection = document.querySelector(".filters-section");
 
-    var listArray = [];
+var listArray = [];
 
-    var filterList = document.querySelector(".filter-list");
+var filterList = document.querySelector(".filter-list");
 
-    var len = listArray.length;
+var len = listArray.length;
 
-    for (var checkbox of checkboxes) {
-        checkbox.addEventListener("click", function () {
-            if (this.checked == true) {
-                addElement(this, this.value);
-            } else {
-                removeElement(this.value);
-            }
-        });
+for (var checkbox of checkboxes) {
+    checkbox.addEventListener("click", function () {
+        if (this.checked == true) {
+            addElement(this, this.value);
+        } else {
+            removeElement(this.value);
         }
+    });
+}
 
-    function addElement(current, value) {
-        //let filtersSection = document.querySelector(".filters-section");
+function addElement(current, value) {
+    //let filtersSection = document.querySelector(".filters-section");
 
-        let createdTag = document.createElement("span");
+    let createdTag = document.createElement("span");
     createdTag.classList.add("filter-list");
     createdTag.classList.add("ps-3");
     createdTag.classList.add("pe-1");
@@ -128,25 +128,25 @@ function rccall(MissionId) {
     crossButton.addEventListener("click", function () {
         let elementToBeRemoved = document.getElementById(value);
 
-    console.log(elementToBeRemoved);
-    console.log(current);
-    elementToBeRemoved.remove();
+        console.log(elementToBeRemoved);
+        console.log(current);
+        elementToBeRemoved.remove();
 
-    current.checked = false;
-            });
+        current.checked = false;
+    });
 
     crossButton.innerHTML = cross;
 
     createdTag.appendChild(crossButton);
     filtersSection.appendChild(createdTag);
-        }
+}
 
-    function removeElement(value) {
-        let filtersSection = document.querySelector(".filters-section");
+function removeElement(value) {
+    let filtersSection = document.querySelector(".filters-section");
 
     let elementToBeRemoved = document.getElementById(value);
     filtersSection.removeChild(elementToBeRemoved);
-        }
+}
 
 
 
@@ -175,36 +175,36 @@ function commentadd(MissionId) {
 
 
 
-function addstory() {
-   /* var missiondd = document.getElementById('#exampleFormControlSelect12').value;*/
-    var appliedMission= $('#exampleFormControlSelect12').val();
-    var storyTitle = document.getElementById('sTitle').value;
-    var pubDate = document.getElementById('sPDate').value;
-    var desc = document.getElementById('sDesc').value;
-    var vid = document.getElementById('vidUrl').value;
-    
-    $.ajax({
-        url: '/Home/ShareYourStory',
-        type: "POST",
-        data: {
-     /*       missiondd : missiondd*/
-            storyTitle: storyTitle,
-            pubDate: pubDate,
-            desc: desc,
-            vid: vid,
-            appliedMission: appliedMission
-            
-        },
-        success: function () {
-            document.getElementById("sTitle").innerHTML = response.sTitle;
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-        }
-    });
+//function addstory() {
+
+//    var appliedMission= $('#exampleFormControlSelect12').val();
+//    var storyTitle = document.getElementById('sTitle').value;
+//    var pubDate = document.getElementById('sPDate').value;
+//    var desc = document.getElementById('sDesc').value;
+//    var vid = document.getElementById('vidUrl').value;
+
+//    $.ajax({
+//        url: '/Home/ShareYourStory',
+//        type: "POST",
+//        data: {
+
+//            storyTitle: storyTitle,
+//            pubDate: pubDate,
+//            desc: desc,
+//            vid: vid,
+//            appliedMission: appliedMission
+
+//        },
+//        success: function () {
+//            document.getElementById("sTitle").innerHTML = response.sTitle;
+//        },
+//        error: function (xhr, textStatus, errorThrown) {
+//            console.log("Error: " + errorThrown);
+//        }
+//    });
 
 
-}
+//}
 
 
 
@@ -214,7 +214,7 @@ function addstory() {
 
 
 function newselecId(s) {
-  /*  var adID = console.log(s[s.selectedIndex].id);*/
+    /*  var adID = console.log(s[s.selectedIndex].id);*/
     /*   var newappMissionID = $(this).find('option:selected').attr('id');*/
     const selectElement = document.getElementById("exampleFormControlSelect12");
     const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
@@ -224,10 +224,10 @@ function newselecId(s) {
         url: '/Home/EditStory',
         type: "POST",
         data: {
-           
+
             selectedOptionId: selectedOptionId
 
-        }, 
+        },
         success: function (data) {
             var a = new Date(data.publishedAt).toISOString().slice(0, 10);
 
@@ -241,34 +241,23 @@ function newselecId(s) {
             console.log("Error: " + errorThrown);
         }
     });
-            
+
 }
 
 
-
 function editstory() {
+    debugger
+    const selectElement = document.getElementById("exampleFormControlSelect12");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
-    //const selectElement = document.getElementById("exampleFormControlSelect12");
-    //const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
-
-    var appliedMission = $('#exampleFormControlSelect12').val();
-    var storyTitle = document.getElementById('sTitle').value;
-    var pubDate = document.getElementById('sPDate').value;
-    var desc = document.getElementById('sDesc').value;
-    var vid = document.getElementById('vidUrl').value;
 
     $.ajax({
-        url: '/Home/SaveStory',
+        url: '/Home/ShareYourStory',
         type: "POST",
         data: {
-            /*       missiondd : missiondd*/
-            storyTitle: storyTitle,
-            pubDate: pubDate,
-            desc: desc,
-            vid: vid,
-            appliedMission: appliedMission,
-          /*  selectedOptionId : selectedOptionId*/
+            selectedOptionId: selectedOptionId,
+
 
         },
         success: function () {
@@ -280,6 +269,85 @@ function editstory() {
     });
 
 }
+
+
+function addstory() {
+    const selectElement = document.getElementById("exampleFormControlSelect12");
+    const missiondd = selectElement.selectedOptions[0].getAttribute("id");
+
+    
+        document.getElementById('submitbtns').disabled = false;
+        document.getElementById('submitbtns').style.borderColor = "#F88634";
+        document.getElementById('submitbtns').style.color = "#F88634";
+
+        var abcd = $('#exampleFormControlSelect12').val();
+        var storyTitle = document.getElementById('sTitle').value;
+        var pubDate = document.getElementById('sPDate').value;
+        var desc = document.getElementById('sDesc').value;
+        var videourl = document.getElementById('vidUrl').value;
+        $.ajax({
+            url: '/Home/ShareYourStory',
+            type: "POST",
+            data: {
+                missiondd: missiondd,
+                storyTitle: storyTitle,
+                pubDate: pubDate,
+                desc: desc,
+                abcd: abcd,
+                videourl: videourl,
+                /*newArray: newArray*/
+
+            },
+            success: function () {
+                console.log(1);
+                /* document.getElementById("sTitle").innerHTML = response.sTitle;*/
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("Error: " + errorThrown);
+            }
+        });
+    
+
+}
+
+function submitstate() {
+    document.getElementById('submitbtns').disabled = true;
+    document.getElementById('submitbtns').style.borderColor = "grey";
+    document.getElementById('submitbtns').style.color = "grey";
+}
+
+//function editstory() {
+
+
+
+//    var appliedMission = $('#exampleFormControlSelect12').val();
+//    var storyTitle = document.getElementById('sTitle').value;
+//    var pubDate = document.getElementById('sPDate').value;
+//    var desc = document.getElementById('sDesc').value;
+//    var vid = document.getElementById('vidUrl').value;
+
+//    $.ajax({
+//        url: '/Home/SaveStory',
+//        type: "POST",
+//        data: {
+
+//            storyTitle: storyTitle,
+//            pubDate: pubDate,
+//            desc: desc,
+//            vid: vid,
+//            appliedMission: appliedMission,
+
+
+//        },
+//        success: function () {
+//            document.getElementById("sTitle").innerHTML = response.sTitle;
+//        },
+//        error: function (xhr, textStatus, errorThrown) {
+//            console.log("Error: " + errorThrown);
+//        }
+//    });
+
+//}
 
 
 
@@ -304,7 +372,7 @@ function applyformission(missionidforapply) {
 
 
 function onCancel() {
-   
+
     document.getElementById('exampleFormControlSelect12').value = "";
     document.getElementById('sTitle').value = "";
     document.getElementById('sPDate').value = "";

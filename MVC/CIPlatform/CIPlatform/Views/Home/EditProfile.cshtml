@@ -3,9 +3,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 *@
 @{
 }
-@using CIPlatform.Entities.Models
-
-@model ChangePassUserModel
+@model CIPlatform.Entities.Models.ChangePassUserModel
 
 
 <!DOCTYPE html>
@@ -159,7 +157,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                         <form id="change-form" asp-action="ChangeUserPass" asp-controller="Home" method="post">
                                         <div>
                                            
-                                                    <input asp-for="OldPassword" id="oldpass" name="oldpass" type="password" class="form-control" placeholder="Enter old password">
+                                           <input asp-for="OldPassword" id="oldpass" name="oldpass" type="password" class="form-control" placeholder="Enter old password">
                                             <span asp-validation-for="OldPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
                                         </div>
                                         <br />
@@ -173,7 +171,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                         <br />
                                         <div>
 
-                                                    <input asp-for="ConfirmPassword" name="confirmpass" id="confirmpass" type="password" class="form-control" placeholder="Enter confirm password">
+                                             <input asp-for="ConfirmPassword" name="confirmpass" id="confirmpass" type="password" class="form-control" placeholder="Enter confirm password">
                                             <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
 

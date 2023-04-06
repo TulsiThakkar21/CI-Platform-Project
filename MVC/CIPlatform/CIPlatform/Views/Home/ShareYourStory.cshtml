@@ -5,7 +5,7 @@
         }
 @using CIPlatform.Entities.Models
 @using CIPlatform.Models.ViewModels
-@model LandingAllModels 
+@model Story
 
         <!DOCTYPE html>
         <html lang="en">
@@ -125,7 +125,7 @@
 
 
             </header>
-            <body>
+<body onload="submitstate()">
 
                 <div class="container">
                      
@@ -217,6 +217,7 @@
                                 
                                 <label>My Story Title</label>
                                 <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
+                                <span asp-validation-for="Title" style="color:red; font-size:10px;"></span>
                             </div>
                             <div class="col-md-4">
                                 <label>Date</label>
@@ -225,8 +226,9 @@
                                     <form class="row" >
                                      
                                         <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
-                                      
-                                    </form>
+                                    <span asp-validation-for="PublishedAt" style="color:red; font-size:10px;"></span>
+
+                                </form>
                                   </section>
                             </div>
                             
@@ -244,8 +246,9 @@
                             <label>My Story</label>
                             <br>
                             <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
-                                
+
                             </textarea>
+                                <span asp-validation-for="Description" style="color:red; font-size:10px;"></span>
 
                         </div>
 
@@ -293,8 +296,10 @@
                         </div>
 
                         <div class="col-4">
-                            <button class="btn-save" onclick="editstory()">Save</button>&nbsp;&nbsp;&nbsp;
-                            <button onclick="addstory()" class="btn-submit">Submit</button>
+                            
+
+                        <button class="btn-save" onclick="addstory()">Save</button>
+                        <button id="submitbtns" class=" btn-submit" onclick="editstory()">Submit</button>
                         </div>
 
                     </div>

@@ -25,6 +25,7 @@ namespace CIPlatform.Entities.Models
         [Required(ErrorMessage = "Confirm Password is required.")]
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword")]
+        [Compare("NewPassword")]
         public string ConfirmPassword { get; set; } = null!;
     }
 }
