@@ -438,23 +438,12 @@ function changeuserpass() {
         success: function () {
             console.log("success");
 
-            //location.reload();
-            //location.reload();
+            
         }
 
 
     });
-    //$('#change-form').change(function () {
-    //    const newpass = $('#newpass').val();
-
-    //    const urlParams = new URLSearchParams(window.location.search);
-    //    urlParams.set('newpass', newpass);
-
-    //    const newUrl = window.location.pathname + '?' + urlParams.toString();
-    //    history.pushState(null, '', newUrl);
-
-    //    $('#change-form').submit();
-    //});
+ 
 
 }
 
@@ -462,8 +451,43 @@ function changeuserpass() {
 
 
 
+//function displaySkills()
+//{
+//    var value = $("#skillsbtn").val();
+
+//    $.ajax({
+//        url: '/Home/EditProfile',
+//        type: "POST",
+//        data: {
+
+//        },
+//        success: function () {
+//            document.getElementById("skillsListDiv").innerHTML = value;
+//        },
+//        error: function (xhr, textStatus, errorThrown) {
+//            console.log("Error: " + errorThrown);
+//        }
+//    });
+//}
 
 
 
 
-// upload imgs
+    function displaySelectedSkills() {
+        var selectedSkills = document.getElementById("skillList").selectedOptions;
+    var selectedSkillsDiv = document.getElementById("selectedSkills");
+    selectedSkillsDiv.innerHTML = "";
+    var selectedSkillsInput = document.getElementById("selectedSkillsInput");
+    selectedSkillsInput.value = "";
+
+    for (var i = 0; i < selectedSkills.length; i++) {
+            var skillDiv = document.createElement("div");
+    skillDiv.innerHTML = selectedSkills[i].value;
+    selectedSkillsDiv.appendChild(skillDiv);
+    selectedSkillsInput.value += selectedSkills[i].value + ";";
+        }
+    }
+
+    document.getElementById("skillList").addEventListener("change", displaySelectedSkills);
+
+

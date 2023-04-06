@@ -223,6 +223,11 @@ namespace CIPlatform.Repository.Repositories
                 .ToList();
         }
 
+        public IEnumerable<Skill> GetSkills()
+        {
+            return _db.Skills.ToList();
+        }
+
     }
 
 

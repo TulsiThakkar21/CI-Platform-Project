@@ -329,14 +329,99 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <hr />
                             <label for="" class="form-label"></label>
                             <br />
-                            <button class="add-skills">Add Skills</button>
+                           
+
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary add-skills" data-toggle="modal" data-target="#exampleModal">
+                                Add Skills
+                            </button>
+
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="row" style="display:flex;">
+
+
+
+                                                <div class="row" style="margin-left:2%; padding-right:5%;">
+
+                                                    <div class="col-6 left-box" style="display:flex">
+
+                                                        <div>
+                                                            <select multiple id="skillList" style="height:100%;">
+                                                                @{
+                                                                    foreach (var skills in ViewBag.skills)
+                                                                    {
+                
+
+
+                                                                        <option value="@skills.SkillName">@skills.SkillName</option>
+
+
+
+                                                                    }
+                                                                }
+                                                            </select>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="col-6 right-box">
+
+                                                        <div id="selectedSkills"></div>
+
+
+
+
+                                                    </div>
+
+
+                                                </div>
+                                                <form asp-action="AddSkills" method="post">
+                                                    <input type="hidden" id="selectedSkillsInput" name="selectedSkills" />
+
+                                                </form>
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancle</button>
+                                            <button type="button" class="btn btn-primary save-btn">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            </div>
+
+
+
                         </div>
 
-                    </div>
 
                     <div class="row">
                         <div class="col-12">
                             <button class="save-btn" onclick="editUser()">Save</button>
+
+
                         </div>
                     </div>
                 }

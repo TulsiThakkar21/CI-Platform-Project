@@ -40,7 +40,7 @@ namespace CIPlatform.Repository.Repositories
 
         IEnumerable<GoalMission> GetTimeGoalBased(int id);
 
-        
+        IEnumerable<Skill> GetSkills();
     }
     }
 

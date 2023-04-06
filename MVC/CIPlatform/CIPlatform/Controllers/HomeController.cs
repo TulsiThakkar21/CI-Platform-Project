@@ -1679,9 +1679,11 @@ namespace CIPlatform.Controllers
 
                 }
 
+                var skillsList = _homeRepository.GetSkills();
+                ViewBag.skills = skillsList;
 
                 return View();
-
+    
 
             }
             else
@@ -1689,6 +1691,8 @@ namespace CIPlatform.Controllers
                 return View();
 
             }
+
+           
 
         }
 
