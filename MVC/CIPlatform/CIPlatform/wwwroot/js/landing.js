@@ -246,7 +246,7 @@ function newselecId(s) {
 
 
 function editstory() {
-    debugger
+    
     const selectElement = document.getElementById("exampleFormControlSelect12");
     const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
@@ -451,30 +451,8 @@ function changeuserpass() {
 
 
 
-//function displaySkills()
-//{
-//    var value = $("#skillsbtn").val();
-
-//    $.ajax({
-//        url: '/Home/EditProfile',
-//        type: "POST",
-//        data: {
-
-//        },
-//        success: function () {
-//            document.getElementById("skillsListDiv").innerHTML = value;
-//        },
-//        error: function (xhr, textStatus, errorThrown) {
-//            console.log("Error: " + errorThrown);
-//        }
-//    });
-//}
-
-
-
-
-    function displaySelectedSkills() {
-        var selectedSkills = document.getElementById("skillList").selectedOptions;
+function displaySelectedSkills() {
+    var selectedSkills = document.getElementById("skillList").selectedOptions;
     var selectedSkillsDiv = document.getElementById("selectedSkills");
     selectedSkillsDiv.innerHTML = "";
     var selectedSkillsInput = document.getElementById("selectedSkillsInput");
@@ -488,6 +466,41 @@ function changeuserpass() {
         }
     }
 
+
     document.getElementById("skillList").addEventListener("change", displaySelectedSkills);
+
+
+
+function saveSkills() {
+
+
+    var dropdown = document.getElementById("skillList");
+    var selectedOptions = dropdown.selectedOptions;
+    var ids = [];
+
+    for (var i = 0; i < selectedOptions.length; i++) {
+       ids.push(selectedOptions[i].id);
+    }
+
+    
+
+
+
+    $.ajax({
+        url: '/Home/SaveSkills',
+        type: "POST",
+        data: {
+
+            ids: ids
+        },
+        success: function () {
+            console.log("data saved")
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}
+
 
 

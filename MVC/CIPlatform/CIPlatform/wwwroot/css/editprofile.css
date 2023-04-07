@@ -1,17 +1,20 @@
 ﻿.left-div {
     height: auto;
     width: 50%;
-    border: 2px solid #757575;
+    margin-top:3%;
     margin-left: 55%;
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
 }
 
 .img-left {
-    border-radius: 50%;
-    margin-left: 30%;
+    border-radius: 100%;
+    margin-left: 25%;
     align-content: center;
     margin-top: 20%;
-    height: 10%;
-    width: 40%;
+    height:50%;
+    width:50%;
 }
 
 .add-skills {
@@ -23,6 +26,11 @@
     color: #757575;
 }
 
+    .add-skills:hover {
+        border: 2px solid #F88634;
+        background-color: #F88634;
+    }
+
 .save-btn {
     width: 133px;
     height: 48px;
@@ -33,6 +41,11 @@
     margin-left: 78%;
 }
 
+    .save-btn:hover {
+        border: 2px solid #F88634;
+        background-color: #F88634;
+        color: white;
+    }
 .cancel-btn {
     width: 119px;
     height: 48px;
@@ -52,21 +65,51 @@
     border-radius: 24px;
     color: #F88634;
 }
-.change-link
-{
-    /*border:none;
-    background:none;
-    text-decoration:none;*/
+
+    .changepass-btn:hover {
+        border: 2px solid #F88634;
+        background-color: #F88634;
+        color:white;
+    }
+
+.change-link {
+    border: none;
+    background: none;
+    text-decoration: none;
+    margin-left: 25%;
+    color: grey;
 }
 
-.left-box
-{
-    border:solid 1px #808080;
-
-    
+.left-box {
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
 }
 
 .right-box {
-    border: solid 1px #808080;
     
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+}
+
+.skills-box {
+    
+    margin-left: 2%;
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+}
+.skills
+{
+    color:grey;
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    
+}
+
+.form-control {
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
 }

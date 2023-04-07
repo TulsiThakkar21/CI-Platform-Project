@@ -228,6 +228,17 @@ namespace CIPlatform.Repository.Repositories
             return _db.Skills.ToList();
         }
 
+        public IEnumerable<UserSkill> GetUserSkillsList()
+        {
+            return _db.UserSkills.ToList();
+        }
+        public IEnumerable<Skill> GetUserSkills(int skillsid)
+        {
+            return _db.Skills.Where(a => a.SkillId == skillsid)
+                 .Include(t => t.UserSkills)
+                .ToList();
+        }
+
     }
 
 

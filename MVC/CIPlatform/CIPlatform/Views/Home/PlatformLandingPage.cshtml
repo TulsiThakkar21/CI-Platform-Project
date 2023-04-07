@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </nav>
-            <hr>
+            <hr style="color:grey;">
             <div class="container-fluid">
                 <div class="row row-search">
                     <div class="col-lg-6 col-sm-6">
@@ -279,7 +279,7 @@
 
                 </div>
             </div>
-            <hr class="hr2">
+            <hr class="hr2" style="color:grey;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-11">
@@ -306,7 +306,7 @@
 
                                 </form>
                             *@
-                            <div class="filterbox col-md-6 col-sm-6 col-xs-6">
+                            <div class="filterbox-sort col-md-2 col-sm-4 col-xs-4">
                                 <div class="navbar-nav ms-4">
                                     @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
 
@@ -327,7 +327,7 @@
 
 
                                     <select class="form-control" onchange="location = this.value;">
-                                        <option value="">Sort By</option>
+                                        <option value="" selected>Sort By</option>
                                         <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParamAsc })">Oldest</option>
                                         <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParam })">Newest</option>
                                         <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.LowestSeats })">Lowest Available Seats</option>

@@ -176,12 +176,67 @@
 
         </div>
          <br>
-        <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
+        @*<a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
                                 <button type="submit" class="apply-btn">
 
                                 Apply <img src="~/NewFolder/right-arrow.png">
                                 </button>
-                            </a>
+                            </a>*@
+
+                                        @{
+
+
+
+
+
+                                var lengths = ViewBag.missionapplication.Count;
+                                for (int k = 0; k < lengths; k++)
+                                {
+                                    if (ViewBag.Missionapplication[k].MissionId == item.MissionId)
+                                    {
+
+                                        <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
+                                            <button type="submit" class="apply-btn" style="margin-left:1%; margin-top:5%;">
+
+                                                View Details <img src="~/NewFolder/right-arrow.png">
+                                            </button>
+                                        </a>
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        if (k == lengths - 1)
+                                        {
+                                            var a = item.EndDate;
+                                            var res = DateTime.Compare(ViewBag.currentDate, item.EndDate);
+                                            if (res == 1)
+                                            {
+                                                <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
+                                                    <button type="submit" class="apply-btn" style="margin-left:1%;  margin-top:5%;">
+
+                                                        View Details <img src="~/NewFolder/right-arrow.png">
+                                                    </button>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.MissionId">
+                                                    <button type="submit" class="apply-btn" style="margin-left:1%;  margin-top:5%;">
+
+                                                        Apply  <img src="~/NewFolder/right-arrow.png">
+                                                    </button>
+                                                </a>
+                                            }
+                                        }
+
+
+                                    }
+
+                                }
+
+
+
+                            }
         </div>
 
         <div class=" col-sm-6 ">

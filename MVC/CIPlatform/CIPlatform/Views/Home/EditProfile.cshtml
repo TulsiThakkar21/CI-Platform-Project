@@ -91,9 +91,9 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                        @* <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @ViewBag.fullname
-                        </button>*@
+                        </button>
 
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -121,21 +121,15 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
                 <div class="left-div">
                     <div>
-                        <img class="img-left" src="~/NewFolder/user-img.png" />
-                        <p style="text-align:center">Name</p>
-
-                        @*<a asp-action="_ChangePass" asp-controller="Home" style="text-align:center; justify-content:center;">
-                            Change Password
-                            
-
-                        </a>*@
+                        <img class="img-left" src="~/NewFolder/user-img-large.png" />
+                        <h4 style="text-align:center; margin-top:5%;">@ViewBag.FirstName @ViewBag.LastName</h4>
 
 
                         <!-- Button trigger modal -->
 
                         
 
-                        <button type="button" class="btn btn-primary change-link" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" class="btn change-link" data-toggle="modal" data-target="#exampleModalCenter">
                             Change Password
                         </button>
 
@@ -181,10 +175,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancel</button>
-                                        @*<button type="button" class="btn btn-primary changepass-btn">Change Password</button>*@
-                                        <a class="btn btn-primary changepass-btn" onclick="changeuserpass()" style="text-align:center; justify-content:center;">
+                                        @*<button type="button" class="btn changepass-btn">Change Password</button>*@
+                                        <button type="button" class="btn changepass-btn" onclick="changeuserpass()" style="text-align:center; justify-content:center;">
                                             Change Password
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -327,23 +321,34 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <div class="col-12">
                             <h3>My Skills</h3>
                             <hr />
-                            <label for="" class="form-label"></label>
+                            <div class = "row">
+                            
+                                <div class="col skills-box form-label">
+                                    @{
+                                        foreach(var alluserSkills in ViewBag.userSkills)
+                                        {
+                                            <div class="skills">@alluserSkills.SkillName</div>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
                             <br />
                            
 
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary add-skills" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn add-skills" data-toggle="modal" data-target="#exampleModal">
                                 Add Skills
                             </button>
 
                             
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Your Skills</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -359,14 +364,14 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                                     <div class="col-6 left-box" style="display:flex">
 
                                                         <div>
-                                                            <select multiple id="skillList" style="height:100%;">
+                                                            <select multiple id="skillList" class="mySkills"  style="height:100%;">
                                                                 @{
                                                                     foreach (var skills in ViewBag.skills)
                                                                     {
                 
 
 
-                                                                        <option value="@skills.SkillName">@skills.SkillName</option>
+                                                                        <option id="@skills.SkillId" value="@skills.SkillName">@skills.SkillName</option>
 
 
 
@@ -380,7 +385,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                                     </div>
                                                     <div class="col-6 right-box">
 
-                                                        <div id="selectedSkills"></div>
+                                                        <div id="selectedSkills" class="mySkillsclass"></div>
 
 
 
@@ -401,7 +406,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancle</button>
-                                            <button type="button" class="btn btn-primary save-btn">Save changes</button>
+                                            <button type="button" onclick="saveSkills()" class="btn btn-primary save-btn">Save</button>
                                         </div>
                                     </div>
                                 </div>

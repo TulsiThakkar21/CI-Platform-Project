@@ -119,8 +119,9 @@
                             {
                                 if(ViewBag.LoginStatus == 0)
                                 {
-                                     <div class="alert alert-danger">Invalid Login Credentials</div>
-                                  
+                                    <br />
+                                     <div class="alert alert-danger">Please enter registered password</div>
+                                    <br />
                                 
                             }
                         }
@@ -133,18 +134,19 @@
 
                                 <div>
                                     <label asp-for="LoginId" id="regemail" class="form-label-email">Email Address</label>
-                                    <input asp-for="LoginId" type="email" placeholder="Enter your email" class="form-control">
-                                    <span asp-validation-for="LoginId" class="text-danger" style="font-size:12px;"></span>
+                                    <input asp-for="LoginId" type="email" placeholder="Enter your email" class="form-control col-10">
+                                    <span asp-validation-for="LoginId" class="text-danger" style="font-size:12px; margin-left:5%;"></span>
                                 </div>
-                                <br>
+                               
+                                <div>
                                 <label asp-for="Password" class="form-label">Password</label>
-                                <input asp-for="Password" type="password" placeholder="Enter your password" class="form-control">
-                                <span asp-validation-for="Password" class="text-danger" style="font-size:12px;"></span>
-
+                                <input asp-for="Password" type="password" placeholder="Enter your password" class="form-control col-10">
+                                <span asp-validation-for="Password" class="text-danger" style="font-size:12px; margin-left:8%;"></span>
+                                </div>
                                
 
                             </div>
-                            <br>
+                            
                             <button type="submit" class="btn-login">Login</button>
                             <br>
 
@@ -172,7 +174,11 @@
     </section>
     <!-- Section: Split screen -->
 
-
+       <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
 </body>
 

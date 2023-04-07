@@ -95,14 +95,19 @@
                     if (ViewBag.Status == 1)
                     {
                         <br />
-                        <span class="alert alert-success">Registered Successfully</span>
+                        <span  class="alert alert-success">Registered Successfully</span>
 
                         <br />
                     }
                     else if (ViewBag.Status == 0)
                     {
                         <br />
-                        <span class="alert alert-danger">Email Address already exists</span>
+                        @*<span  class="alert alert-danger">Email Address already exists</span>*@
+                        
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          Email Address already exists
+                          @*<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>*@
+                        </div>
                         <br />
                     }
                 }
@@ -155,8 +160,8 @@
                 </form>
                 <div class="lost1">
 
-                    <a asp-controller="Home" asp-action="LostPass" style="color:black">Lost your password?</a> <br>
-                    <span class="acc1">Already registered? <a asp-controller="Home" asp-action="Index" style="color:#2B64B1">Login</a></span><br>
+                    <a asp-controller="Home" class="lost1" asp-action="LostPass" style="color:grey;"><b>Lost your password?</b></a> <br>
+                    <span class="acc1">Already registered? <a asp-controller="Home" asp-action="Index" style="color:#2B64B1">Login now</a></span><br>
 
                 </div>
             }
@@ -164,7 +169,7 @@
     </div>
 
     <div class="privacy2">
-        <a href="">Privacy Policy</a>
+        <a asp-controller="Home"  asp-action="PrivacyPolicy" style="text-decoration:none; color:grey;">Privacy Policy</a>
     </div>
     </div>
     <script>
@@ -178,6 +183,12 @@
             }
             return true;
         }</script>
+
+        <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </body>
 
 </html>

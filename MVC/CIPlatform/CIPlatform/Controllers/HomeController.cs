@@ -497,8 +497,6 @@ namespace CIPlatform.Controllers
             ViewBag.fullname = fullname;
 
             var currentDate = DateTime.Now;
-          
-
             ViewBag.currentDate = currentDate;
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
@@ -789,6 +787,11 @@ namespace CIPlatform.Controllers
             var skillx = _homeRepository.GetSkillandMissionSkill();
             ViewBag.MissionSkills = skillx;
 
+            var currentDate = DateTime.Now;
+            ViewBag.currentDate = currentDate;
+
+            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+            ViewBag.missionapplication = missionapplication;
 
 
             return View();
@@ -1653,7 +1656,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult EditProfile()
+        public IActionResult EditProfile(int skillsid)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1681,6 +1684,29 @@ namespace CIPlatform.Controllers
 
                 var skillsList = _homeRepository.GetSkills();
                 ViewBag.skills = skillsList;
+
+                //var userskillsList = _homeRepository.GetUserSkillsList();
+
+                //var userSkills = _homeRepository.GetUserSkills(skillsid);
+
+
+                var skillList = _ciplatformDbContext.Skills.ToList();
+                var userskillsList = _ciplatformDbContext.UserSkills.ToList();
+
+                var userSkills = from s in skillsList
+                                 join us in userskillsList on s.SkillId equals us.SkillId
+                                 where s.SkillId == us.SkillId
+                                 select new
+                                 {
+                                     s.SkillName
+                                     
+                                 };
+
+                ViewBag.userSkills = userSkills;
+
+
+                var fullname = _homeRepository.GetLoginUser(ids);
+                ViewBag.fullname = fullname;
 
                 return View();
     
@@ -1731,11 +1757,7 @@ namespace CIPlatform.Controllers
         {
             
             ChangePassUserModel _ch = new ChangePassUserModel();
-            //var passwd = Request.Form["newpass"];
-
-            //var passwd = _changePassUserModel.NewPassword;
-
-            //var passwd = input1;
+          
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1764,6 +1786,45 @@ namespace CIPlatform.Controllers
             }
 
             
+        }
+
+
+        public IActionResult SaveSkills(string[] ids, int selectedOptionId)
+        {
+
+            var userids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(userids);
+
+
+
+            foreach (var s in ids)
+            {
+               
+                var skillid = Convert.ToInt32(s);
+                
+                var userSkills = _ciplatformDbContext.UserSkills.Where(a => a.SkillId == skillid && a.UserId == userids).ToList();
+
+                if (userSkills.Count == 0)
+                {
+                    var allskills = new UserSkill
+                    {
+
+                        SkillId = Convert.ToInt32(s),
+                        UserId = userids
+
+                    };
+                    
+                    _ciplatformDbContext.UserSkills.Add(allskills);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
+
+            }
+
+
+
+
+            return RedirectToAction("EditProfile", "Home");
         }
 
         public IActionResult NoMissionFound()

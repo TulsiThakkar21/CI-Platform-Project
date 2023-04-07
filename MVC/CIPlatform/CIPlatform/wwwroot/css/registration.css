@@ -1,6 +1,6 @@
 ﻿.mailpass3 {
     width: 90%;
-    margin-top: 50%;
+    margin-top: 70%;
     margin-left: 12%;
 }
 
@@ -12,19 +12,23 @@
 .lost1 {
     margin-top: 1%;
     text-align: center;
-    font-size: small;
+    font-size: 15px;
 }
 
 .acc1 {
-    margin-top: 5%;
+    margin-top: 10%;
+    font-size:medium;
+    color:grey;
+
 }
 
 .privacy2 {
     margin-left: 67%;
     text-align: center;
-    font-size: small;
-    color: black;
-    margin-top: -1%;
+    font-size: medium;
+    color: grey;
+    margin-top: -5%;
+    
 }
 
 .form-label {
