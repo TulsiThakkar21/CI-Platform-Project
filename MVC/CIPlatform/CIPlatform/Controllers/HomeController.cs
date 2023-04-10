@@ -1724,7 +1724,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult SaveUserData(string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
+        public IActionResult SaveUserData(string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1747,8 +1747,36 @@ namespace CIPlatform.Controllers
                 u.UserId = ids;
 
             }
-
             _ciplatformDbContext.SaveChanges();
+
+            foreach (var s in skillids)
+            {
+
+                var skillid = Convert.ToInt32(s);
+
+                var userSkills = _ciplatformDbContext.UserSkills.Where(a => a.SkillId == skillid && a.UserId == ids).ToList();
+
+                if (userSkills.Count == 0)
+                {
+                    var allskills = new UserSkill
+                    {
+
+                        SkillId = Convert.ToInt32(s),
+                        UserId = ids
+
+                    };
+
+                    _ciplatformDbContext.UserSkills.Add(allskills);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
+
+            }
+
+
+
+            
+            //_ciplatformDbContext.SaveChanges();
             return RedirectToAction("EditProfile", "Home");
         }
 

@@ -382,8 +382,31 @@ function onCancel() {
 
 }
 
+var skillids = [];
+
+function saveSkills() {
+    $("#select-down option").remove();
+
+    var $options = $("#select-right > option").clone();
+
+    var skillidslength = $options.length;
+    $('#select-down').append($options);
+
+    var dropdown = document.getElementById("select-down");
+    var selectedOptions = dropdown.selectedOptions;
+   
+
+    for (var i = 0; i < skillidslength; i++) {
+        skillids.push($options[i].id);
+    }
 
 
+}
+
+var a = skillids[0];
+console.log(a);
+console.log(a);
+console.log(a);
 function editUser() {
 
 
@@ -410,7 +433,9 @@ function editUser() {
             profile: profile,
             whyI: whyI,
             cityId: cityId,
-            linkedInurl: linkedInurl
+            linkedInurl: linkedInurl,
+            skillids: skillids
+           
 
 
 
@@ -451,38 +476,37 @@ function changeuserpass() {
 
 
 
-function displaySelectedSkills() {
-    var selectedSkills = document.getElementById("skillList").selectedOptions;
-    var selectedSkillsDiv = document.getElementById("selectedSkills");
-    selectedSkillsDiv.innerHTML = "";
-    var selectedSkillsInput = document.getElementById("selectedSkillsInput");
-    selectedSkillsInput.value = "";
+//function displaySelectedSkills() {
+//    var selectedSkills = document.getElementById("skillList").selectedOptions;
+//    var selectedSkillsDiv = document.getElementById("selectedSkills");
+//    selectedSkillsDiv.innerHTML = "";
+//    var selectedSkillsInput = document.getElementById("selectedSkillsInput");
+//    selectedSkillsInput.value = "";
 
-    for (var i = 0; i < selectedSkills.length; i++) {
-            var skillDiv = document.createElement("div");
-    skillDiv.innerHTML = selectedSkills[i].value;
-    selectedSkillsDiv.appendChild(skillDiv);
-    selectedSkillsInput.value += selectedSkills[i].value + ";";
-        }
-    }
-
-
-    document.getElementById("skillList").addEventListener("change", displaySelectedSkills);
+//    for (var i = 0; i < selectedSkills.length; i++) {
+//            var skillDiv = document.createElement("div");
+//    skillDiv.innerHTML = selectedSkills[i].value;
+//    selectedSkillsDiv.appendChild(skillDiv);
+//    selectedSkillsInput.value += selectedSkills[i].value + ";";
+//        }
+//    }
 
 
+//    document.getElementById("skillList").addEventListener("change", displaySelectedSkills);
 
-function saveSkills() {
 
 
-    var dropdown = document.getElementById("skillList");
-    var selectedOptions = dropdown.selectedOptions;
-    var ids = [];
+    //const selectRight = document.getElementById('select-right');
+    //const selectDown = document.getElementById('select-down');
 
-    for (var i = 0; i < selectedOptions.length; i++) {
-       ids.push(selectedOptions[i].id);
-    }
-
-    
+    //const btnSave = document.getElementById('btn-save');
+    //// Add event listeners to the buttons
+    //btnSave.addEventListener('click', () => {
+    //    // Move selected options from left to right
+    //    Array.from(selectRight.selectedOptions).forEach(option => {
+    //        selectDown.appendChild(option);
+    //    });
+    //});
 
 
 
@@ -500,7 +524,10 @@ function saveSkills() {
             console.log("Error: " + errorThrown);
         }
     });
-}
 
+
+
+
+//------------add skills------------------
 
 
