@@ -428,13 +428,13 @@ function editUser() {
 
 function changeuserpass() {
 
-    var input1 = $("#newpass").val();
+    var newpass = $("#NewPassword").val();
 
     $.ajax({
 
         url: '/Home/ChangeUserPass',
         type: 'POST',
-        data: { input1: input1 },
+        data: { newpass: newpass },
         success: function () {
             console.log("success");
 

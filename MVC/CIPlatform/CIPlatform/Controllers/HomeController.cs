@@ -165,12 +165,12 @@ namespace CIPlatform.Controllers
                     _ciplatformDbContext.PasswordResets.Add(passdata);
                     _ciplatformDbContext.SaveChanges();
                     ViewBag.Status = 1;
-                }
-                catch
-                {
-                    ViewBag.Status = 0;
-                }
             }
+            catch
+            {
+                ViewBag.Status = 0;
+            }
+        }
 
             catch (Exception ex)
             {
@@ -197,7 +197,7 @@ namespace CIPlatform.Controllers
         {
 
 
-            var passwd = Request.Form["pass1"];
+            var passwd = Request.Form["Password"];
             var urlll = HttpContext.Request.GetDisplayUrl();
             // it will trim the url and only fetch the token from it
 
@@ -1753,7 +1753,7 @@ namespace CIPlatform.Controllers
         }
 
         
-        public IActionResult ChangeUserPass(string input1)
+        public IActionResult ChangeUserPass(string newpass)
         {
             
             ChangePassUserModel _ch = new ChangePassUserModel();
@@ -1769,13 +1769,13 @@ namespace CIPlatform.Controllers
             if (user != null)
             {
 
-                user.Password = input1;
+                user.Password = newpass;
                 _ciplatformDbContext.Users.Update(user);
                 _ciplatformDbContext.SaveChanges();
 
 
-                return View("Index");
-               
+                return RedirectToAction("Index", "Home");
+
 
             }
 

@@ -10,11 +10,15 @@ namespace CIPlatform.Entities.Models
     public class ChangePassUserModel
     {
         public string Email { get; set; } = null!;
-       
+
+        [Required(ErrorMessage = "Old Password is required.")]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
+        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])).+$", ErrorMessage = "Password must be 8 characters long and must Contain 1-Symbol ,1-lowercase,1-Uppercase,1-digit")]
+        [DataType(DataType.Password)]
         public string OldPassword { get; set; } = null!;
 
 
-        [Required(ErrorMessage = "Password is required.")]
+        [Required(ErrorMessage = "New Password is required.")]
         [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])).+$", ErrorMessage = "Password must be 8 characters long and must Contain 1-Symbol ,1-lowercase,1-Uppercase,1-digit")]
         [DataType(DataType.Password)]

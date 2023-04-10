@@ -1,5 +1,5 @@
 ﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
@@ -91,8 +91,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                         <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ViewBag.fullname
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @ViewBag.fullname
                         </button>
 
                     </a>
@@ -127,7 +127,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
                         <!-- Button trigger modal -->
 
-                        
+
 
                         <button type="button" class="btn change-link" data-toggle="modal" data-target="#exampleModalCenter">
                             Change Password
@@ -143,43 +143,44 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                      
-                                                
-                                        
+                                    <form id="change-form" asp-action="ChangeUserPass" asp-controller="Home" method="post">
 
-                                        <form id="change-form" asp-action="ChangeUserPass" asp-controller="Home" method="post">
-                                        <div>
-                                           
-                                           <input asp-for="OldPassword" id="oldpass" name="oldpass" type="password" class="form-control" placeholder="Enter old password">
-                                            <span asp-validation-for="OldPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
-                                        </div>
-                                        <br />
-                                         <div>
-                                            
+                                        <div class="modal-body">
 
-                                                    <input asp-for="NewPassword" name="newpass" id="newpass" type="password" class="form-control" placeholder="Enter new password">
-                                                <span asp-validation-for="NewPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
-                                                   
+
+
+                                            <div>
+
+                                                <input asp-for="OldPassword" id="OldPassword" name="OldPassword" type="password" class="form-control" placeholder="Enter old password">
+                                                <span asp-validation-for="OldPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
                                             </div>
-                                        <br />
-                                        <div>
+                                            <br />
+                                            <div>
 
-                                             <input asp-for="ConfirmPassword" name="confirmpass" id="confirmpass" type="password" class="form-control" placeholder="Enter confirm password">
-                                            <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
+
+                                                <input asp-for="NewPassword" name="NewPassword" id="NewPassword" type="password" class="form-control" placeholder="Enter new password">
+                                                <span asp-validation-for="NewPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
+
+                                            </div>
+                                            <br />
+                                            <div>
+
+                                                <input asp-for="ConfirmPassword" name="ConfirmPassword" id="ConfirmPassword" type="password" class="form-control" placeholder="Enter confirm password">
+                                                <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
+
+
+                                            </div>
 
 
                                         </div>
-                                        </form>
-                                         
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancel</button>
-                                        @*<button type="button" class="btn changepass-btn">Change Password</button>*@
-                                        <button type="button" class="btn changepass-btn" onclick="changeuserpass()" style="text-align:center; justify-content:center;">
-                                            Change Password
-                                        </button>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancel</button>
+                                            @*<button type="button" class="btn changepass-btn">Change Password</button>*@
+                                            <button type="submit" class="btn changepass-btn" onclick="changeuserpass()" style="text-align:center; justify-content:center;">
+                                                Change Password
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +191,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
             <div class="col-6" style="margin-left:5%;">
                 @{
-            //if(ViewBag.fetchUserDetails!=null)
+                //if(ViewBag.fetchUserDetails!=null)
             //{
 
             ////User userdata = ViewBag.fetchUserDetails;
@@ -240,18 +241,18 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="row">
                         <div class="col-12">
                             <label for="" class="form-label">My Profile</label>
-    <textarea id="profiletxt" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
+                            <textarea id="profiletxt" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                 @ViewBag.ProfileText
-    </textarea>
+        </textarea>
                         </div>
                     </div>
                     <br />
                     <div class="row">
                         <div class="col-12">
                             <label for="" class="form-label">Why I Volunteer?</label>
-    <textarea id="why" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
+                            <textarea id="why" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                 @ViewBag.WhyIVolunteer
-    </textarea>
+        </textarea>
                         </div>
 
                     </div>
@@ -321,11 +322,11 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <div class="col-12">
                             <h3>My Skills</h3>
                             <hr />
-                            <div class = "row">
-                            
+                            <div class="row">
+
                                 <div class="col skills-box form-label">
                                     @{
-                                        foreach(var alluserSkills in ViewBag.userSkills)
+                                        foreach (var alluserSkills in ViewBag.userSkills)
                                         {
                                             <div class="skills">@alluserSkills.SkillName</div>
                                         }
@@ -334,7 +335,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
                             </div>
                             <br />
-                           
+
 
 
                             <!-- Button trigger modal -->
@@ -342,7 +343,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 Add Skills
                             </button>
 
-                            
+
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
@@ -364,11 +365,11 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                                     <div class="col-6 left-box" style="display:flex">
 
                                                         <div>
-                                                            <select multiple id="skillList" class="mySkills"  style="height:100%;">
+                                                            <select multiple id="skillList" class="mySkills" style="height:100%;">
                                                                 @{
                                                                     foreach (var skills in ViewBag.skills)
                                                                     {
-                
+
 
 
                                                                         <option id="@skills.SkillId" value="@skills.SkillName">@skills.SkillName</option>
@@ -415,11 +416,11 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 
 
-                            </div>
-
-
-
                         </div>
+
+
+
+                    </div>
 
 
                     <div class="row">
