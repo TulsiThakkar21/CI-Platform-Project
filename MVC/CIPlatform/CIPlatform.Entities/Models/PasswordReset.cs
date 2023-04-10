@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace CIPlatform.Entities.Models;
 
@@ -13,6 +12,4 @@ public partial class PasswordReset
     public string? Token { get; set; }
 
     public DateTime CreatedAt { get; set; }
-
-
 }

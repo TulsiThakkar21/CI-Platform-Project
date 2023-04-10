@@ -1656,10 +1656,27 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult EditProfile(int skillsid)
+        public IActionResult EditProfile(int countryid,int skillsid, string subject, string msg)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+
+
+
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+            if (countryid != 0)
+            {
+                var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+                ViewBag.citylist = citylist;
+            }
+            else
+            {
+
+                var citylist = _ciplatformDbContext.Cities.ToList();
+                ViewBag.citylist = citylist;
+            }
+
 
 
             var data = _ciplatformDbContext.Users.Where(a => a.UserId == ids).ToList();
@@ -1685,9 +1702,7 @@ namespace CIPlatform.Controllers
                 var skillsList = _homeRepository.GetSkills();
                 ViewBag.skills = skillsList;
 
-                //var userskillsList = _homeRepository.GetUserSkillsList();
-
-                //var userSkills = _homeRepository.GetUserSkills(skillsid);
+                
 
 
                 var skillList = _ciplatformDbContext.Skills.ToList();
@@ -1708,6 +1723,37 @@ namespace CIPlatform.Controllers
                 var fullname = _homeRepository.GetLoginUser(ids);
                 ViewBag.fullname = fullname;
 
+                var emailadd = _homeRepository.GetUserEmail(ids);
+                ViewBag.emailadd = emailadd;
+
+           
+
+
+
+                var contData = _ciplatformDbContext.ContactUs.Where(y => y.UserId == ids).ToList();
+
+                if (msg != null)
+                {
+                    if (contData.Count == 0)
+                    {
+                        var cont = new ContactU
+                        {
+
+                            Subject = subject,
+                            Message = msg,
+                            UserId = ids,
+
+                        };
+
+                        _ciplatformDbContext.ContactUs.Add(cont);
+
+                        _ciplatformDbContext.SaveChanges();
+                    }
+                }
+
+               
+
+
                 return View();
     
 
@@ -1722,12 +1768,76 @@ namespace CIPlatform.Controllers
 
         }
 
+        public List<string> Usereditprofileupdate(int countryid, string cityname)
+        {
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
 
 
-        public IActionResult SaveUserData(string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
+
+
+
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+
+            var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+            ViewBag.citylist = citylist;
+
+
+            List<string> citys = new List<string>();
+            foreach (var a in citylist)
+            {
+
+                citys.Add(a.Name);
+            }
+
+
+
+            var data = _ciplatformDbContext.Users.Where(a => a.UserId == ids).ToList();
+
+
+            if (data != null)
+            {
+                foreach (var a in data)
+                {
+
+                    ViewBag.FirstName = a.FirstName;
+                    ViewBag.LastName = a.LastName;
+                    ViewBag.EmployeeId = Convert.ToInt32(a.EmployeeId);
+                    ViewBag.Title = a.Title;
+                    ViewBag.Department = a.Department;
+                    ViewBag.ProfileText = a.ProfileText;
+                    ViewBag.WhyIVolunteer = a.WhyIVolunteer;
+                    ViewBag.CityId = Convert.ToInt32(a.CityId);
+                    ViewBag.LinkedInUrl = a.LinkedInUrl;
+
+                }
+
+
+
+
+
+            }
+
+            return citys;
+
+        }
+
+        public IActionResult SaveUserData(int countryid, string cityname,string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
+
+
+            long cityid = 0;
+            if (cityname != null)
+            {
+                var speccity = _ciplatformDbContext.Cities.FirstOrDefault(a => a.Name.Contains(cityname));
+                cityid = speccity.CityId;
+            }
+
+
 
             var userData = _ciplatformDbContext.Users.Where(y => y.UserId == ids).ToList();
 
@@ -1743,8 +1853,9 @@ namespace CIPlatform.Controllers
                 u.ProfileText = profile;
                 u.WhyIVolunteer = whyI;
                 u.CityId = cityId;
-                u.LinkedInUrl = linkedInurl;
+                u.LinkedInUrl = linkedInurl;     
                 u.UserId = ids;
+                u.CountryId = countryid;
 
             }
             _ciplatformDbContext.SaveChanges();
@@ -1773,10 +1884,6 @@ namespace CIPlatform.Controllers
 
             }
 
-
-
-            
-            //_ciplatformDbContext.SaveChanges();
             return RedirectToAction("EditProfile", "Home");
         }
 
@@ -1817,43 +1924,7 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult SaveSkills(string[] ids, int selectedOptionId)
-        {
-
-            var userids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-            ViewBag.ids = Convert.ToInt32(userids);
-
-
-
-            foreach (var s in ids)
-            {
-               
-                var skillid = Convert.ToInt32(s);
-                
-                var userSkills = _ciplatformDbContext.UserSkills.Where(a => a.SkillId == skillid && a.UserId == userids).ToList();
-
-                if (userSkills.Count == 0)
-                {
-                    var allskills = new UserSkill
-                    {
-
-                        SkillId = Convert.ToInt32(s),
-                        UserId = userids
-
-                    };
-                    
-                    _ciplatformDbContext.UserSkills.Add(allskills);
-
-                    _ciplatformDbContext.SaveChanges();
-                }
-
-            }
-
-
-
-
-            return RedirectToAction("EditProfile", "Home");
-        }
+      
 
         public IActionResult NoMissionFound()
         {

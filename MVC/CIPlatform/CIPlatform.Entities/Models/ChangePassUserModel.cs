@@ -31,5 +31,26 @@ namespace CIPlatform.Entities.Models
         [Display(Name = "ConfirmPassword")]
         [Compare("NewPassword")]
         public string ConfirmPassword { get; set; } = null!;
+
+
+
+
+        // contact us
+
+        [Required(ErrorMessage = "First name is required.")]
+        public string FirstName { get; set; }
+
+
+        [Required(ErrorMessage = "Email-id is required.")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Invalid Email address")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is invalid")]
+
+        public string EmailId { get; set; }
+
+        [Required(ErrorMessage = "Subject is required.")]
+        public string Subject { get; set; }
+
+        [Required(ErrorMessage = "Message is required.")]
+        public string Message { get; set; }
     }
 }

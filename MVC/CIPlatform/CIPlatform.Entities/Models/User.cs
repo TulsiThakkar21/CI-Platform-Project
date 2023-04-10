@@ -45,6 +45,8 @@ public partial class User
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
+    public virtual ICollection<ContactU> ContactUs { get; } = new List<ContactU>();
+
     public virtual ICollection<FavoriteMission> FavoriteMissions { get; } = new List<FavoriteMission>();
 
     public virtual ICollection<MissionApplication> MissionApplications { get; } = new List<MissionApplication>();

@@ -243,7 +243,7 @@
                             <label for="" class="form-label">My Profile</label>
                             <textarea id="profiletxt" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                 @ViewBag.ProfileText
-            </textarea>
+                        </textarea>
                         </div>
                     </div>
                     <br />
@@ -252,7 +252,7 @@
                             <label for="" class="form-label">Why I Volunteer?</label>
                             <textarea id="why" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                 @ViewBag.WhyIVolunteer
-            </textarea>
+                        </textarea>
                         </div>
 
                     </div>
@@ -262,26 +262,38 @@
                     <h3>Address Information</h3>
                     <hr />
                     <div class="row">
-                        <div class="col-6">
-                            <label for="" class="form-label">City</label>
-                            <input id="cityid" type="text" class="form-control" id="" placeholder="Enter your city" value="@ViewBag.CityId">
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="form-label">Country</label>
-                            <br />
-                            <!-- Example single danger button -->
-                            <div class="btn-group" style="width:100%;">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="" class="form-label">City</label>
+                                <br>
+                                <select id="selectcty" style="border:1px solid #D9D9D9 ; width:100% ;height :40px" onchange="citychange()">
+                                    @{
+
+                                        <option style="color:#757575" class="defaultname">
+                                            Please select your country
+                                        </option>
+
+                                    }
+                                </select>
                             </div>
+                            <div class="col-6">
+                                <label for="" class="form-label">Country</label>
+                                <br>
+                                <!-- Example single danger button -->
+
+                                <select name="country" id="selectitm" onchange="countrychange()" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
+                                    @{
+                                        <option selected disabled>Select Country</option>
+                                        foreach (var a in ViewBag.countrylist)
+                                        {
+
+                                            <option id="@a.CountryId" value="@a.CountryId">@a.Name</option>
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+
                         </div>
                     </div>
 
@@ -325,10 +337,21 @@
                             <div class="row">
 
 
-                                 <div class="col skills-box form-label">
-                                                        <select id="select-down" class="form-select" multiple>
-                                                        </select>
-                                                    </div>
+                                <div class="col form-label">
+                                    <select id="select-down" class="form-select" multiple>
+
+                                        @{
+                                            foreach (var usrskills in ViewBag.userSkills)
+                                            {
+
+
+                                                <option value="@usrskills.SkillName">@usrskills.SkillName</option>
+
+
+                                            }
+                                        }
+                                    </select>
+                                </div>
 
                             </div>
                             <br />
@@ -366,7 +389,7 @@
 
                                                                 }
                                                             }
-                                                           
+
                                                         </select>
                                                     </div>
                                                     <div class="col-auto">
@@ -426,11 +449,93 @@
 
         <div class="footer">
 
-            <a href="#" class="privacyp">Privacy Policy</a>
+            <div class="row">
 
-            <a href="#" class="privacyp">Contact Us</a>
+                <div class="col-1" style="margin-left:20%;">
+                    <a href="#" class="privacyp">Privacy Policy</a>
+                </div>
 
-        </div>
+                <div class="col-1">
+
+
+
+                    <!-- Button trigger modal -->
+
+
+
+                    <button type="button" style="color:grey; margin-top:-5%; margin-left:-10%;" class="btn" data-toggle="modal" data-target="#cont-modal">
+                        Contact Us
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="cont-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="contTitle">Contact Us</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+
+
+
+                                    <div>
+
+                                        <label asp-for="FirstName" class="form-label">Name*</label>
+                                        <input asp-for="FirstName" type="text" placeholder="Enter your Name" class="form-control" class="form-control1" value="@ViewBag.FirstName @ViewBag.LastName" disabled>
+                                        <span asp-validation-for="FirstName" class="text-danger" style="font-size:12px;"></span>
+
+
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label asp-for="EmailId" class="form-label">Email Address*</label>
+                                        <input asp-for="EmailId" name="EmailId" id="EmailId" type="email" class="form-control" placeholder="Enter your Email Address" value="@ViewBag.emailadd" disabled>
+                                        <span asp-validation-for="EmailId" class="text-danger" style="font-size:12px;"></span>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label asp-for="Subject" class="form-label">Subject*</label>
+                                        <input asp-for="Subject" id="Subject" type="text" class="form-control" placeholder="Enter your Subject">
+                                        <span asp-validation-for="Subject" class="text-danger" style="font-size:12px;"></span>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label asp-for="Message" class="form-label">Message*</label>
+                                        <textarea asp-for="Message" id="Message" name="Message" type="text" class="form-control" placeholder="Enter your Message">
+
+                                    </textarea>
+                                        <span asp-validation-for="Message" class="text-danger" style="font-size:12px;"></span>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancel</button>
+                                    <button type="button" id="btn-save" onclick="send()" class="btn save-btn">Send</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
     </footer>
 
     <script src="~/js/landing.js"></script>
@@ -454,10 +559,10 @@
         // Add event listeners to the buttons
         btnAdd.addEventListener('click', () => {
           // Move selected options from left to right
-         
+
           Array.from(selectLeft.selectedOptions).forEach(option => {
             selectRight.appendChild(option);
-            
+
           });
         });
 

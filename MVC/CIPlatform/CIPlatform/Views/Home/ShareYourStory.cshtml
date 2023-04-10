@@ -217,7 +217,7 @@
                                 
                                 <label>My Story Title</label>
                                 <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
-                                <span asp-validation-for="Title" style="color:red; font-size:10px;"></span>
+                                <span asp-validation-for="Title" class="text-danger" name="Title" id="Title" style="color:red; font-size:10px;"></span>
                             </div>
                             <div class="col-md-4">
                                 <label>Date</label>
@@ -226,7 +226,7 @@
                                     <form class="row" >
                                      
                                         <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
-                                    <span asp-validation-for="PublishedAt" style="color:red; font-size:10px;"></span>
+                                    <span asp-validation-for="PublishedAt" class="text-danger" name="PublishedAt" id="PublishedAt" style="color:red; font-size:10px;"></span>
 
                                 </form>
                                   </section>
@@ -248,7 +248,7 @@
                             <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
 
                             </textarea>
-                                <span asp-validation-for="Description" style="color:red; font-size:10px;"></span>
+                                <span asp-validation-for="Description" class="text-danger" name="Description" id="Description" style="color:red; font-size:10px;"></span>
 
                         </div>
 

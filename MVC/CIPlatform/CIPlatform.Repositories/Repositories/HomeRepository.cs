@@ -210,7 +210,13 @@ namespace CIPlatform.Repository.Repositories
 
         }
 
-       
+        public string GetUserEmail(int ids)
+        {
+            var loginuser = _db.Users.FirstOrDefault(x => (x.UserId == ids));
+
+            return loginuser.Email;
+        }
+
         public IEnumerable<GoalMission> GetGoalMissions()
         {
             return _db.GoalMissions.ToList();

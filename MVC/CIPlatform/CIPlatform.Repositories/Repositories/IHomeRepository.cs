@@ -34,6 +34,10 @@ namespace CIPlatform.Repository.Repositories
         IEnumerable<Story> GetSpecificStory(int id);
 
             public string GetLoginUser(int ids);
+
+        public string GetUserEmail(int ids);
+
+
         IEnumerable<MissionSkill> GetSkillandMissionSkill();
 
         IEnumerable<GoalMission>GetGoalMissions();

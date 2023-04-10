@@ -382,6 +382,69 @@ function onCancel() {
 
 }
 
+
+
+
+var countryid = 0;
+function countrychange() {
+
+    countryid = document.getElementById('selectitm').value;
+    $.ajax({
+        url: '/Home/Usereditprofileupdate',
+        type: "POST",
+        dataType: 'json',
+        data: {
+
+
+            countryid: countryid
+
+
+        },
+        success: function (response) {
+            $('.defaultname').remove();
+            document.getElementById('selectcty').innerText = null;
+            var option = document.createElement("option");
+            option.text = "Please select city";
+            option.disabled = true;
+            option.selected = true;
+            var select = document.getElementById('selectcty');
+            select.appendChild(option);
+
+            jQuery.each(response, function (index, item) {
+                var option = document.createElement("option");
+                option.text = item;
+                option.value = item;
+                option.id = response.countryid;
+                var select = document.getElementById('selectcty');
+                select.appendChild(option);
+            });
+
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+
+}
+var selectedcntry = "";
+
+var cityname = "";
+
+function citychange() {
+
+    cityname = document.getElementById('selectcty').value;
+
+
+
+}
+
+
+
+
+
+
 var skillids = [];
 
 function saveSkills() {
@@ -419,6 +482,8 @@ function editUser() {
     var whyI = document.getElementById('why').value;
     var cityId = document.getElementById('cityid').value;
     var linkedInurl = document.getElementById('link').value;
+   
+
 
     $.ajax({
         url: '/Home/SaveUserData',
@@ -434,7 +499,10 @@ function editUser() {
             whyI: whyI,
             cityId: cityId,
             linkedInurl: linkedInurl,
-            skillids: skillids
+            skillids: skillids,
+            countryid: countryid,
+            cityname: cityname
+           
            
 
 
@@ -473,61 +541,39 @@ function changeuserpass() {
 }
 
 
+function send() {
 
-
-
-//function displaySelectedSkills() {
-//    var selectedSkills = document.getElementById("skillList").selectedOptions;
-//    var selectedSkillsDiv = document.getElementById("selectedSkills");
-//    selectedSkillsDiv.innerHTML = "";
-//    var selectedSkillsInput = document.getElementById("selectedSkillsInput");
-//    selectedSkillsInput.value = "";
-
-//    for (var i = 0; i < selectedSkills.length; i++) {
-//            var skillDiv = document.createElement("div");
-//    skillDiv.innerHTML = selectedSkills[i].value;
-//    selectedSkillsDiv.appendChild(skillDiv);
-//    selectedSkillsInput.value += selectedSkills[i].value + ";";
-//        }
-//    }
-
-
-//    document.getElementById("skillList").addEventListener("change", displaySelectedSkills);
-
-
-
-    //const selectRight = document.getElementById('select-right');
-    //const selectDown = document.getElementById('select-down');
-
-    //const btnSave = document.getElementById('btn-save');
-    //// Add event listeners to the buttons
-    //btnSave.addEventListener('click', () => {
-    //    // Move selected options from left to right
-    //    Array.from(selectRight.selectedOptions).forEach(option => {
-    //        selectDown.appendChild(option);
-    //    });
-    //});
-
+    var subject = document.getElementById('Subject').value;
+    var msg = document.getElementById('Message').value;
 
 
     $.ajax({
-        url: '/Home/SaveSkills',
+        url: '/Home/EditProfile',
         type: "POST",
         data: {
 
-            ids: ids
+            subject: subject,
+            msg: msg,
+          
         },
         success: function () {
-            console.log("data saved")
+            console.log("Sent");
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
         }
     });
 
+}
 
 
 
-//------------add skills------------------
+
+
+
+
+
+
+
 
 
