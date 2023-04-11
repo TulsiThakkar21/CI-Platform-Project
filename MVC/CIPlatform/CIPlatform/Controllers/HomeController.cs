@@ -1007,62 +1007,6 @@ namespace CIPlatform.Controllers
 
 
 
-
-
-            //var missionthemelist = _ciplatformDbContext.MissionThemes.ToList();
-            //var citylist = _ciplatformDbContext.Cities.ToList();
-            //var countrylist = _ciplatformDbContext.Countries.ToList();
-            //var specificmission = _ciplatformDbContext.Missions.Where(a => a.MissionId == b).ToList();
-
-            // var documentlist = _ciplatformDbContext.MissionDocuments.Where(a => a.MissionId == b).ToList();
-
-
-            //if (documentlist.Count != 0)
-            //{
-            //    var result = from m in specificmission
-            //                 join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
-            //                 where m.ThemeId == mt.MissionThemeId
-            //                 join cty in citylist on m.CityId equals cty.CityId
-            //                 where cty.CityId == m.CityId
-            //                 join docs in documentlist on m.MissionId equals docs.MissionId
-            //                 where m.MissionId == docs.MissionId
-            //                 select new
-            //                 {
-
-            //                     m,
-            //                     mt.Title,
-            //                     mt.MissionThemeId,
-            //                     cty.CityId,
-            //                     cty.Name,
-            //                     docs.DocumentName,
-            //                     docs.DocumentPath
-
-            //                 };
-            //    ViewBag.Result = result;
-            //}
-
-            //else
-            //{
-            //    var result = from m in specificmission
-            //                 join mt in missionthemelist on m.ThemeId equals mt.MissionThemeId
-            //                 where m.ThemeId == mt.MissionThemeId
-            //                 join cty in citylist on m.CityId equals cty.CityId
-            //                 where cty.CityId == m.CityId
-
-            //                 select new
-            //                 {
-
-            //                     m,
-            //                     mt.Title,
-            //                     mt.MissionThemeId,
-            //                     cty.CityId,
-            //                     cty.Name,
-
-
-            //                 };
-            //    ViewBag.Result = result;
-            //}
-
             ViewBag.specificmission = specificmission;
 
 
@@ -1226,6 +1170,9 @@ namespace CIPlatform.Controllers
             var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
             ViewBag.Ratingdata = Ratingdata;
 
+
+            var avgratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.MissionId == id).ToList();
+            ViewBag.avgratingdata = avgratingdata;
 
             // applied mission
 
@@ -1815,13 +1762,20 @@ namespace CIPlatform.Controllers
                         UserId = ids
 
                     };
-
+                    
                     _ciplatformDbContext.UserSkills.Add(allskills);
 
                     _ciplatformDbContext.SaveChanges();
                 }
 
+                
+
             }
+
+                   
+
+
+
             ViewBag.UserStatus = 1;
             return RedirectToAction("EditProfile", "Home");
         }
@@ -1863,7 +1817,11 @@ namespace CIPlatform.Controllers
         }
 
 
-      
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
 
         public IActionResult NoMissionFound()
         {

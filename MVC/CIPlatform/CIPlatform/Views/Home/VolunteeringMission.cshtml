@@ -951,7 +951,7 @@
                                             <p class="para-skills">Rating</p>
 
                                         </div>
-                                        <div class="col-9">
+                                        <div class="col-9" style="display:flex;">
 
                                             @*<div class="rating" style="margin-left: -4%;">
                                         <span class="rating__result"></span>
@@ -962,8 +962,73 @@
                                         <i class="rating__star far fa-star"></i>
                                         </div>*@
 
+                                        
+  @{
 
 
+
+
+
+
+                                    if (@ViewBag.avgratingdata.Count == 0)
+                                    {
+
+                                <div id="rating1">
+                                    <i class="rating__star far fa-star star" data-value="1"></i>
+                                    <i class="rating__star far fa-star star" data-value="2"></i>
+                                    <i class="rating__star far fa-star star" data-value="3"></i>
+                                    <i class="rating__star far fa-star star" data-value="4"></i>
+                                    <i class="rating__star far fa-star star" data-value="5"></i>
+                                </div>
+
+
+                                    }
+
+
+                                    else
+                                    {
+                                        int sum = 0;
+                                        int i = 0;
+                                        int count = 0;
+                                        var answ = 0;
+                                        for (i = 0; i < @ViewBag.avgratingdata.Count; i++)
+                                        {
+
+
+                                            int b = Convert.ToInt32(ViewBag.avgratingdata[i].Rating);
+                                            sum = sum + b;
+                                            count++;
+                                            answ = sum / count;
+
+
+
+
+
+                                        }
+
+                                        for (int j = 1; j <= 5; j++)
+                                        {
+
+                                            if (j <= answ)
+                                            {
+                                        <div id="rating1">
+                                            <i class="rating__star fas fa-star star" data-value="@j"></i>
+                                        </div>
+
+                                            }
+                                            else
+                                            {
+                                        <div id="rating1">
+                                            <i class="rating__star far fa-star star" data-value="@j"></i>
+                                        </div>
+
+                                            }
+
+                                        }
+
+
+                                    }
+                                    }
 
 
 
