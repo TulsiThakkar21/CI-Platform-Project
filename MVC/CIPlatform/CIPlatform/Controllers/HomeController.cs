@@ -467,6 +467,11 @@ namespace CIPlatform.Controllers
             var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
             ViewBag.missionapplication = missionapplication;
 
+
+            var userslist = _ciplatformDbContext.Users.ToList();
+            ViewBag.userslist = userslist;
+
+
             return View();
 
         }
@@ -480,7 +485,8 @@ namespace CIPlatform.Controllers
 
             //ViewBag.goalmissionlist = goalmissionlist;
 
-
+            var userslist = _ciplatformDbContext.Users.ToList();
+            ViewBag.userslist = userslist;
 
             var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
             TempData.Clear();
@@ -1606,6 +1612,8 @@ namespace CIPlatform.Controllers
 
                 ViewBag.userSkills = userSkills;
 
+
+                // CONTACT US
 
                 var fullname = _homeRepository.GetLoginUser(ids);
                 ViewBag.fullname = fullname;

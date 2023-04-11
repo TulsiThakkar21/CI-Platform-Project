@@ -46,12 +46,66 @@
         <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
             <div class="card">
                 <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
-                <button class="missions">@item.Theme.Title</button>
-                <div class="card-body">
+                
+                <div>
+               
 
-                    <h4 class="card-title">@item.Title</h4>
 
-                    @{
+                  @{
+                                 var totalLen = ViewBag.missionapplication.Count;
+                                for (int k = 0; k < totalLen; k++)
+                                {
+                                    if (ViewBag.Missionapplication[k].MissionId == item.MissionId)
+                                    {
+                                        <div class="applied">
+                                        <button class="btn" style="color:white; font-size:18px;"><b>APPLIED</b></button>
+                                        </div>
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        if (k == totalLen - 1)
+                                        {
+                                            var a = item.EndDate;
+                                            var res = DateTime.Compare(ViewBag.currentDate, item.EndDate);
+                                            if (res == 1)
+                                            {
+                                                <div class="closed">
+                                                <button class="btn" style="color:white; font-size:18px;"><b>CLOSED</b></button>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="applied" hidden><button class="btn" style="color:white; font-size:18px;"></button></div>
+                                            }
+                                        }
+
+
+                                    }
+
+                                }
+
+
+
+                            }
+
+
+
+
+            </div>
+            <div class="citydiv">
+
+
+            <button class="btn citydivbtn">
+                <img class="cityimg" src="~/NewFolder/pin.png">&nbsp;
+                @*@item.City.Name*@</button>
+            </div>
+
+            <div class="circle">
+
+                <div class="heart">
+
+                     @{
 
 
                         if (@ViewBag.favlist.Count == 0)
@@ -98,13 +152,59 @@
 
                     }
 
+                </div>
+                
+            </div>
+
+            <div class="recommend-cir">
+
+                <div class="imgrec">
+
+                    <div id="dropdownrecmd">
+                                    <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
+                                        <button class="nav-link bg-transparent text-dark fav-btn1" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                                            <img class="img1" src="~/NewFolder/user.png">
+                                            
+                                            <i class="bi bi-chevron-down"></i>
+
+                                        </button>
+                                        <ul class="dropdown-menu scroll-dropdown" aria-labelledby="navbarDropdown">
+
+                                            <li>
+                                                <ul>
+                                                    @foreach (var itm in ViewBag.userslist)
+                                                    {
+                                                        <li class="form-check">
+                                                            <input class="form-check-input checkbox" type="checkbox" value="@itm.Email" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                @itm.FirstName
+                                                            </label>
+
+                                                        </li>
+                                                    }
+                                                    <br>
+                                                    <button id="btn_" onclick="rccall(@item.MissionId)">Submit</button>
+
+                                                </ul>
+                                            </li>
 
 
+                                        </ul>
+                                    </li>
+                                </div>
 
+                </div>
 
+            </div>
 
+            <div style="margin-top:-1%;">
+                <button class="missions">@item.Theme.Title</button></div>
+                <div class="card-body">
 
+                    <h4 class="card-title">@item.Title</h4>
 
+                   
 
                     <p class="card-text">@item.ShortDescription</p>
 
@@ -115,16 +215,7 @@
 
                         </div>
 
-                        
-
-                          @*  <div class="rating">
-                                <span class="rating__result"></span>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                                <i class="rating__star far fa-star"></i>
-                            </div>*@
+                      
 
 
                             <div id="rating" class="col-6 d-flex">

@@ -122,11 +122,89 @@
 }
 
 
+.applied {
+    background-color: green;
+    height: 40%;
+    width: 30%;
+    color: white;
+    border: 1px solid green;
+    border-radius: 21px;
+    width: 150px;
+    margin-top: -47%;
+    margin-left: 0.5%;
+    text-align:center;
+    
+    
+}
+
+.closed {
+    background-color: darkorange;
+    height: 40%;
+    width: 30%;
+    color: white;
+    border: 1px solid darkorange;
+    border-radius: 21px;
+    width: 150px;
+    margin-top: -47%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.citydivbtn {
+    background-color: black;
+    opacity: 0.7;
+    height: 40%;
+    width: 30%;
+    color: white;
+    border: 1px solid black;
+    border-radius: 21px;
+    width: 150px;
+    color: white;
+    margin-top: -91%;
+    margin-left: 65%;
+   
+}
 
 
+.circle {
+    height: 45px;
+    width: 45px;
+    background-color: black;
+    opacity: 0.7;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -30%;
+    margin-left: 88%;
+}
 
+.heart {
+    margin-top: 26%;
+    margin-left: 23%;
+    
+}
 
+.fa-heart {
 
+    font-size: 25px;
+    color: white;
+}
+
+.recommend-cir {
+    height: 45px;
+    width: 45px;
+    background-color: #686A6C;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 3%;
+    margin-left: 88%;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.imgrec {
+    margin-left: -10%;
+    
+}
 
 .col-lg-5 {
     display: flex;
@@ -254,6 +332,7 @@ hr {
     width: 100%;
     object-fit: cover;
     margin-left: 0%;
+    
 }
 
 .missions {
@@ -263,7 +342,7 @@ hr {
     width: 150px;
     height: 30px;
     color: grey;
-    margin-left: 30%;
+    margin-left: 33%;
     margin-top: -3.5%;
 }
 

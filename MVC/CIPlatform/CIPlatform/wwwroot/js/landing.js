@@ -518,55 +518,7 @@ function editUser() {
 
 }
 
-//function editUser() {
 
-
-//    var firstname = document.getElementById('fname').value;
-//    var lastname = document.getElementById('lname').value;
-//    var empId = document.getElementById('empid').value;
-//    var title = document.getElementById('title').value;
-//    var dept = document.getElementById('dept').value;
-//    var profile = document.getElementById('profiletxt').value;
-//    var whyI = document.getElementById('why').value;
-//    var cityId = document.getElementById('cityid').value;
-//    var linkedInurl = document.getElementById('link').value;
-//   // var availability = document.getElementById('selectavailability').value;
-
-
-//    $.ajax({
-//        url: '/Home/SaveUserData',
-//        type: "POST",
-//        data: {
-
-//            firstname: firstname,
-//            lastname: lastname,
-//            empId: empId,
-//            title: title,
-//            dept: dept,
-//            profile: profile,
-//            whyI: whyI,
-//            cityId: cityId,
-//            linkedInurl: linkedInurl,
-//            skillids: skillids,
-//            countryid: countryid,
-//            cityname: cityname,
-           
-           
-           
-
-
-
-//        },
-//        success: function () {
-//            document.getElementById("fname").innerHTML = response.fname;
-//            alert("Data saved successfully");
-//        },
-//        error: function (xhr, textStatus, errorThrown) {
-//            console.log("Error: " + errorThrown);
-//        }
-//    });
-
-//}
 
 
 function changeuserpass() {
@@ -590,6 +542,7 @@ function changeuserpass() {
 
 }
 
+// CONTACT US
 
 function send() {
 
