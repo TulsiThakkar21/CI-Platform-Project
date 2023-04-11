@@ -43,6 +43,8 @@ public partial class User
 
     public string? PhoneNumber { get; set; }
 
+    public string? UserAvailability { get; set; }
+
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
     public virtual ICollection<ContactU> ContactUs { get; } = new List<ContactU>();

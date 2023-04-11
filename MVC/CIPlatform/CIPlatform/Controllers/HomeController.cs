@@ -306,11 +306,12 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id= 0)
         {
-            //var goalmissionlist = _homeRepository.GetGoalMissions();
-            //var timegoalbased = _homeRepository.GetTimeGoalBased(id);
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
 
-            //ViewBag.timegoalbased = timegoalbased;
-            
+            }
+
             // progress bar
             var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
             TempData.Clear();
@@ -507,7 +508,7 @@ namespace CIPlatform.Controllers
             var abc = HttpContext.Session.GetString("userid");
             if (abc == null)
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "Home");
             }
 
 
@@ -665,7 +666,7 @@ namespace CIPlatform.Controllers
             var abc = HttpContext.Session.GetString("userid");
             if (abc == null)
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "Home");
             }
 
 
@@ -956,6 +957,13 @@ namespace CIPlatform.Controllers
 
         public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9, int missionidforapply=0)
         {
+
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
 
             // progress bar
             var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
@@ -1249,6 +1257,14 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryListing()
         {
+
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+
             var listofstories = _homeRepository.GetStories();
             var user = _homeRepository.GetUsers();
             var mis = _homeRepository.GetMission();
@@ -1268,63 +1284,18 @@ namespace CIPlatform.Controllers
         }
 
 
-        //public IActionResult StoryListing(String searching)
-        //{
-
-        //    var storyList = _ciplatformDbContext.Stories.ToList();
-        //    var usrlist = _ciplatformDbContext.Users.ToList();
-        //    var missionList = _ciplatformDbContext.Missions.ToList();
-        //    var missionThemeList = _ciplatformDbContext.MissionThemes.ToList();
-
-        //    var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-        //    ViewBag.ids = Convert.ToInt32(ids);
-
-
-
-
-
-        //    var stories = from s in storyList
-        //                join u in usrlist on s.UserId equals u.UserId
-        //                where s.UserId == u.UserId
-        //                join m in missionList on s.MissionId equals m.MissionId
-        //                where s.MissionId == m.MissionId
-        //                join mt in missionThemeList on m.ThemeId equals mt.MissionThemeId
-        //                where m.ThemeId == mt.MissionThemeId
-
-        //                  select new
-        //                {
-        //                    s,
-        //                    u,
-        //                    m,
-        //                    mt
-        //                };
-
-        //    ViewBag.stories = stories;
-
-
-        //    // for search
-
-        //    var search = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
-
-        //    if (search.Count == 0)
-        //    {
-        //        ViewBag.SearchStatus = 0;
-        //    }
-
-
-
-
-
-
-        //    return View();
-        //}
+     
 
 
 
 
         public IActionResult ShareYourStory(string videourl,int missiondd, string storyTitle, string abcd, int id, string desc, DateTime pubDate, string newArray, int selectedOptionId = 0)
         {
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
 
+            }
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1461,81 +1432,6 @@ namespace CIPlatform.Controllers
 
 
 
-
-
-
-
-
-
-
-        //public IActionResult ShareYourStory(string storyTitle,string appliedMission , int id, string desc, DateTime pubDate, string vid, int selectedOptionId)
-        //{
-        //    var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-        //    ViewBag.ids = Convert.ToInt32(ids);
-        //    var fullname = _homeRepository.GetLoginUser(ids);
-        //    ViewBag.fullname = fullname;
-
-        //    var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
-
-        //    ViewBag.appliedmission = appliedmission;
-        //    var missionidfinal = _ciplatformDbContext.Missions.Where(a=>a.Title.Contains(appliedMission)).ToList();
-        //    long missinids = 0;
-        //    missionidfinal.ForEach(mission => missinids = mission.MissionId);
-
-
-
-
-
-        //    var missionList = _ciplatformDbContext.Missions.ToList();
-
-        //    if (storyTitle != null)
-        //    {
-
-        //        var story = new Story
-        //        {
-
-        //            Title = storyTitle,
-        //            Description = desc,
-        //            PublishedAt = pubDate,
-        //            VidUrl = vid,
-        //            UserId = ids,
-        //            MissionId = missinids
-        //        };
-
-        //        _ciplatformDbContext.Stories.Add(story);
-
-        //        _ciplatformDbContext.SaveChanges();
-
-        //    }
-
-
-
-        //    var finallist = from a in appliedmission
-        //                    join m in missionList on a.MissionId equals m.MissionId
-        //                    where a.MissionId == m.MissionId
-        //                    select new
-        //                    {
-        //                        a,
-        //                        m
-        //                    };
-
-
-
-        //    ViewBag.finallist = finallist;
-
-
-
-        //    //Edit
-
-
-
-
-
-
-        //    return View();
-        //}
-
-
         public IActionResult EditStory(int selectedOptionId, string appliedMission)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -1633,6 +1529,12 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryDetails(int id)
         {
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
 
             var specificStory = _homeRepository.GetSpecificStory(id);
             var mis = _homeRepository.GetMission();
@@ -1658,6 +1560,13 @@ namespace CIPlatform.Controllers
 
         public IActionResult EditProfile(int countryid,int skillsid, string subject, string msg)
         {
+            if (HttpContext.Session.GetString("userid") == null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
 
@@ -1696,10 +1605,41 @@ namespace CIPlatform.Controllers
                     ViewBag.WhyIVolunteer = a.WhyIVolunteer;
                     ViewBag.CityId = Convert.ToInt32(a.CityId);
                     ViewBag.LinkedInUrl = a.LinkedInUrl;
+                    
 
                 }
 
-                var skillsList = _homeRepository.GetSkills();
+            }
+
+            else
+            {
+
+                var updateddata = _ciplatformDbContext.Users.Where(a => a.UserId == ids).ToList();
+
+                var query = from u in updateddata select u;
+
+                foreach (var a in updateddata)
+                {
+
+                    ViewBag.FirstName = a.FirstName;
+                    ViewBag.LastName = a.LastName;
+                    ViewBag.EmployeeId = Convert.ToInt32(a.EmployeeId);
+                    ViewBag.Title = a.Title;
+                    ViewBag.Department = a.Department;
+                    ViewBag.ProfileText = a.ProfileText;
+                    ViewBag.WhyIVolunteer = a.WhyIVolunteer;
+                    ViewBag.CityId = Convert.ToInt32(a.CityId);
+                    ViewBag.LinkedInUrl = a.LinkedInUrl;
+                    
+
+                }
+
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
+            var skillsList = _homeRepository.GetSkills();
                 ViewBag.skills = skillsList;
 
                 
@@ -1757,12 +1697,8 @@ namespace CIPlatform.Controllers
                 return View();
     
 
-            }
-            else
-            {
-                return View();
-
-            }
+            
+           
 
            
 
@@ -1823,8 +1759,8 @@ namespace CIPlatform.Controllers
             return citys;
 
         }
-
-        public IActionResult SaveUserData(int countryid, string cityname,string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
+        [HttpPost]
+        public IActionResult SaveUserData(string availability, int countryid, string cityname,string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1843,23 +1779,26 @@ namespace CIPlatform.Controllers
 
             var query = from u in userData select u;
 
-            foreach (User u in query)
-            {
-                u.FirstName = firstname;
-                u.LastName = lastname;
-                u.EmployeeId = empId;
-                u.Title = title;
-                u.Department = dept;
-                u.ProfileText = profile;
-                u.WhyIVolunteer = whyI;
-                u.CityId = cityId;
-                u.LinkedInUrl = linkedInurl;     
-                u.UserId = ids;
-                u.CountryId = countryid;
+                foreach (User u in query)
+                {
+                    u.FirstName = firstname;
+                    u.LastName = lastname;
+                    u.EmployeeId = empId;
+                    u.Title = title;
+                    u.Department = dept;
+                    u.ProfileText = profile;
+                    u.WhyIVolunteer = whyI;
+                    u.CityId = cityid;
+                    u.LinkedInUrl = linkedInurl;
+                    u.UserId = ids;
+                    u.CountryId = countryid;
+                    u.UserAvailability = availability;
+                
 
-            }
-            _ciplatformDbContext.SaveChanges();
-
+                }
+                _ciplatformDbContext.SaveChanges();
+                
+           
             foreach (var s in skillids)
             {
 
@@ -1883,7 +1822,7 @@ namespace CIPlatform.Controllers
                 }
 
             }
-
+            ViewBag.UserStatus = 1;
             return RedirectToAction("EditProfile", "Home");
         }
 

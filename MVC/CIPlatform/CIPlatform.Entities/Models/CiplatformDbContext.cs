@@ -936,6 +936,10 @@ public partial class CiplatformDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
+            entity.Property(e => e.UserAvailability)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .HasColumnName("user_availability");
             entity.Property(e => e.WhyIVolunteer)
                 .HasColumnType("text")
                 .HasColumnName("why_i_volunteer");
