@@ -1830,7 +1830,7 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult VolTimesheet(int id, int missionid)
+        public IActionResult VolTimesheet(int id, int missionid, DateTime date, int selectedOptionId, int hours, int mins, string msg)
         {
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -1861,6 +1861,64 @@ namespace CIPlatform.Controllers
                                    m.Title
                                };
             ViewBag.goalmissions = goalmissions;
+
+
+
+            var timeData = _ciplatformDbContext.Timesheets.Where(y => y.UserId == ids && y.MissionId == selectedOptionId).ToList();
+            
+            string time = hours.ToString() + ":" + mins.ToString();
+
+            if (selectedOptionId!=0 && date!=null && hours!=0 && mins!=0 && msg!=null)
+            {
+                if (timeData.Count == 0)
+                {
+                    var data = new Timesheet
+                    {
+
+                        MissionId = selectedOptionId,
+                        TimesheetTime = TimeOnly.Parse(time),
+                        DateVolunteered= date,
+                        Notes = msg,
+                        UserId = ids
+
+                    };
+
+                    _ciplatformDbContext.Timesheets.Add(data);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
+            }
+
+            //var timesheetdata = _ciplatformDbContext.Timesheets.ToList();
+            //ViewBag.timesheetdata = timesheetdata;
+
+            var timelist = _ciplatformDbContext.Timesheets.ToList();
+
+            var timesheetAllData = from t in timelist
+                               join m in missionlst on t.MissionId equals m.MissionId
+                               where t.MissionId == m.MissionId
+                             
+                               select new
+                               {
+                                   t,
+                                   t.TimesheetTime,
+                                   m,
+                                   m.Title
+                               };
+            ViewBag.timesheetAllData = timesheetAllData;
+
+            string finaltime = timelist[0].TimesheetTime.ToString();
+
+            
+
+
+            TimeOnly splitedtime = TimeOnly.Parse(finaltime); // parse the time string into a TimeSpan object
+
+            int hrs = splitedtime.Hour; // get the hours component
+            int minutes = splitedtime.Minute;
+
+            ViewBag.hours = hrs;
+            ViewBag.minutes = minutes;
 
 
             return View();

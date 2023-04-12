@@ -214,8 +214,7 @@ function commentadd(MissionId) {
 
 
 function newselecId(s) {
-    /*  var adID = console.log(s[s.selectedIndex].id);*/
-    /*   var newappMissionID = $(this).find('option:selected').attr('id');*/
+    
     const selectElement = document.getElementById("exampleFormControlSelect12");
     const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
     console.log(selectedOptionId);
@@ -569,8 +568,70 @@ function send() {
 
 }
 
+// vol timesheet
 
+function timemissionId(e) {
 
+    const selectElement = document.getElementById("Mission");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+    //var date = document.getElementById('Date').value; 
+    //var hours = document.getElementById('Hours').value; 
+    //var mins = document.getElementById('Minutes').value; 
+    //var msg = document.getElementById('Message').value; 
+
+    $.ajax({
+        url: '/Home/VolTimesheet',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            //date: date,
+            //hours: hours,
+            //mins: mins,
+            //msg: msg
+
+        },
+        success: function () {
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+}
+
+function submitTimedata() {
+
+    const selectElement = document.getElementById("Mission");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+    var date = document.getElementById('Date').value;
+    var hours = document.getElementById('Hours').value;
+    var mins = document.getElementById('Minutes').value;
+    var msg = document.getElementById('Message').value;
+
+    $.ajax({
+        url: '/Home/VolTimesheet',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            date: date,
+            hours: hours,
+            mins: mins,
+            msg: msg
+
+        },
+        success: function () {
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}
 
 
 

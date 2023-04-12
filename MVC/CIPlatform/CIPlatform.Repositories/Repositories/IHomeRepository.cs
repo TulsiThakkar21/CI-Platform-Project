@@ -52,6 +52,10 @@ namespace CIPlatform.Repository.Repositories
         IEnumerable<MissionApplication> Getappliedmissions(int ids);
 
         IEnumerable<GoalMission> GetAllGoalMissions(int missionid);
+
+        IEnumerable<Timesheet> GetTimesheetsList();
+
+        IEnumerable<Timesheet> GetTimesheetandMission(int selectedOptionId);
     }
     }
 

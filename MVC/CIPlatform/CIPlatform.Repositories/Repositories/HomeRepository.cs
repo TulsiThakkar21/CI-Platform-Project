@@ -263,6 +263,17 @@ namespace CIPlatform.Repository.Repositories
                 .ToList();
         }
 
+        public IEnumerable<Timesheet> GetTimesheetsList()
+        {
+            return _db.Timesheets.ToList();
+        }
+
+        public IEnumerable<Timesheet> GetTimesheetandMission(int selectedOptionId)
+        {
+            return _db.Timesheets.Where(a => a.MissionId == selectedOptionId)
+                .Include(t1 => t1.Mission)
+                .ToList();
+        }
     }
 
 
