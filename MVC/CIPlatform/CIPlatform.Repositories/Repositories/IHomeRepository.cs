@@ -47,6 +47,11 @@ namespace CIPlatform.Repository.Repositories
         IEnumerable<Skill> GetSkills();
         IEnumerable<UserSkill> GetUserSkillsList();
         IEnumerable<Skill> GetUserSkills(int skillsid);
+
+        IEnumerable<MissionApplication> GetMissionAppList();
+        IEnumerable<MissionApplication> Getappliedmissions(int ids);
+
+        IEnumerable<GoalMission> GetAllGoalMissions(int missionid);
     }
     }
 

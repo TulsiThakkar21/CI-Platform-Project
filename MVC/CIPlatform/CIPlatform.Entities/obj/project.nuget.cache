@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2SkCvP69u2kr0A9qdrvMA23L97fWmiUcgXiNuo5Utse8Gld30SFQ9BRQ8JWcvifCW6SnVr+TWT8UjNa/BrfVYg==",
+  "dgSpecHash": "9k3LuEsurAVTaAvK8hRbogDC7q+lrCL2+BQ1GW3cIuoFls1NljTAQIGJWK6oPOditC+o6Qe0BsgFKzRarszftA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+  "projectFilePath": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tatva\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

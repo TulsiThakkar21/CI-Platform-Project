@@ -1625,7 +1625,7 @@ namespace CIPlatform.Controllers
 
 
 
-                var contData = _ciplatformDbContext.ContactUs.Where(y => y.UserId == ids).ToList();
+            var contData = _ciplatformDbContext.ContactUs.Where(y => y.UserId == ids).ToList();
 
                 if (msg != null)
                 {
@@ -1827,6 +1827,42 @@ namespace CIPlatform.Controllers
 
         public IActionResult PrivacyPolicy()
         {
+            return View();
+        }
+
+        public IActionResult VolTimesheet(int id, int missionid)
+        {
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+
+            var missionappList = _homeRepository.GetMissionAppList();
+            var missionList = _homeRepository.GetMission();
+            var appliedMissions = _homeRepository.Getappliedmissions(ids);
+            ViewBag.appliedMissions = appliedMissions;
+
+
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var missionapplst = _ciplatformDbContext.MissionApplications.ToList();
+            ////var goalList = _homeRepository.GetGoalMissions();
+            ////var goalmissions = _homeRepository.GetAllGoalMissions();
+            var goalList = _ciplatformDbContext.GoalMissions.ToList();
+
+
+            var goalmissions = from g in goalList
+                               join m in missionlst on g.MissionId equals m.MissionId
+                               where g.MissionId == m.MissionId
+                               join am in missionapplst on g.MissionId equals am.MissionId
+                               where g.MissionId == am.MissionId
+                               select new
+                               {
+                                   g.MissionId,
+                                   m,
+                                   m.Title
+                               };
+            ViewBag.goalmissions = goalmissions;
+
+
             return View();
         }
 

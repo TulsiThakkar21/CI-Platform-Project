@@ -479,7 +479,7 @@ console.log(a);
 function editUser() {
 
 
-    var firstname = document.getElementById('fname').value;
+    var firstname = document.getElementById('FirstName').value;
     var lastname = document.getElementById('lname').value;
     var empId = document.getElementById('empid').value;
     var title = document.getElementById('title').value;
@@ -509,7 +509,7 @@ function editUser() {
 
         },
         success: function () {
-            document.getElementById("fname").innerHTML = response.fname;
+            document.getElementById("FirstName").innerHTML = response.FirstName;
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);

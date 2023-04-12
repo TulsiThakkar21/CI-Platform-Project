@@ -205,8 +205,10 @@
                     <hr />
                     <div class="row">
                         <div class="col-6">
-                            <label for="" class="form-label">Name</label>
-                            <input id="fname" type="text" class="form-control" id="" placeholder="Enter your Name" value="@ViewBag.FirstName">
+                            <label asp-for="FirstName" for="" class="form-label">Name</label>
+                            <input asp-for="FirstName" id="FirstName" type="text" class="form-control" id="" placeholder="Enter your Name" value="@ViewBag.FirstName">
+                            <span asp-validation-for="FirstName" class="text-danger" style="font-size:12px;"></span>
+
                         </div>
                         <div class="col-6">
                             <label for="" class="form-label">Surname</label>
@@ -278,6 +280,8 @@
 
                                     }
                                 </select>
+                                
+
                             </div>
                             <div class="col-6">
                                 <label for="" class="form-label">Country</label>

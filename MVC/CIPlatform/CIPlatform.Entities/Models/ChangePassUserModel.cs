@@ -52,5 +52,11 @@ namespace CIPlatform.Entities.Models
 
         [Required(ErrorMessage = "Message is required.")]
         public string Message { get; set; }
+
+
+
+        // edit profile
+
+       
     }
 }

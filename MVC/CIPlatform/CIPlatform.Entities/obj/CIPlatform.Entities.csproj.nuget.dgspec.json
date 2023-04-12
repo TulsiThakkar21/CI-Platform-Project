@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {}
+    "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+    "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
         "projectName": "CIPlatform.Entities",
-        "projectPath": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "projectPath": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tatva\\Desktop\\CIP-Clone\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
+        "outputPath": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

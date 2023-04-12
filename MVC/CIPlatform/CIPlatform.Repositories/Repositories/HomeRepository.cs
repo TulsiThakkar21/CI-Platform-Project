@@ -244,6 +244,24 @@ namespace CIPlatform.Repository.Repositories
                  .Include(t => t.UserSkills)
                 .ToList();
         }
+        public IEnumerable<MissionApplication> GetMissionAppList()
+        {
+            return _db.MissionApplications.ToList();
+        }
+        public IEnumerable<MissionApplication> Getappliedmissions(int ids)
+        {
+            return _db.MissionApplications.Where(a => a.UserId == ids)
+                .Include(t1 => t1.Mission)
+                .Include(t2 => t2.User)
+                .ToList();
+        }
+
+        public IEnumerable<GoalMission> GetAllGoalMissions(int missionid)
+        {
+            return _db.GoalMissions.Where(a => a.MissionId == missionid)
+                .Include(t1 => t1.Mission)               
+                .ToList();
+        }
 
     }
 

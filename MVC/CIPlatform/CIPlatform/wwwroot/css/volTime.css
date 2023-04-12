@@ -1,0 +1,43 @@
+﻿.left-box {
+    width: 705px;
+    height: 455px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 3px #0000000F;
+    border: 1px solid #E8E8E8;
+    margin-left: 7%;
+}
+
+.right-box {
+    width: 705px;
+    height: 455px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 3px #0000000F;
+    border: 1px solid #E8E8E8;
+    margin-left: -15%;
+}
+
+.add-hours {
+    width: 33%;
+    height: 50%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #F88634;
+    border-radius: 24px;
+    color: #F88634;
+    margin-left: 65%;
+    margin-top: 15%;
+}
+
+.plus-img
+{
+    height: 20px;
+    width:23px;
+    margin-left:-12%;
+    margin-top:-5%;
+}
+
+.edit-img {
+    height: 20px;
+    width: 23px;
+    margin-left: -12%;
+    margin-top: -5%;
+}
