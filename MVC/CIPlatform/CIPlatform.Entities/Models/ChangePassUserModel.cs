@@ -37,8 +37,6 @@ namespace CIPlatform.Entities.Models
 
         // contact us
 
-        [Required(ErrorMessage = "First name is required.")]
-        public string FirstName { get; set; }
 
 
         [Required(ErrorMessage = "Email-id is required.")]
@@ -55,8 +53,22 @@ namespace CIPlatform.Entities.Models
 
 
 
+
         // edit profile
 
-       
+        [Required(ErrorMessage = "First name is required")]
+        public string FirstName { get; set; } = null!;
+
+
+        [Required(ErrorMessage = "Last name is required")]
+        public string LastName { get; set; }
+
+
+        [Required(ErrorMessage = "City is required")]
+        public string City { get; set; } = null!;
+
+
+        [Required(ErrorMessage = "Country is required")]
+        public string country { get; set; } = null!;
     }
 }

@@ -150,12 +150,14 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Hours</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+                                <form id="myform" asp-action="VolTimesheet" asp-controller="Home" method="post">
                                 <div class="modal-body">
+                                    
                                     <div>
 
-                                        <label class="form-label">Mission</label>
+                                            <label asp-for="Mission" class="form-label">Mission</label>
 
-                                        <select onchange="timemissionId(this)" id="Mission" class="form-select" asp-for="Mission">
+                                            <select asp-for="Mission" name="Mission" onchange="timemissionId(this)" id="Mission" class="form-select">
                                             <option selected disabled>Select Mission</option>
                                             @{
                                                 foreach (var missions in ViewBag.appliedMissions)
@@ -178,32 +180,48 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
                                     </div>
                                     <br />
-                                    <div>
-                                        <label class="form-label">Date Volunteered</label>
-                                        <input id="Date" type="date" placeholder="Select Date" class="form-control" value="">
+                                        @{
+                                        foreach (var timedata in ViewBag.timesheetAllData)
+                                        {
+                       
+                                            <div>
+                                                <label asp-for="Date" class="form-label">Date Volunteered</label>
+                                                    <input asp-for="Date" id="Date" type="date" placeholder="Select Date" class="form-control" asp-format="{0:yyyy/MM/dd}" min=@timedata.m.StartDate.ToShortDateString() max=@timedata.m.EndDate.ToShortDateString()>
+                                                <span asp-validation-for="Date" class="text-danger" style="font-size:12px;"></span>
 
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="form-label">Hours</label>
-                                            <input id="Hours" type="text" placeholder="Enter Spent Hours" class="form-control" value="">
+                                            </div>
+                                            break;
+                                        }
+                                        }
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-6">
+                                                <label asp-for="Hours" class="form-label">Hours</label>
+                                                <input asp-for="Hours" id="Hours" name="Hours" type="number" placeholder="Enter Spent Hours" class="form-control" required>
+                                                <span asp-validation-for="Hours" class="text-danger" style="font-size:12px;"></span>
+
+                                            </div>
+                                                <div class="col-6">
+                                                <label asp-for="Minutes" class="form-label">Minutes</label>
+                                                <input asp-for="Minutes" name="Minutes" id="Minutes" type="number" placeholder="Enter Spent Minutes" class="form-control" required>
+                                                <span asp-validation-for="Minutes" class="text-danger" style="font-size:12px;"></span>
+
+                                            </div>
+                                            </div>
+                                            <br />
+                                            <div>
+                                            <label asp-for="Message" class="form-label">Message</label>
+                                                <br />
+                                            <textarea asp-for="Message" name="Message" id="Message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+                                            <span asp-validation-for="Message" class="text-danger" style="font-size:12px;"></span>
+                                            <input hidden></input>
                                         </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Minutes</label>
-                                            <input id="Minutes" type="text" placeholder="Enter Spent Minutes" class="form-control" value="">
+                                       
                                         </div>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <label class="form-label">Message</label>
-                                        <br />
-                                        <textarea id="Message" class="form-control" rows="5" placeholder="Enter your message"></textarea>
-                                    </div>
-                                </div>
+                                </form>
                                 <div class="modal-footer">
                                     <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn save-btn" onclick="submitTimedata()">Submit</button>
+                                    <button type="submit" class="btn save-btn" onclick="submitTimedata()">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -233,207 +251,222 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
                 @{
 
-
-                    foreach (var timedata in ViewBag.timesheetAllData)
+                    foreach (var missions in ViewBag.appliedMissions)
                     {
+                        foreach (var missions1 in ViewBag.goalmissions)
+                        {
+                            if (missions.MissionId != missions1.MissionId)
+                            {
 
-                        <div class="col-3">@timedata.m.Title</div>
+                                foreach (var timedata in ViewBag.timesheetAllData)
+                                {
+                                    if (timedata.t.Action == null)
+                                    {
 
-                        <div class="col-3">@timedata.t.DateVolunteered.ToShortDateString()</div>
 
-                        <div class="col-2">@ViewBag.hours</div>
+                                        <div class="col-3">@timedata.m.Title</div>
 
-                        <div class="col-2">@ViewBag.minutes</div>
+                                        <div class="col-3">@timedata.t.DateVolunteered.ToShortDateString()</div>
 
-                        <div class="col-2">
+                                        <div class="col-2">@ViewBag.hours h</div>
 
-                            <div class="row" style="display:flex;">
-                                <div class="col-1" style="margin-left:5%;">
+                                        <div class="col-2">@ViewBag.minutes mins</div>
 
-                                    <img src="~/NewFolder/edit.png" class="edit-img" />
-                                </div>
-                                <div class="col-1" style="margin-left:10%;">
+                                        <div class="col-2">
 
-                                    <img src="~/NewFolder/bin.png" />
+                                            <div class="row" style="display:flex;">
+                                                <div class="col-1" style="margin-left:5%;">
 
-                                </div>
-                            </div>
+                                                    <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                </div>
+                                                <div class="col-1" style="margin-left:10%;">
 
-                        </div>
+                                                    <img src="~/NewFolder/bin.png" />
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                }
+                                break;
+                            }
+                        }
                     }
-                    }
-                    </div>
-
-
-
-                </div>
-                <div class="col-2"></div>
-                <div class="col-4 right-box">
-
-
-                    <div class="row">
-                        <div class="col-6">
-                            <h5 style="margin-left:5%; margin-top:15%; color: #414141;">Volunteering Goals</h5>
-
-                        </div>
-
-                        <div class="col-6">
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                <img src="~/NewFolder/plus.png" class="plus-img" />
-                                Add
-                            </button>
-
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Goal</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-
-                                                <label class="form-label">Mission</label>
-                                                        @*<input type="text" placeholder="" class="form-control" value="">*@
-
-
-
-
-                                                        @*  //var lengths = ViewBag.appliedMissions.Count;
-                                        //var len2 = ViewBag.goalmissions.Count;
-                                        //for (int k = 0; k < lengths; k++)
-                                        //{
-                                        //for (int t = 0; t < len2; t++)
-                                        //{
-                                        //if (ViewBag.appliedMissions[k].MissionId == ViewBag.goalmissions.g.MissionId)
-                                        //{*@
-                                                <select id="goalmissionlist" class="form-select">
-                                                    <option selected disabled>Select Mission</option>
-
-                                                            @{
-
-
-                                                                foreach (var missions1 in ViewBag.goalmissions)
-                                                                {
-
-
-                                                            <option id="@missions1.MissionId" value="@missions1.m.Title">@missions1.m.Title</option>
-
-                                                                    break;
-                                                                }
-
-                                                            }
-
-                                                </select>
-
-                                                        @*                                       //break;
-
-                                        //        }
-                                        //        else
-                                        //        {
-                                        //            <p>hello</p>
-                                        //        }
-                                        //    }
-                                        //}*@
-
-
-
-                                            </div>
-                                            <br />
-
-                                            <div>
-
-                                                <label class="form-label">Action</label>
-                                                <input type="text" placeholder="Enter action" class="form-control" value="">
-
-                                            </div>
-
-                                            <br />
-                                            <div>
-                                                <label class="form-label">Date Volunteered</label>
-                                                <input type="date" placeholder="Select Date" class="form-control" value="">
-
-                                            </div>
-                                            <br />
-
-
-                                            <div>
-                                                <label class="form-label">Message</label>
-                                                <br />
-        <textarea class="form-control" rows="5" placeholder="Enter your message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn save-btn">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row" style="margin-left:2%; margin-top:3%;">
-
-
-
-                        <div class="col-3"><b>Mission</b></div>
-
-                        <div class="col-3"><b>Date</b></div>
-
-                        <div class="col-3"><b>Action</b></div>
-
-
-
-
-
-                    </div>
-                    <br />
-                    <div class="row" style="margin-left:2%;">
-
-
-
-                        <div class="col-3">Environment</div>
-
-                        <div class="col-3">22/02/2022</div>
-
-                        <div class="col-3">0</div>
-
-                        <div class="col-2">
-
-                            <div class="row" style="display:flex;">
-                                <div class="col-1" style="margin-left:5%;">
-
-                                    <img src="~/NewFolder/edit.png" class="edit-img" />
-                                </div>
-                                <div class="col-1" style="margin-left:10%;">
-
-                                    <img src="~/NewFolder/bin.png" />
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <div class="col-1"></div>
+                }
             </div>
 
-            <script src="~/js/landing.js"></script>
-                        @*<script>
+
+
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4 right-box">
+
+
+            <div class="row">
+                <div class="col-6">
+                    <h5 style="margin-left:5%; margin-top:15%; color: #414141;">Volunteering Goals</h5>
+
+                </div>
+
+                <div class="col-6">
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <img src="~/NewFolder/plus.png" class="plus-img" />
+                        Add
+                    </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Goal</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+
+                                        <label asp-for="goalmissionlist" class="form-label">Mission</label>
+
+                                        <select asp-for="goalmissionlist" id="goalmissionlist" class="form-select">
+                                            <option selected disabled>Select Mission</option>
+
+                                            @{
+
+
+                                                foreach (var missions1 in ViewBag.goalmissions)
+                                                {
+
+
+                                                    <option id="@missions1.MissionId" value="@missions1.m.Title">@missions1.m.Title</option>
+
+                                                    break;
+                                                }
+
+                                            }
+
+                                        </select>
+
+                                        <span asp-validation-for="goalmissionlist" class="text-danger" style="font-size:12px;"></span>
+
+
+
+                                    </div>
+                                    <br />
+
+                                    <div>
+
+                                        <label asp-for="Action" class="form-label">Action</label>
+                                        <input asp-for="Action" name="Action" id="Action" type="number" placeholder="Enter action" class="form-control" required>
+                                        <span asp-validation-for="Action" class="text-danger" style="font-size:12px;"></span>
+
+                                    </div>
+
+                                    <br />
+                                    <div>
+                                        <label asp-for="DateVol" class="form-label">Date Volunteered</label>
+                                        <input asp-for="DateVol" name="DateVol" id="DateVol" type="date" placeholder="Select Date" class="form-control" required>
+                                        <span asp-validation-for="DateVol" class="text-danger" style="font-size:12px;"></span>
+
+                                    </div>
+                                    <br />
+
+
+                                    <div>
+                                        <label asp-for="GoalMessage" class="form-label">Message</label>
+                                        <br />
+                                        <textarea asp-for="GoalMessage" name="GoalMessage" id="GoalMessage" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+                                        <span asp-validation-for="GoalMessage" class="text-danger" style="font-size:12px;"></span>
+                                        <input hidden></input>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn save-btn" onclick="submitGoaldata()">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <br>
+            <div class="row" style="margin-left:2%; margin-top:3%;">
+
+
+
+                <div class="col-3"><b>Mission</b></div>
+
+                <div class="col-3"><b>Date</b></div>
+
+                <div class="col-3"><b>Action</b></div>
+
+
+
+
+
+            </div>
+            <br />
+            <div class="row" style="margin-left:2%;">
+
+                @{
+
+                    foreach (var missions in ViewBag.appliedMissions)
+                    {
+                        foreach (var missions1 in ViewBag.goalmissions)
+                        {
+                            if (missions.MissionId != missions1.MissionId)
+                            {
+
+                                foreach (var timedata in ViewBag.timesheetAllData)
+                                {
+                                    if (timedata.t.TimesheetTime == null)
+                                    {
+                                        <div class="col-3">@timedata.m.Title</div>
+
+                                        <div class="col-3">@timedata.t.DateVolunteered.ToShortDateString()</div>
+
+                                        <div class="col-3">@timedata.t.Action</div>
+
+                                        <div class="col-2">
+
+                                            <div class="row" style="display:flex;">
+                                                <div class="col-1" style="margin-left:5%;">
+
+                                                    <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                </div>
+                                                <div class="col-1" style="margin-left:10%;">
+
+                                                    <img src="~/NewFolder/bin.png" />
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            </div>
+
+
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <script src="~/js/landing.js"></script>
+    @*<script>
 
     const missionList = document.getElementById('missionlist');
 
     </script>*@
 
-        </body>
-        </html>
+</body>
+</html>

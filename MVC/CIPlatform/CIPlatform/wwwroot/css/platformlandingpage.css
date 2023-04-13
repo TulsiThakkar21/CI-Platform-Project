@@ -124,15 +124,17 @@
 
 .applied {
     background-color: green;
-    height: 40%;
+    height: 30%;
     width: 30%;
     color: white;
     border: 1px solid green;
-    border-radius: 21px;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
     width: 150px;
     margin-top: -47%;
-    margin-left: 0.5%;
     text-align:center;
+    margin-left:0%;
+    opacity:0.9;
     
     
 }
@@ -143,11 +145,13 @@
     width: 30%;
     color: white;
     border: 1px solid darkorange;
-    border-radius: 21px;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
     width: 150px;
     margin-top: -47%;
-    margin-left: 0.5%;
     text-align: center;
+    margin-left: 0%;
+    opacity: 0.9;
 }
 
 .citydivbtn {

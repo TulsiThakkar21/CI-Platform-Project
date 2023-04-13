@@ -508,14 +508,26 @@ function editUser() {
 
         },
         success: function () {
-            document.getElementById("FirstName").innerHTML = response.FirstName;
+            //document.getElementById("FirstName").innerHTML = response.FirstName;
+            /*document.querySelector("#usersaveddata").addEventListener('click', function () {*/
+                Swal.fire("Congratulations", "Your data has been saved successfully", "success");
+            /*});*/
+            
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
         }
     });
 
+  
 }
+
 
 
 
@@ -635,7 +647,34 @@ function submitTimedata() {
 
 
 
+function submitGoaldata() {
 
+    const selectElement = document.getElementById("goalmissionlist");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+    var action = document.getElementById('Action').value;
+    var datevol = document.getElementById('DateVol').value;
+    var goalMsg = document.getElementById('GoalMessage').value;
+
+    $.ajax({
+        url: '/Home/VolTimesheet',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            action: action,
+            datevol: datevol,
+            goalMsg: goalMsg
+
+        },
+        success: function () {
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}
 
 
 

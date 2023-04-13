@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using CIPlatform.Repository.Repositories;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Identity;
+using System.Globalization;
 
 namespace CIPlatform.Controllers
 {
@@ -26,15 +27,15 @@ namespace CIPlatform.Controllers
         public CiplatformDbContext _ciplatformDbContext = new CiplatformDbContext();
 
         public IHomeRepository _homeRepository;
-        
+
         public HomeController(IHomeRepository loginRepository, ILogger<HomeController> logger)
         {
             _logger = logger;
             _homeRepository = loginRepository;
-            
+
         }
 
-       
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -61,7 +62,7 @@ namespace CIPlatform.Controllers
                 var abc = HttpContext.Session.GetString("userid");
 
                 long abcd = Convert.ToInt64(abc);
-             
+
                 if (status != null)
                 {
                     var loginfname = status.FirstName;
@@ -82,7 +83,7 @@ namespace CIPlatform.Controllers
             {
                 ViewBag.LoginStatus = 0;
                 //return RedirectToAction("Index", "Home");
-               
+
             }
 
             return View(_loginModel);
@@ -93,7 +94,7 @@ namespace CIPlatform.Controllers
         {
             HttpContext.Session.Remove("userid");
             if (HttpContext.Session.GetString("userid") == null)
-     
+
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -137,10 +138,10 @@ namespace CIPlatform.Controllers
 
                 newMail.IsBodyHtml = true;
 
-                
+
                 var lnkHref = Url.ActionLink("ResetPass", "Home", new { id = generated_token });
 
-               
+
 
                 newMail.Body = "<b>Please find the Password Reset Link. </b><br/>" + lnkHref;
 
@@ -165,12 +166,12 @@ namespace CIPlatform.Controllers
                     _ciplatformDbContext.PasswordResets.Add(passdata);
                     _ciplatformDbContext.SaveChanges();
                     ViewBag.Status = 1;
+                }
+                catch
+                {
+                    ViewBag.Status = 0;
+                }
             }
-            catch
-            {
-                ViewBag.Status = 0;
-            }
-        }
 
             catch (Exception ex)
             {
@@ -204,7 +205,7 @@ namespace CIPlatform.Controllers
             string path = new Uri(urlll).LocalPath.Substring(16);
             Console.WriteLine(path);
             Console.WriteLine(passwd);
-            
+
             var user1 = _ciplatformDbContext.PasswordResets.FirstOrDefault(x => (x.Token == path));
             if (user1 != null)
             {
@@ -235,7 +236,7 @@ namespace CIPlatform.Controllers
 
             return View();
         }
-    
+
 
 
 
@@ -254,7 +255,7 @@ namespace CIPlatform.Controllers
 
             try
             {
-                
+
                 var flag = _ciplatformDbContext.Users.Where(a => a.Email == _registrationModel.Email);
 
                 if (_registrationModel.Email != null && _registrationModel.PhoneNumber != null && _registrationModel.Password != null)
@@ -304,7 +305,7 @@ namespace CIPlatform.Controllers
 
 
         [HttpGet]
-        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry,string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id= 0)
+        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
             if (HttpContext.Session.GetString("userid") == null)
             {
@@ -332,8 +333,8 @@ namespace CIPlatform.Controllers
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            
-            
+
+
             //var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
             //ViewBag.Ratingdata = Ratingdata;
 
@@ -345,13 +346,13 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-         
+
 
             var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
             var outputsf = new List<Mission>();
             var citylists = _ciplatformDbContext.Cities.ToList();
 
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry)|| !string.IsNullOrEmpty(filterskill))
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
             {
                 string[] cityidarr = null;
                 if (filtercity != null)
@@ -420,7 +421,7 @@ namespace CIPlatform.Controllers
 
 
             var currentDate = DateTime.Now;
-            
+
             ViewBag.currentDate = currentDate;
             //var missionthemexx = _db.MissionThemes.Where(a => a.Title.Contains(filter) || filter == null).ToList();
 
@@ -475,7 +476,7 @@ namespace CIPlatform.Controllers
             return View();
 
         }
-        
+
         public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
             // progress bar
@@ -551,7 +552,7 @@ namespace CIPlatform.Controllers
                 }
                 outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
 
-               
+
             }
 
             else
@@ -641,7 +642,7 @@ namespace CIPlatform.Controllers
             ViewBag.MissionSkills = skillx;
 
 
-            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids ).ToList();
+            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
             ViewBag.missionapplication = missionapplication;
 
             return View();
@@ -654,7 +655,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult _List(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
-         
+
 
 
             int count = 30;
@@ -854,7 +855,7 @@ namespace CIPlatform.Controllers
 
             var b = missionId;
             var userId = HttpContext.Session.GetString("userid");
-        var userids = Convert.ToInt32(userId);
+            var userids = Convert.ToInt32(userId);
             ViewBag.userids = userids;
             //var userexist = _ciplatformDbContext.MissionRatings.FirstOrDefault(x => x.MissionId == missionId && x.UserId == Convert.ToInt32(userId));
 
@@ -880,37 +881,39 @@ namespace CIPlatform.Controllers
                 };
 
                 _ciplatformDbContext.MissionRatings.Add(rating);
-               
+
                 _ciplatformDbContext.SaveChanges();
 
             }
-            else {
-            
-                var ratinguserdata = _ciplatformDbContext.MissionRatings.Where(y => y.MissionId == missionId && y.UserId== userids).ToList();
+            else
+            {
+
+                var ratinguserdata = _ciplatformDbContext.MissionRatings.Where(y => y.MissionId == missionId && y.UserId == userids).ToList();
 
                 var query = from r in ratinguserdata select r;
-                foreach (MissionRating r in query) { 
-                   r.Rating = stars.ToString();
+                foreach (MissionRating r in query)
+                {
+                    r.Rating = stars.ToString();
                 }
 
                 _ciplatformDbContext.SaveChanges();
             }
-           
-           
 
-          
+
+
+
             //}
-            return RedirectToAction("PlatformLandingPage" , "Home");
+            return RedirectToAction("PlatformLandingPage", "Home");
         }
 
-       
+
 
 
         [HttpPost]
         public IActionResult Recommendedto(string checkbox_value, int MissionId)
         {
 
-            
+
             string[] usersList = { "," };
             int count = 30;
             string[] users = checkbox_value.Split(",", count, StringSplitOptions.RemoveEmptyEntries);
@@ -947,7 +950,7 @@ namespace CIPlatform.Controllers
 
             }
 
-        
+
 
 
             return View();
@@ -961,7 +964,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9, int missionidforapply=0)
+        public IActionResult VolunteeringMission(int id, string commenttext, int MissionId, string searching, int? page = 1, int? pageSize = 9, int missionidforapply = 0)
         {
 
             if (HttpContext.Session.GetString("userid") == null)
@@ -994,10 +997,10 @@ namespace CIPlatform.Controllers
 
             var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
             ViewBag.favlist = favlist;
-            
+
             var b = id;
 
-           
+
             if (id == 0)
             {
                 id = MissionId;
@@ -1046,7 +1049,7 @@ namespace CIPlatform.Controllers
             var finalcntry = (from m in specificmission select m.CountryId).FirstOrDefault();
             var finaltheme = (from m in specificmission select m.ThemeId).FirstOrDefault();
 
-           
+
 
             var missionxx = _ciplatformDbContext.Missions.Where(a => a.CityId == finalcity && a.MissionId != b).ToList();
 
@@ -1151,7 +1154,7 @@ namespace CIPlatform.Controllers
             // for recent vol
 
             var userList = _homeRepository.GetUsers();
-            var missionapply = _ciplatformDbContext.MissionApplications.Where(a=>a.MissionId == id && a.UserId == ids).ToList();
+            var missionapply = _ciplatformDbContext.MissionApplications.Where(a => a.MissionId == id && a.UserId == ids).ToList();
 
             var finalresult = from u in userList join m in missionapply on u.UserId equals m.UserId where u.UserId == m.UserId select new { u.FirstName, m };
             //ViewBag.userlist = userList;
@@ -1204,7 +1207,7 @@ namespace CIPlatform.Controllers
             return View();
 
 
-           
+
         }
 
 
@@ -1237,12 +1240,12 @@ namespace CIPlatform.Controllers
         }
 
 
-     
 
 
 
 
-        public IActionResult ShareYourStory(string videourl,int missiondd, string storyTitle, string abcd, int id, string desc, DateTime pubDate, string newArray, int selectedOptionId = 0)
+
+        public IActionResult ShareYourStory(string videourl, int missiondd, string storyTitle, string abcd, int id, string desc, DateTime pubDate, string newArray, int selectedOptionId = 0)
         {
             if (HttpContext.Session.GetString("userid") == null)
             {
@@ -1393,7 +1396,7 @@ namespace CIPlatform.Controllers
 
             var appliedmission = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
 
-            
+
             var missionidfinal = _ciplatformDbContext.Missions.Where(a => a.Title.Contains(appliedMission)).ToList();
             long missinids = 0;
             missionidfinal.ForEach(mission => missinids = mission.MissionId);
@@ -1411,11 +1414,11 @@ namespace CIPlatform.Controllers
 
 
 
-            
+
 
             var data = _ciplatformDbContext.Stories.Where(a => a.MissionId == selectedOptionId && a.UserId == ids).ToList().FirstOrDefault();
 
-            
+
             if (data != null)
             {
                 var fetchStoryDetails = new Story
@@ -1440,9 +1443,9 @@ namespace CIPlatform.Controllers
                 return Json(null);
             }
 
-         
 
-            
+
+
         }
 
         public IActionResult SaveStory(string storyTitle, string appliedMission, int id, string desc, DateTime pubDate, string vid)
@@ -1467,7 +1470,7 @@ namespace CIPlatform.Controllers
         }
 
 
-       
+
 
 
 
@@ -1496,7 +1499,7 @@ namespace CIPlatform.Controllers
 
 
             //recom to co-w
-            
+
             ViewBag.user = user;
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -1504,14 +1507,14 @@ namespace CIPlatform.Controllers
             var fullname = _homeRepository.GetLoginUser(ids);
             ViewBag.fullname = fullname;
 
-            
+
 
             return View();
         }
 
 
 
-        public IActionResult EditProfile(int countryid,int skillsid, string subject, string msg)
+        public IActionResult EditProfile(int countryid, int skillsid, string subject, string msg)
         {
             if (HttpContext.Session.GetString("userid") == null)
             {
@@ -1558,7 +1561,7 @@ namespace CIPlatform.Controllers
                     ViewBag.WhyIVolunteer = a.WhyIVolunteer;
                     ViewBag.CityId = Convert.ToInt32(a.CityId);
                     ViewBag.LinkedInUrl = a.LinkedInUrl;
-                    
+
 
                 }
 
@@ -1583,7 +1586,7 @@ namespace CIPlatform.Controllers
                     ViewBag.WhyIVolunteer = a.WhyIVolunteer;
                     ViewBag.CityId = Convert.ToInt32(a.CityId);
                     ViewBag.LinkedInUrl = a.LinkedInUrl;
-                    
+
 
                 }
 
@@ -1593,69 +1596,69 @@ namespace CIPlatform.Controllers
 
 
             var skillsList = _homeRepository.GetSkills();
-                ViewBag.skills = skillsList;
-
-                
+            ViewBag.skills = skillsList;
 
 
-                var skillList = _ciplatformDbContext.Skills.ToList();
-                var userskillsList = _ciplatformDbContext.UserSkills.ToList();
-
-                var userSkills = from s in skillsList
-                                 join us in userskillsList on s.SkillId equals us.SkillId
-                                 where s.SkillId == us.SkillId
-                                 select new
-                                 {
-                                     s.SkillName
-                                     
-                                 };
-
-                ViewBag.userSkills = userSkills;
 
 
-                // CONTACT US
+            var skillList = _ciplatformDbContext.Skills.ToList();
+            var userskillsList = _ciplatformDbContext.UserSkills.ToList();
 
-                var fullname = _homeRepository.GetLoginUser(ids);
-                ViewBag.fullname = fullname;
+            var userSkills = from s in skillsList
+                             join us in userskillsList on s.SkillId equals us.SkillId
+                             where s.SkillId == us.SkillId
+                             select new
+                             {
+                                 s.SkillName
 
-                var emailadd = _homeRepository.GetUserEmail(ids);
-                ViewBag.emailadd = emailadd;
+                             };
 
-           
+            ViewBag.userSkills = userSkills;
+
+
+            // CONTACT US
+
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+            var emailadd = _homeRepository.GetUserEmail(ids);
+            ViewBag.emailadd = emailadd;
+
+
 
 
 
             var contData = _ciplatformDbContext.ContactUs.Where(y => y.UserId == ids).ToList();
 
-                if (msg != null)
+            if (msg != null)
+            {
+                if (contData.Count == 0)
                 {
-                    if (contData.Count == 0)
+                    var cont = new ContactU
                     {
-                        var cont = new ContactU
-                        {
 
-                            Subject = subject,
-                            Message = msg,
-                            UserId = ids,
+                        Subject = subject,
+                        Message = msg,
+                        UserId = ids,
 
-                        };
+                    };
 
-                        _ciplatformDbContext.ContactUs.Add(cont);
+                    _ciplatformDbContext.ContactUs.Add(cont);
 
-                        _ciplatformDbContext.SaveChanges();
-                    }
+                    _ciplatformDbContext.SaveChanges();
                 }
+            }
 
-               
 
 
-                return View();
-    
 
-            
-           
+            return View();
 
-           
+
+
+
+
+
 
         }
 
@@ -1702,6 +1705,7 @@ namespace CIPlatform.Controllers
                     ViewBag.WhyIVolunteer = a.WhyIVolunteer;
                     ViewBag.CityId = Convert.ToInt32(a.CityId);
                     ViewBag.LinkedInUrl = a.LinkedInUrl;
+                    ViewBag.Cityname = cityname;
 
                 }
 
@@ -1715,7 +1719,7 @@ namespace CIPlatform.Controllers
 
         }
         [HttpPost]
-        public IActionResult SaveUserData(string availability, int countryid, string cityname,string[] skillids,string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
+        public IActionResult SaveUserData(string availability, int countryid, string cityname, string[] skillids, string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
         {
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1728,11 +1732,14 @@ namespace CIPlatform.Controllers
                 cityid = speccity.CityId;
             }
 
+            if (firstname != null && lastname != null && cityid != 0 && countryid != 0)
+            {
 
 
-            var userData = _ciplatformDbContext.Users.Where(y => y.UserId == ids).ToList();
 
-            var query = from u in userData select u;
+                var userData = _ciplatformDbContext.Users.Where(y => y.UserId == ids).ToList();
+
+                var query = from u in userData select u;
 
                 foreach (User u in query)
                 {
@@ -1748,12 +1755,13 @@ namespace CIPlatform.Controllers
                     u.UserId = ids;
                     u.CountryId = countryid;
                     u.UserAvailability = availability;
-                
+
 
                 }
                 _ciplatformDbContext.SaveChanges();
                 
-           
+            }
+
             foreach (var s in skillids)
             {
 
@@ -1770,30 +1778,30 @@ namespace CIPlatform.Controllers
                         UserId = ids
 
                     };
-                    
+
                     _ciplatformDbContext.UserSkills.Add(allskills);
 
                     _ciplatformDbContext.SaveChanges();
                 }
 
-                
+
 
             }
 
-                   
 
 
 
-            ViewBag.UserStatus = 1;
+
+            
             return RedirectToAction("EditProfile", "Home");
         }
 
-        
+
         public IActionResult ChangeUserPass(string newpass)
         {
-            
+
             ChangePassUserModel _ch = new ChangePassUserModel();
-          
+
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
@@ -1821,7 +1829,7 @@ namespace CIPlatform.Controllers
 
             }
 
-            
+
         }
 
 
@@ -1830,7 +1838,7 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult VolTimesheet(int id, int missionid, DateTime date, int selectedOptionId, int hours, int mins, string msg)
+        public IActionResult VolTimesheet(int id, int missionid, DateTime date, int selectedOptionId, int hours, int mins, string msg, int action, DateTime datevol, string goalMsg)
         {
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -1843,6 +1851,7 @@ namespace CIPlatform.Controllers
 
 
             var missionlst = _ciplatformDbContext.Missions.ToList();
+
             var missionapplst = _ciplatformDbContext.MissionApplications.ToList();
             ////var goalList = _homeRepository.GetGoalMissions();
             ////var goalmissions = _homeRepository.GetAllGoalMissions();
@@ -1865,10 +1874,12 @@ namespace CIPlatform.Controllers
 
 
             var timeData = _ciplatformDbContext.Timesheets.Where(y => y.UserId == ids && y.MissionId == selectedOptionId).ToList();
-            
+
+            // for time based 
+
             string time = hours.ToString() + ":" + mins.ToString();
 
-            if (selectedOptionId!=0 && date!=null && hours!=0 && mins!=0 && msg!=null)
+            if (selectedOptionId != 0 && date != null && hours != 0 && mins != 0 && msg != null)
             {
                 if (timeData.Count == 0)
                 {
@@ -1877,7 +1888,7 @@ namespace CIPlatform.Controllers
 
                         MissionId = selectedOptionId,
                         TimesheetTime = TimeOnly.Parse(time),
-                        DateVolunteered= date,
+                        DateVolunteered = date,
                         Notes = msg,
                         UserId = ids
 
@@ -1889,27 +1900,29 @@ namespace CIPlatform.Controllers
                 }
             }
 
-            //var timesheetdata = _ciplatformDbContext.Timesheets.ToList();
-            //ViewBag.timesheetdata = timesheetdata;
+
 
             var timelist = _ciplatformDbContext.Timesheets.ToList();
 
             var timesheetAllData = from t in timelist
-                               join m in missionlst on t.MissionId equals m.MissionId
-                               where t.MissionId == m.MissionId
-                             
-                               select new
-                               {
-                                   t,
-                                   t.TimesheetTime,
-                                   m,
-                                   m.Title
-                               };
+                                   join m in missionlst on t.MissionId equals m.MissionId
+                                   where t.MissionId == m.MissionId
+
+                                   select new
+                                   {
+                                       t,
+                                       t.TimesheetTime,
+                                       m,
+                                       m.Title,
+                                       m.StartDate,
+                                       m.EndDate
+                                   };
             ViewBag.timesheetAllData = timesheetAllData;
+
 
             string finaltime = timelist[0].TimesheetTime.ToString();
 
-            
+
 
 
             TimeOnly splitedtime = TimeOnly.Parse(finaltime); // parse the time string into a TimeSpan object
@@ -1921,6 +1934,46 @@ namespace CIPlatform.Controllers
             ViewBag.minutes = minutes;
 
 
+
+            // for goal based
+
+            if (selectedOptionId != 0 && action != null && datevol != null && goalMsg != null)
+            {
+                if (timeData.Count == 0)
+                {
+                    var goaldata = new Timesheet
+                    {
+
+                        MissionId = selectedOptionId,
+                        Action = action,
+                        DateVolunteered = datevol,
+                        Notes = goalMsg,
+                        UserId = ids
+
+                    };
+
+                    _ciplatformDbContext.Timesheets.Add(goaldata);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
+            }
+
+
+            //string formattedDate = aa.ToString("yyyy-mm-dd");
+
+            //string date1 = timesheetAllData[0{m}]
+
+            //string dbDate = missionlst[0].StartDate.ToString();
+
+            //string newdatedb = dbDate.Split(":").ToString();
+
+            //string inputFormat = "dd-MM-yyyy";
+
+            //DateTime datee = DateTime.ParseExact(dbDate, inputFormat, CultureInfo.InvariantCulture);
+
+            //string formattedDate = datee.ToString("yyyy-MM-dd");
+
+
             return View();
         }
 
@@ -1929,7 +1982,7 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
-       
+
 
 
 

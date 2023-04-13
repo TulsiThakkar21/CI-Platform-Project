@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CIPlatform.Entities.Models;
 
@@ -7,6 +8,7 @@ public partial class Timesheet
 {
     public long TimesheetId { get; set; }
 
+    
     public long? MissionId { get; set; }
 
     public long? UserId { get; set; }
