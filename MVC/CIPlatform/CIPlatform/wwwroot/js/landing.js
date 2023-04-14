@@ -213,101 +213,101 @@ function commentadd(MissionId) {
 
 
 
-function newselecId(s) {
+//function newselecId(s) {
     
-    const selectElement = document.getElementById("exampleFormControlSelect12");
-    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
-    console.log(selectedOptionId);
+//    const selectElement = document.getElementById("exampleFormControlSelect12");
+//    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+//    console.log(selectedOptionId);
 
-    $.ajax({
-        url: '/Home/EditStory',
-        type: "POST",
-        data: {
+//    $.ajax({
+//        url: '/Home/EditStory',
+//        type: "POST",
+//        data: {
 
-            selectedOptionId: selectedOptionId
+//            selectedOptionId: selectedOptionId
 
-        },
-        success: function (data) {
-            var a = new Date(data.publishedAt).toISOString().slice(0, 10);
+//        },
+//        success: function (data) {
+//            var a = new Date(data.publishedAt).toISOString().slice(0, 10);
 
-            document.getElementById("sTitle").value = data.title;
-            document.getElementById("sPDate").value = a;
-            document.getElementById("sDesc").innerHTML = data.description;
-            document.getElementById("vidUrl").value = data.vidUrl;
-            console.log(data);
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-        }
-    });
+//            document.getElementById("sTitle").value = data.title;
+//            document.getElementById("sPDate").value = a;
+//            document.getElementById("sDesc").innerHTML = data.description;
+//            document.getElementById("vidUrl").value = data.vidUrl;
+//            console.log(data);
+//        },
+//        error: function (xhr, textStatus, errorThrown) {
+//            console.log("Error: " + errorThrown);
+//        }
+//    });
 
-}
+//}
 
 
-function editstory() {
+//function editstory() {
     
-    const selectElement = document.getElementById("exampleFormControlSelect12");
-    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+//    const selectElement = document.getElementById("exampleFormControlSelect12");
+//    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
 
 
-    $.ajax({
-        url: '/Home/ShareYourStory',
-        type: "POST",
-        data: {
-            selectedOptionId: selectedOptionId,
+//    $.ajax({
+//        url: '/Home/ShareYourStory',
+//        type: "POST",
+//        data: {
+//            selectedOptionId: selectedOptionId,
 
 
-        },
-        success: function () {
-            document.getElementById("sTitle").innerHTML = response.sTitle;
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-        }
-    });
+//        },
+//        success: function () {
+//            document.getElementById("sTitle").innerHTML = response.sTitle;
+//        },
+//        error: function (xhr, textStatus, errorThrown) {
+//            console.log("Error: " + errorThrown);
+//        }
+//    });
 
-}
+//}
 
 
-function addstory() {
-    const selectElement = document.getElementById("exampleFormControlSelect12");
-    const missiondd = selectElement.selectedOptions[0].getAttribute("id");
+//function addstory() {
+//    const selectElement = document.getElementById("exampleFormControlSelect12");
+//    const missiondd = selectElement.selectedOptions[0].getAttribute("id");
 
     
-        document.getElementById('submitbtns').disabled = false;
-        document.getElementById('submitbtns').style.borderColor = "#F88634";
-        document.getElementById('submitbtns').style.color = "#F88634";
+//        document.getElementById('submitbtns').disabled = false;
+//        document.getElementById('submitbtns').style.borderColor = "#F88634";
+//        document.getElementById('submitbtns').style.color = "#F88634";
 
-        var abcd = $('#exampleFormControlSelect12').val();
-        var storyTitle = document.getElementById('sTitle').value;
-        var pubDate = document.getElementById('sPDate').value;
-        var desc = document.getElementById('sDesc').value;
-        var videourl = document.getElementById('vidUrl').value;
-        $.ajax({
-            url: '/Home/ShareYourStory',
-            type: "POST",
-            data: {
-                missiondd: missiondd,
-                storyTitle: storyTitle,
-                pubDate: pubDate,
-                desc: desc,
-                abcd: abcd,
-                videourl: videourl,
-                /*newArray: newArray*/
+//        var abcd = $('#exampleFormControlSelect12').val();
+//        var storyTitle = document.getElementById('sTitle').value;
+//        var pubDate = document.getElementById('sPDate').value;
+//        var desc = document.getElementById('sDesc').value;
+//        var videourl = document.getElementById('vidUrl').value;
+//        $.ajax({
+//            url: '/Home/ShareYourStory',
+//            type: "POST",
+//            data: {
+//                missiondd: missiondd,
+//                storyTitle: storyTitle,
+//                pubDate: pubDate,
+//                desc: desc,
+//                abcd: abcd,
+//                videourl: videourl,
+//                /*newArray: newArray*/
 
-            },
-            success: function () {
-                console.log(1);
-                /* document.getElementById("sTitle").innerHTML = response.sTitle;*/
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("Error: " + errorThrown);
-            }
-        });
+//            },
+//            success: function () {
+//                console.log(1);
+//                /* document.getElementById("sTitle").innerHTML = response.sTitle;*/
+//            },
+//            error: function (xhr, textStatus, errorThrown) {
+//                console.log("Error: " + errorThrown);
+//            }
+//        });
     
 
-}
+//}
 
 function submitstate() {
     document.getElementById('submitbtns').disabled = true;
@@ -677,6 +677,133 @@ function submitGoaldata() {
 }
 
 
+// Vol T
+
+function editVoltime(e)
+{
+    const selectElement = document.getElementById("Missionedit");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
 
 
+    $.ajax({
+        url: '/Home/EditVolTime',
+        type: "POST",
+        data: {
+            selectedOptionId: selectedOptionId
+            
+
+        },
+        success: function (data) {
+
+            //var a = new Date(data.date).ToISOString().slice(0, 10);
+
+            document.getElementById("DateEdit").value = data.date;
+            //document.getElementById("HoursEdit").value = data.hours;
+            document.getElementById("MessageEdit").value = data.notes;
+            console.log(data);
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+            
+        }
+    });
+}
+
+
+function saveVolTime()
+{
+    const selectElement = document.getElementById("Missionedit");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+    var date1 = document.getElementById('DateEdit').value;
+    var hours1 = document.getElementById('HoursEdit').value;
+    var mins1 = document.getElementById('MinutesEdit').value;
+    var msg1 = document.getElementById('MessageEdit').value;
+
+    $.ajax({
+        url: '/Home/SaveVolTimeData',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            date1: date1,
+            hours1: hours1,
+            mins1: mins1,
+            msg1: msg1
+
+        },
+        success: function () {
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}
+
+
+// for goal based
+
+
+function editVolGoal(e) {
+    const selectElement = document.getElementById("MissioneditGoal");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+
+
+    $.ajax({
+        url: '/Home/EditVolGoal',
+        type: "POST",
+        data: {
+            selectedOptionId: selectedOptionId
+
+
+        },
+        success: function (data) {
+
+            //var a = new Date(data.date).ToISOString().slice(0, 10);
+
+            document.getElementById("ActionGoalEdit").value = data.action;
+            document.getElementById("DateVolGoalEdit").value = data.datevol;
+            document.getElementById("GoalMessageEdit").value = data.notes;
+            console.log(data);
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+
+        }
+    });
+}
+
+
+function saveVolGoal() {
+    const selectElement = document.getElementById("MissioneditGoal");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+    var goaldate = document.getElementById('DateVolGoalEdit').value;
+    var action1 = document.getElementById('ActionGoalEdit').value;
+    var goalmsg1 = document.getElementById('GoalMessageEdit').value;
+
+    $.ajax({
+        url: '/Home/SaveVolGoalData',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            goaldate: goaldate,
+            action1: action1,
+            goalmsg1: goalmsg1
+            
+
+        },
+        success: function () {
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}

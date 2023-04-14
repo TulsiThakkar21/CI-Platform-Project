@@ -153,8 +153,38 @@
     margin-left: 0%;
     opacity: 0.9;
 }
-
+/*.citydiv {
+    background-color: black;
+    opacity: 0.7;
+    
+    width: 35%;
+    color: white;
+    border-radius: 21px;
+    margin-top: -47%;
+    margin-left: 65%;
+}*/
 .citydivbtn {
+    background-color: black;
+    opacity: 0.7;
+    height: 40px;
+    width: 150%;
+    color: white;
+    border: 1px solid black;
+    border-radius: 21px;
+    margin-top:-50%;
+    margin-left:57%;
+    color: white;
+    position:absolute;
+    text-align: center;
+}
+/*.cityname {
+    margin-top: -31%;
+    margin-left: 65%;
+    height:30%;
+    width:100%;
+    font-size:25px;
+}*/
+/*.citydivbtn {
     background-color: black;
     opacity: 0.7;
     height: 40%;
@@ -167,9 +197,7 @@
     margin-top: -91%;
     margin-left: 65%;
    
-}
-
-
+}*/
 .circle {
     height: 45px;
     width: 45px;

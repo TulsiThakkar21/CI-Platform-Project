@@ -55,6 +55,6 @@ C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.csproj.CoreCompileInputs.cache
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.csproj.CopyComplete
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.dll
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\refint\CIPlatform.Repository.dll
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\CIPlatform.Repository.pdb
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Repositories\bin\Debug\net6.0\ref\CIPlatform.Repository.dll

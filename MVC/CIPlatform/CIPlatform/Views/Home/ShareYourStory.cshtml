@@ -266,24 +266,26 @@
                         }
                     
                 <br>
-                    <div class="row" style="color: grey;">
-                        <div class="col-12">
-                        <br />
-                            <label>Upload your photos</label>
-                          
+<div id="drop-area" style="width: 100%;">
 
-                                  <div class="drag-image">
-                                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                    <h6>Drag & Drop File Here</h6>
-                                    <span>OR</span>
-                                    <button>Browse File</button>
-                                    <input type="file" hidden>
-                                  </div>
-                                  <br />
-                       
-                    
-                        </div>
-                    </div>
+<div></div>
+<input name="file" type="file" id="fileElem" multiple accept="image" onchange="handleFiles(this.files)">
+<label style="width:100% ; display:flex ; justify-content:center" for="fileElem"><img src="~/NewFolder/drag-and-drop.png"></label>
+<progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
+
+
+
+
+
+<div id="gallery" />
+</div>
+
+
+
+
+<div id="gallery" />
+</div>
+</div>
          <br><br><br>
                     <div class="row all-btns">
 
@@ -307,66 +309,183 @@
                 </div>
 
 
+            <script>
 
-        <script>
-            // $('.file-upload').file_upload();
+                //function newselecId(s) {
+                // debugger
+                // /* var adID = console.log(s[s.selectedIndex].id);*/
+                // /* var newappMissionID = $(this).find('option:selected').attr('id');*/
+                // const selectElement = document.getElementById("exampleFormControlSelect12");
+                // const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+                // console.log(selectedOptionId);
 
-            const dropArea = document.querySelector(".drag-image"),
-        dragText = dropArea.querySelector("h6"),
-        button = dropArea.querySelector("button"),
-        input = dropArea.querySelector("input");
-        let file; 
+                // $.ajax({
+                // url: '/Home/EditStory',
+                // type: "POST",
+                // data: {
 
-        button.onclick = ()=>{
-          input.click(); 
-        }
+                // selectedOptionId: selectedOptionId
 
-        input.addEventListener("change", function(){
- 
-          file = this.files[0];
-          dropArea.classList.add("active");
-          viewfile();
-        });
+                // },
+                // success: function (data) {
+                // var a = new Date(data.publishedAt).toISOString().slice(0, 10);
 
-        dropArea.addEventListener("dragover", (event)=>{
-          event.preventDefault();
-          dropArea.classList.add("active");
-          dragText.textContent = "Release to Upload File";
-        });
+                // document.getElementById("sTitle").value = data.title;
+                // document.getElementById("sPDate").value = a;
+                // document.getElementById("sDesc").innerHTML = data.description;
+                // document.getElementById("videourl").value = data.vidUrl;
+                // console.log(data);
+                // },
+                // error: function (xhr, textStatus, errorThrown) {
+                // console.log("Error: " + errorThrown);
+                // }
+                // });
 
-
-        dropArea.addEventListener("dragleave", ()=>{
-          dropArea.classList.remove("active");
-          dragText.textContent = "Drag & Drop to Upload File";
-        }); 
-
-        dropArea.addEventListener("drop", (event)=>{
-          event.preventDefault(); 
-   
-          file = event.dataTransfer.files[0];
-          viewfile(); 
-        });
-
-        function viewfile(){
-          let fileType = file.type; 
-          let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
-          if(validExtensions.includes(fileType)){ 
-            let fileReader = new FileReader(); 
-            fileReader.onload = ()=>{
-              let fileURL = fileReader.result; 
-               let imgTag = `<img src="${fileURL}" alt="image">`;
-              dropArea.innerHTML = imgTag; 
-            }
-            fileReader.readAsDataURL(file);
-          }else{
-            alert("This is not an Image File!");
-            dropArea.classList.remove("active");
-            dragText.textContent = "Drag & Drop to Upload File";
-          }
-        }
-        </script>
+                //}
 
 
+
+                // save
+
+
+                //function newselecId(s) {
+
+                //    debugger
+                //    const selectElement = document.getElementById("exampleFormControlSelect12");
+                //    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+                //    console.log(selectedOptionId);
+
+                //    $.ajax({
+                //        url: '/Home/EditStory',
+                //        type: "POST",
+                //        data: {
+
+                //            selectedOptionId: selectedOptionId
+
+                //        },
+                //        success: function (data) {
+                //            console.log(data);
+                //            //var a = new Date(data.publishedAt).toISOString().slice(0, 10);
+
+                //            document.getElementById("sTitle").value = data.obj1.title;
+                //            //document.getElementById("sPDate").value = data.publishedAt;
+                //            document.getElementById("sDesc").innerHTML = data.obj1.description;
+                //            document.getElementById("videourl").value = data.obj1.Videourl;
+
+
+                //            var filePath = data.obj2;
+                //            console.log(data.obj2);
+                //            for (var i = 0; i < data.obj2.length; i++) {
+                //                console.log(data.obj1.length);
+                //                var img = document.createElement('img');
+                //                img.src = data.obj2[i];
+                //                img.id = i;
+                //                /* img.onclick = removeimg;*/
+                //                console.log(data.obj2[i]);
+
+                //                var photoContainer = document.getElementById('drop-area');
+                //                photoContainer.appendChild(img);
+
+                //            }
+
+
+                //        },
+                //        error: function (xhr, textStatus, errorThrown) {
+
+                //            console.log("Error: " + errorThrown + textStatus + xhr);
+                //        }
+                //    });
+
+                //}
+
+              
+
+                function editstory() {
+                    debugger
+                    const selectElement = document.getElementById("exampleFormControlSelect12");
+                    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+
+
+
+                    $.ajax({
+                        url: '/Home/ShareYourStory',
+                        type: "POST",
+                        data: {
+                            selectedOptionId: selectedOptionId,
+
+
+                        },
+                        success: function () {
+                            document.getElementById("sTitle").innerHTML = response.sTitle;
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log("Error: " + errorThrown);
+                        }
+                    });
+
+                }
+
+
+
+
+
+
+            </script>
+            <script>
+
+                function submitstate() {
+
+                    document.getElementById('submitbtns').disabled = true;
+                    document.getElementById('submitbtns').style.borderColor = "grey";
+                    document.getElementById('submitbtns').style.color = "grey";
+                }
+                var newArray = [];
+
+
+
+                function handleFiles(files) {
+                    debugger
+                    files = [...files]
+                    console.log(files);
+                    debugger
+                    initializeProgress(files.length)
+                    files.forEach(uploadFile)
+                    files.forEach(previewFile)
+
+
+
+
+
+
+
+
+
+                    var a = 0;
+                    var filenames = new Array();
+
+
+                    for (a = 0; a < files.length; a++) {
+
+                        filenames.push(files[a].name);
+
+
+                    }
+                    newArray = String(filenames);
+                    alert(typeof (newArray));
+
+                }
+
+
+
+
+
+
+
+
+            </script>
+        
+
+            <script src="~/js/Sharestory.js"></script>
          <script src="~/js/landing.js"></script>
 
             </body>

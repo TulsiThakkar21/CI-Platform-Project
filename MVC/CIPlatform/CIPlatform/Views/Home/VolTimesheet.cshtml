@@ -1,5 +1,5 @@
 ﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
@@ -151,73 +151,73 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form id="myform" asp-action="VolTimesheet" asp-controller="Home" method="post">
-                                <div class="modal-body">
-                                    
-                                    <div>
+                                    <div class="modal-body">
+
+                                        <div>
 
                                             <label asp-for="Mission" class="form-label">Mission</label>
 
                                             <select asp-for="Mission" name="Mission" onchange="timemissionId(this)" id="Mission" class="form-select">
-                                            <option selected disabled>Select Mission</option>
-                                            @{
-                                                foreach (var missions in ViewBag.appliedMissions)
-                                                {
-                                                    foreach (var missions1 in ViewBag.goalmissions)
+                                                <option selected disabled>Select Mission</option>
+                                                @{
+                                                    foreach (var missions in ViewBag.appliedMissions)
                                                     {
-                                                        if (missions.MissionId != missions1.MissionId)
+                                                        foreach (var missions1 in ViewBag.goalmissions)
                                                         {
-                                                            <option id="@missions.MissionId" value="@missions.Mission.Title">@missions.Mission.Title</option>
-                                                            break;
+                                                            if (missions.MissionId != missions1.MissionId)
+                                                            {
+                                                                <option id="@missions.MissionId" value="@missions.Mission.Title">@missions.Mission.Title</option>
+                                                                break;
+                                                            }
                                                         }
+
                                                     }
-
                                                 }
-                                            }
 
-                                        </select>
-                                        <span asp-validation-for="Mission" class="text-danger" style="font-size:12px;"></span>
+                                            </select>
+                                            <span asp-validation-for="Mission" class="text-danger" style="font-size:12px;"></span>
 
 
-                                    </div>
-                                    <br />
+                                        </div>
+                                        <br />
                                         @{
-                                        foreach (var timedata in ViewBag.timesheetAllData)
-                                        {
-                       
-                                            <div>
-                                                <label asp-for="Date" class="form-label">Date Volunteered</label>
-                                                    <input asp-for="Date" id="Date" type="date" placeholder="Select Date" class="form-control" asp-format="{0:yyyy/MM/dd}" min=@timedata.m.StartDate.ToShortDateString() max=@timedata.m.EndDate.ToShortDateString()>
-                                                <span asp-validation-for="Date" class="text-danger" style="font-size:12px;"></span>
+                                            foreach (var timedata in ViewBag.timesheetAllData)
+                                            {
 
-                                            </div>
-                                            break;
+                                                <div>
+                                                    <label asp-for="Date" class="form-label">Date Volunteered</label>
+                                                    <input asp-for="Date" id="Date" type="date" placeholder="Select Date" class="form-control" asp-format="{0:yyyy/MM/dd}" min=@timedata.m.StartDate.ToShortDateString() max=@timedata.m.EndDate.ToShortDateString()>
+                                                    <span asp-validation-for="Date" class="text-danger" style="font-size:12px;"></span>
+
+                                                </div>
+                                                break;
+                                            }
                                         }
-                                        }
-                                            <br />
-                                            <div class="row">
-                                                <div class="col-6">
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-6">
                                                 <label asp-for="Hours" class="form-label">Hours</label>
                                                 <input asp-for="Hours" id="Hours" name="Hours" type="number" placeholder="Enter Spent Hours" class="form-control" required>
                                                 <span asp-validation-for="Hours" class="text-danger" style="font-size:12px;"></span>
 
                                             </div>
-                                                <div class="col-6">
+                                            <div class="col-6">
                                                 <label asp-for="Minutes" class="form-label">Minutes</label>
                                                 <input asp-for="Minutes" name="Minutes" id="Minutes" type="number" placeholder="Enter Spent Minutes" class="form-control" required>
                                                 <span asp-validation-for="Minutes" class="text-danger" style="font-size:12px;"></span>
 
                                             </div>
-                                            </div>
-                                            <br />
-                                            <div>
+                                        </div>
+                                        <br />
+                                        <div>
                                             <label asp-for="Message" class="form-label">Message</label>
-                                                <br />
+                                            <br />
                                             <textarea asp-for="Message" name="Message" id="Message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
                                             <span asp-validation-for="Message" class="text-danger" style="font-size:12px;"></span>
                                             <input hidden></input>
                                         </div>
-                                       
-                                        </div>
+
+                                    </div>
                                 </form>
                                 <div class="modal-footer">
                                     <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
@@ -232,8 +232,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
             <br>
             <div class="row" style="margin-left:2%; margin-top:3%;">
-
-
 
                 <div class="col-3"><b>Mission</b></div>
 
@@ -277,7 +275,99 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                             <div class="row" style="display:flex;">
                                                 <div class="col-1" style="margin-left:5%;">
 
-                                                    <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
+                                                        <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                    </button>
+
+
+
+                                                    <!-- Modal -->
+                                                <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Hours</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form id="editVolT" asp-action="VolTimesheet" asp-controller="Home" method="post">
+                                                                    <div class="modal-body">
+
+                                                                        <div>
+
+                                                                            <label asp-for="Mission" class="form-label">Mission</label>
+
+                                                                            <select asp-for="Mission" name="Mission" onchange="editVoltime(this)" id="Missionedit" class="form-select">
+                                                                                <option selected disabled>Select Mission</option>
+                                                                                @{
+                                                                                    foreach (var missionsT in ViewBag.appliedMissions)
+                                                                                    {
+                                                                                        foreach (var missions1g in ViewBag.goalmissions)
+                                                                                        {
+                                                                                            if (missionsT.MissionId != missions1g.MissionId)
+                                                                                            {
+                                                                                                <option id="@missionsT.MissionId" value="@missionsT.Mission.Title">@missionsT.Mission.Title</option>
+                                                                                                break;
+                                                                                            }
+                                                                                        }
+
+                                                                                    }
+                                                                                }
+
+                                                                            </select>
+                                                                            <span asp-validation-for="Mission" class="text-danger" style="font-size:12px;"></span>
+
+
+
+                                                                        </div>
+                                                                        <br />
+
+
+
+                                                                        <div>
+                                                                            <label asp-for="Date" class="form-label">Date Volunteered</label>
+                                                                            <input asp-for="Date" id="DateEdit" type="date" placeholder="Select Date" class="form-control" asp-format="{0:yyyy/MM/dd}" min=@timedata.m.StartDate.ToShortDateString() max=@timedata.m.EndDate.ToShortDateString()>
+                                                                            <span asp-validation-for="Date" class="text-danger" style="font-size:12px;"></span>
+
+                                                                        </div>
+
+
+                                                                        <br />
+                                                                        <div class="row">
+                                                                            <div class="col-6">
+                                                                                <label asp-for="Hours" class="form-label">Hours</label>
+                                                                                <input asp-for="Hours" value=@ViewBag.hours id="HoursEdit" name="Hours" type="number" placeholder="Enter Spent Hours" class="form-control" required>
+                                                                                <span asp-validation-for="Hours" class="text-danger" style="font-size:12px;"></span>
+
+                                                                            </div>
+                                                                            <div class="col-6">
+                                                                                <label asp-for="Minutes" class="form-label">Minutes</label>
+                                                                                <input asp-for="Minutes" value=@ViewBag.minutes name="Minutes" id="MinutesEdit" type="number" placeholder="Enter Spent Minutes" class="form-control" required>
+                                                                                <span asp-validation-for="Minutes" class="text-danger" style="font-size:12px;"></span>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <br />
+                                                                        <div>
+                                                                            <label asp-for="Message" class="form-label">Message</label>
+                                                                            <br />
+                                                                            <textarea asp-for="Message" name="Message" id="MessageEdit" class="form-control" rows="5" placeholder="Enter your message" required>
+                                                                     </textarea>
+                                                                            <span asp-validation-for="Message" class="text-danger" style="font-size:12px;"></span>
+                                                                            <input hidden></input>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </form>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn save-btn" onclick="saveVolTime()">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                                 <div class="col-1" style="margin-left:10%;">
 
@@ -326,63 +416,66 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Goal</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <div>
+                                <form id="myform2" asp-action="VolTimesheet" asp-controller="Home" method="post">
 
-                                        <label asp-for="goalmissionlist" class="form-label">Mission</label>
+                                    <div class="modal-body">
+                                        <div>
 
-                                        <select asp-for="goalmissionlist" id="goalmissionlist" class="form-select">
-                                            <option selected disabled>Select Mission</option>
+                                            <label asp-for="goalmissionlist" class="form-label">Mission</label>
 
-                                            @{
+                                            <select asp-for="goalmissionlist" id="goalmissionlist" class="form-select">
+                                                <option selected disabled>Select Mission</option>
 
-
-                                                foreach (var missions1 in ViewBag.goalmissions)
-                                                {
+                                                @{
 
 
-                                                    <option id="@missions1.MissionId" value="@missions1.m.Title">@missions1.m.Title</option>
+                                                    foreach (var missions1 in ViewBag.goalmissions)
+                                                    {
 
-                                                    break;
+
+                                                        <option id="@missions1.MissionId" value="@missions1.m.Title">@missions1.m.Title</option>
+
+                                                        break;
+                                                    }
+
                                                 }
 
-                                            }
+                                            </select>
 
-                                        </select>
-
-                                        <span asp-validation-for="goalmissionlist" class="text-danger" style="font-size:12px;"></span>
+                                            <span asp-validation-for="goalmissionlist" class="text-danger" style="font-size:12px;"></span>
 
 
 
-                                    </div>
-                                    <br />
-
-                                    <div>
-
-                                        <label asp-for="Action" class="form-label">Action</label>
-                                        <input asp-for="Action" name="Action" id="Action" type="number" placeholder="Enter action" class="form-control" required>
-                                        <span asp-validation-for="Action" class="text-danger" style="font-size:12px;"></span>
-
-                                    </div>
-
-                                    <br />
-                                    <div>
-                                        <label asp-for="DateVol" class="form-label">Date Volunteered</label>
-                                        <input asp-for="DateVol" name="DateVol" id="DateVol" type="date" placeholder="Select Date" class="form-control" required>
-                                        <span asp-validation-for="DateVol" class="text-danger" style="font-size:12px;"></span>
-
-                                    </div>
-                                    <br />
-
-
-                                    <div>
-                                        <label asp-for="GoalMessage" class="form-label">Message</label>
+                                        </div>
                                         <br />
-                                        <textarea asp-for="GoalMessage" name="GoalMessage" id="GoalMessage" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
-                                        <span asp-validation-for="GoalMessage" class="text-danger" style="font-size:12px;"></span>
-                                        <input hidden></input>
+
+                                        <div>
+
+                                            <label asp-for="Action" class="form-label">Action</label>
+                                            <input asp-for="Action" name="Action" id="Action" type="number" placeholder="Enter action" class="form-control" required>
+                                            <span asp-validation-for="Action" class="text-danger" style="font-size:12px;"></span>
+
+                                        </div>
+
+                                        <br />
+                                        <div>
+                                            <label asp-for="DateVol" class="form-label">Date Volunteered</label>
+                                            <input asp-for="DateVol" name="DateVol" id="DateVol" type="date" placeholder="Select Date" class="form-control" required>
+                                            <span asp-validation-for="DateVol" class="text-danger" style="font-size:12px;"></span>
+
+                                        </div>
+                                        <br />
+
+
+                                        <div>
+                                            <label asp-for="GoalMessage" class="form-label">Message</label>
+                                            <br />
+                                            <textarea asp-for="GoalMessage" name="GoalMessage" id="GoalMessage" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+                                            <span asp-validation-for="GoalMessage" class="text-danger" style="font-size:12px;"></span>
+                                            <input hidden></input>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                                 <div class="modal-footer">
                                     <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn save-btn" onclick="submitGoaldata()">Submit</button>
@@ -404,9 +497,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <div class="col-3"><b>Date</b></div>
 
                 <div class="col-3"><b>Action</b></div>
-
-
-
 
 
             </div>
@@ -437,8 +527,94 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                             <div class="row" style="display:flex;">
                                                 <div class="col-1" style="margin-left:5%;">
 
-                                                    <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEditGoal">
+                                                        <img src="~/NewFolder/edit.png" class="edit-img" />
+                                                    </button>
+
+
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModalEditGoal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Hours</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form id="editVolT" asp-action="VolTimesheet" asp-controller="Home" method="post">
+                                                                    <div class="modal-body">
+
+                                                                        <div>
+
+                                                                            <label asp-for="Mission" class="form-label">Mission</label>
+
+                                                                            <select asp-for="Mission" name="Mission" onchange="editVolGoal(this)" id="MissioneditGoal" class="form-select">
+                                                                                <option selected disabled>Select Mission</option>
+                                                                                @{
+                                                                                    foreach (var missionsG in ViewBag.goalmissions)
+                                                                                    {
+
+
+                                                                                        <option id="@missionsG.MissionId" value="@missionsG.m.Title">@missionsG.m.Title</option>
+
+                                                                                        break;
+                                                                                    }
+
+
+
+                                                                                }
+
+                                                                            </select>
+                                                                            <span asp-validation-for="Mission" class="text-danger" style="font-size:12px;"></span>
+
+
+
+                                                                        </div>
+                                                                        <br />
+
+
+
+                                                                        <div>
+
+                                                                            <label asp-for="Action" class="form-label">Action</label>
+                                                                            <input asp-for="Action" name="Action" id="ActionGoalEdit" type="number" placeholder="Enter action" class="form-control" required>
+                                                                            <span asp-validation-for="Action" class="text-danger" style="font-size:12px;"></span>
+
+                                                                        </div>
+
+                                                                        <br />
+                                                                        <div>
+                                                                            <label asp-for="DateVol" class="form-label">Date Volunteered</label>
+                                                                            <input asp-for="DateVol" name="DateVol" id="DateVolGoalEdit" type="date" placeholder="Select Date" class="form-control" required>
+                                                                            <span asp-validation-for="DateVol" class="text-danger" style="font-size:12px;"></span>
+
+                                                                        </div>
+                                                                        <br />
+
+
+                                                                        <div>
+                                                                            <label asp-for="GoalMessage" class="form-label">Message</label>
+                                                                            <br />
+                                                                            <textarea asp-for="GoalMessage" name="GoalMessage" id="GoalMessageEdit" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+                                                                            <span asp-validation-for="GoalMessage" class="text-danger" style="font-size:12px;"></span>
+                                                                            <input hidden></input>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </form>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn save-btn" onclick="saveVolGoal()">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+
+
+
                                                 <div class="col-1" style="margin-left:10%;">
 
                                                     <img src="~/NewFolder/bin.png" />
@@ -462,11 +638,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     </div>
 
     <script src="~/js/landing.js"></script>
-    @*<script>
-
-    const missionList = document.getElementById('missionlist');
-
-    </script>*@
+  
 
 </body>
 </html>
