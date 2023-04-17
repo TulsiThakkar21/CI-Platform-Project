@@ -587,10 +587,7 @@ function timemissionId(e) {
     const selectElement = document.getElementById("Mission");
     const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
-    //var date = document.getElementById('Date').value; 
-    //var hours = document.getElementById('Hours').value; 
-    //var mins = document.getElementById('Minutes').value; 
-    //var msg = document.getElementById('Message').value; 
+
 
     $.ajax({
         url: '/Home/VolTimesheet',
@@ -598,11 +595,7 @@ function timemissionId(e) {
         data: {
 
             selectedOptionId: selectedOptionId,
-            //date: date,
-            //hours: hours,
-            //mins: mins,
-            //msg: msg
-
+           
         },
         success: function () {
             console.log("success");
@@ -806,4 +799,52 @@ function saveVolGoal() {
             console.log("Error: " + errorThrown);
         }
     });
+}
+
+// remove data vol t
+
+function onremove(missionId) {
+
+    $.ajax({
+        url: '/Home/VolTimesheet',
+        type: "POST",
+        data: {
+            missionId: missionId
+
+
+        },
+        success: function (data) {
+
+            console.log("Data Deleted");
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+
+        }
+    });
+
+}
+
+function onremovegoal(missionId) {
+
+    $.ajax({
+        url: '/Home/VolTimesheet',
+        type: "POST",
+        data: {
+            missionId: missionId
+
+
+        },
+        success: function (data) {
+
+            console.log("Data Deleted");
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+
+        }
+    });
+
 }

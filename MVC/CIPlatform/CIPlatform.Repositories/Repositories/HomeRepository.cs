@@ -274,6 +274,44 @@ namespace CIPlatform.Repository.Repositories
                 .Include(t1 => t1.Mission)
                 .ToList();
         }
+
+
+        public void deleteusers(int userid)
+        {
+
+            var user = _db.Users.Include(u => u.Comments).Include(u => u.Stories).Where(u => u.UserId == userid).ToList();
+
+
+            var a = _db.Users.FirstOrDefault(user => user.UserId == userid);
+            var b = _db.Comments.Where(comments => comments.UserId == userid).ToList();
+            var c = _db.Stories.Where(stories => stories.UserId == userid).ToList();
+
+
+
+            if (c.Count != 0)
+            {
+                foreach (var story in c)
+                {
+                    _db.Stories.Remove(story);
+                }
+            }
+            if (b.Count != 0)
+            {
+                foreach (var cmnt in b)
+                {
+                    _db.Comments.Remove(cmnt);
+                }
+            }
+
+
+            _db.SaveChanges();
+            _db.Users.Remove(a);
+
+            _db.SaveChanges();
+
+
+
+        }
     }
 
 

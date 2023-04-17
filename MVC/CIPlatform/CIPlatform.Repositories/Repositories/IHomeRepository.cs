@@ -56,6 +56,8 @@ namespace CIPlatform.Repository.Repositories
         IEnumerable<Timesheet> GetTimesheetsList();
 
         IEnumerable<Timesheet> GetTimesheetandMission(int selectedOptionId);
+
+        public void deleteusers(int uid);
     }
     }
 

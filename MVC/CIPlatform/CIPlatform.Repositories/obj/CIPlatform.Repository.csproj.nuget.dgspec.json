@@ -65,6 +65,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "datatables.net": {
+              "target": "Package",
+              "version": "[1.13.4, )"
             }
           },
           "imports": [
@@ -132,6 +136,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "datatables.net": {
+              "target": "Package",
+              "version": "[1.13.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

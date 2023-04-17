@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tatva/Desktop/Final CIP Project/MVC/CIPlatform/CIPlatform/Views/Home/Admin_user.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbl91c2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tatva/Desktop/Final CIP Project/MVC/CIPlatform/CIPlatform/Views/Home/EditProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

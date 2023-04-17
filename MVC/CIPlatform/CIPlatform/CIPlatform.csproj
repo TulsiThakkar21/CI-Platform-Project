@@ -9,6 +9,8 @@
 	
   <ItemGroup>
 	  
+    <PackageReference Include="datatables.net" Version="1.13.4" />
+	  
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.2.23128.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.1.23111.4">
       <PrivateAssets>all</PrivateAssets>

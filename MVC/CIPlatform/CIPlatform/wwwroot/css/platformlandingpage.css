@@ -488,17 +488,21 @@ hr {
 
 .seatno {
     margin-bottom: -1%;
-    font-size: 18px;
-    color: grey;
+    font-size: 20px;
+    //margin-left: 5%;
 }
 
 .seat {
-    color: #757575;
+    color: #757575
 }
 
 .hssh {
-    margin-left: 2%;
-    margin-top: 5%;
+    margin-left: 2%
+}
+
+.pbar {
+    margin-left: 10%;
+    margin-top: 2%
 }
 
 .dateline {

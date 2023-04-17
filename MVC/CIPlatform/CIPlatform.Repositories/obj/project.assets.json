@@ -38,6 +38,27 @@
           "lib/netstandard2.0/Azure.Identity.dll": {}
         }
       },
+      "datatables.net/1.13.4": {
+        "type": "package",
+        "dependencies": {
+          "jquery": "1.7.0"
+        },
+        "contentFiles": {
+          "contentFiles/any/any/wwwroot/js/jquery.dataTables.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/any/wwwroot/js/jquery.dataTables.min.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "jQuery/1.7.0": {
+        "type": "package"
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -858,7 +879,8 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.2.23128.3",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
+          "datatables.net": "1.13.4"
         },
         "compile": {
           "bin/placeholder/CIPlatform.Entities.dll": {}
@@ -906,6 +928,39 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "datatables.net/1.13.4": {
+      "sha512": "b1REu0j65Xlqb8noz9opNeZHjHIQixXY1uDYHdIfqG0SvWf/aCnhAxTb0enzMlGjrw9+kknIoiHg/7Ye7NCBJQ==",
+      "type": "package",
+      "path": "datatables.net/1.13.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/jquery.dataTables.js",
+        "content/Scripts/jquery.dataTables.min.js",
+        "contentFiles/any/any/wwwroot/js/jquery.dataTables.js",
+        "contentFiles/any/any/wwwroot/js/jquery.dataTables.min.js",
+        "datatables.net.1.13.4.nupkg.sha512",
+        "datatables.net.nuspec"
+      ]
+    },
+    "jQuery/1.7.0": {
+      "sha512": "UEZuBreHZNLao3z9zNPeSadyoPwKDP/5kFh+Mn1Pm9ZS0czk7bv0O6RreloGSIMAfTLZCiigNkuPb2bXKtUM+g==",
+      "type": "package",
+      "path": "jquery/1.7.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-1.7-vsdoc.js",
+        "Content/Scripts/jquery-1.7.js",
+        "Content/Scripts/jquery-1.7.min.js",
+        "Tools/install.ps1",
+        "Tools/jquery-1.7-vsdoc-para.js",
+        "Tools/uninstall.ps1",
+        "jquery.1.7.0.nupkg.sha512",
+        "jquery.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -3051,7 +3106,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "CIPlatform.Entities >= 1.0.0"
+      "CIPlatform.Entities >= 1.0.0",
+      "datatables.net >= 1.13.4"
     ]
   },
   "packageFolders": {
@@ -3104,6 +3160,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "datatables.net": {
+            "target": "Package",
+            "version": "[1.13.4, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

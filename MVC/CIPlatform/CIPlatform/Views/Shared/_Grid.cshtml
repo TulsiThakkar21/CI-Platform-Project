@@ -98,7 +98,7 @@
 
 
                         <button class="btn">
-                            
+
 
                             @{
 
@@ -354,41 +354,44 @@
 
                         <div class="col-6 already-vol-main" style="display: flex;">
                             @{
-                                var t = 0;
-                                var length = ViewBag.progressData.Count;
-                                for (t = 0; t < length; t++)
+
+                                for (var a = 0; a < ViewBag.goalmissionlist.Count; a++)
                                 {
-                                    if (ViewBag.progressData[t].MissionId == item.MissionId)
+                                    if (ViewBag.goalmissionlist[a].MissionId != item.MissionId)
                                     {
 
-
-
-                                    //<img src="~/NewFolder/mission.png" alt="" class="mission-img">
-                                        <div class="hssh">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: @(TempData["ProgressBarValue"])%;" aria-valuenow="@TempData["ProgressBarValue"]" aria-valuemin="0" aria-valuemax="100"></div>
-
-                                            </div>
-
-                                        </div>
-                                    }
-
-                                    else
-                                    {
-                                        if (t == length - 1)
+                                        if (a == ViewBag.goalmissionlist.Count - 1)
                                         {
-                                            //<img class="mission-img" src="~/NewFolder/deadline.png">
+                                            //<img class="icons " src="~/NewFolder/deadline.png">
                                             <div class="hssh">
 
-                                                <p class="seatno">@item.EndDate.ToShortDateString()</p>
+                                                <p class="seatno"> @item.EndDate.ToString("dd/MM/yyyy")</p>
                                                 <p class="seat">Deadline</p>
                                             </div>
                                         }
+
+
                                     }
+                                    else
+                                    {
+
+                                        var b = @ViewBag.goalmissionlist[a].GoalValue;
+                                        //<img class="iconspbar" src="~/NewFolder/mission.png">
+                                        <div class="hssh">
+                                            <div class="progress pbar" style="width : 150px ">
+                                                <div class="progress-bar" role="progressbar" style=" width: @ViewBag.goalmissionlist[a].GoalValue%; background-color:#F88634;" aria-valuenow="@ViewBag.goalmissionlist[a].GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
+
+                                            </div>
+                                        </div>
+
+
+                                        break;
+                                    }
+
+
+
                                 }
-
                             }
-
                         </div>
                     </div>
                     <hr class="line-hr">

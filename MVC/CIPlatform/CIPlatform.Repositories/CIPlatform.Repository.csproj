@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="datatables.net" Version="1.13.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CIPlatform.Entities\CIPlatform.Entities.csproj" />
   </ItemGroup>
 

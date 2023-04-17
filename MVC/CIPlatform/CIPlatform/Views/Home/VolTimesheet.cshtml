@@ -180,19 +180,15 @@
 
                                         </div>
                                         <br />
-                                        @{
-                                            foreach (var timedata in ViewBag.timesheetAllData)
-                                            {
+                                       
 
                                                 <div>
                                                     <label asp-for="Date" class="form-label">Date Volunteered</label>
-                                                    <input asp-for="Date" id="Date" type="date" placeholder="Select Date" class="form-control" asp-format="{0:yyyy/MM/dd}" min=@timedata.m.StartDate.ToShortDateString() max=@timedata.m.EndDate.ToShortDateString()>
+                                                    <input asp-for="Date" id="Date" type="date" placeholder="Select Date" class="form-control">
                                                     <span asp-validation-for="Date" class="text-danger" style="font-size:12px;"></span>
 
                                                 </div>
-                                                break;
-                                            }
-                                        }
+                                        
                                         <br />
                                         <div class="row">
                                             <div class="col-6">
@@ -258,6 +254,7 @@
 
                                 foreach (var timedata in ViewBag.timesheetAllData)
                                 {
+
                                     if (timedata.t.Action == null)
                                     {
 
@@ -276,14 +273,14 @@
                                                 <div class="col-1" style="margin-left:5%;">
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
+                                <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
                                                         <img src="~/NewFolder/edit.png" class="edit-img" />
                                                     </button>
 
 
 
                                                     <!-- Modal -->
-                                                <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -334,25 +331,32 @@
 
                                                                         <br />
                                                                         <div class="row">
-                                                                            <div class="col-6">
-                                                                                <label asp-for="Hours" class="form-label">Hours</label>
-                                                                                <input asp-for="Hours" value=@ViewBag.hours id="HoursEdit" name="Hours" type="number" placeholder="Enter Spent Hours" class="form-control" required>
-                                                                                <span asp-validation-for="Hours" class="text-danger" style="font-size:12px;"></span>
+                                                                            @{
+                                                                                if (ViewBag.timesheetAllData != null)
+                                                                                {
+                                                                                    <div class="col-6">
 
-                                                                            </div>
-                                                                            <div class="col-6">
-                                                                                <label asp-for="Minutes" class="form-label">Minutes</label>
-                                                                                <input asp-for="Minutes" value=@ViewBag.minutes name="Minutes" id="MinutesEdit" type="number" placeholder="Enter Spent Minutes" class="form-control" required>
-                                                                                <span asp-validation-for="Minutes" class="text-danger" style="font-size:12px;"></span>
 
-                                                                            </div>
+                                                                                        <label asp-for="Hours" class="form-label">Hours</label>
+                                                                                        <input asp-for="Hours" value=@ViewBag.hours id="HoursEdit" name="Hours" type="number" placeholder="Enter Spent Hours" class="form-control" required>
+                                                                                        <span asp-validation-for="Hours" class="text-danger" style="font-size:12px;"></span>
+
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <label asp-for="Minutes" class="form-label">Minutes</label>
+                                                                                        <input asp-for="Minutes" value=@ViewBag.minutes name="Minutes" id="MinutesEdit" type="number" placeholder="Enter Spent Minutes" class="form-control" required>
+                                                                                        <span asp-validation-for="Minutes" class="text-danger" style="font-size:12px;"></span>
+
+                                                                                    </div>
+                                                                                }
+                                                                            }
                                                                         </div>
                                                                         <br />
                                                                         <div>
                                                                             <label asp-for="Message" class="form-label">Message</label>
                                                                             <br />
                                                                             <textarea asp-for="Message" name="Message" id="MessageEdit" class="form-control" rows="5" placeholder="Enter your message" required>
-                                                                     </textarea>
+                                                                                                                                             </textarea>
                                                                             <span asp-validation-for="Message" class="text-danger" style="font-size:12px;"></span>
                                                                             <input hidden></input>
                                                                         </div>
@@ -370,8 +374,34 @@
 
                                                 </div>
                                                 <div class="col-1" style="margin-left:10%;">
+                                                    @{
 
-                                                    <img src="~/NewFolder/bin.png" />
+                                                        foreach (var removemissions in ViewBag.appliedMissions)
+                                                        {
+                                                            foreach (var removemissions1 in ViewBag.goalmissions)
+                                                            {
+                                                                if (removemissions.MissionId != removemissions1.MissionId)
+                                                                {
+
+                                                                    foreach (var removetimedata in ViewBag.timesheetAllData)
+                                                                    {
+                                                                        if (removetimedata.t.Action == null)
+                                                                        {
+
+
+                                                                            <button onclick="onremove(@removetimedata.t.MissionId)" type="button" style="border:none; background:none;">
+                                                                                <img src="~/NewFolder/bin.png" />
+                                                                            </button>
+
+
+                                                                        }
+
+                                                                    }
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
 
                                                 </div>
                                             </div>
@@ -528,14 +558,14 @@
                                                 <div class="col-1" style="margin-left:5%;">
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEditGoal">
+                                <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModalEditGoal">
                                                         <img src="~/NewFolder/edit.png" class="edit-img" />
                                                     </button>
 
 
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModalEditGoal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalEditGoal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -617,7 +647,35 @@
 
                                                 <div class="col-1" style="margin-left:10%;">
 
-                                                    <img src="~/NewFolder/bin.png" />
+                                                     @{
+
+                                                        foreach (var removemissions in ViewBag.appliedMissions)
+                                                        {
+                                                            foreach (var removemissions1 in ViewBag.goalmissions)
+                                                            {
+                                                                if (removemissions.MissionId != removemissions1.MissionId)
+                                                                {
+
+                                                                    foreach (var removetimedata in ViewBag.timesheetAllData)
+                                                                    {
+                                                                        if (removetimedata.t.TimesheetTime == null)
+                                                                        {
+
+
+                                                                            <button onclick="onremovegoal(@removetimedata.t.MissionId)" type="button" style="border:none; background:none;">
+                                                                                <img src="~/NewFolder/bin.png" />
+                                                                            </button>
+
+
+                                                                        }
+
+                                                                    }
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
 
                                                 </div>
                                             </div>
@@ -638,7 +696,7 @@
     </div>
 
     <script src="~/js/landing.js"></script>
-  
+
 
 </body>
 </html>

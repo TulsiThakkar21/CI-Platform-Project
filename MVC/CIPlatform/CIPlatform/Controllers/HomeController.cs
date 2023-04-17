@@ -475,6 +475,8 @@ namespace CIPlatform.Controllers
             var city = _ciplatformDbContext.Cities.ToList();
             ViewBag.city = city;
 
+            var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
+            ViewBag.goalmissionlist = goalmissionlist;
 
 
             return View();
@@ -653,6 +655,10 @@ namespace CIPlatform.Controllers
             var city = _ciplatformDbContext.Cities.ToList();
             ViewBag.city = city;
 
+
+            var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
+            ViewBag.goalmissionlist = goalmissionlist;
+
             return View();
 
 
@@ -813,6 +819,8 @@ namespace CIPlatform.Controllers
             var city = _ciplatformDbContext.Cities.ToList();
             ViewBag.city = city;
 
+            var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
+            ViewBag.goalmissionlist = goalmissionlist;
 
             return View();
 
@@ -2223,12 +2231,15 @@ namespace CIPlatform.Controllers
         }
 
 
+      
+
+
         public IActionResult PrivacyPolicy()
         {
             return View();
         }
 
-        public IActionResult VolTimesheet(int id, int missionid, DateTime date, int selectedOptionId, int hours, int mins, string msg, int action, DateTime datevol, string goalMsg)
+        public IActionResult VolTimesheet(string finaltime ,int id, int missionId, DateTime date, int selectedOptionId, int hours, int mins, string msg, int action, DateTime datevol, string goalMsg)
         {
 
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -2310,21 +2321,31 @@ namespace CIPlatform.Controllers
             ViewBag.timesheetAllData = timesheetAllData;
 
 
-
-            string finaltime = timelist[0].TimesheetTime.ToString();
-
-
-
-
-            TimeOnly splitedtime = TimeOnly.Parse(finaltime); // parse the time string into a TimeSpan object
-
-            int hrs = splitedtime.Hour; // get the hours component
-            int minutes = splitedtime.Minute;
-
-            ViewBag.hours = hrs;
-            ViewBag.minutes = minutes;
+            for (int i = 0; i < timelist.Count; i++)
+            {
+                if (timelist[i].TimesheetTime != null)
+                {
 
 
+
+                    finaltime = timelist[i].TimesheetTime.ToString();
+
+                    TimeOnly splitedtime = TimeOnly.Parse(finaltime); // parse the time string into a TimeSpan object
+
+                    int hrs = splitedtime.Hour; // get the hours component
+                    int minutes = splitedtime.Minute;
+
+                    ViewBag.hours = hrs;
+                    ViewBag.minutes = minutes;
+
+                }
+            }
+
+
+
+           
+
+           
 
             // for goal based
 
@@ -2349,8 +2370,17 @@ namespace CIPlatform.Controllers
                 }
             }
 
-          
+            // remove data Vol time
 
+            var timesheetSavedData = _ciplatformDbContext.Timesheets.FirstOrDefault(id => id.MissionId == missionId);
+
+            if (timesheetSavedData != null)
+            {
+
+           
+            _ciplatformDbContext.Timesheets.Remove(timesheetSavedData);
+            _ciplatformDbContext.SaveChanges();
+            }
 
             return View();
         }
@@ -2410,18 +2440,6 @@ namespace CIPlatform.Controllers
                 };
                 
                 
-                
-                
-                //string editFinaltime = fetchVolTimeDetails.TimesheetTime.ToString();
-                
-                //TimeOnly splitedtimeNew = TimeOnly.Parse(editFinaltime);
-
-                //int hrsNew = splitedtimeNew.Hour; 
-                //int minutesNew = splitedtimeNew.Minute;
-
-
-                //ViewBag.hours1 = hrsNew;
-                //ViewBag.minutes1 = minutesNew;
 
 
                 return Json(fetchVolTimeDetails);
@@ -2596,6 +2614,128 @@ namespace CIPlatform.Controllers
 
 
 
+
+
+        public IActionResult Admin_user(int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
+        {
+           
+            // Add user
+
+            var userData = _ciplatformDbContext.Users.Where(a => a.Email == email).ToList();
+
+            if (fname != null && lname != null && email != null && pass != null && cityid != 0 && countryid != 0 && status != null)
+            {
+                if (userData.Count == 0)
+                {
+                    var userdetails = new User
+                    {
+
+                        FirstName = fname,
+                        LastName = lname,
+                        Email = email,
+                        Password = pass,
+                        Avatar = avtar,
+                        EmployeeId = empid,
+                        Department = dept,
+                        CityId = cityid,
+                        CountryId = countryid,
+                        ProfileText = protxt,
+                        Status = status.ToString()
+                        
+
+                    };
+
+                    _ciplatformDbContext.Users.Add(userdetails);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
+            }
+
+            // delete user
+
+           
+            var users = _homeRepository.GetUsers();
+            ViewBag.users = users;
+            if (userid != 0)
+            {
+                _homeRepository.deleteusers(userid);
+
+
+            }
+
+            return View();
+        }
+
+
+
+        public IActionResult EditAdminUser(int uId)
+        {
+            var data = _ciplatformDbContext.Users.Where(a => a.UserId == uId).ToList().FirstOrDefault();
+
+            if (data != null)
+            {
+
+                var fetchUserdetails = new User
+                {
+
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
+                    Email = data.Email,
+                    Password = data.Password,
+                    Avatar = data.Avatar,
+                    CityId= data.CityId,
+                    CountryId = data.CountryId,
+                    ProfileText = data.ProfileText,
+                    Status = data.Status,
+                    EmployeeId = data.EmployeeId,
+                    Department = data.Department,
+                    UserId = uId
+
+                };
+
+
+
+
+                return Json(fetchUserdetails);
+
+
+                //return View();
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        public IActionResult SaveAdminUserData(int uId, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
+        {
+
+            var adminUserData = _ciplatformDbContext.Users.Where(y => y.UserId == uId).ToList();
+
+            var query = from r in adminUserData select r;
+            
+            foreach (User r in query)
+            {
+
+                r.FirstName = fname;
+                r.LastName = lname;
+                r.Email = email;
+                r.Password = pass;
+                r.Avatar = avtar;
+                r.CityId = cityid;
+                r.CountryId = countryid;   
+                r.ProfileText = protxt;
+                r.Status = status.ToString();
+                r.EmployeeId = empid;
+                r.Department = dept;
+                r.UserId = uId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+            return View();
+        }
 
 
         public IActionResult NoMissionFound()

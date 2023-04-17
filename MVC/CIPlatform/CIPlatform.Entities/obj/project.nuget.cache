@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Y9nO0Qd04mszhTIXDG1NJopxJRKSMQF0wn/0jNmkO8dahmgvrRrsyf/XKz+w5c8BrJXU/JdM1ZLOdsX28obuhg==",
+  "dgSpecHash": "PzmEuTtlujfacpKZXEk1Xu5+AmF2gBgHPFAr8k7Hmk55w4L0Q+NoIjeFz2yim8ZXBja2dRkuC0o5mV2AIbSeDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tatva\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\tatva\\.nuget\\packages\\datatables.net\\1.13.4\\datatables.net.1.13.4.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\tatva\\.nuget\\packages\\jquery\\1.7.0\\jquery.1.7.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

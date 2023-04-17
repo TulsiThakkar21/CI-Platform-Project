@@ -65,6 +65,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "datatables.net": {
+              "target": "Package",
+              "version": "[1.13.4, )"
             }
           },
           "imports": [
