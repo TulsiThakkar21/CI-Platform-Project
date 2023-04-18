@@ -61,7 +61,9 @@ namespace CIPlatform.Repository.Repositories
 
         IEnumerable<CmsPage> GetCMSData();
 
-       
+        
+
+
     }
     }
 

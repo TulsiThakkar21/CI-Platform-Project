@@ -43,6 +43,7 @@ C:\Users\tatva\Desktop\CIP-Clone\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\ne
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.deps.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.runtimeconfig.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\ref\CIPlatform.Entities.dll
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.pdb
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.GeneratedMSBuildEditorConfig.editorconfig
@@ -50,7 +51,6 @@ C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.AssemblyInfo.cs
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.CoreCompileInputs.cache
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\ref\CIPlatform.Entities.dll

@@ -32,6 +32,7 @@
 
         },
         success: function () {
+            location.reload();
             console.log("success");
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -61,10 +62,6 @@ function deleteuser(userid) {
 }
 
 
-
-
-
-//document.getElementById("table_id").DataTable();
 $(document).ready(function () {
     "use strict";
 
@@ -160,6 +157,7 @@ function saveEditedData(uId) {
 
         },
         success: function () {
+            location.reload();
             console.log("success");
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -167,3 +165,14 @@ function saveEditedData(uId) {
         }
     });
 }
+
+
+
+// data table
+
+$(document).ready(function () {
+
+    $('#table_id').DataTable();
+
+
+});

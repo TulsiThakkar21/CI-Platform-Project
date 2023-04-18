@@ -2848,8 +2848,113 @@ namespace CIPlatform.Controllers
         }
 
 
+        public IActionResult Admin_MissionTheme(Admin_MTVM _adMT, int mtId)
+        {
+
+            var mtdetails = _ciplatformDbContext.MissionThemes.Where(a => a.MissionThemeId == _adMT.MissionThemeId);
+
+            if (_adMT.Title != null && _adMT.Status != 0)
+            {
+
+
+                if (mtdetails.Count() == 0)
+                {
+                    var mtdata = new MissionTheme()
+                    {
+                        Title = _adMT.Title,    
+                        Status = (byte)_adMT.Status
+
+
+                    };
+                    _ciplatformDbContext.MissionThemes.Add(mtdata);
+                    _ciplatformDbContext.SaveChanges();
+
+
+
+                }
+
+            }
+
+
+            var missionTh = _homeRepository.GetMissionThemes();
+            ViewBag.missionTh = missionTh;
+
+
+            // delete data
+
+
+            var mtSavedData = _ciplatformDbContext.MissionThemes.FirstOrDefault(id => id.MissionThemeId == mtId);
+
+            if (mtSavedData != null)
+            {
+
+
+                _ciplatformDbContext.MissionThemes.Remove(mtSavedData);
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
+            return View();
+        }
+
+
+        public IActionResult EditMTData(int mtid)
+        {
+            var data = _ciplatformDbContext.MissionThemes.Where(a => a.MissionThemeId == mtid).ToList().FirstOrDefault();
+
+            if (data != null)
+            {
+
+                var fetchMTdetails = new MissionTheme
+                {
+
+                    Title = data.Title,                   
+                    Status = data.Status,
+                    MissionThemeId = mtid
+
+
+                };
+
+                return Json(fetchMTdetails);
+
+
+
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        public IActionResult SaveMTData(int mtid, string title, int status)
+        {
+
+            var mthemeData = _ciplatformDbContext.MissionThemes.Where(y => y.MissionThemeId == mtid).ToList();
+
+            var query = from r in mthemeData select r;
+
+            foreach (MissionTheme r in query)
+            {
+
+                r.Title = title;         
+                r.Status = (byte)status;
+                r.MissionThemeId = mtid;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+            return View();
+        }
+
+
+
         public IActionResult Admin_Mission()
         {
+
+
             return View();
         }
 

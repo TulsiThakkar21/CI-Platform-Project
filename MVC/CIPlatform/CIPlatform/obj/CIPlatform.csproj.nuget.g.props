@@ -14,30 +14,12 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
     <SourceRoot Include="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Content Include="$(NuGetPackageRoot)datatables.net\1.13.4\contentFiles\any\any\wwwroot\js\jquery.dataTables.js" Condition="Exists('$(NuGetPackageRoot)datatables.net\1.13.4\contentFiles\any\any\wwwroot\js\jquery.dataTables.js')">
-      <NuGetPackageId>datatables.net</NuGetPackageId>
-      <NuGetPackageVersion>1.13.4</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>wwwroot\js\jquery.dataTables.js</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)datatables.net\1.13.4\contentFiles\any\any\wwwroot\js\jquery.dataTables.min.js" Condition="Exists('$(NuGetPackageRoot)datatables.net\1.13.4\contentFiles\any\any\wwwroot\js\jquery.dataTables.min.js')">
-      <NuGetPackageId>datatables.net</NuGetPackageId>
-      <NuGetPackageVersion>1.13.4</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>wwwroot\js\jquery.dataTables.min.js</Link>
-    </Content>
-  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.2.23128.3\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.2.23128.3\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.0-preview.1.23111.4\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.0-preview.1.23111.4\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\tatva\.nuget\packages\microsoft.entityframeworkcore.tools\8.0.0-preview.1.23111.4</PkgMicrosoft_EntityFrameworkCore_Tools>
-    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\tatva\.nuget\packages\jquery\1.7.0</PkgjQuery>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.codeanalysis.analyzers\1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
   </PropertyGroup>
 </Project>

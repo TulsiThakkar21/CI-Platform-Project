@@ -1,4 +1,27 @@
-﻿function editCMSData(CMSId) {
+﻿$(document).ready(function () {
+    "use strict";
+
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('collapse-sidebar');
+    });
+
+
+});
+
+
+function updateDateTime() {
+    var currentTime = new Date();
+    var formattedDateTime = currentTime.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+    document.getElementById('current-time').innerHTML = formattedDateTime;
+}
+
+setInterval(updateDateTime, 1000);
+
+
+
+
+function editCMSData(CMSId) {
 
 
     $.ajax({
@@ -9,8 +32,7 @@
             console.log(data);
             $('#exampleModalCMS').modal('show');
 
-            document.getElementById('CmsPageId').value = data.cmsPageId
-;
+            document.getElementById('CmsPageId').value = data.cmsPageId;
             document.getElementById('TitleEdit').value = data.title;
             document.getElementById('DescriptionEdit').value = data.description;
             document.getElementById('SlugEdit').value = data.slug;
@@ -51,6 +73,7 @@ function saveEditedDataCMS() {
 
         },
         success: function () {
+            location.reload();
             console.log("success");
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -71,7 +94,7 @@ function deleteCmsData(cmsid) {
 
         },
         success: function (data) {
-
+            location.reload();
             console.log("Data Deleted");
 
         },
@@ -82,3 +105,12 @@ function deleteCmsData(cmsid) {
     });
 
 }
+
+// data table
+
+$(document).ready(function () {
+
+    $('#table_id').DataTable();
+
+
+});

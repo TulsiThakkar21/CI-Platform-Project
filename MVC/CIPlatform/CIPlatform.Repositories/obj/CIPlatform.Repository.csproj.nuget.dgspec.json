@@ -46,6 +46,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.TagHelpers": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0-preview.2.23128.3, )"
@@ -66,9 +70,9 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
-            "datatables.net": {
+            "Mvc.JQuery.Datatables": {
               "target": "Package",
-              "version": "[1.13.4, )"
+              "version": "[1.5.56, )"
             }
           },
           "imports": [
@@ -137,9 +141,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "datatables.net": {
+            "Microsoft.AspNetCore.Mvc.TagHelpers": {
               "target": "Package",
-              "version": "[1.13.4, )"
+              "version": "[2.2.0, )"
+            },
+            "Mvc.JQuery.Datatables": {
+              "target": "Package",
+              "version": "[1.5.56, )"
             }
           },
           "imports": [
