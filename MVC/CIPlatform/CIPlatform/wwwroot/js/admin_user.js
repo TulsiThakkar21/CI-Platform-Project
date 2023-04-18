@@ -91,7 +91,7 @@ setInterval(updateDateTime, 1000);
 
 function editAdminUser(uId) {
 
-    var uId = $('#UserEditByAdmin').attr('userId');
+    //var uId = $('#UserEditByAdmin').attr('userId');
 
     $.ajax({
         url: '/Home/EditAdminUser',
@@ -100,6 +100,8 @@ function editAdminUser(uId) {
         success: function (data) {
             console.log(data);
             $('#exampleModalUE').modal('show');
+
+            document.getElementById('userid').value = data.userId;
 
             document.getElementById('FirstNameEdit').value = data.firstName;
             document.getElementById('LastNameEdit').value = data.lastName;
@@ -125,6 +127,7 @@ function editAdminUser(uId) {
 
 function saveEditedData(uId) {
 
+    var uid = document.getElementById('userid').value;
     var fname = document.getElementById('FirstNameEdit').value;
     var lname = document.getElementById('LastNameEdit').value;
     var email = document.getElementById('EmailEdit').value;
@@ -141,7 +144,7 @@ function saveEditedData(uId) {
         url: '/Home/SaveAdminUserData',
         type: "POST",
         data: {
-            uId: uId,
+            uid: uid,
             fname: fname,
             lname: lname,
             email: email,

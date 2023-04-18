@@ -312,6 +312,13 @@ namespace CIPlatform.Repository.Repositories
 
 
         }
+
+        public IEnumerable<CmsPage>GetCMSData()
+        {
+            return _db.CmsPages.ToList();
+        }
+
+      
     }
 
 

@@ -40,9 +40,13 @@ namespace CIPlatform.Entities.Models
 
 
         [Required(ErrorMessage = "Status is required")]
-        public bool Status { get; set; } 
+        public string Status { get; set; }
 
 
+
+        [MinLength(6, ErrorMessage = "Employee Id must be at least 6 characters long")]
+        [StringLength(6, ErrorMessage = "Max 6 digits are valid")]
+        public string empidEdit { get; set; }
 
 
     }

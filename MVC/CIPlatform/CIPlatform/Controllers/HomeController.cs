@@ -2616,7 +2616,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult Admin_user(int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
+        public IActionResult Admin_user(int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, string status)
         {
            
             // Add user
@@ -2640,7 +2640,7 @@ namespace CIPlatform.Controllers
                         CityId = cityid,
                         CountryId = countryid,
                         ProfileText = protxt,
-                        Status = status.ToString()
+                        Status = status
                         
 
                     };
@@ -2651,11 +2651,14 @@ namespace CIPlatform.Controllers
                 }
             }
 
-            // delete user
+            
 
            
             var users = _homeRepository.GetUsers();
             ViewBag.users = users;
+
+            // delete user
+
             if (userid != 0)
             {
                 _homeRepository.deleteusers(userid);
@@ -2708,10 +2711,10 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult SaveAdminUserData(int uId, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
+        public IActionResult SaveAdminUserData(int uid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, string status)
         {
 
-            var adminUserData = _ciplatformDbContext.Users.Where(y => y.UserId == uId).ToList();
+            var adminUserData = _ciplatformDbContext.Users.Where(y => y.UserId == uid).ToList();
 
             var query = from r in adminUserData select r;
             
@@ -2726,16 +2729,130 @@ namespace CIPlatform.Controllers
                 r.CityId = cityid;
                 r.CountryId = countryid;   
                 r.ProfileText = protxt;
-                r.Status = status.ToString();
+                r.Status = status;
                 r.EmployeeId = empid;
                 r.Department = dept;
-                r.UserId = uId;
+                r.UserId = uid;
 
             }
 
             _ciplatformDbContext.SaveChanges();
             return View();
         }
+
+
+        public IActionResult CMSPage(CMSPageVM _cms, int cmsid)
+        {
+            var cmsdetails = _ciplatformDbContext.CmsPages.Where(a => a.CmsPageId == _cms.CmsPageId);
+
+            if (_cms.Title != null && _cms.Description != null && _cms.Slug != null && _cms.Status != null)
+            {
+
+
+                if (cmsdetails.Count() == 0)
+                {
+                    var cmsdata = new CmsPage()
+                    {
+                        Title = _cms.Title,
+                        Description = _cms.Description,
+                        Slug = _cms.Slug,
+                        Status = _cms.Status
+
+
+                    };
+                    _ciplatformDbContext.CmsPages.Add(cmsdata);
+                    _ciplatformDbContext.SaveChanges();
+
+
+
+                }
+
+            }
+            var cmsData = _homeRepository.GetCMSData();
+            ViewBag.cmsData = cmsData;
+
+            
+            // delete data
+
+
+            var cmsSavedData = _ciplatformDbContext.CmsPages.FirstOrDefault(id => id.CmsPageId == cmsid);
+
+            if (cmsSavedData != null)
+            {
+
+
+                _ciplatformDbContext.CmsPages.Remove(cmsSavedData);
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
+            return View();
+
+        }
+
+
+        public IActionResult EditCMSData(int CMSId)
+        {
+            var data = _ciplatformDbContext.CmsPages.Where(a => a.CmsPageId == CMSId).ToList().FirstOrDefault();
+
+            if (data != null)
+            {
+
+                var fetchCMSdetails = new CmsPage
+                {
+
+                    Title = data.Title,
+                    Description = data.Description,
+                    Slug = data.Slug,
+                    Status = data.Status,
+                    CmsPageId = CMSId,
+                    
+
+                };
+
+                return Json(fetchCMSdetails);
+
+
+               
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+
+        public IActionResult SaveCMSData(int cmsId, string title, string desc, string slug, string status)
+        {
+
+            var cmsData = _ciplatformDbContext.CmsPages.Where(y => y.CmsPageId == cmsId).ToList();
+
+            var query = from r in cmsData select r;
+
+            foreach (CmsPage r in query)
+            {
+
+                r.Title = title;
+                r.Description = desc;
+                r.Slug = slug;
+                r.Status = status;
+                r.CmsPageId = cmsId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+            return View();
+        }
+
+
+        public IActionResult Admin_Mission()
+        {
+            return View();
+        }
+
 
 
         public IActionResult NoMissionFound()

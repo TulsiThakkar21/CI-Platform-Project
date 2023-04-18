@@ -5,8 +5,7 @@
 }
 
 @using (Html.BeginForm("_Grid", "Home", FormMethod.Get))
-{
-    @if (ViewBag.SearchStatus == 0)
+@if (ViewBag.SearchStatus == 0)
     {
         @*<div class="alert alert-danger">No Mission Found</div>*@
 
@@ -27,7 +26,7 @@
         </div>
     }
 
-}
+
 
 
 
@@ -44,7 +43,9 @@
     {
 
         <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
-            <div class="card">
+            <div class="card" style="box-shadow: 3px 3px 3px grey;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;">
                 <img src="~/NewFolder/imgenv.png" class="card-img-top" alt="...">
 
                 <div>
