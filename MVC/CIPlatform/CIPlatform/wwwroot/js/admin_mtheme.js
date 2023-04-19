@@ -53,10 +53,7 @@ function editMTData(mtid) {
         success: function (data) {
             console.log(data);
             $('#exampleModalMT').modal('show');
-            //jQuery('#exampleModalMT').modal({
-            //    show: true,
-            //    backdrop: 'static'
-            //});
+          
             document.getElementById('MissionThemeId').value = data.missionThemeId;
             document.getElementById('TitleEdit').value = data.title;           
             document.getElementById('StatusEdit').value = data.status;

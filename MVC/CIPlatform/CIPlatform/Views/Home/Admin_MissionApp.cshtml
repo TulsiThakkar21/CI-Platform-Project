@@ -4,11 +4,11 @@
 @{
     Layout = null;
 }
-@model CIPlatform.Entities.Models.Admin_MTVM
+@model CIPlatform.Entities.Models.Admin_MAppVM
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mission Theme</title>
+    <title>Mission Application</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
@@ -32,7 +32,6 @@
 
  
 </head>
-
 
 
 <div class="wrapper">
@@ -107,7 +106,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                <img class="userimg" src="~/NewFolder~/NewFolder//user-img.png">
+                                @*<img class="userimg" src="~/images/BlankProfile3.png">*@
 
 
 
@@ -128,103 +127,65 @@
             </div>
         </div>
         <div id="content-admin" class="content-admin">
-            <h1>Mission Theme</h1>
+            <h1>Mission Application</h1>
             <hr />
             <div class="firstrow">
                 <div class="col-7">
-                    
+                    @*<input placeholder="Search" type="search" class="searchbar" />*@
 
                 </div>
                 <div class="col-6">
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  @*  <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img src="~/NewFolder/plus.png" class="plus-img" />
                         Add
-                    </button>
+                    </button>*@
 
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Please input below CMS Details</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <form id="cms-form" asp-action="Admin_MissionTheme" asp-controller="Home" method="post">
-                                    <div class="modal-body">
-
-                                        
-
-                                        <div>
-
-                                            <label asp-for="Title" class="form-label">Title</label>
-                                            <input asp-for="Title" id="Title" type="text" placeholder="Enter Theme" class="form-control">
-                                            <span asp-validation-for="Title" class="text-danger" style="font-size:12px;"></span>
-
-
-                                        </div>
-                                        <br />
-
-                                        <div>
-                                            <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="Status" type="text" class="form-control" placeholder="Enter status" value="">
-                                            <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
-
-                                        </div>
-
-                                    </div>
-                                
-                                <div class="modal-footer">
-                                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn save-btn">Save</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
             </div>
 
-<br />
+            <br />
 
             <table style="background-color:white; width:100%;" id="table_id" class="display" data-order='[[ 1, "asc" ]]' data-page-length='25' d>
                 <thead>
                     <tr>
-                        
-                        <th>Title</th>
-                       <th style="text-align:center;">Status</th>
-                       
+                        <th>Mission ID</th>
+                        <th>Mission Title</th>
+                        <th>User Full Name</th>
+                        <th>Application Date</th>
                         <th data-class-name="priority">Action</th>
                     </tr>
                 </thead>
                 @{
-                    if(ViewBag.missionTh != null)
+                    if(ViewBag.appliedmissions != null)
                     {
-                        
-                    
-                    foreach (var mt in ViewBag.missionTh)
-                    {
-                        <tr>
-                        
-                            <td style="background-color:white">@mt.Title</td>
-                            <td style="background-color:white; color: #14C506; text-align:center;">@mt.Status</td>
+                        foreach (var missionapp in ViewBag.appliedmissions)
+                        {
+                            if(@missionapp.ma.ApprovalStatus == "pending")
+                            {
+                                
+                            
+                            <tr>
+                            <td >@missionapp.ma.MissionId</td>
+                            <td >@missionapp.m.Title</td>
+                            <td >@missionapp.u.FirstName @missionapp.u.LastName</td>
+                            <td >@missionapp.ma.AppliedAt</td>
                            
-                            <td style="background-color:white">
+                            
+                            <td >
+
+                               
+                                <!-- Button trigger modal -->
+                            <button type="button" class="btn fa fa-check" style="color: #f88634; margin-left:10px; font-size:larger" id="UserEditByAdmin" onclick="approved(@missionapp.ma.MissionId, @missionapp.u.UserId)">
+                                </button>
 
 
-                             <!-- Button trigger modal -->
-                    <button type="button"  class="btn fas fa-edit" style="color: #f88634; margin-left:10px; font-size:larger" id="CMSEditByAdmin" onclick="editMTData(@mt.MissionThemeId)">
-                        
-                     
-                    </button>
-                 
-                    
-                                <i type="button" onclick="deleteMTData(@mt.MissionThemeId)" class="btn fa fa-trash" style="font-size:larger" aria-hidden="true"></i>
 
+                                <i type="button" onclick="declined(@missionapp.ma.MissionId, @missionapp.u.UserId)" class="btn fa fa-close" style="font-size:larger" aria-hidden="true"></i>
 
 
 
@@ -233,6 +194,7 @@
                         </tr>
                     }
                 }
+}
 }
 
 
@@ -246,52 +208,7 @@
 </div>
 
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalMT" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabelEdit" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabelEdit">User Details</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-
-                                    <div class="modal-body">
-
-                                   <input type="hidden" id="MissionThemeId" asp-for="MissionThemeId"/>
-
-                                        
-                                        <div>
-
-                                            <label asp-for="Title" class="form-label">Title</label>
-                                            <input asp-for="Title" id="TitleEdit" type="text" placeholder="Enter Theme" class="form-control">
-                                            <span asp-validation-for="Title" class="text-danger" style="font-size:12px;"></span>
 
 
-                                        </div>
-                                        <br />
-
-                                        <div>
-                                            <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="StatusEdit" type="text" class="form-control" placeholder="Enter status" value="">
-                                            <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
-
-                                        </div>
-                                    
-                               
-                                <div class="modal-footer">
-                                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn save-btn" onclick="saveEditedMTData()">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
-<script src="~/js/admin_mtheme.js"></script>
-
-
-
-
-
-
+<script src="~/js/admin_mapp.js"></script>

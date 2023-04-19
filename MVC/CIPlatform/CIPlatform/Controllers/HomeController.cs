@@ -479,18 +479,34 @@ namespace CIPlatform.Controllers
             ViewBag.goalmissionlist = goalmissionlist;
 
 
+            // for approved or declined mission
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+            var appliedmissions = from ma in mapplst
+                                  join m in missionlst on ma.MissionId equals m.MissionId
+                                  where ma.MissionId == m.MissionId
+                                  join u in usrlst on ma.UserId equals u.UserId
+                                  where ma.UserId == u.UserId
+
+                                  select new
+                                  {
+                                      ma,
+                                      m,
+                                      u
+                                  };
+            ViewBag.appliedmissions = appliedmissions;
+
             return View();
 
         }
 
         public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
-            // progress bar
-
-            //var goalmissionlist = _homeRepository.GetGoalMissions();
-            //var timegoalbased = _homeRepository.GetTimeGoalBased(id);
-
-            //ViewBag.goalmissionlist = goalmissionlist;
+            
 
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
@@ -570,15 +586,7 @@ namespace CIPlatform.Controllers
             {
                 ViewBag.SearchStatus = 0;
             }
-            //if (!string.IsNullOrEmpty(filtercity))
-            //{
-
-            // outputsf = _loginRepository.GetMissionWithMissionThemeRecords(cityidarr);
-            //}
-            //else
-            //{
-            // outputsf = missionxx;
-            //}
+            
 
 
 
@@ -658,6 +666,30 @@ namespace CIPlatform.Controllers
 
             var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
             ViewBag.goalmissionlist = goalmissionlist;
+
+
+
+            // for approved or declined mission
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+            var appliedmissions = from ma in mapplst
+                                  join m in missionlst on ma.MissionId equals m.MissionId
+                                  where ma.MissionId == m.MissionId
+                                  join u in usrlst on ma.UserId equals u.UserId
+                                  where ma.UserId == u.UserId
+
+                                  select new
+                                  {
+                                      ma,
+                                      m,
+                                      u
+                                  };
+            ViewBag.appliedmissions = appliedmissions;
+
 
             return View();
 
@@ -821,6 +853,29 @@ namespace CIPlatform.Controllers
 
             var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
             ViewBag.goalmissionlist = goalmissionlist;
+
+
+            // for approved or declined mission
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+            var appliedmissions = from ma in mapplst
+                                  join m in missionlst on ma.MissionId equals m.MissionId
+                                  where ma.MissionId == m.MissionId
+                                  join u in usrlst on ma.UserId equals u.UserId
+                                  where ma.UserId == u.UserId
+
+                                  select new
+                                  {
+                                      ma,
+                                      m,
+                                      u
+                                  };
+            ViewBag.appliedmissions = appliedmissions;
+
 
             return View();
 
@@ -1223,6 +1278,30 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.SaveChanges();
 
             }
+
+            // for approved or declined mission
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+            var appliedmissions = from ma in mapplst
+                                  join m in missionlst on ma.MissionId equals m.MissionId
+                                  where ma.MissionId == m.MissionId
+                                  join u in usrlst on ma.UserId equals u.UserId
+                                  where ma.UserId == u.UserId
+
+                                  select new
+                                  {
+                                      ma,
+                                      m,
+                                      u
+                                  };
+            ViewBag.appliedmissions = appliedmissions;
+
+
+
 
             return View();
 
@@ -2343,10 +2422,6 @@ namespace CIPlatform.Controllers
 
 
 
-           
-
-           
-
             // for goal based
 
             if (selectedOptionId != 0 && action != null && datevol != null && goalMsg != null)
@@ -2953,11 +3028,98 @@ namespace CIPlatform.Controllers
 
         public IActionResult Admin_Mission()
         {
+         
+
+            return View();
+        }
+
+
+
+        public IActionResult Admin_MissionApp(Admin_MAppVM _mapp)
+        {
+
+           
+            //var missionappList = _homeRepository.GetMissionAppList();
+            //var missionList = _homeRepository.GetMission();
+            //var users = _homeRepository.GetUsers();
+            //var appliedMissions = _homeRepository.Getappliedmissions(_mapp.UserId);
+            //ViewBag.appliedMissions = appliedMissions;
+
+
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+            var appliedmissions = from ma in mapplst
+                               join m in missionlst on ma.MissionId equals m.MissionId
+                               where ma.MissionId == m.MissionId
+                               join u in usrlst on ma.UserId equals u.UserId
+                               where ma.UserId == u.UserId                  
+                               
+                               select new
+                               {
+                                   ma,
+                                   m,
+                                   u
+                               };
+            ViewBag.appliedmissions = appliedmissions;
+
 
 
             return View();
         }
 
+        public IActionResult Approved(int missionId, int uid)
+        {
+            var mappdetails = _ciplatformDbContext.MissionApplications.Where(a => a.MissionId == missionId && a.UserId == uid);
+
+            
+
+            var query = from r in mappdetails select r;
+
+            foreach (MissionApplication r in query)
+            {
+
+                r.ApprovalStatus = "approved";
+                r.UserId = uid;
+                r.MissionId = missionId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+
+
+            return RedirectToAction("Admin_MissionApp", "Home");
+        }
+
+
+
+        public IActionResult Declined(int missionId, int uid)
+        {
+            var mappdetails = _ciplatformDbContext.MissionApplications.Where(a => a.MissionId == missionId && a.UserId == uid);
+
+
+
+            var query = from r in mappdetails select r;
+
+            foreach (MissionApplication r in query)
+            {
+
+                r.ApprovalStatus = "declined";
+                r.UserId = uid;
+                r.MissionId = missionId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+
+
+            return RedirectToAction("Admin_MissionApp", "Home");
+        }
 
 
         public IActionResult NoMissionFound()

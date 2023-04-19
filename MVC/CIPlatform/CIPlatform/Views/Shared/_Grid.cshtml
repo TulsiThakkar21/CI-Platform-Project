@@ -56,12 +56,23 @@
                         var totalLen = ViewBag.missionapplication.Count;
                         for (int k = 0; k < totalLen; k++)
                         {
-                            if (ViewBag.Missionapplication[k].MissionId == item.MissionId)
+                            if (ViewBag.Missionapplication[k].MissionId == item.MissionId && ViewBag.Missionapplication[k].UserId == ViewBag.ids)
                             {
-                                <div class="applied">
+                                if(ViewBag.Missionapplication[k].ApprovalStatus == "approved")
+                                {
+                                   <div class="applied">
                                     <button class="btn" style="color:white; font-size:17px;"><b>APPLIED</b></button>
-                                </div>
-                                break;
+                                    </div>
+                                    break; 
+                                }
+                                else if(ViewBag.Missionapplication[k].ApprovalStatus == "declined")
+                                {
+                                    <div class="declined">
+                                    <button class="btn" style="color:white; font-size:17px;"><b>DECLINED</b></button>
+                                    </div>
+                                    break;
+                                }
+
                             }
                             else
                             {
@@ -77,6 +88,9 @@
                                     }
                                     else
                                     {
+                                   
+
+                                        
                                         <div class="applied" hidden><button class="btn" style="color:white; font-size:18px;"></button></div>
                                     }
                                 }
@@ -107,12 +121,7 @@
                                 {
                                     if (item.CityId == citytbl.CityId)
                                     {
-                                        //<div>
-                                        //    <div class="citydivbtn">
-                                        //    <img class="cityimg" src="~/NewFolder/pin.png">&nbsp;
-                                        //        <span style="font-size:larger;">@citytbl.Name</span>
-                                        //    </div>
-                                        //</div>
+                                       
 
                                         <div class="row">
                                             <div class="col-5 citydivbtn">

@@ -752,15 +752,39 @@
                                     }
                                     else
                                     {
-                                        <button disabled type="submit" class="btn btn-outline-secondary apply-btn" style="border: 2px solid grey">
 
-                                            Already Applied
+                                        foreach(var missapp in ViewBag.appliedmissions)
+                                        {
 
-                                        </button>
+                                            if(@missapp.ma.MissionId == @item.MissionId && @missapp.ma.UserId == ViewBag.ids)
+                                            {
+                                                
+                                            
+
+
+                                            if (@missapp.ma.ApprovalStatus == "approved")
+                                            {
+
+                                                <button disabled  type="button" class="btn btn-outline-secondary apply-btn" style="border: 2px solid green; background:lightgreen; color:green;">
+
+                                                    Applied
+
+                                                </button>
+                                                break;
+                                            }
+                                            else if(@missapp.ma.ApprovalStatus == "declined")
+                                            {
+                                                <button disabled type="submit" class="btn btn-outline-secondary apply-btn" style="border: 2px solid #880808;background:red; color:white;">
+
+                                                    Declined
+
+                                                </button>
+                                                break;
+                                            }
                                     }
                                 }
-
-
+                                }
+                                }
 
                             </div>
 
