@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gihRi+WTENyeM/4LSdY49I13WcRLTAawYK0oE9xNvCg=",
+  "Hash": "pgmSCx5ouwCpMuTgcbNs0CbPaG1XsDYKxa08TQ5FI00=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -304,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\admin_mapp.js"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\admin_mskills.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/admin_mskills.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin_mskills.js"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\admin_mtheme.js",

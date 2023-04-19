@@ -3038,12 +3038,6 @@ namespace CIPlatform.Controllers
         public IActionResult Admin_MissionApp(Admin_MAppVM _mapp)
         {
 
-           
-            //var missionappList = _homeRepository.GetMissionAppList();
-            //var missionList = _homeRepository.GetMission();
-            //var users = _homeRepository.GetUsers();
-            //var appliedMissions = _homeRepository.Getappliedmissions(_mapp.UserId);
-            //ViewBag.appliedMissions = appliedMissions;
 
 
 
@@ -3121,6 +3115,49 @@ namespace CIPlatform.Controllers
             return RedirectToAction("Admin_MissionApp", "Home");
         }
 
+
+        public IActionResult Admin_MissionSkills(int selectedOptionId)
+        {
+            var missionlst = _homeRepository.GetMission();
+            ViewBag.missionlst = missionlst;
+
+            var missionskills = _homeRepository.GetSkillandMissionSkill();
+            ViewBag.missionskills = missionskills;
+
+
+
+            // autofill mission skills
+
+
+            var skillsList = _homeRepository.GetSkills();
+            ViewBag.skills = skillsList;
+
+
+
+
+
+            //var data = _ciplatformDbContext.MissionSkills.Where(a => a.MissionId == selectedOptionId).ToList().FirstOrDefault();
+
+            //if (data != null)
+            //{
+
+            //    var fetchMSdetails = new MissionSkill
+            //    {
+
+            //        SkillId = data.SkillId,      
+            //        MissionId = selectedOptionId
+
+
+            //    };
+
+            //    return Json(fetchMSdetails);
+
+
+
+            //}
+
+            return View();
+        }
 
         public IActionResult NoMissionFound()
         {
