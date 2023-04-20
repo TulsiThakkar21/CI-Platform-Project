@@ -2239,6 +2239,9 @@ namespace CIPlatform.Controllers
                 
             }
 
+            var allskillss = _ciplatformDbContext.UserSkills.ToList();
+            _ciplatformDbContext.UserSkills.RemoveRange(allskillss);
+
             foreach (var s in skillids)
             {
 
@@ -2259,17 +2262,10 @@ namespace CIPlatform.Controllers
                     _ciplatformDbContext.UserSkills.Add(allskills);
 
                     _ciplatformDbContext.SaveChanges();
-                }
-
-
+                }     
 
             }
 
-
-
-
-
-            
             return RedirectToAction("EditProfile", "Home");
         }
 
@@ -2818,7 +2814,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult CMSPage(CMSPageVM _cms, int cmsid)
         {
-            var cmsdetails = _ciplatformDbContext.CmsPages.Where(a => a.CmsPageId == _cms.CmsPageId);
+            var cmsdetails = _ciplatformDbContext.CmsPages.Where(a => a.Title == _cms.Title);
 
             if (_cms.Title != null && _cms.Description != null && _cms.Slug != null && _cms.Status != null)
             {
@@ -2926,7 +2922,7 @@ namespace CIPlatform.Controllers
         public IActionResult Admin_MissionTheme(Admin_MTVM _adMT, int mtId)
         {
 
-            var mtdetails = _ciplatformDbContext.MissionThemes.Where(a => a.MissionThemeId == _adMT.MissionThemeId);
+            var mtdetails = _ciplatformDbContext.MissionThemes.Where(a => a.Title == _adMT.Title);
 
             if (_adMT.Title != null && _adMT.Status != 0)
             {
@@ -3038,9 +3034,6 @@ namespace CIPlatform.Controllers
         public IActionResult Admin_MissionApp(Admin_MAppVM _mapp)
         {
 
-
-
-
             var usrlst = _ciplatformDbContext.Users.ToList();
             var missionlst = _ciplatformDbContext.Missions.ToList();
             var mapplst = _ciplatformDbContext.MissionApplications.ToList();
@@ -3095,8 +3088,6 @@ namespace CIPlatform.Controllers
         {
             var mappdetails = _ciplatformDbContext.MissionApplications.Where(a => a.MissionId == missionId && a.UserId == uid);
 
-
-
             var query = from r in mappdetails select r;
 
             foreach (MissionApplication r in query)
@@ -3125,39 +3116,156 @@ namespace CIPlatform.Controllers
             ViewBag.missionskills = missionskills;
 
 
-
             // autofill mission skills
-
 
             var skillsList = _homeRepository.GetSkills();
             ViewBag.skills = skillsList;
 
 
 
+            return View();
+        }
 
 
-            //var data = _ciplatformDbContext.MissionSkills.Where(a => a.MissionId == selectedOptionId).ToList().FirstOrDefault();
+        public IActionResult SaveMSData(int selectedOptionId, string[] skillids, string status)
+        {
+            // Add mission skills
+            var allskillss = _ciplatformDbContext.MissionSkills.ToList();
+            _ciplatformDbContext.MissionSkills.RemoveRange(allskillss);
 
-            //if (data != null)
-            //{
+            foreach (var s in skillids)
+            {
 
-            //    var fetchMSdetails = new MissionSkill
-            //    {
+                var skillid = Convert.ToInt32(s);
 
-            //        SkillId = data.SkillId,      
-            //        MissionId = selectedOptionId
+                var mskillsData = _ciplatformDbContext.MissionSkills.Where(m => m.SkillId == skillid && m.MissionId == selectedOptionId).ToList();
+
+                if (mskillsData.Count == 0)
+                {
+                    var allskills = new MissionSkill
+                    {
+
+                        SkillId = Convert.ToInt32(s),
+                        MissionId = selectedOptionId
+
+                    };
+
+                    _ciplatformDbContext.MissionSkills.Add(allskills);
+
+                    _ciplatformDbContext.SaveChanges();
+                }
 
 
-            //    };
 
-            //    return Json(fetchMSdetails);
-
+            }
 
 
-            //}
+
+            return RedirectToAction("Admin_MissionSkills", "Home");
+        }
+
+
+
+        public IActionResult Admin_Skills(Admin_SkillsVM _skills, int skillsId)
+        {
+            //Add Skills
+
+            var skillsdetails = _ciplatformDbContext.Skills.Where(a => a.SkillName == _skills.SkillName);
+
+            if (_skills.SkillName != null && _skills.Status != null)
+            {
+
+
+                if (skillsdetails.Count() == 0)
+                {
+                    var skillsdata = new Skill()
+                    {
+                        SkillName = _skills.SkillName,
+                        Status = _skills.Status
+
+
+                    };
+                    _ciplatformDbContext.Skills.Add(skillsdata);
+                    _ciplatformDbContext.SaveChanges();
+
+                }
+
+            }
+
+            // display data
+
+            var skills = _ciplatformDbContext.Skills.ToList();
+            ViewBag.skills = skills;
+
+
+
+            // delete data
+
+            var skillsSavedData = _ciplatformDbContext.Skills.FirstOrDefault(id => id.SkillId == skillsId);
+
+            if (skillsSavedData != null)
+            {
+
+                _ciplatformDbContext.Skills.Remove(skillsSavedData);
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
 
             return View();
         }
+
+        public IActionResult EditSkillsData(int skillId)
+        {
+            var data = _ciplatformDbContext.Skills.Where(a => a.SkillId == skillId).ToList().FirstOrDefault();
+
+            if (data != null)
+            {
+
+                var fetchSkillsdetails = new Skill
+                {
+
+                    SkillName = data.SkillName,
+                    Status = data.Status,
+                    SkillId = skillId
+
+
+                };
+
+                return Json(fetchSkillsdetails);
+
+
+
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        public IActionResult SaveSkillsData(int skillsId, string skillsname, string status)
+        {
+
+            var skillsData = _ciplatformDbContext.Skills.Where(y => y.SkillId == skillsId).ToList();
+
+            var query = from r in skillsData select r;
+
+            foreach (Skill r in query)
+            {
+
+                r.SkillName = skillsname;
+                r.Status = status;
+                r.SkillId = skillsId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+            return View();
+        }
+
 
         public IActionResult NoMissionFound()
         {

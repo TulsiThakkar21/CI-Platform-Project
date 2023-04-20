@@ -254,7 +254,7 @@
                                         <label asp-for="Skillname" class="form-label">Skills Name</label>
 
                                         <select asp-for="Skillname" id="select-down" class="form-select" multiple>
-
+@*
                                             @{
                                                 if (ViewBag.userSkills != null)
                                                 {
@@ -269,7 +269,7 @@
 
                                                     }
                                                 }
-                                            }
+                                            }*@
                                         </select>
 
                                         <span asp-validation-for="Skillname" class="text-danger" style="font-size:12px;"></span>
@@ -283,14 +283,14 @@
                                     <br />
                                     <div>
                                         <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                        <input asp-for="Status" id="StatusEdit" type="text" class="form-control" placeholder="Enter status" value="">
+                                        <input asp-for="Status" id="Status" type="text" class="form-control" placeholder="Enter status" value="">
                                         <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn save-btn">Save</button>
+                                    <button type="submit" onclick="saveMissionSkillsData()" class="btn save-btn">Save</button>
 
                                 </div>
                             </div>

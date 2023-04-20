@@ -58,7 +58,7 @@ function missionclick(e) {
         data: {
 
             selectedOptionId: selectedOptionId,
-            skillids: skillids
+            
 
         },
         success: function (data) {
@@ -75,6 +75,36 @@ function missionclick(e) {
 
 }
 
+
+function saveMissionSkillsData() {
+
+    const selectElement = document.getElementById("MissionTitle");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+    console.log(selectedOptionId);
+
+    var status = document.getElementById('Status').value;
+
+    $.ajax({
+        url: '/Home/SaveMSData',
+        type: "POST",
+        data: {
+
+            selectedOptionId: selectedOptionId,
+            skillids: skillids,
+            status: status
+
+        },
+        success: function (data) {
+
+            console.log(data);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+
+}
 
 $(document).ready(function () {
     "use strict";
