@@ -1719,7 +1719,7 @@ namespace CIPlatform.Controllers
 
             var retrivedmedia = _ciplatformDbContext.StoryMedia.Where(a => a.StoryId == data.StoryId).ToList();
 
-            //var retrieve = _db.MissionMedia.Where(i => i.MissionId == selectedOptionId).ToList().FirstOrDefault();
+            //var retrieve = _ciplatformDbContext.MissionMedia.Where(i => i.MissionId == selectedOptionId).ToList().FirstOrDefault();
             var imgpaths = new List<string>();
             if (data != null)
             {
@@ -2273,9 +2273,6 @@ namespace CIPlatform.Controllers
         public IActionResult ChangeUserPass(string newpass)
         {
 
-            ChangePassUserModel _ch = new ChangePassUserModel();
-
-
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
 
@@ -2290,16 +2287,18 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.Users.Update(user);
                 _ciplatformDbContext.SaveChanges();
 
-
-                return RedirectToAction("Index", "Home");
-
-
-            }
-
-            else
-            {
+                
                 return RedirectToAction("EditProfile", "Home");
 
+                
+                
+
+            }
+            else
+            {
+                
+                return RedirectToAction("EditProfile", "Home");
+                
             }
 
 
@@ -3024,7 +3023,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult Admin_Mission()
         {
-         
+            
 
             return View();
         }
@@ -3267,6 +3266,61 @@ namespace CIPlatform.Controllers
         }
 
 
+        public IActionResult Admin_Story(Admin_Story _story)
+        {
+            
+            var storydata = _homeRepository.GetTable1WithTable2Records();
+            ViewBag.storydata = storydata;
+
+            var missionlst = _homeRepository.GetMission();
+            ViewBag.missionlst = missionlst;
+
+            return View();
+        }
+       
+        public IActionResult ViewStoryDetails(int storyId, Admin_Story _story)
+        {
+            // for story
+
+            var usrlst = _ciplatformDbContext.Users.ToList();
+            var missionlst = _ciplatformDbContext.Missions.ToList();
+            var storylst = _ciplatformDbContext.Stories.ToList();
+
+
+            var stories = from s in storylst
+                                  join m in missionlst on s.MissionId equals m.MissionId
+                                  where s.MissionId == m.MissionId
+                                  join u in usrlst on s.UserId equals u.UserId
+                                  where s.UserId == u.UserId
+
+                                  select new
+                                  {
+                                      s,
+                                      m,
+                                      u
+                                  };
+
+            var storytitles = "";
+            var missiontitle = "";
+            var storydesc = "";
+
+            var storylist = stories.ToList();
+            foreach (var itm in storylist) {
+                storytitles = itm.s.Title;
+                missiontitle = itm.m.Title;
+                storydesc = itm.s.Description;
+                
+            }
+            
+            Admin_Story storymodel = new Admin_Story();
+            storymodel.StoryTitle = storytitles;
+            storymodel.MissionTitle = missiontitle;
+            storymodel.Description = storydesc;
+            
+            return Json(storymodel);
+        }
+
+
         public IActionResult NoMissionFound()
         {
             return View();
@@ -3280,5 +3334,224 @@ namespace CIPlatform.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public IActionResult Timesheet()
+        {
+            var userId = HttpContext.Session.GetString("userid");
+            var missions = _ciplatformDbContext.Missions.ToList();
+            var user = _ciplatformDbContext.Users.Include(u => u.Timesheets).Include(u => u.MissionApplications).FirstOrDefault(u => u.UserId == Convert.ToInt64(userId));
+            //var TsData = user.Timesheets.ToList();
+            var TsData = _ciplatformDbContext.Timesheets.Where(a => a.UserId == Convert.ToInt64(userId));
+            var MissionApplications = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == Convert.ToInt64(userId));
+
+            List<Mission> GoalMissions = new List<Mission>();
+            List<Mission> TimeMissions = new List<Mission>();
+            List<Mission> appliedMissions = new List<Mission>();
+            List<Timesheet> TsByTime = new List<Timesheet>();
+            List<Timesheet> TsByGoal = new List<Timesheet>();
+
+            foreach (var mission in MissionApplications)
+            {
+                appliedMissions.AddRange(missions.Where(m => m.MissionId == mission.MissionId));
+            }
+
+
+            foreach (var mission in appliedMissions)
+            {
+                if (mission.MissionType == "Goal")
+                {
+                    GoalMissions.Add(mission);
+                }
+                else
+                {
+                    TimeMissions.Add(mission);
+                }
+            }
+
+            foreach (var Ts in TsData)
+            {
+                if (GoalMissions.Any(gm => gm.MissionId == Ts.MissionId))
+                {
+                    TsByGoal.Add(Ts);
+                }
+                else
+                {
+                    TsByTime.Add(Ts);
+                }
+            }
+
+
+
+
+            var timesheetVM = new TimesheetVM
+            {
+                TimeTs = TsByTime,
+                GoalTs = TsByGoal,
+                GoalMissionsList = GoalMissions,
+                TimeMissionsList = TimeMissions,
+
+            };
+
+
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+
+
+            return View(timesheetVM);
+        }
+
+
+
+        #region TimesheetPost
+        [HttpPost]
+        public bool TimesheetForTime(long timesheetId, string missionId, string VDate, string Vhours, string Vmins, string VNote)
+        {
+            var userId = Convert.ToInt64(HttpContext.Session.GetString("userid"));
+            var hrs = Convert.ToInt32(Vhours);
+            var mins = Convert.ToInt32(Vmins);
+
+
+
+            if (timesheetId == 0)
+            {
+                Timesheet ts = new Timesheet();
+
+                ts.MissionId = Convert.ToInt64(missionId);
+                ts.DateVolunteered = Convert.ToDateTime(VDate);
+                ts.TimesheetTime = new (hrs, mins, 0);
+                ts.Notes = VNote;
+                ts.UserId = userId;
+
+                _ciplatformDbContext.Timesheets.Add(ts);
+                _ciplatformDbContext.SaveChanges();
+            }
+            else
+            {
+                var Timesheet = _ciplatformDbContext.Timesheets.FirstOrDefault(ts => ts.TimesheetId == timesheetId);
+
+                Timesheet.MissionId = Convert.ToInt64(missionId);
+                Timesheet.DateVolunteered = Convert.ToDateTime(VDate);
+                Timesheet.TimesheetTime = new (hrs, mins, 0);
+                Timesheet.Notes = VNote;
+                Timesheet.UserId = userId;
+
+                TempData["success"] = "Timesheet updated successfully";
+
+                _ciplatformDbContext.Timesheets.Update(Timesheet);
+                _ciplatformDbContext.SaveChanges();
+            }
+            return true;
+        }
+
+        [HttpPost]
+        public bool TimesheetForGoal(long timesheetId, string missionId, string gAction, string gDate, string gNotes)
+        {
+
+            var userId = Convert.ToInt64(HttpContext.Session.GetString("userid"));
+
+            if (timesheetId == 0)
+            {
+                Timesheet ts = new Timesheet();
+
+                ts.MissionId = Convert.ToInt64(missionId);
+                ts.DateVolunteered = Convert.ToDateTime(gDate);
+                ts.Action = Convert.ToInt32(gAction);
+                ts.UserId = userId;
+                ts.Notes = gNotes;
+
+                _ciplatformDbContext.Timesheets.Add(ts);
+                _ciplatformDbContext.SaveChanges();
+            }
+            else
+            {
+                var Timesheet = _ciplatformDbContext.Timesheets.FirstOrDefault(ts => ts.TimesheetId == timesheetId);
+
+                Timesheet.TimesheetId = timesheetId;
+                Timesheet.MissionId = Convert.ToInt64(missionId);
+                Timesheet.Action = Convert.ToInt32(gAction);
+                Timesheet.UserId = userId;
+                Timesheet.Notes = gNotes;
+
+                TempData["success"] = "Timesheet updated successfully";
+
+                _ciplatformDbContext.Timesheets.Update(Timesheet);
+                _ciplatformDbContext.SaveChanges();
+
+            }
+            return true;
+
+        }
+
+
+        public JsonResult EditTimeTs(long id)
+        {
+            var Ts = _ciplatformDbContext.Timesheets.FirstOrDefault(ts => ts.TimesheetId == id);
+            var mission = _ciplatformDbContext.Missions.FirstOrDefault(m => m.MissionId == Ts.MissionId);
+
+            var timesheetVM = new TimesheetVM
+            {
+                TimeSheetId = id,
+                MissionId = mission.MissionId,
+                MissionName = mission.Title,
+                StartDate = DateTime.Parse(mission.StartDate?.ToShortDateString()),
+                EndDate = DateTime.Parse(mission.EndDate?.ToShortDateString()),
+                VolunteerDate = Ts.DateVolunteered,
+                VolunteerHrs = Ts.TimesheetTime.GetValueOrDefault().Hour,
+                VolunteerMins = Ts.TimesheetTime.GetValueOrDefault().Minute,
+                Notes = Ts.Notes,
+            };
+            return new JsonResult(timesheetVM);
+        }
+
+
+
+
+        public JsonResult EditGoalTs(long id)
+        {
+
+            var Ts = _ciplatformDbContext.Timesheets.FirstOrDefault(ts => ts.TimesheetId == id);
+            var mission = _ciplatformDbContext.Missions.FirstOrDefault(m => m.MissionId == Ts.MissionId);
+
+            var timesheetVM = new TimesheetVM
+            {
+                TimeSheetId = id,
+                MissionId = mission.MissionId,
+                MissionName = mission.Title,
+                StartDate = DateTime.Parse(mission.StartDate?.ToString("dd-MM-yyyy")),
+                EndDate = DateTime.Parse(mission.EndDate?.ToString("dd-MM-yyyy")),
+                VolunteerDate = Ts.DateVolunteered,
+                GoalAction = Ts.Action,
+                Notes = Ts.Notes,
+            };
+            return new JsonResult(timesheetVM);
+        }
+
+
+
+
+
+        [HttpDelete]
+        public bool DeleteTimesheet(long id)
+        {
+            var ts = _ciplatformDbContext.Timesheets.FirstOrDefault(ts => ts.TimesheetId == id);
+
+            TempData["success"] = "Record deleted successfully.";
+
+            _ciplatformDbContext.Timesheets.Remove(ts);
+            _ciplatformDbContext.SaveChanges();
+
+
+            return true;
+        }
+
+
     }
+
+
 }
+#endregion
+ 

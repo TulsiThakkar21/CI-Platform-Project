@@ -178,15 +178,16 @@
                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                            <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @ViewBag.fullname
                             </button>
 
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">User Edit Profile</a></li>
+                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
+                            
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
                         </ul>
@@ -897,7 +898,7 @@
                                 <textarea class="col-12" id="textAreas"></textarea>
                                 <br>
                                 <br>
-                                <button onclick="commentadd(@item.MissionId)" id="submitButton">Submit</button>
+                                <button onclick="commentadd(@item.MissionId)" class="cmt-btn" id="submitButton">Submit</button>
 
 
                                 <br>

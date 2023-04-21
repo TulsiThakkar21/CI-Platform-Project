@@ -53,62 +53,70 @@
 <body>
 
 
-    <header>
-        <div class="container-fluid">
+   <header>
+    <div class="container-fluid">
 
 
-            <nav class="navbar navbar-expand-md navbar-light ">
+        <nav class="navbar navbar-expand-md navbar-light ">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <li class="nav-item stories">
-                            <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Policy
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Volunteering</a>
-                                <a class="dropdown-item" href="#">Sponsered</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item home">
+                       </li>
+                    <li class="nav-item stories" style="display:flex;">
+                            <a class="nav-link" asp-controller="Home" asp-action="PlatformLandingPage">Home</a>
+                           
+                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                    </li>
+                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Policy
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Volunteering</a>
+                            <a class="dropdown-item" href="#">Sponsered</a>
 
-                        </li>
-                        <li>
-                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
-                        </li>
+                    </li>
+                    <li>
+                        <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+                    </li>
 
-                     
 
-                    </ul>
-                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                </ul>
+                <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
                         <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ViewBag.fullname
+                            @ViewBag.fullname
                         </button>
-                  
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">User Edit Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
-                        </ul>
-               </div>
 
-        </div>
+                    </a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
+                            
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        </ul>
+                </div>
+
+            </div>
         </nav>
-        <hr />
-        </div>
-    </header>
+        <hr>
+
+    </div>
+</header>
 
     <br />
         <div class="container-fluid">

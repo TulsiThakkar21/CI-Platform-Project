@@ -1,0 +1,387 @@
+﻿@{
+    ViewData["Title"] = "TimesheetGet";
+}
+@model CIPlatform.Models.ViewModels.TimesheetVM
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="~/css/timesheet.css" />
+<link rel="stylesheet" href="~/css/platformlandingpage.css">
+    <link rel="stylesheet" href="~/css/storylisting.css">
+      <link rel="stylesheet" href="~/css/editprofile.css">
+    <title>Volunteering Timesheet</title>
+<header>
+    <div class="container-fluid">
+
+
+        <nav class="navbar navbar-expand-md navbar-light ">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item stories">
+                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Policy
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Volunteering</a>
+                            <a class="dropdown-item" href="#">Sponsered</a>
+
+                    </li>
+                    <li>
+                        <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+                    </li>
+
+
+
+                </ul>
+                <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey; " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @ViewBag.fullname
+                        </button>
+
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <hr>
+
+    </div>
+</header>
+<div class="container-fluid TsContainer mt-5">
+
+    <h1>Volunteering Timesheet</h1>
+    <div class="row  mt-4 TsMainRow">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <span class="cardHeaderTxt fs-5"> Volunteering hours</span>
+                    <button class="btn addToTs" data-bs-toggle="modal" data-bs-target="#TsByTime" id="AddToTimeTs"><i class="bi bi-plus-lg"></i>&nbsp; Add </button>
+                </div>
+                <div class="card-body TimesheetTable ">
+                    <table class="table ">
+                        <thead>
+                            <tr style="width: 100%">
+                                <th style="width: 35%" scope="col">Mission</th>
+                                <th style="width: 20%" scope="col">Date</th>
+                                <th style="width: 15%" scope="col">Hours</th>
+                                <th style="width: 15%" scope="col">Minutes</th>
+                                <th style="width: 15%" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="TsByTimeTable">
+                            @foreach (var ts in Model.TimeTs)
+                            {
+                                <tr>
+                                    <td scope="row"> @ts.Mission.Title </td>
+                                    <td> @ts.DateVolunteered.ToShortDateString() </td>
+                                    <td> @ts.TimesheetTime.GetValueOrDefault().Hour</td>
+                                    <td> @ts.TimesheetTime.GetValueOrDefault().Minute</td>
+                                    <td class="text-center TimeEdits">
+                                        <div class="btn-group" role="group">
+                                            <button class="btn editTs" @*onclick="EditTimeTs(@ts.TimesheetId)"*@ data-missionid="@ts.TimesheetId"> <i class="bi bi-pencil-square"></i> </button>
+                                            <button class="btn deleteTs" data-bs-toggle="modal" data-bs-target="#DeleteTs" data-missionid="@ts.TimesheetId"> <i class=" bi bi-trash"></i> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <span class="cardHeaderTxt fs-5">Volunteering goals</span>
+                    <button data-bs-toggle="modal" data-bs-target="#TsByGoal" class="btn addToTs" id="AddToGoalTs"> <i class="bi bi-plus-lg"></i>&nbsp;Add </button>
+                </div>
+                <div class="card-body TimesheetTable    ">
+                    <table class="table">
+                        <thead>
+                            <tr style="width: 100%">
+                                <th style="width: 40%" scope="col">Mission</th>
+                                <th style="width: 20%" scope="col">Date</th>
+                                <th style="width: 20%" scope="col">Action</th>
+                                <th style="width: 20%" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="TsByGoalTable">
+                            @foreach (var ts in Model.GoalTs)
+                            {
+                                <tr>
+                                    <td scope="row"> @ts.Mission.Title </td>
+                                    <td> @ts.DateVolunteered.ToShortDateString() </td>
+                                    <td> @ts.Action </td>
+                                    <td class="text-center GoalEdits">
+                                        <div class="btn-group" role="group">
+                                            <button class="btn editTs" @*onclick="EditGoalTs(@ts.TimesheetId)"*@ data-missionid="@ts.TimesheetId"> <i class="bi bi-pencil-square"></i> </button>
+                                            <button class="btn deleteTs" data-bs-toggle="modal" data-bs-target="#DeleteTs" data-missionid="@ts.TimesheetId"> <i class=" bi bi-trash"></i> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*-------------------------- Add Time Timesheet Modal -----------------------------------*@
+
+
+<div class="modal fade" id="TsByTime" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fw-semibold fs-5" id="staticBackdropLabel">Please input below Volunteering Hours</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="Timesheet">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <label class="form-label" asp-for="TimeMission"> Mission </label>
+                            <select class="form-select" asp-for="TimeMission" id="TsTimeMissionName">
+                                <option value="" selected>Select your mission</option>
+                                @foreach (var mission in Model.TimeMissionsList)
+                                {
+                                    <option value="@mission.MissionId" data-startdate="@mission.StartDate?.ToShortDateString()" data-enddate="@mission.EndDate?.ToShortDateString()">@mission.Title</option>
+                                }
+                            </select>
+                            <span asp-validation-for="TimeMission" id="TMissionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" asp-for="VolunteerDate"> Date Volunteered </label>
+                            <input class="form-control" asp-for="VolunteerDate" placeholder="Select Date" type="date" id="TsTimeVlntDate" />
+                            <span asp-validation-for="VolunteerDate" id="TDateValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" asp-for="VolunteerHrs"> Hours </label>
+                            <input type="number" min="0" max="23" placeholder="Enter spent hours" asp-for="VolunteerHrs" class="form-control" id="TsTimeHrs" />
+                            <span asp-validation-for="VolunteerHrs" id="THoursValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" asp-for="VolunteerMins"> Minutes </label>
+                            <input type="number" min="0" max="59" placeholder="Enter spent minutes" asp-for="VolunteerMins" class="form-control" id="TsTimeMins" />
+                            <span asp-validation-for="VolunteerMins" id="TMinsValidation" class="text-danger"></span>
+                        </div>
+                        <label class="form-label" asp-for="Notes"> Message </label>
+                        <textarea class="form-control" placeholder="Enter your message" asp-for="Notes" rows="5" id="TsTimeNotes"></textarea>
+                        <span asp-validation-for="Notes" id="TNotesValidation" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn cancelTsByTime" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn SaveTsByTime" id="SaveTsByTime" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*-------------------------- Add Goal Timesheet Modal -----------------------------------*@
+
+
+<div class="modal fade" id="TsByGoal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fw-semibold fs-5" id="staticBackdropLabel">Please input below Volunteering Goal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="Timesheet">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="TsGoalMissionName"> Mission </label>
+                            <select class="form-select" asp-for="GoalMission" id="TsGoalMissionName">
+                                <option value="" selected>Select your mission</option>
+                                @foreach (var mission in Model.GoalMissionsList)
+                                {
+                                    <option value="@mission.MissionId" data-startdate="@mission.StartDate?.ToShortDateString()" data-enddate="@mission.EndDate?.ToShortDateString()">@mission.Title</option>
+                                }
+                            </select>
+                            <span asp-validation-for="GoalMission" id="GMissionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="TsGoalAction"> Actions </label>
+                            <input asp-for="GoalAction" type="number" placeholder="Enter actions" class="form-control" id="TsGoalAction" />
+                            <span asp-validation-for="GoalAction" id="GActionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="TsGoalVlntDate"> Date Volunteered </label>
+                            <input asp-for="VolunteerDate" class="form-control" placeholder="Select Date" type="date" id="TsGoalVlntDate" />
+                            <span asp-validation-for="VolunteerDate" id="GDateValidation" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="TsGoalNotes"> Message </label>
+                            <textarea asp-for="Notes" class="form-control" placeholder="Enter your message" rows="5" id="TsGoalNotes"></textarea>
+                            <span asp-validation-for="Notes" id="GNoteValidation" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn cancelTsByTime" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn SaveTsByTime" id="SaveTsByGoal" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*-------------------------- Edit Time Timesheet Modal -----------------------------------*@
+
+<div class="modal fade" id="EditTsByTime" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fw-semibold fs-5" id="staticBackdropLabel">Please input below Volunteering Hours</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="Timesheet">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <input id="TimeTsId" hidden />
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" asp-for="TimeMission"> Mission </label>
+                            <select class="form-select" asp-for="TimeMission" disabled id="TimeMissionName">
+                            </select>
+                            <span asp-validation-for="TimeMission" id="TMissionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" asp-for="VolunteerDate"> Date Volunteered </label>
+                            <input class="form-control" asp-for="VolunteerDate" readonly="readonly" placeholder="Select Date" type="date" id="TimeVlntDate" />
+                            <span asp-validation-for="VolunteerDate" id="TDateValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" asp-for="VolunteerHrs"> Hours </label>
+                            <input type="number" min="0" max="23" placeholder="Enter spent hours" asp-for="VolunteerHrs" class="form-control" id="TimeHrs" />
+                            <span asp-validation-for="VolunteerHrs" id="THoursValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" asp-for="VolunteerMins"> Minutes </label>
+                            <input type="number" min="0" max="59" placeholder="Enter spent minutes" asp-for="VolunteerMins" class="form-control" id="TimeMins" />
+                            <span asp-validation-for="VolunteerMins" id="TMinsValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" asp-for="Notes"> Message </label>
+                            <textarea class="form-control" placeholder="Enter your message" asp-for="Notes" rows="5" id="TimeNotes"></textarea>
+                            <span asp-validation-for="Notes" id="TNotesValidation" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn cancelTsByTime" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn SaveTsByTime" id="EditSaveTsByTime" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*-------------------------- Edit Goal Timesheet Modal -----------------------------------*@
+
+<div class="modal fade" id="EditTsByGoal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fw-semibold fs-5" id="staticBackdropLabel">Please input below Volunteering Goal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="Timesheet">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <input hidden id="GoalTsId" />
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="GoalMissionName"> Mission </label>
+                            <select class="form-select" disabled asp-for="GoalMission" id="GoalMissionName">
+                            </select>
+                            <span asp-validation-for="GoalMission" id="GMissionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="GoalAction"> Actions </label>
+                            <input asp-for="GoalAction" type="number" placeholder="Enter actions" class="form-control" id="GoalAction" />
+                            <span asp-validation-for="GoalAction" id="GActionValidation" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="GoalVlntDate"> Date Volunteered </label>
+                            <input asp-for="VolunteerDate" readonly="readonly" class="form-control" placeholder="Select Date" type="date" id="GoalVlntDate" />
+                            <span asp-validation-for="VolunteerDate" id="GDateValidation" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label class="form-label" for="GoalNotes"> Message </label>
+                            <textarea asp-for="Notes" class="form-control" placeholder="Enter your message" rows="5" id="GoalNotes"></textarea>
+                            <span asp-validation-for="Notes" id="GNoteValidation" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn cancelTsByTime" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn SaveTsByTime" id="EditSaveTsByGoal" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*-------------------------- Delete Timesheet Modal -----------------------------------*@
+
+
+<div class="modal fade" id="DeleteTs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="border:none">
+                <h1 class="modal-title fs-5" style="font-weight:500" id="exampleModalLabel">Delete!!!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you really want to delete this record?
+            </div>
+            <div class="modal-footer" style="border:none">
+                <button type="button" class="btn cancelTsByTime" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="DeleteRecord" onclick="DeletePermanently()" class="btn addToTs">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial"></partial>
+
+<script src="~/js/Timesheet.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+

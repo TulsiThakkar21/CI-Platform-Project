@@ -3,11 +3,17 @@
 *@
 @{
 }
+<head>
+
+    <link rel="stylesheet" href="~/css/platformlandingpage.css">
+     <link rel="stylesheet" href="~/css/storylisting.css">
+
+</head>
 
 @using (Html.BeginForm("_Grid", "Home", FormMethod.Get))
 @if (ViewBag.SearchStatus == 0)
     {
-        @*<div class="alert alert-danger">No Mission Found</div>*@
+        
 
         <div class="container">
 

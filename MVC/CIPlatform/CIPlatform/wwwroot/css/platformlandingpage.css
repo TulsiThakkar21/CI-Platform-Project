@@ -166,21 +166,12 @@
     margin-left: 0%;
     opacity: 0.9;
 }
-/*.citydiv {
-    background-color: black;
-    opacity: 0.7;
-    
-    width: 35%;
-    color: white;
-    border-radius: 21px;
-    margin-top: -47%;
-    margin-left: 65%;
-}*/
+
 .citydivbtn {
     background-color: black;
     opacity: 0.7;
     height: 40px;
-    width: 150%;
+    width: 180px;
     color: white;
     border: 1px solid black;
     border-radius: 21px;
@@ -190,27 +181,8 @@
     position:absolute;
     text-align: center;
 }
-/*.cityname {
-    margin-top: -31%;
-    margin-left: 65%;
-    height:30%;
-    width:100%;
-    font-size:25px;
-}*/
-/*.citydivbtn {
-    background-color: black;
-    opacity: 0.7;
-    height: 40%;
-    width: 30%;
-    color: white;
-    border: 1px solid black;
-    border-radius: 21px;
-    width: 150px;
-    color: white;
-    margin-top: -91%;
-    margin-left: 65%;
-   
-}*/
+
+
 .circle {
     height: 45px;
     width: 45px;
@@ -251,6 +223,111 @@
     
 }
 
+
+.appliedlst {
+
+    background-color: green;
+    height: 30%;
+    
+    color: white;
+    border: 1px solid green;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    width: 150px;
+    margin-top: -315px;
+     
+    text-align: center;
+    margin-left: 13px;
+    opacity: 0.9;
+    
+}
+
+.declinedlst {
+    background-color: red;
+    height: 30%;
+    width: 30%;
+    color: white;
+    border: 1px solid red;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    width: 150px;
+    margin-top: -315px;
+    text-align: center;
+    margin-left: 3%;
+    opacity: 0.9;
+}
+
+.closedlst {
+    background-color: darkorange;
+    height: 40%;
+    width: 30%;
+    color: white;
+    border: 1px solid darkorange;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    width: 150px;
+    margin-top: -315px;
+    text-align: center;
+    margin-left: 3%;
+    opacity: 0.9;
+}
+.citydivbtnlst {
+    background-color: black;
+    opacity: 0.7;
+    height: 40px;
+    width: 150%;
+    color: white;
+    border: 1px solid black;
+    border-radius: 21px;
+    margin-top: -328px;
+    margin-left: 58%;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+
+.circlelst {
+    height: 45px;
+    width: 45px;
+    background-color: black;
+    opacity: 0.7;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -28%;
+    margin-left: 85%;
+}
+
+.heartlst {
+    margin-top: 55%;
+    margin-left: -8%;
+}
+.recommend-cirlst {
+    height: 45px;
+    width: 45px;
+    background-color: #686A6C;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -40%;
+    margin-left: 85%;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.imgreclst {
+    margin-left: -75%;
+}
+
+
+.submit-btn {
+    width: 80px;
+    height: 38px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #F88634;
+    border-radius: 24px;
+    color: #F88634;
+    margin-top: 5%;
+    
+}
 .col-lg-5 {
     display: flex;
     margin-left: 8%;

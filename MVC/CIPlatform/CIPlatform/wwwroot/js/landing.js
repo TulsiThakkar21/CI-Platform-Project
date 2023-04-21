@@ -542,9 +542,18 @@ function changeuserpass() {
         type: 'POST',
         data: { newpass: newpass },
         success: function () {
-            console.log("success");
-
             
+            Swal.fire("Your password has been changed successfully", "Please Login!", "success");
+            
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                
+            })
         }
 
 

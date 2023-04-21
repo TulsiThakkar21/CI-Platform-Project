@@ -1,0 +1,84 @@
+﻿.TsMainRow {
+    --bs-gutter-x: 3em;
+}
+
+h1 {
+    font-weight: lighter;
+}
+
+th {
+    font-weight: 500;
+    border: none;
+}
+
+td {
+    vertical-align: middle;
+    border: none;
+    color: #757575;
+}
+
+.editTs, .editTs:hover {
+    color: #F88634;
+}
+
+.deleteTs, .deleteTs:hover {
+    color: #757575;
+}
+
+.editTs, .deleteTs {
+    font-size: 1.2em;
+    padding: 0.3em;
+}
+
+.TsContainer {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    width: 80% !important;
+}
+
+.card {
+    border-radius: 0;
+    min-height: 60vh;
+    max-height: 60vh;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5em;
+    border: none;
+    background-color: transparent;
+    align-content: center;
+}
+
+.cardHeaderTxt {
+    align-self: center;
+}
+
+.addToTs, .addToTs:hover {
+    border: 1px solid #F88634;
+    color: #F88634;
+    width: 6em;
+    border-radius: 20px !important;
+    margin-right: 2em;
+}
+
+.TimesheetTable {
+    margin-top: 1em;
+    height: inherit;
+    overflow-y: scroll;
+}
+
+.SaveTsByTime, .SaveTsByTime:hover {
+    border: 1px solid #F88634;
+    color: #F88634;
+    border-radius: 20px !important;
+    width: 6em;
+}
+
+.cancelTsByTime, .cancelTsByTime:hover {
+    border: 1px solid #757575;
+    color: #757575;
+    border-radius: 20px !important;
+    width: 6em;
+}
