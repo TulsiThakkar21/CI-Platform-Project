@@ -39,13 +39,29 @@ function storyAdminUser(storyId) {
         data: { storyId: storyId },
         success: function (data) {
            
-            console.log(data);
+            console.log(data.ob1);
             $('#exampleModalStory').modal('show');
 
-            document.getElementById('MissionTitle').value = data.missionTitle;
-            document.getElementById('StoryTitle').value = data.storyTitle;
-            document.getElementById('Description').value = data.description;
+            document.getElementById('MissionTitle').value = data.obj1.missionTitle;
+            document.getElementById('StoryTitle').value = data.obj1.storyTitle;
+            document.getElementById('Description').value = data.obj1.description;
 
+            var filePath = data.obj2;
+           
+            for (var i = 0; i < data.obj2.length; i++) {
+                var img = document.createElement('img');
+                img.src = data.obj2[i];
+                img.id = i;
+                /* img.onclick = removeimg;*/
+
+
+                var photoContainer = document.getElementById('drop-area');
+                photoContainer.appendChild(img);
+
+            }
+            //const para = document.createElement("img");
+            //para.src = "This is a paragraph";
+            //document.body.appendChild(para);
             
 
         },
@@ -59,33 +75,77 @@ function storyAdminUser(storyId) {
 }
 
 
-function abcd() {
-    $('#exampleModalStory').modal('show');
+// approve
+
+function approved(missionId, uid) {
+    $.ajax({
+
+        url: '/Home/ApprovedStory',
+        type: 'POST',
+        data: {
+            missionId: missionId,
+            uid: uid
+
+        },
+        success: function () {
+            console.log("success");
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+
+        }
+    });
+
+
+
 }
 
-function viewStoryDetails(storyId) {
 
-    //var uId = $('#UserEditByAdmin').attr('userId');
-    $('#exampleModalStory').modal('show');
+// decline
+
+function declined(missionId, uid) {
+
     $.ajax({
-        url: '/Home/ViewStoryDetails',
+
+        url: '/Home/DeclinedStory',
         type: 'POST',
-        data: { storyId: storyId },
-        success: function (data) {
-            console.log(data);
-       
+        data: {
+            missionId: missionId,
+            uid: uid
 
-            //document.getElementById('storyid').value = data.userId;
+        },
+        success: function () {
+            console.log("success");
 
-            
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
 
+        }
+    });
+
+
+}
+
+// delete story
+
+function deletestory(storyid) {
+    $.ajax({
+        url: '/Home/Admin_Story',
+        type: 'POST',
+        data: { storyid: storyid },
+        success: function () {
+            location.reload();
+            console.log("success");
         },
         error: function () {
 
             console.log("fail");
-        
+            location.reload();
         }
     });
+
 
 }
 

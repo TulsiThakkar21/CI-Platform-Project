@@ -87,6 +87,9 @@
                     </li>
                     <li>
                         <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
+
+
+
                     </li>
 
 
@@ -100,14 +103,14 @@
                         </button>
 
                     </a>
-                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
-                            
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
-                        </ul>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
+
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                    </ul>
                 </div>
 
             </div>
@@ -119,15 +122,18 @@
 <body>
 
     <div class="main-div">
-     
+
 
         <div class="row">
 
             <div class="col-4">
-                
+
                 <div class="left-div">
                     <div>
                         <img class="img-left" src="~/NewFolder/user-img-large.png" />
+
+                    
+
                         <h4 style="text-align:center; margin-top:5%;">@ViewBag.FirstName @ViewBag.LastName</h4>
 
 
@@ -149,7 +155,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form id="change-form"  method="post">
+                                    <form id="change-form" method="post">
 
                                         <div class="modal-body">
 
@@ -194,7 +200,7 @@
                     </div>
                 </div>
 
-               
+
             </div>
             <div class="col-6" style="margin-left:5%;">
                 @{
@@ -249,7 +255,7 @@
                                 <label for="" class="form-label">My Profile</label>
                                 <textarea id="profiletxt" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                     @ViewBag.ProfileText
-                            </textarea>
+                                    </textarea>
                             </div>
                         </div>
                         <br />
@@ -258,7 +264,7 @@
                                 <label for="" class="form-label">Why I Volunteer?</label>
                                 <textarea id="why" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                     @ViewBag.WhyIVolunteer
-                            </textarea>
+                                    </textarea>
                             </div>
 
                         </div>
@@ -278,7 +284,7 @@
                                             <option style="color:#757575" class="defaultname">
                                                 Please select your country
                                             </option>
-                                            
+
 
                                         }
                                     </select>
@@ -451,8 +457,8 @@
             <div class="col-2"></div>
         </div>
 
-        
-        
+
+
     </div>
     <br />
     <hr />
@@ -587,11 +593,11 @@
     </script>
 
     <script>
-function success()
-{
-            Swal.fire("Our First Alert", "With some body text and success icon!", "success");
+        function success()
+        {
+                    Swal.fire("Our First Alert", "With some body text and success icon!", "success");
 
-}
+        }
     </script>
 
 

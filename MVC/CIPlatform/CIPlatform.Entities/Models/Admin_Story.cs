@@ -28,6 +28,10 @@ namespace CIPlatform.Entities.Models
 
         public string? VidUrl { get; set; }
 
+        public string StoryPath { get; set; } = null!;
+
+        public List <string> Storymedias { get; set; } = null!;
+
         public virtual Mission Mission { get; set; } = null!;
 
         public virtual ICollection<StoryMedium> StoryMedia { get; } = new List<StoryMedium>();

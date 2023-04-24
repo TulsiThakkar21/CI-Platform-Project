@@ -60,8 +60,10 @@ namespace CIPlatform.Repository.Repositories
         public void deleteusers(int uid);
 
         IEnumerable<CmsPage> GetCMSData();
+        public IEnumerable<MissionMedium> GetMissionMedia();
+        public IEnumerable<MissionTheme> GetMissionThemess();
 
-        
+
 
 
     }

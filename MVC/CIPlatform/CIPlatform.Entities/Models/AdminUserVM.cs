@@ -47,7 +47,8 @@ namespace CIPlatform.Entities.Models
         [MinLength(6, ErrorMessage = "Employee Id must be at least 6 characters long")]
         [StringLength(6, ErrorMessage = "Max 6 digits are valid")]
         public string empidEdit { get; set; }
-
-
+        public string Department { get; set; }
+        public string EmployeeId { get; set; }
+        public string ProfileText { get; set; }
     }
 }

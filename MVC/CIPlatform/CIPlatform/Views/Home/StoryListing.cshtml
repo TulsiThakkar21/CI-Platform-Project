@@ -212,21 +212,35 @@
 
     <body>
         <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
-            <div class="row img-story-list" style="background-image:">
+            <img style="width:100% ; filter: brightness(40%)" src="/NewFolder/cropped-img-story.png" />
+<div style=" position: absolute;top: 30%;left: 30%;transform: translate(-50%, -50%);">
+<p class="lorem" style="width:100%">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad
+minim veniam.Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+</p>
+<br />
+
+</div>
 
                 <div class="col-12" style="text-align: center;">
                     
                     
                     <div class="row">
-                    <div class="col-12 content">
-                            <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    <div class="col-12 content" style="position: absolute;top: 30%;left: 30%;transform: translate(-50%, -50%);">
+                            @*<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad 
-                                minim veniam.</p>
+                                minim veniam.</p>*@
                                 <br>
                        @* <button class="share-btn">*@
                              &nbsp;
-
-                            <a asp-action="ShareYourStory" class="share-btn" asp-controller="Home" asp-route-id="">Share your story</a>
+                             <button class="share-btn" style=" margin-left : 39% ; margin-top:70px">
+<a asp-controller="Home" asp-action="ShareYourStory" style="color:white; ">
+Share your story &nbsp;
+<img src="~/NewFolder/right-arrow.png" alt="">
+</a>
+</button>
+                            @*<a asp-action="ShareYourStory" class="share-btn" asp-controller="Home" asp-route-id="">Share your story</a>*@
                                     @*<img src="~/NewFolder/right-arrow2.png" alt="">*@
     
                                 @*</button>*@
@@ -247,6 +261,8 @@
            @{
      foreach (var itemss in ViewBag.listofstories)
                 {
+                    if(@itemss.Status == "approved")
+                    {
         <div class="col-md-6 col-lg-4 main-card">
 
          
@@ -254,12 +270,41 @@
             <div class="card " style="width:100%;" >
             <a style="text-decoration: none ; color:#414141" asp-action="StoryDetails" asp-controller="Home" asp-route-id="@itemss.StoryId">
                 
-                    <img class="card-img-top" src="~/NewFolder/imgenv.png" alt="Card image cap">
+                    
+
+                      @{
+
+
+
+                    foreach (var missionimg in ViewBag.missionmedia)
+                    {
+                        if (missionimg.MissionId == itemss.MissionId)
+                        {
+
+                            <img class="card-img-top" src="~/NewFolder/@missionimg.MediaPath" />
+
+                        }
+                    }
+                }
          
                 
                 <div class="row">
                     <div class="col-12" style="text-align: center; margin-top: -3%;">
-                                        <button class="round-btn">@itemss.Mission.Title</button>
+                                        
+
+                                             @{
+                                    foreach (var missiontheme in ViewBag.missiontheme)
+                                    {
+                                        if (missiontheme.MissionThemeId == itemss.Mission.ThemeId)
+                                        {
+                                            <button class="round-btn btn mission_theme">@missiontheme.Title</button>
+                                        }
+
+
+
+                                    }
+                                }
+
                     </div>
                 </div>
                 <div class="card-body">
@@ -287,6 +332,7 @@
         </div>
         
         }
+              }
               }
               
       </div>

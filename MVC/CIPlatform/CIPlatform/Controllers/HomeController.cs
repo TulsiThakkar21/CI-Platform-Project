@@ -50,57 +50,173 @@ namespace CIPlatform.Controllers
 
             var status = _homeRepository.UserDataforLogin(_loginModel.LoginId, _loginModel.Password);
 
-            if (status != null)
+            var admin = _ciplatformDbContext.Admins.FirstOrDefault(a => a.Email == _loginModel.LoginId && a.Password == _loginModel.Password);
+            
+            if (admin == null)
             {
+                var user = _ciplatformDbContext.Users.FirstOrDefault(u => (u.Email == _loginModel.LoginId.ToLower() && u.Password == _loginModel.Password));
 
-                // string UserIDf = status.UserId.ToString();
 
-                var a = status.UserId.ToString();
-                string UserIDf = a;
-
-                HttpContext.Session.SetString("userid", UserIDf);
-                var abc = HttpContext.Session.GetString("userid");
-
-                long abcd = Convert.ToInt64(abc);
 
                 if (status != null)
                 {
-                    var loginfname = status.FirstName;
-                    var loginlname = status.LastName;
 
-                    TempData["fullname"] = loginfname + loginlname;
+                    // string UserIDf = status.UserId.ToString();
 
+                    var a = status.UserId.ToString();
+                    string UserIDf = a;
+
+                    HttpContext.Session.SetString("userid", UserIDf);
+                    var abc = HttpContext.Session.GetString("userid");
+
+                    long abcd = Convert.ToInt64(abc);
+
+
+
+                    if (status != null)
+                    {
+                        var loginfname = status.FirstName;
+                        var loginlname = status.LastName;
+
+                        TempData["fullname"] = loginfname + loginlname;
+
+                        ViewBag.LoginStatus = 1;
+
+
+                    }
+
+                    return RedirectToAction("PlatformLandingPage", "Home", new { @Id = a });
+                }
+
+                else
+                {
+                    ViewBag.LoginStatus = 0;
+                    //return RedirectToAction("Index", "Home");
+
+                }
+                }
+              
+
+            else
+                {
                     ViewBag.LoginStatus = 1;
+                    string UserIDf = admin.AdminId.ToString();
+
+
+                    HttpContext.Session.SetString("userid", UserIDf);
+
+                    var abc = HttpContext.Session.GetString("userid");
+
+                    var credentials = _loginModel.LoginId + _loginModel.Password;
+
+                    HttpContext.Session.SetString("credentials", credentials);
+
+
+                    long abcd = Convert.ToInt64(abc);
+                    var loginuser = _ciplatformDbContext.Admins.FirstOrDefault(x => (admin.AdminId == abcd));
+                    if (loginuser != null)
+                    {
+                        var loginfname = loginuser.FirstName;
+                        var loginlname = loginuser.LastName;
+
+                        TempData["fullname"] = loginfname + loginlname;
+
+
+
+                        return RedirectToAction("Admin_user", "Home", new { @Id = admin.AdminId });
+
+
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+
+
+
+            
+
+            return View(_loginModel);
+        }
+
+
+
+        public IActionResult AdminUser(AdminUserVM adminuservm, int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
+
+        {
+            if (HttpContext.Session.GetString("credentials") != null)
+            {
+
+
+
+
+                var a = adminuservm.Department;
+                //DELETE USER
+                var users = _homeRepository.GetUsers();
+                ViewBag.users = users;
+                if (userid != 0)
+                {
+                    _homeRepository.deleteusers(userid);
 
 
                 }
 
 
-                return RedirectToAction("PlatformLandingPage", "Home", new { @Id = a });
+                //ADD USERS
 
+                var userData = _ciplatformDbContext.Users.Where(a => a.Email == email).ToList();
+
+
+
+                if (adminuservm.Email != null)
+                {
+                    if (userData.Count == 0)
+                    {
+                        var userdetails = new User
+                        {
+
+                            FirstName = adminuservm.FirstName,
+                            LastName = adminuservm.LastName,
+                            Email = adminuservm.Email,
+                            Password = adminuservm.Password,
+                            Avatar = "",
+                            EmployeeId = adminuservm.EmployeeId.ToString(),
+                            Department = adminuservm.Department,
+                            CityId = Convert.ToInt64(adminuservm.CityId),
+                            CountryId = Convert.ToInt64(adminuservm.CountryId),
+                            ProfileText = adminuservm.ProfileText,
+                            Status = adminuservm.Status
+
+
+                        };
+
+                        _ciplatformDbContext.Users.Add(userdetails);
+
+                        _ciplatformDbContext.SaveChanges();
+                    }
+                }
+
+                return View();
             }
-            else
-            {
-                ViewBag.LoginStatus = 0;
-                //return RedirectToAction("Index", "Home");
-
-            }
-
-            return View(_loginModel);
+            return RedirectToAction("PlatformLandingPage", "Home");
         }
 
-        [HttpGet]
-        public IActionResult Logout()
+
+        public ActionResult Logout()
         {
+
+            HttpContext.Session.Remove("credentials");
             HttpContext.Session.Remove("userid");
             if (HttpContext.Session.GetString("userid") == null)
-
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("PlatformLandingPage", "Home");
+            return RedirectToAction("Registration", "Home");
         }
+
+    
 
 
         public IActionResult Privacy()
@@ -313,194 +429,201 @@ namespace CIPlatform.Controllers
 
             }
 
-            // progress bar
-            var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
-            TempData.Clear();
-            TempData["ProgressBarValue"] = progressBar.GoalValue;
 
-            var progressData = _ciplatformDbContext.GoalMissions.Where(a => a.MissionId == id).ToList();
-            ViewBag.progressData = progressData;
-
-
-
-            int count = 30;
-
-            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-            ViewBag.ids = Convert.ToInt32(ids);
-            var fullname = _homeRepository.GetLoginUser(ids);
-            ViewBag.fullname = fullname;
-
-
-            var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
-            ViewBag.favlist = favlist;
-
-
-            //var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
-            //ViewBag.Ratingdata = Ratingdata;
-
-            var Ratingdata = _ciplatformDbContext.MissionRatings.ToList();
-            ViewBag.Ratingdata = Ratingdata;
-
-            var abc = HttpContext.Session.GetString("userid");
-            if (abc == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-
-
-            var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
-            var outputsf = new List<Mission>();
-            var citylists = _ciplatformDbContext.Cities.ToList();
-
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
-            {
-                string[] cityidarr = null;
-                if (filtercity != null)
-                {
-                    cityidarr = filtercity.Split(",");
-                }
-
-                string[] themefilter = null;
-                if (subcats_id != null)
-                {
-                    themefilter = subcats_id.Split(",");
-                }
-                string[] countryidarr = null;
-                if (filtercountry != null)
-                {
-                    countryidarr = filtercountry.Split(",");
-                }
-                string[] skillidarr = null;
-                if (filterskill != null)
-                {
-                    countryidarr = filterskill.Split(",");
-                }
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
-            }
             else
             {
-                outputsf = missionxx;
+
+                var missionmedia = _homeRepository.GetMissionMedia();
+                ViewBag.missionmedia = missionmedia;
+                // progress bar
+                var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
+                TempData.Clear();
+                TempData["ProgressBarValue"] = progressBar.GoalValue;
+
+                var progressData = _ciplatformDbContext.GoalMissions.Where(a => a.MissionId == id).ToList();
+                ViewBag.progressData = progressData;
+
+
+
+                int count = 30;
+
+                var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+                ViewBag.ids = Convert.ToInt32(ids);
+                var fullname = _homeRepository.GetLoginUser(ids);
+                ViewBag.fullname = fullname;
+
+
+                var favlist = _ciplatformDbContext.FavoriteMissions.Where(a => a.UserId == ids).ToList();
+                ViewBag.favlist = favlist;
+
+
+                //var Ratingdata = _ciplatformDbContext.MissionRatings.Where(a => a.UserId == ids).ToList();
+                //ViewBag.Ratingdata = Ratingdata;
+
+                var Ratingdata = _ciplatformDbContext.MissionRatings.ToList();
+                ViewBag.Ratingdata = Ratingdata;
+
+                var abc = HttpContext.Session.GetString("userid");
+                if (abc == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+
+
+                var missionxx = _ciplatformDbContext.Missions.Where(k => k.Title.Contains(searching) || searching == null).ToList();
+                var outputsf = new List<Mission>();
+                var citylists = _ciplatformDbContext.Cities.ToList();
+
+                if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
+                {
+                    string[] cityidarr = null;
+                    if (filtercity != null)
+                    {
+                        cityidarr = filtercity.Split(",");
+                    }
+
+                    string[] themefilter = null;
+                    if (subcats_id != null)
+                    {
+                        themefilter = subcats_id.Split(",");
+                    }
+                    string[] countryidarr = null;
+                    if (filtercountry != null)
+                    {
+                        countryidarr = filtercountry.Split(",");
+                    }
+                    string[] skillidarr = null;
+                    if (filterskill != null)
+                    {
+                        countryidarr = filterskill.Split(",");
+                    }
+                    outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
+                }
+                else
+                {
+                    outputsf = missionxx;
+                }
+
+                //if (!string.IsNullOrEmpty(filtercity))
+                //{
+
+                // outputsf = _loginRepository.GetMissionWithMissionThemeRecords(cityidarr);
+                //}
+                //else
+                //{
+                // outputsf = missionxx;
+                //}
+
+
+
+                ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+                ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
+                ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
+                ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
+
+                switch (sortOrder)
+                {
+
+                    case "Date":
+                        outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
+                        break;
+                    case "date_desc":
+                        outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
+                        break;
+                    case "LowSeats":
+                        outputsf = outputsf.OrderBy(a => a.Availability).ToList();
+                        break;
+                    case "HighSeats":
+                        outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
+                        break;
+                    default:
+                        outputsf = outputsf.ToList();
+                        break;
+                }
+
+
+                var currentDate = DateTime.Now;
+
+                ViewBag.currentDate = currentDate;
+                //var missionthemexx = _ciplatformDbContext.MissionThemes.Where(a => a.Title.Contains(filter) || filter == null).ToList();
+
+                if (missionxx.Count == 0)
+                {
+                    ViewBag.SearchStatus = 0;
+                }
+
+
+                var mission = _homeRepository.GetMission();
+                var mt = _homeRepository.GetMissionThemes();
+
+                @ViewData["page"] = page;
+                ViewData["PageSize"] = pageSize;
+                if (pageSize != null && page != null)
+                {
+                    ViewData["TotalPages"] = (int)Math.Ceiling((decimal)outputsf.Count / (int)pageSize);
+                    ViewBag.outputsf = outputsf.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
+
+                }
+
+                var missionx = _ciplatformDbContext.Missions.ToList();
+                ViewBag.Missions = missionx;
+
+
+                var countryx = _ciplatformDbContext.Countries.ToList();
+                ViewBag.Country = countryx;
+
+
+                var cityx = _ciplatformDbContext.Cities.ToList();
+                ViewBag.Cities = cityx;
+
+                var themex = _ciplatformDbContext.MissionThemes.ToList();
+                ViewBag.MissionThemes = themex;
+
+
+
+                var skillx = _homeRepository.GetSkillandMissionSkill();
+                ViewBag.MissionSkills = skillx;
+
+                var totalmissions = outputsf.Count();
+                ViewBag.Totalmissions = totalmissions;
+
+                var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
+                ViewBag.missionapplication = missionapplication;
+
+
+                var userslist = _ciplatformDbContext.Users.ToList();
+                ViewBag.userslist = userslist;
+
+                var city = _ciplatformDbContext.Cities.ToList();
+                ViewBag.city = city;
+
+                var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
+                ViewBag.goalmissionlist = goalmissionlist;
+
+
+                // for approved or declined mission
+
+                var usrlst = _ciplatformDbContext.Users.ToList();
+                var missionlst = _ciplatformDbContext.Missions.ToList();
+                var mapplst = _ciplatformDbContext.MissionApplications.ToList();
+
+
+                var appliedmissions = from ma in mapplst
+                                      join m in missionlst on ma.MissionId equals m.MissionId
+                                      where ma.MissionId == m.MissionId
+                                      join u in usrlst on ma.UserId equals u.UserId
+                                      where ma.UserId == u.UserId
+
+                                      select new
+                                      {
+                                          ma,
+                                          m,
+                                          u
+                                      };
+                ViewBag.appliedmissions = appliedmissions;
+
+                return View();
             }
-
-            //if (!string.IsNullOrEmpty(filtercity))
-            //{
-
-            // outputsf = _loginRepository.GetMissionWithMissionThemeRecords(cityidarr);
-            //}
-            //else
-            //{
-            // outputsf = missionxx;
-            //}
-
-
-
-            ViewBag.DateSortParam = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
-            ViewBag.DateSortParamAsc = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.LowestSeats = sortOrder == "LowSeats" ? "HighSeats" : "LowSeats";
-            ViewBag.HighestSeats = sortOrder == "HighSeats" ? "LowSeats" : "HighSeats";
-
-            switch (sortOrder)
-            {
-
-                case "Date":
-                    outputsf = outputsf.OrderBy(a => a.StartDate).ToList();
-                    break;
-                case "date_desc":
-                    outputsf = outputsf.OrderByDescending(a => a.StartDate).ToList();
-                    break;
-                case "LowSeats":
-                    outputsf = outputsf.OrderBy(a => a.Availability).ToList();
-                    break;
-                case "HighSeats":
-                    outputsf = outputsf.OrderByDescending(a => a.Availability).ToList();
-                    break;
-                default:
-                    outputsf = outputsf.ToList();
-                    break;
-            }
-
-
-            var currentDate = DateTime.Now;
-
-            ViewBag.currentDate = currentDate;
-            //var missionthemexx = _ciplatformDbContext.MissionThemes.Where(a => a.Title.Contains(filter) || filter == null).ToList();
-
-            if (missionxx.Count == 0)
-            {
-                ViewBag.SearchStatus = 0;
-            }
-
-
-            var mission = _homeRepository.GetMission();
-            var mt = _homeRepository.GetMissionThemes();
-
-            @ViewData["page"] = page;
-            ViewData["PageSize"] = pageSize;
-            if (pageSize != null && page != null)
-            {
-                ViewData["TotalPages"] = (int)Math.Ceiling((decimal)outputsf.Count / (int)pageSize);
-                ViewBag.outputsf = outputsf.Skip(((int)page - 1) * (int)pageSize).Take((int)pageSize).ToList();
-
-            }
-
-            var missionx = _ciplatformDbContext.Missions.ToList();
-            ViewBag.Missions = missionx;
-
-
-            var countryx = _ciplatformDbContext.Countries.ToList();
-            ViewBag.Country = countryx;
-
-
-            var cityx = _ciplatformDbContext.Cities.ToList();
-            ViewBag.Cities = cityx;
-
-            var themex = _ciplatformDbContext.MissionThemes.ToList();
-            ViewBag.MissionThemes = themex;
-
-
-
-            var skillx = _homeRepository.GetSkillandMissionSkill();
-            ViewBag.MissionSkills = skillx;
-
-            var totalmissions = outputsf.Count();
-            ViewBag.Totalmissions = totalmissions;
-
-            var missionapplication = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == ids).ToList();
-            ViewBag.missionapplication = missionapplication;
-
-
-            var userslist = _ciplatformDbContext.Users.ToList();
-            ViewBag.userslist = userslist;
-
-            var city = _ciplatformDbContext.Cities.ToList();
-            ViewBag.city = city;
-
-            var goalmissionlist = _ciplatformDbContext.GoalMissions.ToList();
-            ViewBag.goalmissionlist = goalmissionlist;
-
-
-            // for approved or declined mission
-
-            var usrlst = _ciplatformDbContext.Users.ToList();
-            var missionlst = _ciplatformDbContext.Missions.ToList();
-            var mapplst = _ciplatformDbContext.MissionApplications.ToList();
-
-
-            var appliedmissions = from ma in mapplst
-                                  join m in missionlst on ma.MissionId equals m.MissionId
-                                  where ma.MissionId == m.MissionId
-                                  join u in usrlst on ma.UserId equals u.UserId
-                                  where ma.UserId == u.UserId
-
-                                  select new
-                                  {
-                                      ma,
-                                      m,
-                                      u
-                                  };
-            ViewBag.appliedmissions = appliedmissions;
-
-            return View();
 
         }
 
@@ -510,7 +633,10 @@ namespace CIPlatform.Controllers
 
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
-
+            //
+            var missionmedia = _homeRepository.GetMissionMedia();
+            ViewBag.missionmedia = missionmedia;
+            //
             var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
             TempData.Clear();
             TempData["ProgressBarValue"] = progressBar.GoalValue;
@@ -1332,6 +1458,11 @@ namespace CIPlatform.Controllers
             var fullname = _homeRepository.GetLoginUser(ids);
             ViewBag.fullname = fullname;
 
+            var missionmedia = _homeRepository.GetMissionMedia();
+            ViewBag.missionmedia = missionmedia;
+
+            var missiontheme = _homeRepository.GetMissionThemess();
+            ViewBag.missiontheme = missiontheme;
 
             return View(listofstories);
 
@@ -2000,9 +2131,14 @@ namespace CIPlatform.Controllers
             }
 
 
+          
+
+            
+
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
-
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
 
 
             var countrylist = _ciplatformDbContext.Countries.ToList();
@@ -2095,8 +2231,7 @@ namespace CIPlatform.Controllers
 
             // CONTACT US
 
-            var fullname = _homeRepository.GetLoginUser(ids);
-            ViewBag.fullname = fullname;
+          
 
             var emailadd = _homeRepository.GetUserEmail(ids);
             ViewBag.emailadd = emailadd;
@@ -2127,7 +2262,22 @@ namespace CIPlatform.Controllers
             }
 
 
+            //for (int i = 0; i < data.Count; i++)
+            //{
+            //    if (data[i].FirstName != null && data[i].LastName != null && data[i].CityId != 0 && data[i].CountryId != 0)
+            //    {
+            //        return RedirectToAction("PlatformLandingPage", "Home");
 
+            //    }
+            //    else
+            //    {
+            //        return View();
+            //    }
+            //}
+
+
+
+  
 
             return View();
 
@@ -2201,6 +2351,9 @@ namespace CIPlatform.Controllers
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
 
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
 
             long cityid = 0;
             if (cityname != null)
@@ -2211,9 +2364,6 @@ namespace CIPlatform.Controllers
 
             if (firstname != null && lastname != null && cityid != 0 && countryid != 0)
             {
-
-
-
                 var userData = _ciplatformDbContext.Users.Where(y => y.UserId == ids).ToList();
 
                 var query = from u in userData select u;
@@ -2266,7 +2416,21 @@ namespace CIPlatform.Controllers
 
             }
 
-            return RedirectToAction("EditProfile", "Home");
+            TempData["citydata"] = cityid;
+            TempData["countrydata"] = countryid;
+
+
+            var uid = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            var data1 = _ciplatformDbContext.Users.FirstOrDefault(a => a.UserId == uid);
+            if (data1.CountryId != 0 || data1.CityId != 0)
+            {
+
+                return RedirectToAction("PlatformLandingPage", "Home");
+            }
+            else {
+                return RedirectToAction("EditProfile", "Home");
+
+            }
         }
 
 
@@ -3200,7 +3364,7 @@ namespace CIPlatform.Controllers
 
             // delete data
 
-            var skillsSavedData = _ciplatformDbContext.Skills.FirstOrDefault(id => id.SkillId == skillsId);
+            var skillsSavedData = _ciplatformDbContext.Skills.Where(id => id.SkillId == skillsId).FirstOrDefault();
 
             if (skillsSavedData != null)
             {
@@ -3266,7 +3430,7 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult Admin_Story(Admin_Story _story)
+        public IActionResult Admin_Story(Admin_Story _story, int storyid)
         {
             
             var storydata = _homeRepository.GetTable1WithTable2Records();
@@ -3274,6 +3438,37 @@ namespace CIPlatform.Controllers
 
             var missionlst = _homeRepository.GetMission();
             ViewBag.missionlst = missionlst;
+
+
+            // delete story data
+
+
+            var storySavedData = _ciplatformDbContext.Stories.FirstOrDefault(id => id.StoryId == storyid);
+            var storymedia = _ciplatformDbContext.StoryMedia.Where(stories => stories.StoryId == storyid).ToList();
+
+            if (storySavedData != null)
+            {
+
+                if (storymedia.Count != 0)
+                {
+                    foreach (var story in storymedia)
+                    {
+                        _ciplatformDbContext.StoryMedia.Remove(story);
+                    }
+                }
+                _ciplatformDbContext.SaveChanges();
+                _ciplatformDbContext.Stories.Remove(storySavedData);
+
+                _ciplatformDbContext.SaveChanges();
+            }
+
+            //if (storySavedData != null)
+            //{
+
+
+            //    _ciplatformDbContext.Stories.Remove(storySavedData);
+            //    _ciplatformDbContext.SaveChanges();
+            //}
 
             return View();
         }
@@ -3285,30 +3480,41 @@ namespace CIPlatform.Controllers
             var usrlst = _ciplatformDbContext.Users.ToList();
             var missionlst = _ciplatformDbContext.Missions.ToList();
             var storylst = _ciplatformDbContext.Stories.ToList();
+            var storymedialst = _ciplatformDbContext.StoryMedia.Where(a=>a.StoryId == storyId).ToList();
 
-
+            ViewBag.storymedialst = storymedialst;
+            var imgpaths = new List<string>();
+            foreach (var a in storymedialst) {
+                imgpaths.Add(a.StoryPath); 
+            
+            }
             var stories = from s in storylst
                                   join m in missionlst on s.MissionId equals m.MissionId
                                   where s.MissionId == m.MissionId
                                   join u in usrlst on s.UserId equals u.UserId
                                   where s.UserId == u.UserId
+                                  join sm in storymedialst on s.StoryId equals sm.StoryId
+                                  where s.StoryId == sm.StoryId
 
-                                  select new
+                          select new
                                   {
                                       s,
                                       m,
-                                      u
+                                      u,
+                                      sm
                                   };
 
             var storytitles = "";
             var missiontitle = "";
             var storydesc = "";
+            var storymedia = "";
 
             var storylist = stories.ToList();
             foreach (var itm in storylist) {
                 storytitles = itm.s.Title;
                 missiontitle = itm.m.Title;
                 storydesc = itm.s.Description;
+                storymedia = itm.sm.StoryPath;
                 
             }
             
@@ -3316,9 +3522,63 @@ namespace CIPlatform.Controllers
             storymodel.StoryTitle = storytitles;
             storymodel.MissionTitle = missiontitle;
             storymodel.Description = storydesc;
+            storymodel.StoryPath = storymedia;
+          
+
             
-            return Json(storymodel);
+            //return Json(storymodel);
+           return Json(new { obj1 = storymodel, obj2 = imgpaths });
         }
+
+        public IActionResult ApprovedStory(int missionId, int uid)
+        {
+            var storydetails = _ciplatformDbContext.Stories.Where(a => a.MissionId == missionId && a.UserId == uid);
+
+
+
+            var query = from r in storydetails select r;
+
+            foreach (Story r in query)
+            {
+
+                r.Status = "approved";
+                r.UserId = uid;
+                r.MissionId = missionId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+
+
+            return RedirectToAction("Admin_Story", "Home");
+        }
+
+
+
+        public IActionResult DeclinedStory(int missionId, int uid)
+        {
+            var storydetails = _ciplatformDbContext.Stories.Where(a => a.MissionId == missionId && a.UserId == uid);
+
+            var query = from r in storydetails select r;
+
+            foreach (Story r in query)
+            {
+
+                r.Status = "declined";
+                r.UserId = uid;
+                r.MissionId = missionId;
+
+            }
+
+            _ciplatformDbContext.SaveChanges();
+
+
+
+            return RedirectToAction("Admin_Story", "Home");
+        }
+
+
 
 
         public IActionResult NoMissionFound()
@@ -3547,6 +3807,9 @@ namespace CIPlatform.Controllers
 
             return true;
         }
+
+  
+
 
 
     }

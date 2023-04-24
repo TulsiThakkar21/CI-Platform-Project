@@ -38,8 +38,8 @@
             border: 2px solid #F88634;
             border-radius: 24px;
             color: #F88634;
-           /* margin-top: 12%;
-            margin-left: 30%;*/
+            /* margin-top: 12%;
+                    margin-left: 30%;*/
         }
 
     </style>
@@ -49,7 +49,7 @@
 
 <div class="wrapper">
     <!-- Sidebar -->
-    <nav id="sidebar" class="collapse-sidebar">
+   <nav id="sidebar" class="collapse-sidebar">
         <div class="sidebar-header">
             <button type="button" id="sidebarCollapse" class="show-sidebar"><i class="fa fa-bars" aria-hidden="true"></i></button>
         </div>
@@ -91,7 +91,7 @@
                 </a>
             </li>
             <li>
-                <a asp-action="Storypage" asp-controller="Admin">
+                <a asp-action="Admin_Story" asp-controller="Home">
                     <i class="fa-solid fa-book-bookmark" aria-hidden="true"></i>
                     <span class='sidebar-menu-text'>Story</span>
                 </a>
@@ -140,18 +140,12 @@
             </div>
         </div>
         <div id="content-admin" class="content-admin">
-            <h1>User</h1>
+            <h1>Story</h1>
             <hr />
             <div class="firstrow">
                 <div class="col-7">
                 </div>
                 <div class="col-6">
-
-                  
-
-
-                   
-
                 </div>
 
             </div>
@@ -171,6 +165,10 @@
                 @{
                     foreach (var story in ViewBag.storydata)
                     {
+                        if(@story.Status == "1")
+                        {
+                            
+
                         <tr>
                             <td>@story.Title</td>
                             <td>@story.Mission.Title</td>
@@ -181,10 +179,10 @@
 
 
                                 <button type="submit" class="btn view-btn" style="color: #f88634; font-size:small" onclick="storyAdminUser(@story.StoryId)">
-                                View    
-                            </button>
+                                    View
+                                </button>
 
-                            <button type="button" class="btn fa fa-check" style="color: green; margin-left:10px; font-size:larger;" id="UserEditByAdmin" onclick="approved(@story.Mission.MissionId, @story.User.UserId)">
+                                <button type="button" class="btn fa fa-check" style="color: green; margin-left:10px; font-size:larger;" id="UserEditByAdmin" onclick="approved(@story.Mission.MissionId, @story.User.UserId)">
                                 </button>
 
 
@@ -193,7 +191,7 @@
 
 
 
-                                <i type="button" onclick="deleteuser(@story.StoryId)" class="btn fa fa-trash" style="font-size:larger" aria-hidden="true"></i>
+                                <i type="button" onclick="deletestory(@story.StoryId)" class="btn fa fa-trash" style="font-size:larger" aria-hidden="true"></i>
 
 
 
@@ -202,6 +200,7 @@
                         </tr>
                     }
                 }
+                        }
 
 
 
@@ -228,36 +227,55 @@
 
                 <input type="hidden" id="storyid" />
 
-               
-
-                                        <div>
-
-                                            <label class="form-label">Mission Title</label>
-                                            <br>
-                                            <input disabled id="MissionTitle" type="text" class="form-control">
-                                            
-
-                                        </div>
-                                        <br />
-                                        <div>
-
-                                            <label class="form-label">Story Title</label>
-                                            <input disabled id="StoryTitle" type="text" class="form-control">
-
-                                        </div>
-                                        <br />
-                                        <div>
-                                            <label  class="form-label">Description</label>
-                                            <input disabled id="Description" class="form-control" style="text-align:left;">
-                                        </div>
 
 
-                                    </div>
+                <div>
 
-           
+                    <label class="form-label">Mission Title</label>
+                    <br>
+                    <input disabled id="MissionTitle" type="text" class="form-control">
+
+
+                </div>
+                <br />
+                <div>
+
+                    <label class="form-label">Story Title</label>
+                    <input disabled id="StoryTitle" type="text" class="form-control">
+
+                </div>
+                <br />
+                <div>
+                    <label class="form-label">Description</label>
+                    <input disabled id="Description" class="form-control" style="text-align:left;">
+                </div>
+                <br />
+                <div>
+                    <label class="form-label">Story Media</label>
+                    @{
+                        if (ViewBag.storymedialst!= null)
+                        {
+                             foreach (var img in ViewBag.storymedialst)
+                        {
+                            <img src="@img.StoryPath" />
+                        }  
+
+                        }
+                     
+
+                    }
+
+                    <div id="drop-area" style="width: 100%;">
+                        </div>
+               @*     <div disabled id="StoryPath" class="form-control" style="text-align:left;">
+                    </div>*@
+                </div>
+
+            </div>
+
+
 
             <div class="modal-footer">
-                
             </div>
         </div>
     </div>

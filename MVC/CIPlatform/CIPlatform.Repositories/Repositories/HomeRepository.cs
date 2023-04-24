@@ -318,7 +318,21 @@ namespace CIPlatform.Repository.Repositories
             return _db.CmsPages.ToList();
         }
 
-      
+
+        public IEnumerable<MissionMedium> GetMissionMedia()
+        {
+
+            return _db.MissionMedia.ToList();
+
+        }
+
+        public IEnumerable<MissionTheme> GetMissionThemess()
+        {
+
+            return _db.MissionThemes.ToList();
+
+        }
+
     }
 
 

@@ -671,15 +671,6 @@ C:\Users\tatva\Desktop\monclone\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPla
 C:\Users\tatva\Desktop\monclone\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
 C:\Users\tatva\Desktop\monclone\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 C:\Users\tatva\Desktop\CIP-Clone\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\ref\CIPlatform.dll
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.AssemblyReference.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfoInputs.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfo.cs
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.CoreCompileInputs.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cache
-C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cs
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\appsettings.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.staticwebassets.runtime.json
@@ -760,6 +751,15 @@ C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Repository.dll
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Entities.pdb
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Repository.pdb
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.AssemblyReference.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfoInputs.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfo.cs
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.CoreCompileInputs.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cs
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
