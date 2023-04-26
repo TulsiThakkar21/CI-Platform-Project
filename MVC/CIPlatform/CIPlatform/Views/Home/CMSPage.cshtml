@@ -30,7 +30,10 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
-
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" accesskey=""
+integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
  
 </head>
 
@@ -153,7 +156,7 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Please input below CMS Details</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="cms-form" asp-action="CMSPage" asp-controller="Home" method="post">
+                                <form id="cms-form" asp-action="AddCMS" asp-controller="Home" method="post">
                                     <div class="modal-body">
 
                                         
@@ -183,9 +186,17 @@
                                         <br />
 
 
-                                        <div>
+                                         <div>
                                             <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="Status" type="text" class="form-control" placeholder="Enter status" value="">
+
+                                           
+
+                                            <select asp-for="Status" class="form-select" name="Status" id="Status">
+                                                <option selected disabled>--Select Status--</option>
+                                                <option value="Active">Active</option>
+                                                <option value="In-Active">In-Active</option>
+                                            </select>
+
                                             <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                                         </div>
@@ -302,9 +313,17 @@
                                         <br />
 
 
-                                        <div>
+                                       <div>
                                             <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="StatusEdit" type="text" class="form-control" placeholder="Enter status" value="">
+
+                                           
+
+                                            <select asp-for="Status" class="form-select" name="Status" id="StatusEdit">
+                                                <option selected disabled>--Select Status--</option>
+                                                <option value="Active">Active</option>
+                                                <option value="In-Active">In-Active</option>
+                                            </select>
+
                                             <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                                         </div>

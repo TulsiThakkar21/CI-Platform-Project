@@ -1,0 +1,421 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CIPlatform.Entities.Models.AdminMissionVM
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Final landing page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/landingpage.css">
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>*@
+    @*
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>*@
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/admin_user.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <link rel="stylesheet" href="~/css/adminmission.css" />
+    <style>
+
+
+        input[type=file] {
+            width: 350px;
+            max-width: 100%;
+            padding: 5px;
+            background: #fff;
+            box-shadow: 0.97px 0.26px 3px #0000000D;
+            border: 1px solid #D9D9D9;
+            border-radius: 3px;
+        }
+
+            input[type=file]::file-
+            
+            
+            
+            
+            
+            or-button {
+                margin-right: 20px;
+                border: none;
+                background: #ffff;
+                padding: 10px 20px;
+                border-radius: 10px;
+                color: black;
+                cursor: pointer;
+                transition: background .2s ease-in-out;
+            }
+
+                input[type=file]::file-selector-button:hover {
+                    background: #ffff;
+                }
+
+        .filterbox {
+            width: 80%;
+            background: #ffff;
+            box-shadow: 0.97px 0.26px 3px #0000000D;
+            border: 1px solid #D9D9D9;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+
+<body>
+   
+    <div class="wrapper">
+        <!-- Sidebar -->
+         <nav id="sidebar" class="collapse-sidebar">
+        <div class="sidebar-header">
+            <button type="button" id="sidebarCollapse" class="show-sidebar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        </div>
+        <ul class="list-unstyled">
+            <li>
+                <a asp-action="Admin_user" asp-controller="Home">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>User</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="CMSPage" asp-controller="Home">
+                    <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>CMS Page</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Admin_Mission" asp-controller="Home">
+                    <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Mission</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Admin_MissionTheme" asp-controller="Home">
+                    <i class="fa-solid fa-box" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Mission Theme</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Admin_Skills" asp-controller="Home">
+                    <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Mission Skill</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Admin_MissionApp" asp-controller="Home">
+                    <i class="fa-solid fa-folder-closed" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Mission Application</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Admin_Story" asp-controller="Home">
+                    <i class="fa-solid fa-book-bookmark" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Story</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="BannerManagementpage" asp-controller="Admin">
+                    <i class="fa-solid fa-spinner" aria-hidden="true"></i>
+                    <span class='sidebar-menu-text'>Banner Management</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        <!-- Page Content -->
+        <div id="layout-admin">
+            <div class="header">
+                <div class="d-flex justify-content-between">
+                    <div class="DateAndTime">
+                        @{
+                            string formattedDate = DateTime.Now.ToString("dddd, MMMM d, yyyy, h:mm tt");
+                        }
+                        <span id="current-time">@formattedDate</span>
+                    </div>
+                    <div class="user">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                    <img class="userimg" src="~/images/BlankProfile3.png">
+
+
+
+
+                                    <span style="margin-left:0.5rem;">User Name</span>
+
+
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-action="LoginPage" asp-controller="User">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="content-admin" class="content-admin">
+                <h1>Edit Mission</h1>
+                <hr />
+                <form id="myform" asp-action="AdminEditMission" asp-controller="Home" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input asp-for="MissionId" />
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br />
+                                <label asp-for="Title" class="form-label">Title</label>
+                                <input asp-for="Title" id="title" type="text" placeholder="Enter Mission Title" class="form-control">
+                                <span asp-validation-for="Title" class="text-danger" style="font-size:12px;"></span>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+                                <label asp-for="OrganizationName" class="form-label">OrganizationName</label>
+                                <input asp-for="OrganizationName" id="OrganizationName" type="text" class="form-control" placeholder="" />
+                                <span asp-validation-for="OrganizationName" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+                                <label asp-for="Availability" class="form-label">Total seats</label>
+                                <input asp-for="Availability" id="Availability" type="text" placeholder="" class="form-control">
+                                <span asp-validation-for="Availability" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="" class="form-label">City</label>
+                                <br>
+                                <select asp-for="CityId" id="selectcty" style="border:1px solid #D9D9D9 ; width:100% ;height :40px" onchange="citychange()">
+                                    @{
+
+                                        <option selected disabled style="color:#757575" class="defaultname">
+                                            please select country
+                                        </option>
+
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="" class="form-label">Country</label>
+                                <br>
+                                <!-- Example single danger button -->
+
+                                <select asp-for="CountryId" name="country" id="selectitm" onchange="countrychange()" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
+                                    @{
+                                        <option selected disabled>Select Country</option>
+                                        foreach (var a in ViewBag.countrylist)
+                                        {
+
+                                            <option id="@a.CountryId" value="@a.CountryId">@a.Name</option>
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="" class="form-label">Availability</label>
+                                <br>
+                                <!-- Example single danger button -->
+
+                                <select asp-for="MissionAvailability" name="MissionAvailability" id="MissionAvailability" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
+
+                                    <option disabled>select</option>
+
+
+                                    <option id="Monthly" value="Monthly">Monthly</option>
+                                    <option id="Weekly" value="Weekly">Weekly</option>
+                                    <option id="Daily" value="Daily">Daily</option>
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="StartDate" class="form-label">StartDate</label>
+                                <input asp-for="StartDate" id="startdate" type="date" placeholder="" class="form-control">
+                                <span asp-validation-for="StartDate" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label asp-for="EndDate" class="form-label">EndDate</label>
+                                <input asp-for="EndDate" id="enddate" type="date" class="form-control" placeholder="">
+                                <span asp-validation-for="EndDate" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="" class="form-label">Theme</label>
+                                <br>
+                                            <select asp-for="ThemeId" id="selecttheme" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
+                                                @{
+
+                                                    <option selected disabled style="color:#757575" class="defaultname">
+                                                        please select theme
+                                                    </option>
+
+                                                    foreach (var theme in ViewBag.themelist)
+                                                    {
+
+                                                        <option value="@theme.MissionThemeId" id="@theme.MissionThemeId">@theme.Title</option>
+
+                                                    }
+
+                                                    }
+                                        </select>
+                            </div>
+                        </div>
+                        <br />
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <label asp-for="Description" class="form-label">Description</label>
+                                <textarea id="description" class="form-control" asp-for="Description"></textarea>
+                                <span asp-validation-for="Description" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label asp-for="OrganizationDetail" class="form-label">OrganizationDetail</label>
+                                <textarea asp-for="OrganizationDetail" id="orgdetail" class="form-control"></textarea>
+                                <span asp-validation-for="OrganizationDetail" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="ShortDescription" class="form-label">Short Description</label>
+                                <textarea asp-for="ShortDescription" id="orgdetail" class="form-control"></textarea>
+                                <span asp-validation-for="ShortDescription" class="text-danger" style="font-size:12px;"></span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="" class="form-label">Mission Type</label>
+                                <br>
+                                <!-- Example single danger button -->
+
+                                <select asp-for="MissionType" name="MissionType" id="MissionType" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
+
+                                    <option disabled>select</option>
+
+
+                                    <option id="Goal" value="Goal">Goal</option>
+                                    <option id="Time" value="Time">Time</option>
+
+
+
+
+                                </select>
+                            </div>
+              
+                            <div class="col-md-3">
+
+                                <label for="images" class="drop-container">Select Images</label>
+                                   <br> 
+                                    <input type="file" name="file" id="fileElem" multiple accept="image/*" />
+
+                                
+                               
+
+                            </div>
+
+                            <div class="col-md-3">
+                               
+                                <label for="images" class="drop-container">Select Documents </label>
+                                 <br>
+                                    <input type="file" multiple id="docs" name="DocumentFile" accept=".doc,.docx,.pdf,.xls" data-file="@ViewBag.asdf" required>
+                               
+                            </div>
+
+                                          <div class="col-md-3">
+
+                              
+                                <label asp-for="SelectedValues" class="form-label">Skills</label>
+
+                                <select class="form-select" asp-for="SelectedValues" id="SelectedValues" style="border:1px solid #D9D9D9 ; width:100% ;height :auto;">
+                                                @{
+
+                                                    <option selected disabled style="color:#757575" class="defaultname">
+                                            select
+                                                    </option>
+
+                                        foreach (var theme in ViewBag.skills)
+                                                    {
+
+                                            <option value="@theme.SkillId" id="@theme.SkillId">@theme.SkillName</option>
+
+                                                    }
+
+                                                    }
+                                        </select>
+
+
+                            </div>
+
+                        </div>
+                        <br />
+                        <br />
+                     
+                        <div style="border: 1px dotted grey; padding-left:2%;padding-bottom:2%;">
+                     
+                            <h5>Selected images</h5>
+                            <br />
+                            @{
+                                if (ViewBag.mediaList.Count != 0)
+                                {
+                                    foreach (var a in ViewBag.mediaList)
+                                    {
+                                        <img src="@a" />
+
+                                    }
+
+                                }
+
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn cancel-btn" data-bs-dismiss="modal" style="margin-top:5%;">Cancel</button>
+                        <input  type="submit" class="btn submit-btn" style="margin-top:5%;"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="~/js/adminMission.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+   
+
+</body>

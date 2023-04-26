@@ -63,6 +63,9 @@ namespace CIPlatform.Repository.Repositories
         public IEnumerable<MissionMedium> GetMissionMedia();
         public IEnumerable<MissionTheme> GetMissionThemess();
 
+        public IEnumerable<MissionMedium> GetMissionMediaJoin(long missionid);
+
+        public void deletemission(int missionid);
 
 
 

@@ -38,6 +38,7 @@ namespace CIPlatform.Entities.Models
         [Required(ErrorMessage = "CountryId is required")]
         public string CountryId { get; set; } = null!;
 
+        public string Avatar { get; set; } 
 
         [Required(ErrorMessage = "Status is required")]
         public string Status { get; set; }
@@ -50,5 +51,6 @@ namespace CIPlatform.Entities.Models
         public string Department { get; set; }
         public string EmployeeId { get; set; }
         public string ProfileText { get; set; }
+        public long uid{ get; set; }
     }
 }

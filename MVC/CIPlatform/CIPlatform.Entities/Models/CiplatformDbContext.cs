@@ -377,6 +377,10 @@ public partial class CiplatformDbContext : DbContext
             entity.Property(e => e.EndDate)
                 .HasColumnType("datetime")
                 .HasColumnName("end_date");
+            entity.Property(e => e.MissionAvailability)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("mission_availability");
             entity.Property(e => e.MissionType)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -481,8 +485,7 @@ public partial class CiplatformDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("document_name");
             entity.Property(e => e.DocumentPath)
-                .HasMaxLength(255)
-                .IsUnicode(false)
+                .HasColumnType("text")
                 .HasColumnName("document_path");
             entity.Property(e => e.DocumentType)
                 .HasMaxLength(255)
@@ -558,7 +561,7 @@ public partial class CiplatformDbContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("media_name");
             entity.Property(e => e.MediaPath)
-                .HasMaxLength(255)
+                .HasColumnType("text")
                 .HasColumnName("media_path");
             entity.Property(e => e.MediaType)
                 .HasMaxLength(255)

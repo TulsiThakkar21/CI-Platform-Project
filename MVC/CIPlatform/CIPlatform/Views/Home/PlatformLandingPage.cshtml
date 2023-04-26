@@ -41,7 +41,7 @@
 
     <link rel="stylesheet" href="~/css/platformlandingpage.css">
     <link rel="stylesheet" href="~/css/storylisting.css">
-    
+
 
 
     <title>Platform Landing Page</title>
@@ -96,7 +96,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
-                            
+
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -206,210 +206,210 @@
                             </div>
                         </div>
 
-                    <div class="filterbox">
+                        <div class="filterbox">
                             <div class=" dropdown uname">
-                            <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Skill <i class="bi bi-chevron-down "></i>
-                            </button>
-                            <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            @foreach (var item in ViewBag.MissionSkills)
-                            {
-                            <li class="dropdown">
-                            <div class="check-box">
-                            <span>
-                            <input type="checkbox" id="@item.MissionId" name="filskill" class="checkbox" value="@item.MissionId" onclick="FilterSkill(@item.MissionId)">
-                            <label for="@item.Skill.SkillName"> @item.Skill.SkillName</label>
-                            </span>
-                            </div>
+                                <button class=" dropdown uname1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Skill <i class="bi bi-chevron-down "></i>
+                                </button>
+                                <i class="fa fa-caret-down dicon" aria-hidden="true"></i>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach (var item in ViewBag.MissionSkills)
+                                    {
+                                        <li class="dropdown">
+                                            <div class="check-box">
+                                                <span>
+                                                    <input type="checkbox" id="@item.MissionId" name="filskill" class="checkbox" value="@item.MissionId" onclick="FilterSkill(@item.MissionId)">
+                                                    <label for="@item.Skill.SkillName"> @item.Skill.SkillName</label>
+                                                </span>
+                                            </div>
 
-                            </li>
-                            }
-                            </ul>
-
-                            </div>
-
-
-                        @* <div class="filterbox">
-                            <div class="navbar-nav ms-4  ">
-
-                            <form id="filter-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
-
-
-                            <select id="filter-select" name="filter" style="border:none; background:none;" onchange="filterChanged()">
-                            <option selected disabled hidden>Theme</option>
-
-                            @{
-
-
-                            @foreach (var item in ViewBag.MissionThemes)
-                            {
-                            <option id=@item.MissionThemeId style="border:none">@item.Title</option>
-
-
-
-
-                            }
-                            }
-                            </select>
-
-                            </form>
-                            </div>
+                                        </li>
+                                    }
+                                </ul>
 
                             </div>
-                            <div class="filterbox">
-                            <div class="navbar-nav ms-4  ">
-                            <select id="filter-dropdown" name="skill" style="border:none; background:none;">
-                            <option selected disabled hidden>Skill</option>
-                            @foreach (var item in ViewBag.MissionSkills)
-                            {
-                            <option style="border:none">@item.Skill</option>
-
-                            }
-                            </select>
-
-                            </div>
-                            </div>*@
-
-                    </div>
-                    <div class="col-lg-1">
-                    </div>
 
 
+                            @* <div class="filterbox">
+                                <div class="navbar-nav ms-4  ">
+
+                                <form id="filter-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get">
 
 
-                </div>
-            </div>
-            <hr class="hr2" style="color:grey;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-11">
+                                <select id="filter-select" name="filter" style="border:none; background:none;" onchange="filterChanged()">
+                                <option selected disabled hidden>Theme</option>
 
-                        
-                        <br>
-                        <div style="display: flex;">
-                            
-                                <label class="explore72"> Explore <b>@ViewBag.Totalmissions</b> missions</label>
-                            
-                            
+                                @{
 
 
-                            @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
-                                <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort by
-                                </a>
+                                @foreach (var item in ViewBag.MissionThemes)
+                                {
+                                <option id=@item.MissionThemeId style="border:none">@item.Title</option>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Newest</a>
-                                <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Oldest</a>
-                                </div>
+
+
+
+                                }
+                                }
+                                </select>
 
                                 </form>
-                            *@
-                            <div class="filterbox-sort col-md-2 col-sm-4 col-xs-4">
-                                <div class="navbar-nav ms-4">
-                                    @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
-
-                                        <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
-
-                                        <option id="sortOrder-select" value="" selected disabled hidden>Sort By</option>
-
-
-                                        <option id="sortOrder" value="newest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Newest</option>
-
-
-                                        <option id="sortOrder" value="oldest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Oldest</option>
-
-
-                                        </select>
-
-                                        </form>*@
-
-
-                                    <select class="form-control" onchange="location = this.value;">
-                                        <option value="" selected>Sort By</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParamAsc })">Oldest</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParam })">Newest</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.LowestSeats })">Lowest Available Seats</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.HighestSeats })">Highest Available Seats</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineNear })">Nearer Deadline</option>
-                                        <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineFar })">Farther Deadline</option>
-                                        @*@Html.DisplayNameFor(model => model.Mission.StartDate)*@
-                                    </select>
-
-
-
-
-
-
+                                </div>
 
                                 </div>
-                            </div>
+                                <div class="filterbox">
+                                <div class="navbar-nav ms-4  ">
+                                <select id="filter-dropdown" name="skill" style="border:none; background:none;">
+                                <option selected disabled hidden>Skill</option>
+                                @foreach (var item in ViewBag.MissionSkills)
+                                {
+                                <option style="border:none">@item.Skill</option>
 
+                                }
+                                </select>
 
-
-                            @* <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort by
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
                                 </div>*@
 
-
-
-
-
-                            <button id="grdbtn" onclick="grid1()">
-                                <img src="~/NewFolder/grid.png" alt="">
-                            </button>
-                            <button id="lstbtn" onclick="list1()">
-                                <img src="~/NewFolder/list.png" alt="">
-                            </button>
+                        </div>
+                        <div class="col-lg-1">
                         </div>
 
-                        @using (Html.BeginForm("PlatformLandingPage", "Home", FormMethod.Get))
-                        {
-                            if (@ViewBag.SearchStatus == 0)
-                            {
-                                @*<div class="alert alert-danger">No Mission Found</div>*@
-
-                                <div class="container">
-
-                                    <div class="combine">
-                                        <h3 class="no-mission">No Mission Found</h3>
-                                        <button class="submit-btn-body">
-                                            Submit new mission
-
-                                            <img src="~/NewFolder/right-arrow.png" alt="">
-
-                                        </button>
-
-                                    </div>
 
 
-                                </div>
-                            }
 
-                        }
-
-                    </div>
-
-                    <div class="col-lg-1">
                     </div>
                 </div>
+                <hr class="hr2" style="color:grey;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-11">
+
+
+                            <br>
+                            <div style="display: flex;">
+
+                                <label class="explore72"> Explore <b>@ViewBag.Totalmissions</b> missions</label>
+
+
+
+
+                                @* <form id="sort-by" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
+                                    <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sort by
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Newest</a>
+                                    <a class="dropdown-item" asp-action="PlatformLandingPage" asp-route-sortOrder="@ViewBag.DateSortParam">Oldest</a>
+                                    </div>
+
+                                    </form>
+                                *@
+                                <div class="filterbox-sort col-md-2 col-sm-4 col-xs-4">
+                                    <div class="navbar-nav ms-4">
+                                        @*<form id="sortOrder-form" action="@Url.Action("PlatformLandingPage", "Home")" method="get" onchange="SortBy()">
+
+                                            <select id="sortOrder-select" name="sortOrder" style="border:none; background:none;">
+
+                                            <option id="sortOrder-select" value="" selected disabled hidden>Sort By</option>
+
+
+                                            <option id="sortOrder" value="newest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Newest</option>
+
+
+                                            <option id="sortOrder" value="oldest" style="border:none" asp-route-sortOrder="@ViewBag.StartDateSortParm">Oldest</option>
+
+
+                                            </select>
+
+                                            </form>*@
+
+
+                                        <select class="form-control" onchange="location = this.value;">
+                                            <option value="" selected>Sort By</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParamAsc })">Oldest</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DateSortParam })">Newest</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.LowestSeats })">Lowest Available Seats</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.HighestSeats })">Highest Available Seats</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineNear })">Nearer Deadline</option>
+                                            <option value="@Url.Action("PlatformLandingPage", new { sortOrder = ViewBag.DeadlineFar })">Farther Deadline</option>
+                                            @*@Html.DisplayNameFor(model => model.Mission.StartDate)*@
+                                        </select>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                                @* <a class="nav-link dropdown-toggle dropdown-sort" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sort by
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>*@
+
+
+
+
+
+                                <button id="grdbtn" onclick="grid1()">
+                                    <img src="~/NewFolder/grid.png" alt="">
+                                </button>
+                                <button id="lstbtn" onclick="list1()">
+                                    <img src="~/NewFolder/list.png" alt="">
+                                </button>
+                            </div>
+
+                            @using (Html.BeginForm("PlatformLandingPage", "Home", FormMethod.Get))
+                            {
+                                if (@ViewBag.SearchStatus == 0)
+                                {
+                                    @*<div class="alert alert-danger">No Mission Found</div>*@
+
+                                    <div class="container">
+
+                                        <div class="combine">
+                                            <h3 class="no-mission">No Mission Found</h3>
+                                            <button class="submit-btn-body">
+                                                Submit new mission
+
+                                                <img src="~/NewFolder/right-arrow.png" alt="">
+
+                                            </button>
+
+                                        </div>
+
+
+                                    </div>
+                                }
+
+                            }
+
+                        </div>
+
+                        <div class="col-lg-1">
+                        </div>
+                    </div>
+                </div>
+
+
+                <br>
+
+
+
             </div>
-
-
-            <br>
-
-
-
-        </div>
 
 
     </header>
@@ -421,74 +421,75 @@
 
         <div class="container-fluid grid-container" style="margin-left:8%; width:80%; margin-top:-3%;">
             <div id="filter_products-grid">
-        <partial name="_Grid" />
-    </div>
-     </div>
-    
-
-   
-
- 
-
-       
-
-          
-
-    <!-- List View -->
-    
-     <div class="list-view active" id="listp">
-          
-
-        <div class="container-fluid">
-                <div id="filter_products-list">
-        <partial name="_List" />
-    </div>
-    </div>
-    </div>
-
-               @*----PAGINATION----*@
-          <div class="pagination">
-        <nav aria-label="Page navigation example">
-        <ul class="pagination">
-        <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-        </a>
-        </li>
-
-        <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-        </a>
-        </li>
-
-        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
-        {
-        
-             <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
-        }
-        <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-        </a>
-        </li>
-        <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-        </a>
-        </li>
-        </ul>
-    </nav>
+                <partial name="_Grid" />
+            </div>
         </div>
 
-        
-          
 
 
 
+
+
+
+
+
+
+        <!-- List View -->
+
+        <div class="list-view active" id="listp">
+
+
+            <div class="container-fluid">
+                <div id="filter_products-list">
+                    <partial name="_List" />
+                </div>
+            </div>
+        </div>
+        <br />
+        @*----PAGINATION----*@
+        @* <div class="pagination">
+            <nav aria-label="Page navigation example">
+            <ul class="pagination">
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+            </a>
+            </li>
+
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+            </a>
+            </li>
+
+            @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+            {
+
+            <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]">@i</a></li>
+            }
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+            </a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+            </a>
+            </li>
+            </ul>
+            </nav>
+            </div>
+        *@
+
+
+       
+    </div>
+
+    
 
 
     <!-- Javascript -->
@@ -514,7 +515,10 @@
         function filterChanged()
         {
             $('#filter-form').change(function () {
-                const filter = $('#filter-select').val();
+                const filter = $('#filter-
+
+
+').val();
 
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.set('filter', filter);
@@ -629,162 +633,162 @@
         }
 
 
-       
+
     </script>
 
 
 
-        <script>
-            var linkurl;
-            function SortBySubcat(s) {
-                var subcats_id = '';
+    <script>
+                    var linkurl;
+                    function SortBySubcat(s) {
+                        var subcats_id = '';
 
-                $('[name="subcats"]').each(function (i, e) {
-                    if ($(e).is(':checked')) {
+                        $('[name="subcats"]').each(function (i, e) {
+                            if ($(e).is(':checked')) {
 
-                        var comma = subcats_id.length === 0 ? '' : ',';
-                        subcats_id += (comma + e.value);
+                                var comma = subcats_id.length === 0 ? '' : ',';
+                                subcats_id += (comma + e.value);
+                            }
+                            var b = document.getElementById('listp').style.display;
+                            if (b == 'none') {
+                                linkurl = '/Home/_Grid'
+                            }
+                            else {
+                                linkurl = '/Home/_List'
+                            }
+                        });
+
+                        jQuery.ajax({
+                            type: "GET",
+                            url: linkurl,
+                            data: { subcats_id: subcats_id, },
+                            success: function (data) {
+                                if (linkurl == '/Home/_Grid') {
+
+                                    $('#filter_products-grid').html(data);
+                                }
+                                else {
+                                    $('#filter_products-list').html(data);
+                                }
+
+                                console.log("successs");
+                            }
+                        });
                     }
-                    var b = document.getElementById('listp').style.display;
-                    if (b == 'none') {
-                        linkurl = '/Home/_Grid'
+
+                    function FilterCountry(s) {
+                        var filterCountry = '';
+                        $('[name="filcountry"]').each(function (i, e) {
+                            if ($(e).is(':checked')) {
+
+                                var comma = filterCountry.length === 0 ? '' : ',';
+                                filterCountry += (comma + e.value);
+                            }
+                            var b = document.getElementById('listp').style.display;
+                            if (b == 'none') {
+                                linkurl = '/Home/_Grid'
+                            }
+                            else {
+                                linkurl = '/Home/_List'
+                            }
+                        });
+
+                        jQuery.ajax({
+                            type: "GET",
+                            url: linkurl,
+                            data: { filterCountry: filterCountry, },
+                            success: function (data) {
+
+                                if (linkurl == '/Home/_Grid') {
+
+                                    $('#filter_products-grid').html(data);
+                                }
+                                else {
+                                    $('#filter_products-list').html(data);
+                                }
+
+
+                                console.log("successs");
+                            }
+                        });
                     }
-                    else {
-                        linkurl = '/Home/_List'
-                    }
-                });
+                    function FilterSkill(s) {
+            var filterSkill = '';
+            $('[name="filskill"]').each(function (i, e) {
+                if ($(e).is(':checked')) {
 
-                jQuery.ajax({
-                    type: "GET",
-                    url: linkurl,
-                    data: { subcats_id: subcats_id, },
-                    success: function (data) {
-                        if (linkurl == '/Home/_Grid') {
+                    var comma = filterSkill.length === 0 ? '' : ',';
+                    filterSkill += (comma + e.value);
+                }
+                var b = document.getElementById('listp').style.display;
+                if (b == 'none') {
+                    linkurl = '/Home/_Grid'
+                }
+                else {
+                    linkurl = '/Home/_List'
+                }
+            });
 
-                            $('#filter_products-grid').html(data);
-                        }
-                        else {
-                            $('#filter_products-list').html(data);
-                        }
+            jQuery.ajax({
+                type: "GET",
+                url: linkurl,
+                data: { filterSkill: filterSkill, },
+                success: function (data) {
+                    if (linkurl == '/Home/_Grid') {
 
-                        console.log("successs");
-                    }
-                });
-            }
-
-            function FilterCountry(s) {
-                var filterCountry = '';
-                $('[name="filcountry"]').each(function (i, e) {
-                    if ($(e).is(':checked')) {
-
-                        var comma = filterCountry.length === 0 ? '' : ',';
-                        filterCountry += (comma + e.value);
-                    }
-                    var b = document.getElementById('listp').style.display;
-                    if (b == 'none') {
-                        linkurl = '/Home/_Grid'
-                    }
-                    else {
-                        linkurl = '/Home/_List'
-                    }
-                });
-
-                jQuery.ajax({
-                    type: "GET",
-                    url: linkurl,
-                    data: { filterCountry: filterCountry, },
-                    success: function (data) {
-
-                        if (linkurl == '/Home/_Grid') {
-
-                            $('#filter_products-grid').html(data);
-                        }
-                        else {
-                            $('#filter_products-list').html(data);
-                        }
-
-
-                        console.log("successs");
-                    }
-                });
-            }
-            function FilterSkill(s) {
-    var filterSkill = '';
-    $('[name="filskill"]').each(function (i, e) {
-        if ($(e).is(':checked')) {
-
-            var comma = filterSkill.length === 0 ? '' : ',';
-            filterSkill += (comma + e.value);
-        }
-        var b = document.getElementById('listp').style.display;
-        if (b == 'none') {
-            linkurl = '/Home/_Grid'
-        }
-        else {
-            linkurl = '/Home/_List'
-        }
-    });
-
-    jQuery.ajax({
-        type: "GET",
-        url: linkurl,
-        data: { filterSkill: filterSkill, },
-        success: function (data) {
-            if (linkurl == '/Home/_Grid') {
-
-                $('#filter_products-grid').html(data);
-            }
-            else {
-                $('#filter_products-list').html(data);
-            }
-
-            console.log("successs");
-        }
-    });
-}
-
-
-            function FilterCity(s) {
-                var filtercity = '';
-                $('[name="filcity"]').each(function (i, e) {
-                    if ($(e).is(':checked')) {
-
-                        var comma = filtercity.length === 0 ? '' : ',';
-                        filtercity += (comma + e.value);
-                    }
-                    var b = document.getElementById('listp').style.display;
-                    if (b == 'none') {
-                        linkurl = '/Home/_Grid'
+                        $('#filter_products-grid').html(data);
                     }
                     else {
-                        linkurl = '/Home/_List'
+                        $('#filter_products-list').html(data);
                     }
-                });
+
+                    console.log("successs");
+                }
+            });
+        }
+
+
+                    function FilterCity(s) {
+                        var filtercity = '';
+                        $('[name="filcity"]').each(function (i, e) {
+                            if ($(e).is(':checked')) {
+
+                                var comma = filtercity.length === 0 ? '' : ',';
+                                filtercity += (comma + e.value);
+                            }
+                            var b = document.getElementById('listp').style.display;
+                            if (b == 'none') {
+                                linkurl = '/Home/_Grid'
+                            }
+                            else {
+                                linkurl = '/Home/_List'
+                            }
+                        });
 
 
 
 
-                jQuery.ajax({
-                    type: "GET",
-                    url: linkurl,
-                    data: { filtercity: filtercity, },
-                    success: function (data) {
+                        jQuery.ajax({
+                            type: "GET",
+                            url: linkurl,
+                            data: { filtercity: filtercity, },
+                            success: function (data) {
 
-                        if (linkurl == '/Home/_Grid') {
+                                if (linkurl == '/Home/_Grid') {
 
-                            $('#filter_products-grid').html(data);
-                        }
-                        else {
-                            $('#filter_products-list').html(data);
-                        }
+                                    $('#filter_products-grid').html(data);
+                                }
+                                else {
+                                    $('#filter_products-list').html(data);
+                                }
 
 
-                        console.log("successs");
+                                console.log("successs");
+                            }
+                        });
                     }
-                });
-            }
 
-        </script>
+    </script>
 
 
 

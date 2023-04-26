@@ -40,7 +40,14 @@ namespace CIPlatform.Controllers
         public IActionResult Index()
         {
             LoginModel _loginModel = new LoginModel();
+
+
+            var bannerdata = _ciplatformDbContext.Banners.ToList();
+            ViewBag.bannerdata = bannerdata;
+
             return View(_loginModel);
+
+
         }
         [HttpPost]
         public IActionResult Index(LoginModel _loginModel)
@@ -85,7 +92,7 @@ namespace CIPlatform.Controllers
 
                     }
 
-                    return RedirectToAction("PlatformLandingPage", "Home", new { @Id = a });
+                    return RedirectToAction("EditProfile", "Home", new { @Id = a });
                 }
 
                 else
@@ -131,77 +138,23 @@ namespace CIPlatform.Controllers
                     {
                         return View();
                     }
-                }
+
+                
+                
+         }
 
 
 
-            
+            var bannerdata = _ciplatformDbContext.Banners.ToList();
+            ViewBag.bannerdata = bannerdata;
+
 
             return View(_loginModel);
         }
 
 
 
-        public IActionResult AdminUser(AdminUserVM adminuservm, int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, bool status)
-
-        {
-            if (HttpContext.Session.GetString("credentials") != null)
-            {
-
-
-
-
-                var a = adminuservm.Department;
-                //DELETE USER
-                var users = _homeRepository.GetUsers();
-                ViewBag.users = users;
-                if (userid != 0)
-                {
-                    _homeRepository.deleteusers(userid);
-
-
-                }
-
-
-                //ADD USERS
-
-                var userData = _ciplatformDbContext.Users.Where(a => a.Email == email).ToList();
-
-
-
-                if (adminuservm.Email != null)
-                {
-                    if (userData.Count == 0)
-                    {
-                        var userdetails = new User
-                        {
-
-                            FirstName = adminuservm.FirstName,
-                            LastName = adminuservm.LastName,
-                            Email = adminuservm.Email,
-                            Password = adminuservm.Password,
-                            Avatar = "",
-                            EmployeeId = adminuservm.EmployeeId.ToString(),
-                            Department = adminuservm.Department,
-                            CityId = Convert.ToInt64(adminuservm.CityId),
-                            CountryId = Convert.ToInt64(adminuservm.CountryId),
-                            ProfileText = adminuservm.ProfileText,
-                            Status = adminuservm.Status
-
-
-                        };
-
-                        _ciplatformDbContext.Users.Add(userdetails);
-
-                        _ciplatformDbContext.SaveChanges();
-                    }
-                }
-
-                return View();
-            }
-            return RedirectToAction("PlatformLandingPage", "Home");
-        }
-
+      
 
         public ActionResult Logout()
         {
@@ -227,6 +180,9 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult LostPass()
         {
+            var bannerdata = _ciplatformDbContext.Banners.ToList();
+            ViewBag.bannerdata = bannerdata;
+
             return View();
         }
 
@@ -304,6 +260,9 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult ResetPass()
         {
+            var bannerdata = _ciplatformDbContext.Banners.ToList();
+            ViewBag.bannerdata = bannerdata;
+
             return View();
         }
 
@@ -361,6 +320,9 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult Registration()
         {
+            var bannerdata = _ciplatformDbContext.Banners.ToList();
+            ViewBag.bannerdata = bannerdata;
+
             return View();
         }
 
@@ -622,6 +584,8 @@ namespace CIPlatform.Controllers
                                       };
                 ViewBag.appliedmissions = appliedmissions;
 
+
+
                 return View();
             }
 
@@ -630,7 +594,10 @@ namespace CIPlatform.Controllers
         public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
             
-
+            ViewBag.subcats_id = subcats_id;
+            ViewBag.filtercity = filtercity;
+            ViewBag.filtercountry = filtercountry;
+            ViewBag.filterskill = filterskill;
             var userslist = _ciplatformDbContext.Users.ToList();
             ViewBag.userslist = userslist;
             //
@@ -827,7 +794,10 @@ namespace CIPlatform.Controllers
 
         public IActionResult _List(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
-
+            ViewBag.subcats_id = subcats_id;
+            ViewBag.filtercity = filtercity;
+            ViewBag.filtercountry = filtercountry;
+            ViewBag.filterskill = filterskill;
 
 
             int count = 30;
@@ -2130,11 +2100,6 @@ namespace CIPlatform.Controllers
 
             }
 
-
-          
-
-            
-
             var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             ViewBag.ids = Convert.ToInt32(ids);
             var fullname = _homeRepository.GetLoginUser(ids);
@@ -2229,6 +2194,10 @@ namespace CIPlatform.Controllers
             ViewBag.userSkills = userSkills;
 
 
+            // for my profile check
+
+            ViewBag.data = data;
+
             // CONTACT US
 
           
@@ -2277,7 +2246,7 @@ namespace CIPlatform.Controllers
 
 
 
-  
+
 
             return View();
 
@@ -2345,6 +2314,8 @@ namespace CIPlatform.Controllers
             return citys;
 
         }
+        
+        
         [HttpPost]
         public IActionResult SaveUserData(string availability, int countryid, string cityname, string[] skillids, string firstname, string lastname, int id, string empId, string title, string dept, string profile, string whyI, int cityId, string linkedInurl)
         {
@@ -2422,15 +2393,16 @@ namespace CIPlatform.Controllers
 
             var uid = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             var data1 = _ciplatformDbContext.Users.FirstOrDefault(a => a.UserId == uid);
-            if (data1.CountryId != 0 || data1.CityId != 0)
-            {
+            //if (data1.CountryId != 0 || data1.CityId != 0)
+            //{
 
-                return RedirectToAction("PlatformLandingPage", "Home");
-            }
-            else {
-                return RedirectToAction("EditProfile", "Home");
+            //    return RedirectToAction("PlatformLandingPage", "Home");
+            //}
+            //else {
+            //    return RedirectToAction("EditProfile", "Home");
 
-            }
+            //}
+            return RedirectToAction("EditProfile", "Home");
         }
 
 
@@ -2850,44 +2822,89 @@ namespace CIPlatform.Controllers
 
 
 
+        //public IActionResult Admin_user(int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, string cityid, int countryid, string protxt, string status)
+        // {
+
+        //    // Add user
+
+        //    var userData = _ciplatformDbContext.Users.Where(a => a.Email == email).ToList();
+
+        //    if (fname != null && lname != null && email != null && pass != null && cityid != null && countryid != 0 && status != null)
+        //    {
+        //        var citydata = _ciplatformDbContext.Cities.FirstOrDefault(a => a.Name == cityid);
+        //        var cid = citydata.CityId;
+        //        if (userData.Count == 0)
+        //        {
+        //            var userdetails = new User
+        //            {
+
+        //                FirstName = fname,
+        //                LastName = lname,
+        //                Email = email,
+        //                Password = pass,
+        //                Avatar = avtar,
+        //                EmployeeId = empid,
+        //                Department = dept,
+        //                CityId = cid,
+        //                CountryId = countryid,
+        //                ProfileText = protxt,
+        //                Status = status
+
+
+        //            };
+
+        //            _ciplatformDbContext.Users.Add(userdetails);
+
+        //            _ciplatformDbContext.SaveChanges();
+        //        }
+        //    }
+
+
+
+
+        //    var users = _homeRepository.GetUsers();
+        //    ViewBag.users = users;
+
+        //    // delete user
+
+        //    if (userid != 0)
+        //    {
+        //        _homeRepository.deleteusers(userid);
+
+
+        //    }
+
+
+        //    // for city country
+
+        //    var countrylist = _ciplatformDbContext.Countries.ToList();
+        //    ViewBag.countrylist = countrylist;
+        //    if (countryid != 0)
+        //    {
+        //        var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+        //        ViewBag.citylist = citylist;
+        //    }
+        //    else
+        //    {
+
+        //        var citylist = _ciplatformDbContext.Cities.ToList();
+        //        ViewBag.citylist = citylist;
+        //    }
+
+
+
+        //    return View();
+        //}
+
+
+
         public IActionResult Admin_user(int userid, string fname, string lname, string email, string pass, string avtar, string empid, string dept, int cityid, int countryid, string protxt, string status)
         {
-           
-            // Add user
 
-            var userData = _ciplatformDbContext.Users.Where(a => a.Email == email).ToList();
 
-            if (fname != null && lname != null && email != null && pass != null && cityid != 0 && countryid != 0 && status != null)
-            {
-                if (userData.Count == 0)
-                {
-                    var userdetails = new User
-                    {
 
-                        FirstName = fname,
-                        LastName = lname,
-                        Email = email,
-                        Password = pass,
-                        Avatar = avtar,
-                        EmployeeId = empid,
-                        Department = dept,
-                        CityId = cityid,
-                        CountryId = countryid,
-                        ProfileText = protxt,
-                        Status = status
-                        
 
-                    };
 
-                    _ciplatformDbContext.Users.Add(userdetails);
-
-                    _ciplatformDbContext.SaveChanges();
-                }
-            }
-
-            
-
-           
             var users = _homeRepository.GetUsers();
             ViewBag.users = users;
 
@@ -2902,7 +2919,62 @@ namespace CIPlatform.Controllers
 
             return View();
         }
+        public IActionResult AddAdminuser(AdminUserVM adminuservmodel)
+        {
 
+
+
+            var adminuservmodel2 = new User
+            {
+
+                FirstName = adminuservmodel.FirstName,
+                LastName = adminuservmodel.LastName,
+                Email = adminuservmodel.Email,
+                Password = adminuservmodel.Password,
+                Avatar = adminuservmodel.Avatar,
+                EmployeeId = adminuservmodel.EmployeeId,
+                Department = adminuservmodel.Department,
+                //CityId = adminuservmodel.CityId,
+                //CountryId = adminuservmodel.CountryId,
+                ProfileText = adminuservmodel.ProfileText,
+                Status = adminuservmodel.Status
+
+
+            };
+
+            _ciplatformDbContext.Users.Add(adminuservmodel2);
+
+            _ciplatformDbContext.SaveChanges();
+
+
+
+
+            return RedirectToAction("Admin_user");
+
+
+        }
+        public List<string> Admin_userCityCountry(int countryid, string cityname)
+        {
+
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+
+            var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+            ViewBag.citylist = citylist;
+
+
+            List<string> citys = new List<string>();
+            foreach (var a in citylist)
+            {
+
+                citys.Add(a.Name);
+            }
+
+
+
+            return citys;
+
+        }
 
 
         public IActionResult EditAdminUser(int uId)
@@ -2975,7 +3047,34 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult CMSPage(CMSPageVM _cms, int cmsid)
+        public IActionResult CMSPage(int cmsid)
+        {
+           
+            var cmsData = _homeRepository.GetCMSData();
+            ViewBag.cmsData = cmsData;
+
+            
+            // delete data
+
+
+            var cmsSavedData = _ciplatformDbContext.CmsPages.FirstOrDefault(id => id.CmsPageId == cmsid);
+            ModelState.Clear();
+            if (cmsSavedData != null)
+            {
+
+
+                _ciplatformDbContext.CmsPages.Remove(cmsSavedData);
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
+            return View();
+
+        }
+
+
+        public IActionResult AddCMS(CMSPageVM _cms)
         {
             var cmsdetails = _ciplatformDbContext.CmsPages.Where(a => a.Title == _cms.Title);
 
@@ -3002,29 +3101,9 @@ namespace CIPlatform.Controllers
                 }
 
             }
-            var cmsData = _homeRepository.GetCMSData();
-            ViewBag.cmsData = cmsData;
 
-            
-            // delete data
-
-
-            var cmsSavedData = _ciplatformDbContext.CmsPages.FirstOrDefault(id => id.CmsPageId == cmsid);
-
-            if (cmsSavedData != null)
-            {
-
-
-                _ciplatformDbContext.CmsPages.Remove(cmsSavedData);
-                _ciplatformDbContext.SaveChanges();
-            }
-
-
-
-            return View();
-
+            return RedirectToAction("CMSPage", "Home");
         }
-
 
         public IActionResult EditCMSData(int CMSId)
         {
@@ -3065,26 +3144,50 @@ namespace CIPlatform.Controllers
 
             var query = from r in cmsData select r;
 
-            foreach (CmsPage r in query)
+            if (title != null && desc != null && slug != null && status!=null)
             {
+                foreach (CmsPage r in query)
+                {
 
-                r.Title = title;
-                r.Description = desc;
-                r.Slug = slug;
-                r.Status = status;
-                r.CmsPageId = cmsId;
+                    r.Title = title;
+                    r.Description = desc;
+                    r.Slug = slug;
+                    r.Status = status;
+                    r.CmsPageId = cmsId;
 
+                }
             }
-
             _ciplatformDbContext.SaveChanges();
 
             return View();
         }
 
 
-        public IActionResult Admin_MissionTheme(Admin_MTVM _adMT, int mtId)
+        public IActionResult Admin_MissionTheme(int mtId)
         {
 
+            var missionTh = _homeRepository.GetMissionThemes();
+            ViewBag.missionTh = missionTh;
+
+
+            // delete data
+
+            var missiontheme = _ciplatformDbContext.MissionThemes.Include(u => u.Missions).Where(u => u.MissionThemeId == mtId).ToList();
+
+            var mt = _ciplatformDbContext.MissionThemes.FirstOrDefault(missiontheme => missiontheme.MissionThemeId == mtId);
+            ModelState.Clear();
+            if (mt != null)
+            {
+                mt.DeletedAt = DateTime.Now;
+                _ciplatformDbContext.SaveChanges();
+            }
+
+            return View();
+        }
+
+
+        public IActionResult Admin_AddMTheme(Admin_MTVM _adMT)
+        {
             var mtdetails = _ciplatformDbContext.MissionThemes.Where(a => a.Title == _adMT.Title);
 
             if (_adMT.Title != null && _adMT.Status != 0)
@@ -3095,7 +3198,7 @@ namespace CIPlatform.Controllers
                 {
                     var mtdata = new MissionTheme()
                     {
-                        Title = _adMT.Title,    
+                        Title = _adMT.Title,
                         Status = (byte)_adMT.Status
 
 
@@ -3109,29 +3212,8 @@ namespace CIPlatform.Controllers
 
             }
 
-
-            var missionTh = _homeRepository.GetMissionThemes();
-            ViewBag.missionTh = missionTh;
-
-
-            // delete data
-
-
-            var mtSavedData = _ciplatformDbContext.MissionThemes.FirstOrDefault(id => id.MissionThemeId == mtId);
-
-            if (mtSavedData != null)
-            {
-
-
-                _ciplatformDbContext.MissionThemes.Remove(mtSavedData);
-                _ciplatformDbContext.SaveChanges();
-            }
-
-
-
-            return View();
+            return RedirectToAction("Admin_MissionTheme", "Home");
         }
-
 
         public IActionResult EditMTData(int mtid)
         {
@@ -3169,15 +3251,17 @@ namespace CIPlatform.Controllers
 
             var query = from r in mthemeData select r;
 
-            foreach (MissionTheme r in query)
+            if (title != null && status != null)
             {
+                foreach (MissionTheme r in query)
+                {
 
-                r.Title = title;         
-                r.Status = (byte)status;
-                r.MissionThemeId = mtid;
+                    r.Title = title;
+                    r.Status = (byte)status;
+                    r.MissionThemeId = mtid;
 
+                }
             }
-
             _ciplatformDbContext.SaveChanges();
 
             return View();
@@ -3185,14 +3269,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult Admin_Mission()
-        {
-            
-
-            return View();
-        }
-
-
+     
 
         public IActionResult Admin_MissionApp(Admin_MAppVM _mapp)
         {
@@ -3296,32 +3373,34 @@ namespace CIPlatform.Controllers
             var allskillss = _ciplatformDbContext.MissionSkills.ToList();
             _ciplatformDbContext.MissionSkills.RemoveRange(allskillss);
 
-            foreach (var s in skillids)
+            if (skillids != null && status != null)
             {
-
-                var skillid = Convert.ToInt32(s);
-
-                var mskillsData = _ciplatformDbContext.MissionSkills.Where(m => m.SkillId == skillid && m.MissionId == selectedOptionId).ToList();
-
-                if (mskillsData.Count == 0)
+                foreach (var s in skillids)
                 {
-                    var allskills = new MissionSkill
+
+                    var skillid = Convert.ToInt32(s);
+
+                    var mskillsData = _ciplatformDbContext.MissionSkills.Where(m => m.SkillId == skillid && m.MissionId == selectedOptionId).ToList();
+
+                    if (mskillsData.Count == 0)
                     {
+                        var allskills = new MissionSkill
+                        {
 
-                        SkillId = Convert.ToInt32(s),
-                        MissionId = selectedOptionId
+                            SkillId = Convert.ToInt32(s),
+                            MissionId = selectedOptionId
 
-                    };
+                        };
 
-                    _ciplatformDbContext.MissionSkills.Add(allskills);
+                        _ciplatformDbContext.MissionSkills.Add(allskills);
 
-                    _ciplatformDbContext.SaveChanges();
+                        _ciplatformDbContext.SaveChanges();
+                    }
+
+
+
                 }
-
-
-
             }
-
 
 
             return RedirectToAction("Admin_MissionSkills", "Home");
@@ -3329,7 +3408,47 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult Admin_Skills(Admin_SkillsVM _skills, int skillsId)
+        public IActionResult Admin_Skills(int skillsId)
+        {
+            
+
+            // display data
+
+            var skills = _ciplatformDbContext.Skills.ToList();
+            ViewBag.skills = skills;
+
+
+
+            // delete data
+
+            //var skillsSavedData = _ciplatformDbContext.Skills.Where(id => id.SkillId == skillsId).FirstOrDefault();
+            //ModelState.Clear();
+            //if (skillsSavedData != null)
+            //{
+
+            //    _ciplatformDbContext.Skills.Remove(skillsSavedData);
+            //    _ciplatformDbContext.SaveChanges();
+            //}
+
+
+            var skillsdata = _ciplatformDbContext.Skills.Include(u => u.MissionSkills).Include(u => u.UserSkills).Where(u => u.SkillId == skillsId).ToList();
+
+            var skillsSavedData = _ciplatformDbContext.Skills.Where(skillsdata => skillsdata.SkillId == skillsId).FirstOrDefault();
+            
+            ModelState.Clear();
+            
+            if (skillsSavedData != null)
+            {
+                skillsSavedData.DeletedAt = DateTime.Now;
+                _ciplatformDbContext.SaveChanges();
+            }
+
+
+
+            return View();
+        }
+
+        public IActionResult Admin_AddSkills(Admin_SkillsVM _skills)
         {
             //Add Skills
 
@@ -3354,31 +3473,9 @@ namespace CIPlatform.Controllers
                 }
 
             }
+            return RedirectToAction("Admin_Skills", "Home");
 
-            // display data
-
-            var skills = _ciplatformDbContext.Skills.ToList();
-            ViewBag.skills = skills;
-
-
-
-            // delete data
-
-            var skillsSavedData = _ciplatformDbContext.Skills.Where(id => id.SkillId == skillsId).FirstOrDefault();
-
-            if (skillsSavedData != null)
-            {
-
-                _ciplatformDbContext.Skills.Remove(skillsSavedData);
-                _ciplatformDbContext.SaveChanges();
-            }
-
-
-
-
-            return View();
         }
-
         public IActionResult EditSkillsData(int skillId)
         {
             var data = _ciplatformDbContext.Skills.Where(a => a.SkillId == skillId).ToList().FirstOrDefault();
@@ -3415,15 +3512,17 @@ namespace CIPlatform.Controllers
 
             var query = from r in skillsData select r;
 
-            foreach (Skill r in query)
+            if (skillsname != null && status != null)
             {
+                foreach (Skill r in query)
+                {
 
-                r.SkillName = skillsname;
-                r.Status = status;
-                r.SkillId = skillsId;
+                    r.SkillName = skillsname;
+                    r.Status = status;
+                    r.SkillId = skillsId;
 
+                }
             }
-
             _ciplatformDbContext.SaveChanges();
 
             return View();
@@ -3445,7 +3544,7 @@ namespace CIPlatform.Controllers
 
             var storySavedData = _ciplatformDbContext.Stories.FirstOrDefault(id => id.StoryId == storyid);
             var storymedia = _ciplatformDbContext.StoryMedia.Where(stories => stories.StoryId == storyid).ToList();
-
+            ModelState.Clear();
             if (storySavedData != null)
             {
 
@@ -3462,13 +3561,6 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.SaveChanges();
             }
 
-            //if (storySavedData != null)
-            //{
-
-
-            //    _ciplatformDbContext.Stories.Remove(storySavedData);
-            //    _ciplatformDbContext.SaveChanges();
-            //}
 
             return View();
         }
@@ -3554,8 +3646,6 @@ namespace CIPlatform.Controllers
             return RedirectToAction("Admin_Story", "Home");
         }
 
-
-
         public IActionResult DeclinedStory(int missionId, int uid)
         {
             var storydetails = _ciplatformDbContext.Stories.Where(a => a.MissionId == missionId && a.UserId == uid);
@@ -3601,7 +3691,6 @@ namespace CIPlatform.Controllers
             var userId = HttpContext.Session.GetString("userid");
             var missions = _ciplatformDbContext.Missions.ToList();
             var user = _ciplatformDbContext.Users.Include(u => u.Timesheets).Include(u => u.MissionApplications).FirstOrDefault(u => u.UserId == Convert.ToInt64(userId));
-            //var TsData = user.Timesheets.ToList();
             var TsData = _ciplatformDbContext.Timesheets.Where(a => a.UserId == Convert.ToInt64(userId));
             var MissionApplications = _ciplatformDbContext.MissionApplications.Where(a => a.UserId == Convert.ToInt64(userId));
 
@@ -3808,7 +3897,348 @@ namespace CIPlatform.Controllers
             return true;
         }
 
-  
+
+        public IActionResult Admin_Mission(AdminMissionVM adminmissionvm, int countryid, int missionid)
+        {
+            var missionlist = _ciplatformDbContext.Missions.Where(a => a.DeletedAt == null).ToList();
+            ViewBag.missionlist = missionlist;
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+
+            var themelist = _homeRepository.GetMissionThemes();
+            ViewBag.themelist = themelist;
+
+
+            if (missionid != 0)
+            {
+                _homeRepository.deletemission(missionid);
+
+
+            }
+
+            var skillls = _homeRepository.GetSkills();
+            ViewBag.skills = skillls;
+
+            if (countryid != 0)
+            {
+                var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+                ViewBag.citylist = citylist;
+            }
+            else
+            {
+
+                var citylist = _ciplatformDbContext.Cities.ToList();
+                ViewBag.citylist = citylist;
+            }
+
+            if (adminmissionvm.Title != null)
+            {
+                var missionobj = new Mission
+                {
+                    Title = adminmissionvm.Title,
+                    StartDate = adminmissionvm.StartDate,
+                    EndDate = adminmissionvm.EndDate,
+                    MissionType = adminmissionvm.MissionType,
+
+                };
+                _ciplatformDbContext.Missions.Add(missionobj);
+                _ciplatformDbContext.SaveChanges();
+            }
+
+            return View();
+        }
+
+
+
+
+
+
+   
+
+
+  public IActionResult AdminAddMission(IFormFileCollection files, int countryid, AdminMissionVM adminmission)
+
+        {
+
+            var md = _ciplatformDbContext.MissionMedia.Where(a => a.MediaName == "trial").FirstOrDefault();
+
+
+            var missionlist = _homeRepository.GetMission();
+            ViewBag.missionlist = missionlist;
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+
+            var themelist = _homeRepository.GetMissionThemes();
+            ViewBag.themelist = themelist;
+
+
+            var skillls = _homeRepository.GetSkills();
+            ViewBag.skills = skillls;
+
+            if (countryid != 0)
+            {
+                var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+                ViewBag.citylist = citylist;
+            }
+            else
+            {
+
+                var citylist = _ciplatformDbContext.Cities.ToList();
+                ViewBag.citylist = citylist;
+            }
+
+
+
+            if (adminmission.Title != null)
+            {
+                var file = Request.Form["files"];
+                var city = _ciplatformDbContext.Cities.FirstOrDefault(a => a.Name == adminmission.CityId);
+
+                var ciId = city.CityId;
+                var cntryid = city.CountryId;
+                var missionobj = new Mission
+                {
+                    Title = adminmission.Title,
+                    OrganizationName = adminmission.OrganizationName,
+                    OrganizationDetail = adminmission.OrganizationDetail,
+                    StartDate = adminmission.StartDate,
+                    EndDate = adminmission.EndDate,
+                    Description = adminmission.Description,
+                    ShortDescription = adminmission.ShortDescription,
+                    ThemeId = Convert.ToInt32(adminmission.ThemeId),
+                    Availability = adminmission.Availability,
+                    MissionAvailability = adminmission.MissionAvailability,
+                    CityId = ciId,
+                    MissionType = adminmission.MissionType,
+                    CountryId = cntryid
+                };
+
+                _ciplatformDbContext.Missions.Add(missionobj);
+                _ciplatformDbContext.SaveChanges();
+
+                foreach (var msnskill in adminmission.SelectedValues)
+                {
+
+                    var missionskill = new MissionSkill
+                    {
+                        MissionId = missionobj.MissionId,
+                        SkillId = Convert.ToInt32(msnskill),
+                        CreatedAt = DateTime.Now
+
+
+                    };
+                    _ciplatformDbContext.MissionSkills.Add(missionskill);
+                    _ciplatformDbContext.SaveChanges();
+
+
+                }
+
+
+                foreach (var filem in adminmission.File)
+                {
+
+
+                    if (filem != null && filem.Length > 0)
+                    {
+                        byte[] imageBytes = null;
+
+                        using (var stream = new MemoryStream())
+                        {
+                            filem.CopyTo(stream);
+                            imageBytes = stream.ToArray();
+                        }
+
+                        string base64String = Convert.ToBase64String(imageBytes);
+
+
+                        var missionid = missionobj.MissionId;
+
+                        var missionmedia = new MissionMedium
+                        {
+
+                            MediaName = filem.FileName,
+                            MediaType = filem.ContentType,
+                            MediaPath = base64String,
+                            MissionId = missionid,
+                            CreatedAt = DateTime.Now
+
+                        };
+                        _ciplatformDbContext.MissionMedia.Add(missionmedia);
+                        _ciplatformDbContext.SaveChanges();
+
+                    }
+
+
+                }
+
+                foreach (var docfile in adminmission.DocumentFile)
+                {
+
+
+                    if (docfile != null && docfile.Length > 0)
+                    {
+                        byte[] imageBytes = null;
+
+                        using (var stream = new MemoryStream())
+                        {
+                            docfile.CopyTo(stream);
+                            imageBytes = stream.ToArray();
+                        }
+
+                        string documentString = Convert.ToBase64String(imageBytes);
+
+
+                        var missionid = missionobj.MissionId;
+                        var doc = new MissionDocument
+                        {
+                            DocumentPath = documentString,
+                            MissionId = missionid,
+                            DocumentName = docfile.FileName,
+                            DocumentType = docfile.ContentType,
+                            CreatedAt = DateTime.Now
+
+                        };
+                        _ciplatformDbContext.MissionDocuments.Add(doc);
+                        _ciplatformDbContext.SaveChanges();
+                    }
+                }
+
+
+
+
+
+            
+
+            }
+
+            return View();
+        }
+
+
+          public IActionResult AdminEditMission(long id, int countryid, AdminMissionVM adminmission, int missionsvalue)
+        {
+
+
+            if (id == 0)
+            {
+                id = adminmission.MissionId;
+            }
+            List<string> mediaList = new List<string>();
+            var missionmedia = _homeRepository.GetMissionMediaJoin(id);
+
+
+
+
+            if (missionmedia.Any()) {
+           
+            foreach (var m in missionmedia) {
+                var a = "data:image/png;base64,"+m.MediaPath;
+                mediaList.Add(a);
+
+
+            }
+            }
+         
+
+            ViewBag.mediaList = mediaList;
+            var countrylist = _ciplatformDbContext.Countries.ToList();
+            ViewBag.countrylist = countrylist;
+
+            var themelist = _homeRepository.GetMissionThemes();
+            ViewBag.themelist = themelist;
+
+
+            var skillls = _homeRepository.GetSkills();
+            ViewBag.skills = skillls;
+
+            if (countryid != 0)
+            {
+                var citylist = _ciplatformDbContext.Cities.Where(a => a.CountryId == countryid).ToList();
+                ViewBag.citylist = citylist;
+            }
+            else
+            {
+
+                var citylist = _ciplatformDbContext.Cities.ToList();
+                ViewBag.citylist = citylist;
+            }
+
+            var missionlist = _ciplatformDbContext.Missions.Where(a => a.MissionId == id).FirstOrDefault();
+            ViewBag.missionlist = missionlist;
+
+            AdminMissionVM modelvm = new AdminMissionVM();
+            modelvm.Title = missionlist.Title;
+            modelvm.OrganizationDetail = missionlist.OrganizationDetail;
+            modelvm.CityId = missionlist.CityId.ToString();
+            modelvm.Availability = missionlist.Availability;
+            modelvm.MissionAvailability = missionlist.MissionAvailability;
+            modelvm.Status = missionlist.Status;
+            modelvm.OrganizationName = missionlist.OrganizationName;
+            modelvm.CountryId = missionlist.CountryId;
+            modelvm.MissionId = missionlist.MissionId;
+            modelvm.Description = missionlist.Description;
+            modelvm.ShortDescription = missionlist.ShortDescription;
+
+
+
+
+
+            //EDIT Mission
+
+
+            if (adminmission.Title != null)
+            {
+                var city = _ciplatformDbContext.Cities.FirstOrDefault(a => a.Name == adminmission.CityId);
+
+                var ciId = city.CityId;
+                var cntryid = city.CountryId;
+                var missiondata = _ciplatformDbContext.Missions.Where(y => y.MissionId == id).ToList();
+                var query = from m in missiondata select m;
+                foreach (Mission m in query)
+                {
+                    m.Title = adminmission.Title;
+                    m.OrganizationName = adminmission.OrganizationName;
+                    m.OrganizationDetail = adminmission.OrganizationDetail;
+                    m.StartDate = adminmission.StartDate;
+                    m.EndDate = adminmission.EndDate;
+                    m.Description = adminmission.Description;
+                    m.ShortDescription = adminmission.ShortDescription;
+                    m.ThemeId = Convert.ToInt32(adminmission.ThemeId);
+                    m.Availability = adminmission.Availability;
+                    m.MissionAvailability = adminmission.MissionAvailability;
+                    m.MissionType = adminmission.MissionType;
+                    m.CountryId = cntryid;
+                    m.CityId = city.CityId;
+
+                    _ciplatformDbContext.SaveChanges();
+                };
+
+
+                if (adminmission.File.Count == 0)
+                {
+                    var missionimg = _ciplatformDbContext.MissionMedia.Where(a => a.MissionId == id).ToList();
+                    if (missionimg != null)
+                    {
+                        foreach (var img in missionimg)
+                        {
+                            _ciplatformDbContext.MissionMedia.Remove(img);
+                            _ciplatformDbContext.SaveChanges();
+                        }
+
+
+                    }
+                }
+            }
+
+
+
+            return View(modelvm);
+
+
+
+
+
+        }
 
 
 

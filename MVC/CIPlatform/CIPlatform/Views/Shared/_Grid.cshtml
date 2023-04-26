@@ -61,9 +61,10 @@
                     {
                         if (missionimg.MissionId == item.MissionId)
                         {
-
-                            <img class="card-img-top" src="~/NewFolder/@missionimg.MediaPath" />
-
+                            if (@missionimg.Default == "1")
+                            {
+                                <img class="card-img-top" src="data:image/png;base64,@missionimg.MediaPath" />
+                            }
                         }
                     }
                 }
@@ -498,8 +499,43 @@
 
 
 
-
+    
     }
+    
+     <div class="pagination" style="margin-top:2%;">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="/Home/PlatformLandingPage?page=@i&pageSize=@ViewData["PageSize"]&subcats_id=@ViewBag.subcats_id&filtercity=@ViewBag.filtercity&filtercountry=@ViewBag.filtercountry&filterskill=@ViewBag.filterskill ">@i</a></li>
+                    }
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 </div>
                             </div>
 

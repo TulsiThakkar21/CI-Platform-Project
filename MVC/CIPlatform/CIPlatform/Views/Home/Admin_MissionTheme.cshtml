@@ -152,7 +152,7 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Please input below CMS Details</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="cms-form" asp-action="Admin_MissionTheme" asp-controller="Home" method="post">
+                                <form id="cms-form" asp-action="Admin_AddMTheme" asp-controller="Home" method="post">
                                     <div class="modal-body">
 
                                         
@@ -169,7 +169,15 @@
 
                                         <div>
                                             <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="Status" type="text" class="form-control" placeholder="Enter status" value="">
+
+                                           
+
+                                            <select asp-for="Status" class="form-select" name="Status" id="Status">
+                                                <option selected disabled>--Select Status--</option>
+                                                <option value="1">1</option>
+                                                <option value="0">0</option>
+                                            </select>
+
                                             <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                                         </div>
@@ -208,6 +216,9 @@
                     
                     foreach (var mt in ViewBag.missionTh)
                     {
+                        if(@mt.DeletedAt == null)
+                        {
+
                         <tr>
                         
                             <td style="background-color:white">@mt.Title</td>
@@ -233,6 +244,7 @@
                         </tr>
                     }
                 }
+}
 }
 
 
@@ -272,7 +284,15 @@
 
                                         <div>
                                             <label asp-for="Status" for="Status" class="form-label">Status</label>
-                                            <input asp-for="Status" id="StatusEdit" type="text" class="form-control" placeholder="Enter status" value="">
+
+                                           
+
+                                            <select asp-for="Status" class="form-select" name="Status" id="StatusEdit">
+                                                <option selected disabled>--Select Status--</option>
+                                                <option value="1">1</option>
+                                                <option value="0">0</option>
+                                            </select>
+
                                             <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                                         </div>

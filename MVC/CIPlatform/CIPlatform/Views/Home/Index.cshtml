@@ -68,8 +68,17 @@
                         <div class="carousel-inner">
 
                             <div class="carousel-item active">
-                                <img src="~/NewFolder/carousel-active-login.png" class="d-block w-100 carousel-img" alt="...">
-
+                                @{
+                                if(ViewBag.bannerdata != null)
+                                {
+                                  foreach(var bannerimg in ViewBag.bannerdata){  
+                                      if(@bannerimg.SortOrder == 1)
+                                      {
+                                <img src="~/NewFolder/@bannerimg.Image" class="d-block w-100 carousel-img" alt="...">
+                                }
+                                }
+                                }
+                                }
                                 <div class="carousel-caption d-md-block">
                                     <h1>Sed ut perspiciatis unde omnis <br>
                                         iste natus voluptatem.
@@ -86,11 +95,58 @@
                             </div>
 
                             <div class="carousel-item">
-                                <img src="~/NewFolder/carousel-active-login.png" class="d-block w-100 carousel-img" alt="...">
+                                @{
+                                if(ViewBag.bannerdata != null)
+                                {
+                                  foreach(var bannerimg in ViewBag.bannerdata){  
+                                      if(@bannerimg.SortOrder == 3)
+                                      {
+                                <img src="~/NewFolder/@bannerimg.Image" class="d-block w-100 carousel-img" alt="...">
+                                }
+                                }
+                                }
+                                }
+                                <div class="carousel-caption d-md-block">
+                                    <h1>Sed ut perspiciatis unde omnis <br>
+                                        iste natus voluptatem.
+                                    </h1>
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Integer volutpat ante nec mauris dictum consequat. Duis lacus sapien,
+                                        scelerisque egestas consectetur at, malesuada sit amet tortor.
+                                        Aliquam erat volutpat. Morbi in purus id lorem ornare suscipit vel
+                                        et nunc. Proin tincidunt justo sem, sit amet pretium dui semper vitae.
+                                        Curabitur mi urna, congue non eros a, posuere porttitor lectus.
+                                        Proin tincidunt in ipsum ac lacinia. </p>
+                                </div>
                             </div>
 
                             <div class="carousel-item">
-                                <img src="~/NewFolder/carousel-active-login.png" class="d-block w-100 carousel-img" alt="...">
+                                @{
+                                if(ViewBag.bannerdata != null)
+                                {
+                                  foreach(var bannerimg in ViewBag.bannerdata){  
+                                      if(@bannerimg.SortOrder == 2)
+                                      {
+                                <img src="~/NewFolder/@bannerimg.Image" class="d-block w-100 carousel-img" alt="...">
+                                }
+                                }
+                                }
+                                }
+                                <div class="carousel-caption d-md-block">
+                                    <h1>Sed ut perspiciatis unde omnis <br>
+                                        iste natus voluptatem.
+                                    </h1>
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Integer volutpat ante nec mauris dictum consequat. Duis lacus sapien,
+                                        scelerisque egestas consectetur at, malesuada sit amet tortor.
+                                        Aliquam erat volutpat. Morbi in purus id lorem ornare suscipit vel
+                                        et nunc. Proin tincidunt justo sem, sit amet pretium dui semper vitae.
+                                        Curabitur mi urna, congue non eros a, posuere porttitor lectus.
+                                        Proin tincidunt in ipsum ac lacinia. </p>
+                                </div>
+                                @*<img src="~/NewFolder/carousel-active-login.png" class="d-block w-100 carousel-img" alt="...">*@
                             </div>
 
                         </div>

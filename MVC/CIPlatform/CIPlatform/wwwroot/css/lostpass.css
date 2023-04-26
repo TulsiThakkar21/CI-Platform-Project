@@ -38,6 +38,29 @@
     object-fit: cover;
 }
 
+.carousel-caption h5 {
+    margin-left: 0.5%;
+    /* width: 70%;
+height: 30%; */
+    font-size: 35px;
+    text-align: left;
+}
+
+.carousel-caption p {
+    margin-left: 0.5%;
+    text-align: left;
+    margin-bottom: 10%;
+}
+
+
+.carousel-items {
+    height: 100vh;
+}
+
+.image {
+    height: 100vh;
+    object-fit: cover;
+}
 .login-form {
     width: 100%;
     margin-left: 1%;

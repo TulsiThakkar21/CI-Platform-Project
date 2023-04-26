@@ -1,45 +1,4 @@
-﻿function saveAdminUserData() {
-
-    var fname = document.getElementById('FirstName').value;
-    var lname = document.getElementById('LastName').value;
-    var email = document.getElementById('Email').value;
-    var pass = document.getElementById('Password').value;
-    var avtar = document.getElementById('customFile').value;
-    var empid = document.getElementById('empid').value;
-    var dept = document.getElementById('dept').value;
-    var cityid = document.getElementById('CityId').value;
-    var countryid = document.getElementById('CountryId').value;
-    var protxt = document.getElementById('profiletxt').value;
-    var status = document.getElementById('Status').value;
-
-    $.ajax({
-        url: '/Home/Admin_user',
-        type: "POST",
-        data: {
-
-            fname: fname,
-            lname: lname,
-            email: email,
-            pass: pass,
-            avtar: avtar,
-            empid: empid,
-            dept: dept,
-            cityid: cityid,
-            countryid: countryid,
-            protxt: protxt,
-            status: status
-
-
-        },
-        success: function () {
-            location.reload();
-            console.log("success");
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-        }
-    });
-}
+﻿
 
 
 function deleteuser(userid) {
@@ -176,3 +135,109 @@ $(document).ready(function () {
 
 
 });
+
+// CITY COUNTRY
+
+
+var countryid = 0;
+function countrychange() {
+
+    countryid = document.getElementById('selectitm').value;
+    $.ajax({
+        url: '/Home/Admin_userCityCountry',
+        type: "POST",
+        dataType: 'json',
+        data: {
+
+
+            countryid: countryid
+
+
+        },
+        success: function (response) {
+            $('.defaultname').remove();
+            document.getElementById('selectcty').innerText = null;
+            var option = document.createElement("option");
+            option.text = "Please select city";
+            option.disabled = true;
+            option.selected = true;
+            var select = document.getElementById('selectcty');
+            select.appendChild(option);
+
+            jQuery.each(response, function (index, item) {
+                var option = document.createElement("option");
+                option.text = item;
+                option.value = item;
+                option.id = response.countryid;
+                var select = document.getElementById('selectcty');
+                select.appendChild(option);
+            });
+
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+
+
+}
+
+
+
+var selectedcntry = "";
+
+var cityname = "";
+
+function citychange() {
+
+    cityname = document.getElementById('selectcty').value;
+
+
+
+}
+
+
+function saveAdminUserData() {
+
+    var fname = document.getElementById('FirstName').value;
+    var lname = document.getElementById('LastName').value;
+    var email = document.getElementById('Email').value;
+    var pass = document.getElementById('Password').value;
+    var avtar = document.getElementById('customFile').value;
+    var empid = document.getElementById('empid').value;
+    var dept = document.getElementById('dept').value;
+ 
+
+
+    var protxt = document.getElementById('profiletxt').value;
+    var status = document.getElementById('Status').value;
+
+    $.ajax({
+        url: '/Home/Admin_user',
+        type: "POST",
+        data: {
+
+            fname: fname,
+            lname: lname,
+            email: email,
+            pass: pass,
+            avtar: avtar,
+            empid: empid,
+            dept: dept,
+            cityid: cityname,
+            countryid: countryid,
+            protxt: protxt,
+            status: status
+
+
+        },
+        success: function () {
+            location.reload();
+            console.log("success");
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+        }
+    });
+}

@@ -333,6 +333,25 @@ namespace CIPlatform.Repository.Repositories
 
         }
 
+        public IEnumerable<MissionMedium> GetMissionMediaJoin(long missionid)
+        {
+
+            return _db.MissionMedia.Where(a => a.MissionId == missionid);
+        }
+
+
+
+        public void deletemission(int missionid)
+        {
+            var mission = _db.Missions.Include(u => u.Comments).Include(u => u.Stories).Where(u => u.MissionId == missionid).ToList();
+
+            Mission a = _db.Missions.FirstOrDefault(mission => mission.MissionId == missionid );
+            a.DeletedAt = DateTime.Now;
+            _db.SaveChanges();
+
+        }
+
+      
     }
 
 

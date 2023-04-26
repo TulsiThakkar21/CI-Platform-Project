@@ -477,7 +477,8 @@ console.log(a);
 
 function editUser() {
 
-
+    //event.preventDefault();
+    
     var firstname = document.getElementById('FirstName').value;
     var lastname = document.getElementById('lname').value;
     var empId = document.getElementById('empid').value;
