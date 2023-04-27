@@ -46,6 +46,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Foolproof": {
+              "target": "Package",
+              "version": "[0.9.4518, )"
+            },
             "Microsoft.AspNetCore.Mvc.TagHelpers": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -219,6 +223,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FoolproofValidation": {
+              "target": "Package",
+              "version": "[0.9.4518, )"
+            },
             "Microsoft.AspNetCore.Http.Extensions": {
               "target": "Package",
               "version": "[2.2.0, )"

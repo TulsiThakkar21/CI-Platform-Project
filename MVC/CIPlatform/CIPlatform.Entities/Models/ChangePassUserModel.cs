@@ -70,5 +70,7 @@ namespace CIPlatform.Entities.Models
 
         [Required(ErrorMessage = "Country is required")]
         public string country { get; set; } = null!;
+
+        public string? Avatar { get; set; }
     }
 }

@@ -62,96 +62,98 @@
     <div class="container-fluid">
 
 
-        
-
-                    
-                        @{
-                            var alldata = ViewBag.data;
-                            for (int i = 0; i < alldata.Count; i++)
-                            {
-                                if (alldata[i].FirstName != null && alldata[i].LastName != null && alldata[i].CityId != 0 && alldata[i].CountryId != 0)
-                                {
-                                    <nav class="navbar navbar-expand-md navbar-light ">
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span> 
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-
-                                     <li class="nav-item stories">
-                                    <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
-                                    </li>
-
-                                    <li class="nav-item stories">
-                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Policy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Volunteering</a>
-                            <a class="dropdown-item" href="#">Sponsered</a>
-
-                    </li>
-                    <li>
-                        <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
 
 
 
-                    </li>
-                    </ul>
-                <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+        @{
+            var alldata = ViewBag.data;
+            for (int i = 0; i < alldata.Count; i++)
+            {
+                if (alldata[i].FirstName != null && alldata[i].LastName != null && alldata[i].CityId != 0 && alldata[i].CountryId != 0)
+                {
+                    <nav class="navbar navbar-expand-md navbar-light ">
 
-                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @ViewBag.fullname
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
 
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
 
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
-                    </ul>
-                </div>
+                                <li class="nav-item stories">
+                                    <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
+                                </li>
 
-            </div>
-        </nav>
-         <hr>
-         <br />
-         <div id="profilealert">
-         <i class="fa fa-check-circle alert alert-success" style="font-size:28px;color:green; text-align:center; align-content:center;">&nbsp;&nbsp;Your profile is ready</i>
-         </div>
-         <br />
-                                }
-                                else
-                                {
-                                    <br />
-                                    
-                                    <i class='fas fa-exclamation-triangle alert alert-danger' style='font-size:28px;color:red; text-align:center; align-content:center; margin-left:45%;'>&nbsp;&nbsp; Incomplete Profile</i>
-                                    
-                                    <br /><br />
-                                }
-                            }
+                                <li class="nav-item stories">
+                                    <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Policy
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Volunteering</a>
+                                        <a class="dropdown-item" href="#">Sponsered</a>
 
-                         }
-                    
-
-                    
+                                </li>
+                                <li>
+                                    <img src="data:image;base64,@ViewBag.avatarimg" style="align-content:flex-end;" alt="" class="user-avatar">
 
 
 
-                
-       
+                                </li>
+                            </ul>
+                            <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
+
+                                    <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @ViewBag.fullname
+                                    </button>
+
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
+
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </nav>
+                    <hr>
+                    <br />
+                    <div id="profilealert">
+                        <i class="fa fa-check-circle alert alert-success" style="font-size:28px;color:green; text-align:center; align-content:center;">&nbsp;&nbsp;Your profile is ready</i>
+                    </div>
+                    <br />
+                }
+                else
+                {
+                    <br />
+
+                    <i class='fas fa-exclamation-triangle alert alert-danger' style='font-size:28px;color:red; text-align:center; align-content:center; margin-left:45%;'>&nbsp;&nbsp; Incomplete Profile</i>
+
+                    <br />
+
+                    <br />
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
 
     </div>
 </header>
@@ -166,9 +168,23 @@
 
                 <div class="left-div">
                     <div>
-                        <img class="img-left" src="~/NewFolder/user-img-large.png" />
+                        <form asp-action="UploadProfilePicture" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                
+                               
+                                    
+                                       <div style="height:100%; width:100%;">
+                                            <img  class="img-left" src="data:image;base64,@ViewBag.avatarimg" alt="Profile Picture">
+                                        </div>
+                                <br />
+                                        <input style="margin-left:15%;" type="file" style="background:none; border:none; background-color:none;" class="form-control-file" id="profilePicture" name="profilePicture">
+                                    
+                                
+                                </div>
+                            <button type="submit" class="btn save-btn" style="margin-left:28%;">Upload</button>
+                        </form>
 
-                    
+
 
                         <h4 style="text-align:center; margin-top:5%;">@ViewBag.FirstName @ViewBag.LastName</h4>
 
@@ -291,7 +307,7 @@
                                 <label for="" class="form-label">My Profile</label>
                                 <textarea id="profiletxt" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                     @ViewBag.ProfileText
-                                    </textarea>
+                                        </textarea>
                             </div>
                         </div>
                         <br />
@@ -300,7 +316,7 @@
                                 <label for="" class="form-label">Why I Volunteer?</label>
                                 <textarea id="why" class="form-control" rows="10" cols="5" placeholder="Enter your comments...">
                                     @ViewBag.WhyIVolunteer
-                                    </textarea>
+                                        </textarea>
                             </div>
 
                         </div>
@@ -331,7 +347,7 @@
                                 <div class="col-6">
                                     <label asp-for="country" class="form-label">Country</label>
                                     <br>
-                                   
+
 
                                     <select asp-for="country" name="country" id="selectitm" onchange="countrychange()" style="border:1px solid #D9D9D9 ; width:100% ;height :40px">
                                         @{
@@ -636,11 +652,11 @@
         }
     </script>
 
-     <script type="text/javascript">
-      setTimeout(function(){ 
-       $("#profilealert").hide();
-}, 5000);
-   </script>
+    <script type="text/javascript">
+              setTimeout(function(){
+               $("#profilealert").hide();
+        }, 5000);
+    </script>
 
 </body>
 </html>

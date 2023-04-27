@@ -770,3 +770,11 @@ C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\FoolproofValidation.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\tatva\Desktop\Final CIP Project\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

@@ -42,11 +42,24 @@ function saveEditedSkillData() {
 
         },
         success: function () {
-            location.reload();
+            //location.reload();
             console.log("success");
+            //Swal.fire({
+            //    position: 'top-end',
+            //    icon: 'success',
+            //    title: 'Your data has been saved',
+            //    showConfirmButton: false,
+            //    timer: 2500
+            //})
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
+            //Swal.fire({
+            //    icon: 'error',
+            //    title: 'Oops...',
+            //    text: 'Something went wrong!',
+
+            //})
         }
     });
 }
@@ -69,7 +82,8 @@ function deleteSkillData(skillsId) {
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
-
+            console.log("success");
+           
         }
     });
 }

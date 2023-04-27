@@ -87,11 +87,18 @@ function saveEditedMTData() {
 
         },
         success: function () {
-            location.reload();
+            
             console.log("success");
+            
+            //location.reload();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error: " + errorThrown);
+         
+
+           
+
+            //location.reload();
         }
     });
 }
@@ -103,6 +110,7 @@ $(document).ready(function () {
 
   
 });
+
 
 
 
