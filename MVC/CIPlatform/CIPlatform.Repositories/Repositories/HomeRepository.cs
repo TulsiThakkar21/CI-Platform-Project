@@ -127,12 +127,11 @@ namespace CIPlatform.Repository.Repositories
                 foreach (var skill in skillidarr)
                 {
                     var mission = _db.Missions
-
+                      .Include(t1 => t1.MissionSkills)
                     .Where(a => a.MissionId == Convert.ToInt64(skill) || skill == null)
 
-                    //where m.ThemeId == mt.MissionThemeId
                     .ToList();
-                    FinalMissionList.AddRange(mission);
+                    FinalMissionList.AddRange((IEnumerable<Mission>)mission);
 
                 }
 
@@ -231,7 +230,10 @@ namespace CIPlatform.Repository.Repositories
 
         public IEnumerable<Skill> GetSkills()
         {
-            return _db.Skills.ToList();
+            return _db.Skills
+                .Include(t1 => t1.MissionSkills).ToList();
+
+
         }
 
         public IEnumerable<UserSkill> GetUserSkillsList()

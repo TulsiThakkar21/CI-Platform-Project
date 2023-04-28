@@ -31,11 +31,11 @@ namespace CIPlatform.Entities.Models
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = "CityId is required")]
+        //[Required(ErrorMessage = "CityId is required")]
         public string CityId { get; set; } = null!;
 
 
-        [Required(ErrorMessage = "CountryId is required")]
+        //[Required(ErrorMessage = "CountryId is required")]
         public string CountryId { get; set; } = null!;
 
         public string Avatar { get; set; } 

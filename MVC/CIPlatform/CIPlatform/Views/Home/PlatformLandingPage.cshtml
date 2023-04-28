@@ -65,20 +65,15 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item stories">
+                            <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
+                        </li>
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Policy
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Volunteering</a>
-                                <a class="dropdown-item" href="#">Sponsered</a>
-                                </div>
-                        </li>
+                        <li class="nav-item stories">
+                                    <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
+                          </li>
                         <li>
                             <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="user-avatar">
                         </li>
@@ -218,8 +213,8 @@
                                         <li class="dropdown">
                                             <div class="check-box">
                                                 <span>
-                                                    <input type="checkbox" id="@item.MissionId" name="filskill" class="checkbox" value="@item.MissionId" onclick="FilterSkill(@item.MissionId)">
-                                                    <label for="@item.Skill.SkillName"> @item.Skill.SkillName</label>
+                                                    <input type="checkbox" id="@item.SkillId" name="filskill" class="checkbox" value="@item.SkillId" onclick="FilterSkill(@item.SkillId)">
+                                                    <label for="@item.SkillName"> @item.SkillName</label>
                                                 </span>
                                             </div>
 

@@ -270,7 +270,7 @@
 <div id="drop-area" style="width: 100%;">
 
 <div></div>
-<input name="file" type="file" id="fileElem" multiple accept="image" onchange="handleFiles(this.files)">
+<input hidden name="file" type="file" id="fileElem" multiple accept="image" onchange="handleFiles(this.files)">
 <label style="width:100% ; display:flex ; justify-content:center" for="fileElem"><img src="~/NewFolder/drag-and-drop.png"></label>
 <progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
 
@@ -282,10 +282,6 @@
 </div>
 
 
-
-
-<div id="gallery" />
-</div>
 </div>
          <br><br><br>
                     <div class="row all-btns">

@@ -23,25 +23,26 @@ setInterval(updateDateTime, 1000);
 
 
 function deleteMTData(mtId) {
+    if (window.confirm("Are you sure you want to delete?")) {
+        $.ajax({
+            url: '/Home/Admin_MissionTheme',
+            type: "POST",
+            data: {
+                mtId: mtId
 
-    $.ajax({
-        url: '/Home/Admin_MissionTheme',
-        type: "POST",
-        data: {
-            mtId: mtId
 
+            },
+            success: function (data) {
+                location.reload();
+                console.log("Data Deleted");
 
-        },
-        success: function (data) {
-            location.reload();
-            console.log("Data Deleted");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("Error: " + errorThrown);
 
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-
-        }
-    });
+            }
+        });
+    }
 }
 
 function editMTData(mtid) {
@@ -51,13 +52,14 @@ function editMTData(mtid) {
         type: 'POST',
         data: { mtid: mtid },
         success: function (data) {
+
             console.log(data);
             $('#exampleModalMT').modal('show');
           
             document.getElementById('MissionThemeId').value = data.missionThemeId;
             document.getElementById('TitleEdit').value = data.title;           
             document.getElementById('StatusEdit').value = data.status;
-
+            
 
         },
         error: function () {

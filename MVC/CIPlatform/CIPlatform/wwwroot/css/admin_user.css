@@ -235,3 +235,14 @@ a {
         color: white;
     }
 
+.toast-error {
+    background-color: #BD362F !important;
+}
+
+.toast-success {
+    background-color: #008000 !important;
+}
+
+.toast-warning {
+    background-color: orange !important;
+}

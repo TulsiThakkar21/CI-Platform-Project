@@ -2,6 +2,7 @@
 
 
 function deleteuser(userid) {
+    if (window.confirm("Are you sure you want to delete?")){
     $.ajax({
         url: '/Home/Admin_user',
         type: 'POST',
@@ -16,7 +17,7 @@ function deleteuser(userid) {
             location.reload();
         }
     });
-
+    }
 
 }
 

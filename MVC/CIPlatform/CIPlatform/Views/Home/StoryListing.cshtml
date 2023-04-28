@@ -46,159 +46,54 @@
     <header>
         <div class="container-fluid">
 
-
-            <nav class="navbar navbar-expand-md navbar-light ">
+<nav class="navbar navbar-expand-md navbar-light ">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-
+                         <li class="nav-item stories">
+                            <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
+                        </li>
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Policy
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Volunteering</a>
-                                <a class="dropdown-item" href="#">Sponsered</a>
-
-                        </li>
+                         <li class="nav-item stories">
+                                    <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
+                          </li>
                         <li>
-                            <img src="data:image;base64,@ViewBag.avatarimg" style="align-content:flex-end;" alt="" class="user-avatar">
+                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
                         </li>
 
-                     
+
 
                     </ul>
-                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
+                    <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
 
-                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ViewBag.fullname
-                        </button>
-                  
+                            <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @ViewBag.fullname
+                            </button>
+
                         </a>
-                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="EditProfile">My Profile</a></li>
-                            
+
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Timesheet">Volunteering Timesheet</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
                         </ul>
-               </div>
+                    </div>
 
                 </div>
             </nav>
             <hr>
-            <div class="container-fluid">
-                <div class="row row-search">
-                    <div class="col-lg-6 col-sm-6">
-                        <nav class="navbar navbar-expand-lg navbar-light  search-nav">
-
-                            <div class="search-combine">
-
-                                <img src="~/NewFolder/search.png" alt="" class="search-icon">
-
-                            @using (Html.BeginForm("StoryListing", "Home", FormMethod.Get))
-
-                            {
-                                <form class="form-inline my-2 my-lg-0">
-
-                                    @Html.TextBox("searching","", new {@class = "form-control mr-sm-2 search-bar", @placeholder = "Search mission..."})
-
-
-                                </form>
-                            }
-
-                                @*<form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2 search-bar" type="search"
-                                        placeholder="Search mission..." aria-label="Search">
-
-                                </form>*@
-                            </div>
-
-                        </nav>
-                    </div>
-                    <div class="col-lg-5 col-sm-6">
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Country
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            City
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Theme
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Skills
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-1">
-
-                    </div>
-
-
-
-
-                </div>
-            </div>
-            <hr class="hr2">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-11">
-
-                        
-                        <br>
-                        
-                    </div>
-
-                    <div class="col-lg-1">
-
-                    </div>
-                </div>
-            </div>
+          
+           
 
 
             <br>
@@ -214,7 +109,7 @@
         <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
             <img style="width:100% ; filter: brightness(40%)" src="/NewFolder/cropped-img-story.png" />
 <div style=" position: absolute;top: 30%;left: 30%;transform: translate(-50%, -50%);">
-<p class="lorem" style="width:100%">
+<p class="lorem" style="width:100%; margin-top:-10%;">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad
 minim veniam.Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -234,7 +129,7 @@ minim veniam.Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adi
                                 <br>
                        @* <button class="share-btn">*@
                              &nbsp;
-                             <button class="share-btn" style=" margin-left : 39% ; margin-top:70px">
+                             <button class="share-btn" style=" margin-left : 39% ; margin-top:30px">
                                 <a asp-controller="Home" asp-action="ShareYourStory" style="color:white; ">
                                 Share your story &nbsp;
                                 <img src="~/NewFolder/right-arrow.png" alt="">
@@ -280,9 +175,10 @@ minim veniam.Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adi
                     {
                         if (missionimg.MissionId == itemss.MissionId)
                         {
-
-                            <img class="card-img-top" src="~/NewFolder/@missionimg.MediaPath" />
-
+                            if (@missionimg.Default == "1")
+                            {
+                                <img class="card-img-top" src="data:image/png;base64,@missionimg.MediaPath" />
+                            }
                         }
                     }
                 }

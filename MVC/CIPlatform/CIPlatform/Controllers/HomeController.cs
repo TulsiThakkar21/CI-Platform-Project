@@ -543,7 +543,7 @@ namespace CIPlatform.Controllers
 
 
 
-                var skillx = _homeRepository.GetSkillandMissionSkill();
+                var skillx = _homeRepository.GetSkills();
                 ViewBag.MissionSkills = skillx;
 
                 var totalmissions = outputsf.Count();
@@ -665,7 +665,7 @@ namespace CIPlatform.Controllers
                 string[] skillidarr = null;
                 if (filterskill != null)
                 {
-                    countryidarr = filterskill.Split(",");
+                    skillidarr = filterskill.Split(",");
                 }
                 outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
 
@@ -747,7 +747,7 @@ namespace CIPlatform.Controllers
 
 
 
-            var skillx = _homeRepository.GetSkillandMissionSkill();
+            var skillx = _homeRepository.GetSkills();
             ViewBag.MissionSkills = skillx;
 
 
@@ -928,7 +928,7 @@ namespace CIPlatform.Controllers
 
 
 
-            var skillx = _homeRepository.GetSkillandMissionSkill();
+            var skillx = _homeRepository.GetSkills();
             ViewBag.MissionSkills = skillx;
 
             var currentDate = DateTime.Now;
@@ -1141,6 +1141,8 @@ namespace CIPlatform.Controllers
 
             }
 
+            var missionmedia = _homeRepository.GetMissionMedia();
+            ViewBag.missionmedia = missionmedia;
 
             // progress bar
             var progressBar = _ciplatformDbContext.GoalMissions.First(); // or any other way to get the progress bar value
@@ -1250,7 +1252,7 @@ namespace CIPlatform.Controllers
                               cty.CityId,
                               cty.Name
                           };
-            ViewBag.Result2 = result2;
+            ViewBag.Result2 = result2.Take(3);
 
 
 
@@ -1397,6 +1399,19 @@ namespace CIPlatform.Controllers
             var avatarimg = _ciplatformDbContext.Users.FirstOrDefault(u => (u.UserId == ids));
             ViewBag.avatarimg = avatarimg.Avatar;
 
+
+            var documentlist = _ciplatformDbContext.MissionDocuments.Where(a => a.MissionId == b).ToList();
+
+            if (documentlist.Count != null)
+            {
+                ViewBag.documentlist = documentlist;
+                ViewBag.Status = 1;
+            }
+            else
+            {
+
+                ViewBag.Status = 0;
+            }
             return View();
 
 
@@ -1617,12 +1632,13 @@ namespace CIPlatform.Controllers
             var data = _ciplatformDbContext.Stories.Where(a => a.MissionId == selectedOptionId && a.UserId == ids).ToList().FirstOrDefault();
 
 
-            var retrivedmedia = _ciplatformDbContext.StoryMedia.Where(a => a.StoryId == data.StoryId).ToList();
-
+            var retrivedmedia = new List<StoryMedium>();
             //var retrieve = _ciplatformDbContext.MissionMedia.Where(i => i.MissionId == selectedOptionId).ToList().FirstOrDefault();
             var imgpaths = new List<string>();
             if (data != null)
             {
+                retrivedmedia = _ciplatformDbContext.StoryMedia.Where(a => a.StoryId == data.StoryId).ToList();
+
                 var Storydetails = new Story
 
                 {
@@ -1708,6 +1724,12 @@ namespace CIPlatform.Controllers
 
             var avatarimg = _ciplatformDbContext.Users.FirstOrDefault(u => (u.UserId == ids));
             ViewBag.avatarimg = avatarimg.Avatar;
+
+            var storylst = _ciplatformDbContext.Stories.ToList();
+            ViewBag.storylst = storylst;
+
+            var storymedia = _ciplatformDbContext.StoryMedia.ToList();
+            ViewBag.storymedia = storymedia;
 
             return View();
         }
@@ -2213,6 +2235,15 @@ namespace CIPlatform.Controllers
 
         public IActionResult PrivacyPolicy()
         {
+            var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            ViewBag.ids = Convert.ToInt32(ids);
+            var fullname = _homeRepository.GetLoginUser(ids);
+            ViewBag.fullname = fullname;
+
+
+            var avatarimg = _ciplatformDbContext.Users.FirstOrDefault(u => (u.UserId == ids));
+            ViewBag.avatarimg = avatarimg.Avatar;
+
             return View();
         }
 
@@ -2669,9 +2700,6 @@ namespace CIPlatform.Controllers
         {
 
 
-
-
-
             var users = _homeRepository.GetUsers();
             ViewBag.users = users;
 
@@ -2714,7 +2742,7 @@ namespace CIPlatform.Controllers
             _ciplatformDbContext.SaveChanges();
 
 
-
+            TempData["DataSaved"] = "User added successfully";
 
             return RedirectToAction("Admin_user");
 
@@ -2869,6 +2897,8 @@ namespace CIPlatform.Controllers
 
             }
 
+            TempData["DataSaved"] = "Data added successfully";
+
             return RedirectToAction("CMSPage", "Home");
         }
 
@@ -2978,6 +3008,8 @@ namespace CIPlatform.Controllers
                 }
 
             }
+            TempData["DataSaved"] = "Theme added successfully";
+            TempData["Error"] = "Error while saving your data";
 
             return RedirectToAction("Admin_MissionTheme", "Home");
         }
@@ -3000,6 +3032,10 @@ namespace CIPlatform.Controllers
                 };
                 
                 ViewBag.Status = 1;
+
+                TempData["EditedData"] = "Theme updated successfully";
+                
+
                 return Json(fetchMTdetails);
 
 
@@ -3061,6 +3097,8 @@ namespace CIPlatform.Controllers
                                };
             ViewBag.appliedmissions = appliedmissions;
 
+            TempData["Approved"] = "Approved";
+            TempData["Declined"] = "Declined";
 
 
             return View();
@@ -3085,7 +3123,7 @@ namespace CIPlatform.Controllers
 
             _ciplatformDbContext.SaveChanges();
 
-
+            TempData["Approved"] = "Approved";
 
             return RedirectToAction("Admin_MissionApp", "Home");
         }
@@ -3109,6 +3147,7 @@ namespace CIPlatform.Controllers
 
             _ciplatformDbContext.SaveChanges();
 
+            TempData["Declined"] = "Declined";
 
 
             return RedirectToAction("Admin_MissionApp", "Home");
@@ -3211,7 +3250,7 @@ namespace CIPlatform.Controllers
                 _ciplatformDbContext.SaveChanges();
             }
 
-
+         
 
             return View();
         }
@@ -3241,6 +3280,10 @@ namespace CIPlatform.Controllers
                 }
 
             }
+            TempData["DataSavedMessage"] = "Data has been saved successfully!";
+            
+            TempData["DataSaved"] = "Skills added successfully";
+
             return RedirectToAction("Admin_Skills", "Home");
 
         }
@@ -3295,8 +3338,8 @@ namespace CIPlatform.Controllers
 
             TempData["DataSavedMessage"] = "Data has been saved successfully!";
 
-
-            return View();
+            return RedirectToAction("Admin_Skills", "Home");
+           
         }
 
 

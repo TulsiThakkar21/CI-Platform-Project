@@ -47,7 +47,36 @@
 
 
     <title>Story Details</title>
+    <style>
 
+        .openmission
+        {
+            width: 153px;
+            height: 40px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #F88634;
+            border-radius: 24px;
+            color: #F88634;
+            margin-top: 5%;
+            margin-left: -10%;
+            
+        }
+
+        .reco-btn
+        {
+            width: 70%;
+            height: auto;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid grey;
+            border-radius: 24px;
+            color: grey;
+            text-align: center;
+            margin-top: 5%;
+            margin-left: 2%;
+            
+        }
+
+    </style>
     </head>
 
 <body>
@@ -67,27 +96,19 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                     <li class="nav-item home">
-                       </li>
-                    <li class="nav-item stories" style="display:flex;">
-                            <a class="nav-link" asp-controller="Home" asp-action="PlatformLandingPage">Home</a>
-                           
-                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
-                    </li>
-                   
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Policy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Volunteering</a>
-                            <a class="dropdown-item" href="#">Sponsered</a>
-
-                    </li>
-                    <li>
-                        <img src="data:image;base64,@ViewBag.avatarimg" style="align-content:flex-end;" alt="" class="user-avatar">
-                    </li>
+                     <li class="nav-item stories">
+                            <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
+                        </li>
+                        <li class="nav-item stories">
+                            <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
+                        </li>
+                        <li class="nav-item stories">
+                                    <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
+                          </li>
+                        <li>
+                            <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="user-avatar">
+                        </li>
+                  
 
 
 
@@ -247,10 +268,11 @@
                         <br>
                      
                             <div class="row">
+                                <div class="col-6">
                                   <div id="dropdownrecmd">
                                     <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
-                                        <button class="nav-link bg-transparent text-dark fav-btn1" id="navbarDropdown"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:10%; width:40%; margin-top:5%; margin-left:1%;">
+                                        <button class="nav-link bg-transparent text-dark reco-btn" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                                             <img class="img1" src="~/NewFolder/add1.png">
                                             Recommend to a Co-Worker &nbsp;&nbsp;
                                             <i class="bi bi-chevron-down"></i>
@@ -280,11 +302,11 @@
                                         </ul>
                                     </li>
                                 </div>
+                              </div>
 
-
-                                <div class="col apply-row">
+                                <div class="col-6">
                                 <a style="text-decoration: none ; color:#414141" asp-action="VolunteeringMission" asp-controller="Home" asp-route-id="@item.Mission.MissionId">
-                                    <button class="apply-btn" style="margin-left:45%; margin-top:-50%">
+                                    <button class="openmission">
                                         Open Mission
 
                                         <img src="~/NewFolder/right-arrow.png" alt="" class="right-arrow">

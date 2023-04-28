@@ -33,11 +33,17 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
-
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" accesskey=""
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 
 
-
+@if (TempData.ContainsKey("DataSavedMessage"))
+{
+<script>alert('@TempData["DataSavedMessage"]');</script>
+}
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar" class="collapse-sidebar">
@@ -63,7 +69,7 @@
                     <span class='sidebar-menu-text'>Mission</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <a asp-action="Admin_MissionTheme" asp-controller="Home">
                     <i class="fa-solid fa-box" aria-hidden="true"></i>
                     <span class='sidebar-menu-text'>Mission Theme</span>
@@ -259,7 +265,7 @@
                 <h5 class="modal-title" id="exampleModalLabelEdit">Skills</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
+           
             <div class="modal-body">
 
                 <input type="hidden" id="SkillsId" asp-for="SkillsId" />
@@ -290,7 +296,7 @@
                     <span asp-validation-for="Status" class="text-danger" style="font-size:12px;margin-top:-2%;"></span>
 
                 </div>
-
+           
             </div>
 
 

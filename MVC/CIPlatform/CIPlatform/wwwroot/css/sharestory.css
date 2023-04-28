@@ -103,3 +103,15 @@ body {
     color: #F88634;
     background: #FFFFFF 0% 0% no-repeat padding-box;
 }
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 480px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+    #drop-area.highlight {
+        border-color: purple;
+    }

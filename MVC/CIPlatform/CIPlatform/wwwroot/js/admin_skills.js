@@ -66,26 +66,27 @@ function saveEditedSkillData() {
 
 
 function deleteSkillData(skillsId) {
+    if (window.confirm("Are you sure you want to delete?")) {
+        $.ajax({
+            url: '/Home/Admin_Skills',
+            type: "POST",
+            data: {
+                skillsId: skillsId
 
-    $.ajax({
-        url: '/Home/Admin_Skills',
-        type: "POST",
-        data: {
-            skillsId: skillsId
 
+            },
+            success: function (data) {
+                location.reload();
+                console.log("Data Deleted");
 
-        },
-        success: function (data) {
-            location.reload();
-            console.log("Data Deleted");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("Error: " + errorThrown);
+                console.log("success");
 
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
-            console.log("success");
-           
-        }
-    });
+            }
+        });
+    }
 }
 
 
