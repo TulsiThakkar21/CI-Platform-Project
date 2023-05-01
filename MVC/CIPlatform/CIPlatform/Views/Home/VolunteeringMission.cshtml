@@ -154,15 +154,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                         <li class="nav-item stories">
+                        <li class="nav-item stories">
                             <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
                         </li>
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
-                         <li class="nav-item stories">
-                                    <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
-                          </li>
+                        <li class="nav-item stories">
+                            <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
+                        </li>
                         <li>
                             <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="user-avatar">
                         </li>
@@ -192,8 +192,8 @@
             </nav>
             <hr>
             <!-- <div class="line1"></div> -->
-           
-            
+
+
 
         </div>
     </header>
@@ -212,17 +212,17 @@
 
                     foreach (var item in ViewBag.specificmission)
                     {
-                    foreach (var missionimg in ViewBag.missionmedia)
-                    {
-                        if (missionimg.MissionId == item.MissionId)
+                        foreach (var missionimg in ViewBag.missionmedia)
                         {
-                            if (@missionimg.Default == "1")
+                            if (missionimg.MissionId == item.MissionId)
                             {
-                                <img class="card-img-top" src="data:image/png;base64,@missionimg.MediaPath" style="height:70%; width:100%;"/>
+                                if (@missionimg.Default == "1")
+                                {
+                                    <img class="main-img card-img-top" src="data:image/png;base64,@missionimg.MediaPath" style="height:70%; width:100%;" />
+                                }
                             }
                         }
                     }
-                }
 
                 }
 
@@ -238,9 +238,10 @@
                                                 <button style="background: none; border: none;" id="unique1"
                                                         onclick="function1()">
                                                     <img src="~/NewFolder/vol-carousel-1.png" class="img-fluid">
-                                                     
-                                                   
-                                                
+
+
+
+
                                                 </button>
                                             </div>
 
@@ -254,6 +255,9 @@
                                                 <button style="background: none; border: none;" id="unique2"
                                                         onclick="function2()">
                                                     <img src="~/NewFolder/vol-carrousel-2.png" class="img-fluid">
+
+
+
                                                 </button>
                                             </div>
 
@@ -267,6 +271,9 @@
                                                 <button style="background: none; border: none;" id="unique3"
                                                         onclick="function3()">
                                                     <img src="~/NewFolder/volcarousel-3.png" class="img-fluid">
+
+
+
                                                 </button>
                                             </div>
 
@@ -645,7 +652,7 @@
                             </div>
                             <br><br><br>
                             <div class="row">
-                                
+
 
                                 @{
                                     if (ViewBag.missionapplication.Count == 0)
@@ -729,7 +736,7 @@
             </div>
             <br> <br />
             <div class="row">
-               
+
                 <div class="col-md-8">
                     @foreach (var item in ViewBag.specificmission)
                     {
@@ -992,47 +999,6 @@
                             <div class="col" style="width: 100%; padding: 5%;">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="info">
                                     <h3>Recent Volunteers</h3>
                                     <hr>
@@ -1068,11 +1034,11 @@
 
                 @*-----------------------------------------Related Missions-------------------------------------------*@
 
+
+                <hr style="color: grey; margin-top:-38%;">
+                <h1 style="text-align: center; margin-top:-30%;">Related Missions</h1>
                 <br>
-                <hr style="color: grey;">
-                <h1 style="text-align: center;">Related Missions</h1>
-                <br>
-                <div class="row">
+                <div class="row" style="margin-top:-30%;">
 
 
 
@@ -1092,8 +1058,131 @@
 
                                         <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
                                             <div class="card">
-                                                <img src="~/NewFolder/related-1.png" class="card-img-top" alt="...">
-                                                <button class="missions">@itemsname.Title</button>
+                                                @{
+
+
+
+                                                    foreach (var missionimg in ViewBag.missionmedia)
+                                                    {
+                                                        if (missionimg.MissionId == itemsname.m.MissionId)
+                                                        {
+                                                            if (@missionimg.Default == "1")
+                                                            {
+                                                                <img class="card-img-top" src="data:image/png;base64,@missionimg.MediaPath" />
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                <div>
+
+
+
+                    @{
+                        var totalLen = ViewBag.missionapplication.Count;
+                        for (int k = 0; k < totalLen; k++)
+                        {
+                            if (ViewBag.Missionapplication[k].MissionId == itemsname.m.MissionId && ViewBag.Missionapplication[k].UserId == ViewBag.ids)
+                            {
+                                if (ViewBag.Missionapplication[k].ApprovalStatus == "approved")
+                                {
+                                    <div class="applied">
+                                        <button class="btn" style="color:white; font-size:17px;"><b>APPLIED</b></button>
+                                    </div>
+                                    break;
+                                }
+                                else if (ViewBag.Missionapplication[k].ApprovalStatus == "declined")
+                                {
+                                    <div class="declined">
+                                        <button class="btn" style="color:white; font-size:17px;"><b>DECLINED</b></button>
+                                    </div>
+                                    break;
+                                }
+
+                            }
+                            else
+                            {
+                                if (k == totalLen - 1)
+                                {
+                                    var a = itemsname.m.EndDate;
+                                    var res = DateTime.Compare(ViewBag.currentDate, itemsname.m.EndDate);
+                                    if (res == 1)
+                                    {
+                                        <div class="closed">
+                                            <button class="btn" style="color:white; font-size:17px;"><b>CLOSED</b></button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+
+
+                                                                        <div class="applied" hidden><button class="btn" style="color:white; font-size:18px;"></button></div>
+                                                                    }
+                                                                }
+
+
+                                                            }
+
+                                                        }
+
+
+
+                                                    }
+
+
+
+
+                                                </div>
+                                                <div>
+                                                    <div class="citydiv">
+
+
+                                                        <button class="btn">
+
+
+                                                            @{
+                                                                if (ViewBag.city != null)
+                                                                {
+                                                                    foreach (var citytbl in ViewBag.city)
+                                                                    {
+                                                                        if (itemsname.m.CityId == citytbl.CityId)
+                                                                        {
+
+
+                                                                            <div class="row">
+                                                                                <div class="col-5 citydivbtn">
+                                                                                    <img class="cityimg" src="~/NewFolder/pin.png">&nbsp;
+                                                                                    <span style="font-size:larger;">@citytbl.Name</span>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+
+                        </button>
+                    </div>
+                </div>
+
+               
+
+              
+
+                                <div>
+
+
+
+                  
+
+
+
+
+                </div>
+               
+
+                                                <button class="missions" style="margin-top:-11%;">@itemsname.Title</button>
                                                 <div class="card-body">
 
                                                     <h4 class="card-title">@itemsname.m.Title</h4>

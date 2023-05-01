@@ -84,26 +84,27 @@ function saveEditedDataCMS() {
 
 
 function deleteCmsData(cmsid) {
+    if (window.confirm("Are you sure you want to delete?")) {
 
-    $.ajax({
-        url: '/Home/CMSPage',
-        type: "POST",
-        data: {
-            cmsid: cmsid
+        $.ajax({
+            url: '/Home/CMSPage',
+            type: "POST",
+            data: {
+                cmsid: cmsid
 
 
-        },
-        success: function (data) {
-            location.reload();
-            console.log("Data Deleted");
+            },
+            success: function (data) {
+                location.reload();
+                console.log("Data Deleted");
 
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log("Error: " + errorThrown);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("Error: " + errorThrown);
 
-        }
-    });
-
+            }
+        });
+    }
 }
 
 // data table

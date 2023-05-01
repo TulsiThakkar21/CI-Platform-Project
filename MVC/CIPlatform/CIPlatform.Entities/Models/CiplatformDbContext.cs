@@ -121,9 +121,12 @@ public partial class CiplatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("deleted_at");
             entity.Property(e => e.Image)
-                .HasMaxLength(512)
-                .IsUnicode(false)
+                .HasColumnType("text")
                 .HasColumnName("image");
+            entity.Property(e => e.ImageName)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .HasColumnName("image_name");
             entity.Property(e => e.SortOrder)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("sort_order");

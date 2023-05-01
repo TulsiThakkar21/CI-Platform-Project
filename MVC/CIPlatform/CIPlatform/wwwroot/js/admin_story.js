@@ -131,22 +131,23 @@ function declined(missionId, uid) {
 // delete story
 
 function deletestory(storyid) {
-    $.ajax({
-        url: '/Home/Admin_Story',
-        type: 'POST',
-        data: { storyid: storyid },
-        success: function () {
-            location.reload();
-            console.log("success");
-        },
-        error: function () {
+    if (window.confirm("Are you sure you want to delete?")) {
+        $.ajax({
+            url: '/Home/Admin_Story',
+            type: 'POST',
+            data: { storyid: storyid },
+            success: function () {
+                location.reload();
+                console.log("success");
+            },
+            error: function () {
 
-            console.log("fail");
-            location.reload();
-        }
-    });
+                console.log("fail");
+                location.reload();
+            }
+        });
 
-
+    }
 }
 $(document).ready(function () {
     "use strict";

@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li>
-                <a asp-action="BannerManagementpage" asp-controller="Admin">
+                <a asp-action="Admin_Banner" asp-controller="Home">
                     <i class="fa-solid fa-spinner" aria-hidden="true"></i>
                     <span class='sidebar-menu-text'>Banner Management</span>
                 </a>
@@ -93,6 +93,27 @@
     </nav>
     <!-- Page Content -->
     <div id="layout-admin">
+         @{
+            if (TempData["Approved"] != null)
+            {
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+                <script type="text/javascript">
+                    toastr.success('@TempData["Approved"]');
+                </script>
+            }
+
+            if (TempData["Declined"] != null)
+            {
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+                <script type="text/javascript">
+                    toastr.error('@TempData["Declined"]');
+                </script>
+            }
+          
+
+        }
         <div class="header">
             <div class="d-flex justify-content-between">
                 <div class="DateAndTime">
@@ -104,17 +125,7 @@
                 <div class="user">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                @*<img class="userimg" src="~/images/BlankProfile3.png">*@
-
-
-
-
-                                <span style="margin-left:0.5rem;">User Name</span>
-
-
-                            </a>
+                           
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>

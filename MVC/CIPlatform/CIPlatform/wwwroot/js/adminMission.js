@@ -98,20 +98,22 @@ function hello() {
 
 }
 function deletemission(missionid) {
-    $.ajax({
-        url: '/Home/Admin_Mission',
-        type: 'POST',
-        data: { missionid: missionid },
-        success: function () {
-            location.reload();
-            console.log("success");
-        },
-        error: function () {
+    if (window.confirm("Are you sure you want to delete?")) {
+        $.ajax({
+            url: '/Home/Admin_Mission',
+            type: 'POST',
+            data: { missionid: missionid },
+            success: function () {
+                location.reload();
+                console.log("success");
+            },
+            error: function () {
 
-            console.log("fail");
-            location.reload();
-        }
-    });
+                console.log("fail");
+                location.reload();
+            }
+        });
+    }
 }
 
 // data table

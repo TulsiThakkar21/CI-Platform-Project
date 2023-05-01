@@ -10,6 +10,7 @@
 
             },
         success: function () {
+            location.reload();
             console.log("success");
 
         },
@@ -35,6 +36,7 @@ function declined(missionId, uid) {
 
         },
         success: function () {
+            location.reload();
             console.log("success");
 
         },

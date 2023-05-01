@@ -147,83 +147,32 @@
 
 
             <div class="col-md-6 first-col ">
-                <img id="changingimg" class="main-img" src="~/NewFolder/storydetailmainimg.png" style="height: 80%;">
+                @*<img id="changingimg" class="main-img" src="~/NewFolder/storydetailmainimg.png" style="height: 80%;">*@
+
+                @{
+
+
+                    foreach (var item in ViewBag.specificStory)
+                    {
+                        foreach (var missionimg in ViewBag.missionmedia)
+                        {
+                            if (missionimg.MissionId == item.MissionId)
+                            {
+                                if (@missionimg.Default == "1")
+                                {
+                                    <img class="main-img card-img-top" src="data:image/png;base64,@missionimg.MediaPath" style="height:100%; width:100%; object-fit:cover;" />
+                                    break;
+                                }
+                                break;
+                            }
+                        }break;
+                    }
+
+                }
 
 
 
-
-
-                <div class="container text-center my-3">
-
-                    <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
-                                    <div class="col-sm-3">
-                                        <div class="card" style="width: 75%;">
-                                            <div class="card-img">
-                                                <button style="background: none; border: none;" id="unique1"
-                                                        onclick="function1()">
-                                                    <img src="~/NewFolder/vol-carousel-1.png" class="img-fluid">
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col-sm-3">
-                                        <div class="card" style="width: 75%;">
-                                            <div class="card-img">
-                                                <button style="background: none; border: none;" id="unique2"
-                                                        onclick="function2()">
-                                                    <img src="~/NewFolder/vol-carrousel-2.png" class="img-fluid">
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col-sm-3">
-                                        <div class="card" style="width: 75%;">
-                                            <div class="card-img">
-                                                <button style="background: none; border: none;" id="unique3"
-                                                        onclick="function3()">
-                                                    <img src="~/NewFolder/volcarousel-3.png" class="img-fluid">
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col-sm-3">
-                                        <div class="card" style="width: 75%;">
-                                            <div class="card-img">
-                                                <button style="background: none; border: none;" id="unique4"
-                                                        onclick="function4()">
-                                                    <img src="~/NewFolder/vol-carousel-4.png" class="img-fluid">
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
-                               data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            </a>
-                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
-                               data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+     
 
             </div>
 
@@ -235,8 +184,10 @@
                 {
                     <div class="txt">
                         <div class="col-4">
-                           <img src="~/NewFolder/volunteer2.png" alt="" class="vol-img" style="margin-left:-5%;">
-                            <p class="vol-name" style="margin-left:-7%; font-size:large;">@item.User.FirstName @item.User.LastName</p>
+                           @*<img src="~/NewFolder/volunteer2.png" alt="" class="vol-img" style="margin-left:-5%;">*@
+                            <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="vol-img user-avatar" style="margin-left:-5%;">
+                            
+                           <p class="vol-name" style="margin-left:-7%; font-size:large;">@item.User.FirstName @item.User.LastName</p>
                         </div>
                         <br>
                         <h1 style="color:grey">@item.Title</h1>
