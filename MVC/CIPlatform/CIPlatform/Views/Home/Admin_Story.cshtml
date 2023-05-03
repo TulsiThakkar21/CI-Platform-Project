@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User</title>
+    <title>Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             border-radius: 24px;
             color: #F88634;
             /* margin-top: 12%;
-                    margin-left: 30%;*/
+                            margin-left: 30%;*/
         }
 
     </style>
@@ -117,7 +117,7 @@
                 <div class="user">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -155,42 +155,42 @@
                 @{
                     foreach (var story in ViewBag.storydata)
                     {
-                        if(@story.Status == "1")
+                        if (@story.Status == "1")
                         {
-                            
-
-                        <tr>
-                            <td>@story.Title</td>
-                            <td>@story.Mission.Title</td>
-                            <td>@story.User.FirstName @story.User.LastName</td>
-
-                            <td>
 
 
+                            <tr>
+                                <td>@story.Title</td>
+                                <td>@story.Mission.Title</td>
+                                <td>@story.User.FirstName @story.User.LastName</td>
 
-                                <button type="submit" class="btn view-btn" style="color: #f88634; font-size:small" onclick="storyAdminUser(@story.StoryId)">
-                                    View
-                                </button>
-
-                                <button type="button" class="btn fa fa-check" style="color: green; margin-left:10px; font-size:larger;" id="UserEditByAdmin" onclick="approved(@story.Mission.MissionId, @story.User.UserId)">
-                                </button>
+                                <td>
 
 
 
-                                <button type="button" onclick="declined(@story.Mission.MissionId, @story.User.UserId)" class="btn fa fa-close" style="color:red; font-size:larger" aria-hidden="true"></button>
+                                    <button type="submit" class="btn view-btn" style="color: #f88634; font-size:small" onclick="storyAdminUser(@story.StoryId)">
+                                        View
+                                    </button>
+
+                                    <button type="button" class="btn fa fa-check" style="color: green; margin-left:10px; font-size:larger;" id="UserEditByAdmin" onclick="approved(@story.Mission.MissionId, @story.User.UserId)">
+                                    </button>
 
 
 
-                                <i type="button" onclick="deletestory(@story.StoryId)" class="btn fa fa-trash" style="font-size:larger" aria-hidden="true"></i>
+                                    <button type="button" onclick="declined(@story.Mission.MissionId, @story.User.UserId)" class="btn fa fa-close" style="color:red; font-size:larger" aria-hidden="true"></button>
 
 
 
-                            </td>
+                                    <i type="button" onclick="deletestory(@story.StoryId)" class="btn fa fa-trash" style="font-size:larger" aria-hidden="true"></i>
 
-                        </tr>
+
+
+                                </td>
+
+                            </tr>
+                        }
                     }
                 }
-                        }
 
 
 
@@ -243,22 +243,22 @@
                 <div>
                     <label class="form-label">Story Media</label>
                     @{
-                        if (ViewBag.storymedialst!= null)
+                        if (ViewBag.storymedialst != null)
                         {
-                             foreach (var img in ViewBag.storymedialst)
-                        {
-                            <img src="@img.StoryPath" />
-                        }  
+                            foreach (var img in ViewBag.storymedialst)
+                            {
+                                <img src="@img.StoryPath" />
+                            }
 
                         }
-                     
+
 
                     }
 
                     <div id="drop-area" style="width: 100%;">
-                        </div>
-               @*     <div disabled id="StoryPath" class="form-control" style="text-align:left;">
-                    </div>*@
+                    </div>
+                    @*     <div disabled id="StoryPath" class="form-control" style="text-align:left;">
+                        </div>*@
                 </div>
 
             </div>

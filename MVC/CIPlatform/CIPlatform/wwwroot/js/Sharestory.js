@@ -19,8 +19,7 @@ function addstory() {
 
     for (var i = 0; i < files.length; i++) {
 
-        //b.append("file", file);
-        //formData.append("file", file);
+   
         formData.append('files', files[i]);
         console.log(formData.values);
     }

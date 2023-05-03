@@ -19,7 +19,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mission Theme</title>
+    <title>Banner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
@@ -166,7 +166,7 @@
                 <div class="user">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -200,7 +200,7 @@
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Please input below CMS Details</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Please input below Details</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form id="banner-form" asp-action="Admin_AddBanner" asp-controller="Home" method="post" enctype="multipart/form-data">
@@ -288,7 +288,7 @@
 
 
                                         <!-- Button trigger modal -->
-                            <button type="button" class="btn fas fa-edit" style="color: #f88634; margin-left:10px; font-size:larger" id="BannerEditByAdmin" onclick="editBannerData(@bnr.BannerId)">
+                                        <button type="button" class="btn fas fa-edit" style="color: #f88634; margin-left:10px; font-size:larger" id="BannerEditByAdmin" onclick="editBannerData(@bnr.BannerId)">
                                         </button>
 
 
@@ -321,7 +321,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelEdit">User Details</h5>
+                <h5 class="modal-title" id="exampleModalLabelEdit">Banner Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

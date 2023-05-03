@@ -193,8 +193,8 @@ a {
 }
 
 .add-hours {
-    width: 12%;
-    height: 75%;
+    width: auto;
+    height: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 2px solid #F88634;
     border-radius: 24px;

@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="~/css/platformlandingpage.css">
     <link rel="stylesheet" href="~/css/volLanding.css">
 
-
+    
 
     <title>Volunteering Mission Page</title>
 
@@ -199,7 +199,7 @@
     </header>
     <br />
     <div class="container-fluid">
-
+       
         <div class="row no-gutters">
 
 
@@ -218,7 +218,7 @@
                             {
                                 if (@missionimg.Default == "1")
                                 {
-                                    <img class="main-img card-img-top" src="data:image/png;base64,@missionimg.MediaPath" style="height:70%; width:100%;" />
+                                    <img id="changingimg" class="main-img card-img-top" src="data:image/png;base64,@missionimg.MediaPath" />
                                 }
                             }
                         }
@@ -437,7 +437,7 @@
 
 
 
-                                <div id="dropdownrecmd">
+                              <div id="dropdownrecmd">
                                     <li class="nav-item dropdown" id="menu2" style="list-style-type: none;">
                                         <button class="nav-link bg-transparent text-dark fav-btn1" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -461,7 +461,7 @@
                                                         </li>
                                                     }
                                                     <br>
-                                                    <button id="btn_" onclick="rccall(@item.MissionId)">Send</button>
+                                                    <button id="btn_" class="submit-btn" onclick="rccall(@item.MissionId)">Send</button>
 
                                                 </ul>
                                             </li>
@@ -735,9 +735,11 @@
 
             </div>
             <br> <br />
-            <div class="row">
+            <div class="row ocmdiv">
 
-                <div class="col-md-8">
+       
+
+                <div class="col-md-8" >
                     @foreach (var item in ViewBag.specificmission)
                     {
 
@@ -797,74 +799,77 @@
 
 
                                 }
+
+
+
+
+
+
                             </div>
 
 
+                            <div id="org" class="tab-pane fade">
+                                <h3>Organization Details</h3>
+
+                                <p class="para-lorem">@item.OrganizationDetail</p>
 
 
 
 
-                        </div>
+                            </div>
 
 
-                        <div id="org" class="tab-pane fade">
-                            <h3>Organization Details</h3>
-
-                            <p class="para-lorem">@item.OrganizationDetail</p>
-
-
-
-
-                        </div>
+                            <div id="comm" class="tab-pane fade">
+                                <br>
+                                <textarea class="col-12" id="textAreas"></textarea>
+                                <br>
+                                <br>
+                                <button onclick="commentadd(@item.MissionId)" class="cmt-btn" id="submitButton">Post Comment</button>
 
 
-                        <div id="comm" class="tab-pane fade">
-                            <br>
-                            <textarea class="col-12" id="textAreas"></textarea>
-                            <br>
-                            <br>
-                            <button onclick="commentadd(@item.MissionId)" class="cmt-btn" id="submitButton">Submit</button>
-
-
-                            <br>
-                            <br>
-                            <div class="col-12 strylistmaindiv" style=" overflow: scroll;  width: 100%;height: 400px;">
+                                <br>
+                                <br>
+                                <div class="col-12 strylistmaindiv" style=" overflow: scroll;  width: 100%;height: 400px;">
 
 
 
-                                @{
-                                    foreach (var itemss in ViewBag.comnt)
-                                    {
-                                        <div class="d-flex strylistsubdv">
-                                            <div>
-                                                <img class="stryposterimg" src="/NewFolder/user-img.png">
-                                            </div>
+                                    @{
+                                        foreach (var itemss in ViewBag.comnt)
+                                        {
+                                            if (@itemss.c.ApprovalStatus == "approved")
+                                            {
+                                                <div class="d-flex strylistsubdv">
+                                                    <div>
+                                                        <img class="stryposterimg" src="/NewFolder/user-img.png">
+                                                    </div>
 
-                                            <br>
-                                            <div>
+                                                    <br>
+                                                    <div>
 
 
-                                                <span class="strypstrname">@itemss.u.FirstName</span>
-                                                <br>
+                                                        <span class="strypstrname">@itemss.u.FirstName</span>
+                                                        <br>
 
-                                                <h5 class="timestmp">@itemss.c.CreatedAt</h5>
+                                                        <h5 class="timestmp">@itemss.c.CreatedAt</h5>
 
-                                                <h5 class="cmnt" id="processedData">@itemss.c.CommentText</h5>
-                                            </div>
-                                        </div>
+                                                        <h5 class="cmnt" id="processedData">@itemss.c.CommentText</h5>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
                                     }
-                                }
+                                </div>
                             </div>
+
+
+
+
+
+
                         </div>
-
-
-
-
-
-
-
                     }
                 </div>
+
                 <div class="col-md-4">
                     @foreach (var item in ViewBag.specificmission)
                     {
@@ -1008,7 +1013,7 @@
                                         {
                                             <div class="col-4">
 
-                                                <img src="~/NewFolder/volunteer1.png" alt="" class="vol-img">
+                                                <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="vol-img">
                                                 <p class="vol-name">@user.FirstName</p>
 
                                             </div>
@@ -1035,10 +1040,10 @@
                 @*-----------------------------------------Related Missions-------------------------------------------*@
 
 
-                <hr style="color: grey; margin-top:-38%;">
-                <h1 style="text-align: center; margin-top:-30%;">Related Missions</h1>
+                <hr style="color: grey;">
+                <h1 style="text-align: center;">Related Missions</h1>
                 <br>
-                <div class="row" style="margin-top:-30%;">
+                <div class="row">
 
 
 
@@ -1078,42 +1083,42 @@
 
 
 
-                    @{
-                        var totalLen = ViewBag.missionapplication.Count;
-                        for (int k = 0; k < totalLen; k++)
-                        {
-                            if (ViewBag.Missionapplication[k].MissionId == itemsname.m.MissionId && ViewBag.Missionapplication[k].UserId == ViewBag.ids)
-                            {
-                                if (ViewBag.Missionapplication[k].ApprovalStatus == "approved")
-                                {
-                                    <div class="applied">
-                                        <button class="btn" style="color:white; font-size:17px;"><b>APPLIED</b></button>
-                                    </div>
-                                    break;
-                                }
-                                else if (ViewBag.Missionapplication[k].ApprovalStatus == "declined")
-                                {
-                                    <div class="declined">
-                                        <button class="btn" style="color:white; font-size:17px;"><b>DECLINED</b></button>
-                                    </div>
-                                    break;
-                                }
+                                                    @{
+                                                        var totalLen = ViewBag.missionapplication.Count;
+                                                        for (int k = 0; k < totalLen; k++)
+                                                        {
+                                                            if (ViewBag.Missionapplication[k].MissionId == itemsname.m.MissionId && ViewBag.Missionapplication[k].UserId == ViewBag.ids)
+                                                            {
+                                                                if (ViewBag.Missionapplication[k].ApprovalStatus == "approved")
+                                                                {
+                                                                    <div class="applied">
+                                                                        <button class="btn" style="color:white; font-size:17px;"><b>APPLIED</b></button>
+                                                                    </div>
+                                                                    break;
+                                                                }
+                                                                else if (ViewBag.Missionapplication[k].ApprovalStatus == "declined")
+                                                                {
+                                                                    <div class="declined">
+                                                                        <button class="btn" style="color:white; font-size:17px;"><b>DECLINED</b></button>
+                                                                    </div>
+                                                                    break;
+                                                                }
 
-                            }
-                            else
-                            {
-                                if (k == totalLen - 1)
-                                {
-                                    var a = itemsname.m.EndDate;
-                                    var res = DateTime.Compare(ViewBag.currentDate, itemsname.m.EndDate);
-                                    if (res == 1)
-                                    {
-                                        <div class="closed">
-                                            <button class="btn" style="color:white; font-size:17px;"><b>CLOSED</b></button>
-                                        </div>
-                                    }
-                                    else
-                                    {
+                                                            }
+                                                            else
+                                                            {
+                                                                if (k == totalLen - 1)
+                                                                {
+                                                                    var a = itemsname.m.EndDate;
+                                                                    var res = DateTime.Compare(ViewBag.currentDate, itemsname.m.EndDate);
+                                                                    if (res == 1)
+                                                                    {
+                                                                        <div class="closed">
+                                                                            <button class="btn" style="color:white; font-size:17px;"><b>CLOSED</b></button>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
 
 
 
@@ -1162,25 +1167,17 @@
                                                                 }
                                                             }
 
-                        </button>
-                    </div>
-                </div>
-
-               
-
-              
-
-                                <div>
-
-
-
-                  
+                                                        </button>
+                                                    </div>
+                                                </div>
 
 
 
 
-                </div>
-               
+
+                                                <div>
+                                                </div>
+
 
                                                 <button class="missions" style="margin-top:-11%;">@itemsname.Title</button>
                                                 <div class="card-body">
@@ -1527,6 +1524,7 @@
         });
     </script>
 
+    
 </body>
 
 </html>

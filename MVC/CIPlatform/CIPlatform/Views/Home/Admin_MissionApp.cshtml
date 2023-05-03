@@ -13,24 +13,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="~/css/admin_user.css" />
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-   
+
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
 
- 
+
 </head>
 
 
@@ -93,25 +93,25 @@
     </nav>
     <!-- Page Content -->
     <div id="layout-admin">
-         @{
+        @{
             if (TempData["Approved"] != null)
             {
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-                <script type="text/javascript">
-                    toastr.success('@TempData["Approved"]');
-                </script>
+                        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+                        <script type="text/javascript">
+                            toastr.success('@TempData["Approved"]');
+                        </script>
             }
 
             if (TempData["Declined"] != null)
             {
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-                <script type="text/javascript">
-                    toastr.error('@TempData["Declined"]');
-                </script>
+                        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+                        <script type="text/javascript">
+                            toastr.error('@TempData["Declined"]');
+                        </script>
             }
-          
+
 
         }
         <div class="header">
@@ -125,7 +125,7 @@
                 <div class="user">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                           
+                           <a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -148,10 +148,10 @@
                 <div class="col-6">
 
                     <!-- Button trigger modal -->
-                  @*  <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    @*  <button type="button" class="btn add-hours" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img src="~/NewFolder/plus.png" class="plus-img" />
                         Add
-                    </button>*@
+                        </button>*@
 
 
 
@@ -172,41 +172,41 @@
                     </tr>
                 </thead>
                 @{
-                    if(ViewBag.appliedmissions != null)
+                    if (ViewBag.appliedmissions != null)
                     {
                         foreach (var missionapp in ViewBag.appliedmissions)
                         {
-                            if(@missionapp.ma.ApprovalStatus == "pending")
+                            if (@missionapp.ma.ApprovalStatus == "pending")
                             {
-                                
-                            
-                            <tr>
-                            <td >@missionapp.ma.MissionId</td>
-                            <td >@missionapp.m.Title</td>
-                            <td >@missionapp.u.FirstName @missionapp.u.LastName</td>
-                            <td >@missionapp.ma.AppliedAt</td>
-                           
-                            
-                            <td >
-
-                               
-                                <!-- Button trigger modal -->
-                            <button type="button" class="btn fa fa-check" style="color: #f88634; margin-left:10px; font-size:larger" id="UserEditByAdmin" onclick="approved(@missionapp.ma.MissionId, @missionapp.u.UserId)">
-                                </button>
 
 
+                                            <tr>
+                                            <td >@missionapp.ma.MissionId</td>
+                                            <td >@missionapp.m.Title</td>
+                                            <td >@missionapp.u.FirstName @missionapp.u.LastName</td>
+                                            <td >@missionapp.ma.AppliedAt</td>
 
-                                <i type="button" onclick="declined(@missionapp.ma.MissionId, @missionapp.u.UserId)" class="btn fa fa-close" style="font-size:larger" aria-hidden="true"></i>
+
+                                            <td >
+
+
+                                                <!-- Button trigger modal -->
+                                <button type="button" class="btn fa fa-check" style="color: #f88634; margin-left:10px; font-size:larger" id="UserEditByAdmin" onclick="approved(@missionapp.ma.MissionId, @missionapp.u.UserId)">
+                                                </button>
 
 
 
-                            </td>
+                                                <i type="button" onclick="declined(@missionapp.ma.MissionId, @missionapp.u.UserId)" class="btn fa fa-close" style="font-size:larger" aria-hidden="true"></i>
 
-                        </tr>
+
+
+                                            </td>
+
+                                        </tr>
+                            }
+                        }
                     }
                 }
-}
-}
 
 
             </table>

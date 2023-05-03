@@ -1,30 +1,30 @@
 ﻿        @*
-            For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
         *@
         @{
-        }
+}
 @using CIPlatform.Entities.Models
 @using CIPlatform.Models.ViewModels
 @model Story
 
-        <!DOCTYPE html>
-        <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-        <head>
-           <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
 
     @*-------Links for checkbox---------*@
 
@@ -32,359 +32,287 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 
 
-     <!-- Font Awesome -->
+    <!-- Font Awesome -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-             <link rel="stylesheet" href="~/css/platformlandingpage.css">
-             <link rel="stylesheet" href="~/css/sharestory.css">
+    <link rel="stylesheet" href="~/css/platformlandingpage.css">
+    <link rel="stylesheet" href="~/css/sharestory.css">
 
-             <!-- datepicker -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap- 
-            datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512- 
+    <!-- datepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-
+            datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512-
             GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFai
-            oypzbDOQykoRg==" 
+            oypzbDOQykoRg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-    
-    
-   
-
-            <title>Share your story</title>
-        </head>
-
-      
-
-
-            <header>
-                <div class="container-fluid">
-
-
-                    <nav class="navbar navbar-expand-md navbar-light ">
-
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto">
-
-                                <li class="nav-item stories">
-                        <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle dropdown-policy" href="#" id="navbarDropdown"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Policy
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Volunteering</a>
-                                        <a class="dropdown-item" href="#">Sponsered</a>
-
-                                </li>
-                                <li>
-                            <img src="~/NewFolder/user-img.png" style="align-content:flex-end;" alt="" class="user-avatar">
-                        </li>
-
-                     
-
-                    </ul>
-                     <div class="nav-item dropdown" style="margin-right:15%; width:auto;">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: grey; ">
-
-                        <button class="btn1 dropdown-toggle" style="width:100%; border: none; color: grey" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ViewBag.fullname
-                        </button>
-                  
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Add Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
-                        </ul>
-               </div>
+    <title>Share your story</title>
+</head>
 
 
 
-                            
-                    </nav>
-                    <hr>
-    
 
-                    <br>
-
-
-
-                </div>
-
-
-            </header>
 <body onload="submitstate()">
+    <br />
+    <div class="container">
 
-                <div class="container">
-                     
-                    <div class="row">
-                      
-                        <div class="col-12">
-                            <h1 style="color: grey;">Share your story</h1>
-                        </div>
-                    </div>
-                    <br>
+        <div class="row">
 
-                    <div class="main-row">
-                        
-                        <div class="row" style="color: grey;">
-                            <div class="col-md-4">
-                                <label>Select Mission</label>
-                                  <select onchange="newselecId(this)"  class="form-control" id="exampleFormControlSelect12" style="color: grey;">
-                                      <option selected disabled hidden>Select </option>
-                                 @foreach(var appm in ViewBag.finallist)
-                                  {
+            <div class="col-12">
+                <h1 style="color: grey;">Share your story</h1>
+            </div>
+        </div>
+        <br>
 
-                                        <option id="@appm.m.MissionId" value="@appm.m.Title">@appm.m.Title</option>
-                                
-                                   }
-                     
-                                 
-                                  </select>
-                            </div>
-                    @{
+        <div class="main-row">
 
-
-                        if(@ViewBag.checkempty == 1)
+            <div class="row" style="color: grey;">
+                <div class="col-md-4">
+                    <label>Select Mission</label>
+                    <select onchange="newselecId(this)" class="form-control" id="exampleFormControlSelect12" style="color: grey;">
+                        <option selected disabled hidden>Select </option>
+                        @foreach (var appm in ViewBag.finallist)
                         {
 
-                            Story story = ViewBag.fetchStoryDetails;
+                            <option id="@appm.m.MissionId" value="@appm.m.Title">@appm.m.Title</option>
 
-                            //foreach(var items in ViewBag.fetchStoryDetails)
-                            //      {
-                            <div class="col-md-4 ">
-                                
-                                <label>My Story Title</label>
-                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle" value="@story.Title">
-                            </div>
-                            <div class="col-md-4">
-                                <label>Date</label>
-                                <section class="container">
-                    
-                                    <form class="row" >
-                                      <!-- <label for="date" class="col-1 col-form-label">Date</label> -->
-                                      <!-- <div class="col-12" > -->
-                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;" value="@story.PublishedAt">
-                                      <!-- </div> -->
-                                    </form>
-                                  </section>
-                            </div>
-                            
-                     
+                        }
+
+
+                    </select>
+                </div>
+                @{
+
+
+                    if (@ViewBag.checkempty == 1)
+                    {
+
+                        Story story = ViewBag.fetchStoryDetails;
+
+                    //foreach(var items in ViewBag.fetchStoryDetails)
+                        //      {
+                        <div class="col-md-4 ">
+
+                            <label>My Story Title</label>
+                            <input type="text" class="form-control" placeholder="Enter story title" id="sTitle" value="@story.Title">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Date</label>
+                            <section class="container">
+
+                                <form class="row">
+                                    <!-- <label for="date" class="col-1 col-form-label">Date</label> -->
+                                    <!-- <div class="col-12" > -->
+                                <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;" value="@story.PublishedAt">
+                                    <!-- </div> -->
+                            </form>
+                            </section>
+                        </div>
+
+
                         <br>
-              
-              
 
-                  
 
-                    <div class="row" style="color: grey;">
 
-                        <div class="col-12">
-                            <label>My Story</label>
-                            <br>
-                            <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
-                                @story.Description
-                            </textarea>
 
-                        </div>
 
-                    </div>
-                <br>
-                    <div class="row"  style="color: grey;">
+                        <div class="row" style="color: grey;">
 
-                        <div class="col-12">
-                            <label>Enter Video URL</label>
-                            <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url" value="@story.VidUrl">
-                        </div>
-                    </div>
-                            }
-                        
-                        else
-                        {
-                            <div class="col-md-4 ">
-                                
-                                <label>My Story Title</label>
-                                <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
-                                <span asp-validation-for="Title" class="text-danger" name="Title" id="Title" style="color:red; font-size:10px;"></span>
+                            <div class="col-12">
+                                <label>My Story</label>
+                                <br>
+                                <textarea id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
+                                    @story.Description
+                                    </textarea>
+
                             </div>
-                            <div class="col-md-4">
-                                <label>Date</label>
-                                <section class="container">
-                    
-                                    <form class="row" >
-                                     
-                                        <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
+
+                        </div>
+                        <br>
+                        <div class="row" style="color: grey;">
+
+                            <div class="col-12">
+                                <label>Enter Video URL</label>
+                                <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url" value="@story.VidUrl">
+                            </div>
+                        </div>
+                    }
+
+                    else
+                    {
+                        <div class="col-md-4 ">
+
+                            <label>My Story Title</label>
+                            <input type="text" class="form-control" placeholder="Enter story title" id="sTitle">
+                            <span asp-validation-for="Title" class="text-danger" name="Title" id="Title" style="color:red; font-size:10px;"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Date</label>
+                            <section class="container">
+
+                                <form class="row">
+
+                                    <input type="date" id="sPDate" class="form-control" placeholder="Select date" style="color: grey;">
                                     <span asp-validation-for="PublishedAt" class="text-danger" name="PublishedAt" id="PublishedAt" style="color:red; font-size:10px;"></span>
 
                                 </form>
-                                  </section>
-                            </div>
-                            
-                     
+                            </section>
+                        </div>
+
+
                         <br>
-              
-              
 
-                  
 
-                    <div class="row" style="color: grey;">
 
-                        <div class="col-12">
-                        <br>
-                            <label>My Story</label>
-                            <br>
-                            <textarea  id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
 
-                            </textarea>
+
+                        <div class="row" style="color: grey;">
+
+                            <div class="col-12">
+                                <br>
+                                <label>My Story</label>
+                                <br>
+                                <textarea id="sDesc" rows="8" cols="137" style="border: 1px solid rgb(214, 213, 213);">
+
+                                    </textarea>
                                 <span asp-validation-for="Description" class="text-danger" name="Description" id="Description" style="color:red; font-size:10px;"></span>
 
+                            </div>
+
                         </div>
-
-                    </div>
-                <br>
-                    <div class="row"  style="color: grey;">
-
-                        <div class="col-12">
                         <br>
-                            <label>Enter Video URL</label>
-                            <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url">
+                        <div class="row" style="color: grey;">
+
+                            <div class="col-12">
+                                <br>
+                                <label>Enter Video URL</label>
+                                <input type="text" id="vidUrl" class="form-control" placeholder="Enter video url">
+                            </div>
                         </div>
-                    </div>
-                  
-                        }
-                        }
-                    
+
+                    }
+                }
+
                 <br>
-<div id="drop-area" style="width: 100%;">
+                <div id="drop-area" style="width: 100%;">
 
-<div></div>
-<input hidden name="file" type="file" id="fileElem" multiple accept="image" onchange="handleFiles(this.files)">
-<label style="width:100% ; display:flex ; justify-content:center" for="fileElem"><img src="~/NewFolder/drag-and-drop.png"></label>
-<progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
-
-
+                    <div></div>
+                    <input hidden name="file" type="file" id="fileElem" multiple accept="image" onchange="handleFiles(this.files)">
+                    <label style="width:100% ; display:flex ; justify-content:center" for="fileElem"><img src="~/NewFolder/drag-and-drop.png"></label>
+                    <progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
 
 
 
-<div id="gallery" />
-</div>
 
 
-</div>
-         <br><br><br>
-                    <div class="row all-btns">
-
-                        <div class="col-4">
-                            <button class="btn-cancle" onclick="onCancel()">Cancel</button>
-                        </div>
-
-                        <div class="col-4">
-                    
-                        </div>
-
-                        <div class="col-4">
-                            
-
-                        <button class="btn-save" onclick="addstory()">Save</button>
-                        <button id="submitbtns" class=" btn-submit" onclick="editstory()">Submit</button>
-                        </div>
-
-                    </div>
-                    
+                    <div id="gallery" />
                 </div>
 
 
-            <script>
+            </div>
+            <br><br><br>
+            <div class="row all-btns">
 
-    
-              
+                <div class="col-4">
+                    <button class="btn-cancle" onclick="onCancel()">Cancel</button>
+                </div>
 
-                function editstory() {
-                    debugger
-                    const selectElement = document.getElementById("exampleFormControlSelect12");
-                    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+                <div class="col-4">
+                </div>
 
-
-
-                    $.ajax({
-                        url: '/Home/ShareYourStory',
-                        type: "POST",
-                        data: {
-                            selectedOptionId: selectedOptionId,
+                <div class="col-4">
 
 
-                        },
-                        success: function () {
-                            document.getElementById("sTitle").innerHTML = response.sTitle;
-                        },
-                        error: function (xhr, textStatus, errorThrown) {
-                            console.log("Error: " + errorThrown);
-                        }
-                    });
+                    <button class="btn-save" onclick="addstory()">Save</button>
+                    <button id="submitbtns" class=" btn-submit" onclick="editstory()">Submit</button>
+                </div>
 
-                }
+            </div>
+
+        </div>
+
+
+        <script>
 
 
 
 
-
-
-            </script>
-            <script>
-
-                function submitstate() {
-
-                    document.getElementById('submitbtns').disabled = true;
-                    document.getElementById('submitbtns').style.borderColor = "grey";
-                    document.getElementById('submitbtns').style.color = "grey";
-                }
-                var newArray = [];
+            function editstory() {
+                debugger
+                const selectElement = document.getElementById("exampleFormControlSelect12");
+                const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
 
 
-                function handleFiles(files) {
-                    debugger
-                    files = [...files]
-                    console.log(files);
-                    debugger
-                    initializeProgress(files.length)
-                    files.forEach(uploadFile)
-                    files.forEach(previewFile)
+                $.ajax({
+                    url: '/Home/ShareYourStory',
+                    type: "POST",
+                    data: {
+                        selectedOptionId: selectedOptionId,
 
 
-
-
-
-
-
-
-
-                    var a = 0;
-                    var filenames = new Array();
-
-
-                    for (a = 0; a < files.length; a++) {
-
-                        filenames.push(files[a].name);
-
-
+                    },
+                    success: function () {
+                        document.getElementById("sTitle").innerHTML = response.sTitle;
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("Error: " + errorThrown);
                     }
-                    newArray = String(filenames);
-                    alert(typeof (newArray));
+                });
+
+            }
+
+
+
+
+
+
+        </script>
+        <script>
+
+            function submitstate() {
+
+                document.getElementById('submitbtns').disabled = true;
+                document.getElementById('submitbtns').style.borderColor = "grey";
+                document.getElementById('submitbtns').style.color = "grey";
+            }
+            var newArray = [];
+
+
+
+            function handleFiles(files) {
+                debugger
+                files = [...files]
+                console.log(files);
+                debugger
+                initializeProgress(files.length)
+                files.forEach(uploadFile)
+                files.forEach(previewFile)
+
+
+
+
+
+
+
+
+
+                var a = 0;
+                var filenames = new Array();
+
+
+                for (a = 0; a < files.length; a++) {
+
+                    filenames.push(files[a].name);
+
 
                 }
+                newArray = String(filenames);
+                alert(typeof (newArray));
+
+            }
 
 
 
@@ -393,12 +321,12 @@
 
 
 
-            </script>
-        
+        </script>
 
-            <script src="~/js/Sharestory.js"></script>
-         <script src="~/js/landing.js"></script>
 
-            </body>
+        <script src="~/js/Sharestory.js"></script>
+        <script src="~/js/landing.js"></script>
 
-            </html>
+</body>
+
+</html>

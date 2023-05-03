@@ -156,7 +156,7 @@
 
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-md-6 col-lg-4 col-sm-6 col-xs-6">
 
                 <div class="left-div">
                     <div>
@@ -169,7 +169,7 @@
                                             <img  class="img-left" src="data:image;base64,@ViewBag.avatarimg" alt="Profile Picture">
                                         </div>
                                 <br />
-                                        <input style="margin-left:15%;" type="file" style="background:none; border:none; background-color:none;" class="form-control-file" id="profilePicture" name="profilePicture">
+                                        <input style="margin-left:15%;" type="file" style="background:none; border:none; background-color:none; visibility:hidden;" class="form-control-file" id="profilePicture" name="profilePicture">
                                     
                                 
                                 </div>
@@ -246,20 +246,20 @@
 
 
             </div>
-            <div class="col-6" style="margin-left:5%;">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-left:5%;">
                 @{
 
                     <form id="edit-form" asp-action="EditProfile" asp-controller="Home" method="post">
                         <h3>Basic Information</h3>
                         <hr />
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12">
                                 <label asp-for="FirstName" for="FirstName" class="form-label">Name</label>
                                 <input asp-for="FirstName" name="FirstName" id="FirstName" type="text" class="form-control" placeholder="Enter your Name" value="@ViewBag.FirstName" required>
                                 <span asp-validation-for="FirstName" class="text-danger" style="font-size:12px;"></span>
 
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12 surname">
                                 <label asp-for="LastName" class="form-label">Surname</label>
                                 <input id="lname" asp-for="LastName" name="LastName" type="text" class="form-control" placeholder="Enter your Surname" value="@ViewBag.LastName">
                                 <span asp-validation-for="LastName" class="text-danger" style="font-size:12px;"></span>
@@ -270,11 +270,11 @@
                         <br />
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12">
                                 <label for="" class="form-label">Employee ID</label>
                                 <input id="empid" type="text" class="form-control" id="" placeholder="Enter your Employee Id" value="@ViewBag.EmployeeId">
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12 surname">
                                 <label for="" class="form-label">Manager</label>
                                 <input id="" type="text" class="form-control" id="" placeholder="Enter your Manager Details">
                             </div>
@@ -283,11 +283,11 @@
                         <br />
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12">
                                 <label for="" class="form-label">Title</label>
                                 <input id="title" type="text" class="form-control" id="" placeholder="Enter title" value="@ViewBag.Title">
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12 surname">
                                 <label for="" class="form-label">Department</label>
                                 <input id="dept" type="text" class="form-control" id="" placeholder="Enter your Department" value="@ViewBag.Department">
                             </div>
@@ -319,7 +319,7 @@
                         <hr />
                         <div class="row">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-sm-6 col-xs-12">
                                     <label asp-for="City" class="form-label">City</label>
                                     <br>
                                     <select asp-for="City" id="selectcty" style="border:1px solid #D9D9D9 ; width:100% ;height :40px" onchange="citychange()">
@@ -336,7 +336,7 @@
 
 
                                 </div>
-                                <div class="col-6">
+                                <div class="col-sm-6 col-xs-12 surname">
                                     <label asp-for="country" class="form-label">Country</label>
                                     <br>
 
@@ -365,7 +365,7 @@
                         <hr />
                         <div class="row">
 
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12">
                                 <label for="" class="form-label">Select your availability</label>
                                 <br />
                                 <!-- Example single danger button -->
@@ -379,7 +379,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-sm-6 col-xs-12 surname">
                                 <label for="" class="form-label">LinkedIn</label>
                                 <input id="link" type="text" class="form-control" id="" placeholder="Enter your LinkedIn URL" value="@ViewBag.LinkedInUrl">
                             </div>
@@ -470,7 +470,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancel</button>
-                                                <button type="button" id="btn-save" onclick="saveSkills()" class="btn btn-primary save-btn">Save</button>
+                                                <button type="button" id="btn-save" onclick="saveSkills()" class="btn btn-primary save-btn1">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -488,7 +488,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" id="usersaveddata" class="save-btn" onclick="editUser()">Save</button>
+                                <button type="submit" id="usersaveddata" class="save-btn1" onclick="editUser()">Save</button>
 
 
                             </div>
@@ -512,11 +512,11 @@
 
             <div class="row">
 
-                <div class="col-1" style="margin-left:20%;">
+                <div class="col-lg-2 col-md-4  col-sm-4 col-xs-4 privacyp">
                     <a asp-action="PrivacyPolicy" asp-controller="Home" class="privacyp">Privacy Policy</a>
                 </div>
 
-                <div class="col-1">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
 
 
 
@@ -524,7 +524,7 @@
 
 
 
-                    <button type="button" style="color:grey; margin-top:-5%; margin-left:-10%;" class="btn" data-toggle="modal" data-target="#cont-modal">
+                    <button type="button" class="btn contactus" data-toggle="modal" data-target="#cont-modal">
                         Contact Us
                     </button>
 

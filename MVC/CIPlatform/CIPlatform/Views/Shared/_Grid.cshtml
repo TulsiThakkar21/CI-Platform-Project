@@ -48,7 +48,7 @@
     @foreach (var item in ViewBag.outputsf)
     {
 
-        <div class="col-12 col-md-6 col-lg-4" style="margin-top: 5%;">
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4" style="margin-top: 5%;">
             <div class="card" style="box-shadow: 3px 3px 3px grey;
     border: 1px solid #D9D9D9;
     border-radius: 3px;">
@@ -145,11 +145,23 @@
 
                                         <div class="row">
                                             <div class="col-5 citydivbtn">
-                                                <img class="cityimg" src="~/NewFolder/pin.png">&nbsp;
-                                                <span style="font-size:larger;">@citytbl.Name</span>
+                                                
+
+
+                                                <div class="d-flex">
+                                                  <div class="p-1 flex-shrink-1">
+                                                    <img src="~/NewFolder/pin.png">
+                                                  </div>
+                                                  <div class="p-1 w-100">
+                                                  @citytbl.Name
+                                                  </div>
+
+                                                </div>
 
                                             </div>
                                         </div>
+
+                                       
                                     }
                                 }
                             }
@@ -255,7 +267,7 @@
 
                 </div>
 
-                <div style="margin-top:-1%;">
+                <div class="entire-down-div">
                     <button class="missions">@item.Theme.Title</button>
                 </div>
                 <div class="card-body">
@@ -392,6 +404,8 @@
 
                                         if (a == ViewBag.goalmissionlist.Count - 1)
                                         {
+
+
                                             //<img class="icons " src="~/NewFolder/deadline.png">
                                             <div class="hssh">
 
@@ -406,9 +420,10 @@
                                     {
 
                                         var b = @ViewBag.goalmissionlist[a].GoalValue;
-                                        //<img class="iconspbar" src="~/NewFolder/mission.png">
+
+                                        ////<img class="iconspbar" src="~/NewFolder/mission.png">
                                         <div class="hssh">
-                                            <div class="progress pbar" style="width : 150px ">
+                                            <div class="progress pbar">
                                                 <div class="progress-bar" role="progressbar" style=" width: @ViewBag.goalmissionlist[a].GoalValue%; background-color:#F88634;" aria-valuenow="@ViewBag.goalmissionlist[a].GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
 
                                             </div>

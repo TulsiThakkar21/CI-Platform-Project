@@ -72,8 +72,8 @@
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
                         <li class="nav-item stories">
-                                    <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
-                          </li>
+                            <a class="nav-link" asp-action="PrivacyPolicy" asp-controller="Home">Privacy</a>
+                        </li>
                         <li>
                             <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="user-avatar">
                         </li>
@@ -98,6 +98,9 @@
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
                         </ul>
                     </div>
+
+
+
                 </div>
             </nav>
             <hr style="color:grey;">
@@ -406,7 +409,7 @@
 
             </div>
 
-
+</div>
     </header>
 
 
@@ -481,10 +484,10 @@
         *@
 
 
-       
+
     </div>
 
-    
+
 
 
     <!-- Javascript -->
@@ -507,23 +510,23 @@
 
 
     <script>
-        function filterChanged()
-        {
-            $('#filter-form').change(function () {
-                const filter = $('#filter-
+                function filterChanged()
+                {
+                    $('#filter-form').change(function () {
+                        const filter = $('#filter-
 
 
-').val();
+        ').val();
 
-                const urlParams = new URLSearchParams(window.location.search);
-                urlParams.set('filter', filter);
+                        const urlParams = new URLSearchParams(window.location.search);
+                        urlParams.set('filter', filter);
 
-                const newUrl = window.location.pathname + '?' + urlParams.toString();
-                history.pushState(null, '', newUrl);
+                        const newUrl = window.location.pathname + '?' + urlParams.toString();
+                        history.pushState(null, '', newUrl);
 
-                $('#filter-form').submit();
-            });
-        }
+                        $('#filter-form').submit();
+                    });
+                }
 
 
 

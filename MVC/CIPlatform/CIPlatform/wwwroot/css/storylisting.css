@@ -21,11 +21,12 @@
     }
 
 .lorem {
-    margin-top: 8%;
+    margin-top: -5%;
     margin-left: 30%;
     text-align: center;
     color: white;
     width: 40%;
+    
 }
 
 .content {
@@ -44,7 +45,8 @@
     color: white;
     padding: 0.5% 1% 0.5% 1%;
     text-decoration: none;
-    
+    margin-left: 39%;
+    margin-top: 50px
 }
 
 
@@ -109,4 +111,298 @@
     .page-item :hover {
         background-color: orange;
         color: white;
+    }
+
+@media only screen and (min-width: 555px) and (max-width: 599px) {
+
+    .lorem {
+        margin-left: 30%;
+        text-align: center;
+        color: white;
+        width: 40%;
+        font-size: 10px;
+        margin-top: -40%;
+    }
+
+    .share-btn {
+        width: auto;
+        height: auto;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 2px solid white;
+        border-radius: 24px;
+        color: white;
+        padding: 0.5% 1% 0.5% 1%;
+        text-decoration: none;
+        margin-top: 30%;
+    }
+}
+
+@media only screen and (min-width: 555px) and (max-width: 599px) {
+
+    .lorem {
+        margin-left: 30%;
+        text-align: center;
+        color: white;
+        width: 40%;
+        font-size: 10px;
+        margin-top: -40%;
+    }
+
+    .share-btn {
+        width: auto;
+        height: auto;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 2px solid white;
+        border-radius: 24px;
+        color: white;
+        padding: 0.5% 1% 0.5% 1%;
+        text-decoration: none;
+        margin-top: 30%;
+    }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 699px) {
+
+    .lorem {
+        margin-left: 30%;
+        text-align: center;
+        color: white;
+        width: 40%;
+        font-size: 10px;
+        margin-top: -38%;
+    }
+
+    .share-btn {
+        width: auto;
+        height: auto;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 2px solid white;
+        border-radius: 24px;
+        color: white;
+        padding: 0.5% 1% 0.5% 1%;
+        text-decoration: none;
+        margin-top: 25%;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 753px) {
+
+    .lorem {
+        margin-left: 30%;
+        text-align: center;
+        color: white;
+        width: 40%;
+        font-size: 12px;
+        margin-top: -30%;
+    }
+
+    .share-btn {
+        width: auto;
+        height: auto;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 2px solid white;
+        border-radius: 24px;
+        color: white;
+        padding: 0.5% 1% 0.5% 1%;
+        text-decoration: none;
+        margin-top: 23%;
+    }
+}
+
+
+@media only screen and (min-width: 752px) and (max-width: 767px) {
+
+    .lorem {
+        margin-left: 30%;
+        text-align: center;
+        color: white;
+        width: 40%;
+        font-size: 12px;
+        margin-top: -28%;
+    }
+
+    .share-btn {
+        width: auto;
+        height: auto;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 2px solid white;
+        border-radius: 24px;
+        color: white;
+        padding: 0.5% 1% 0.5% 1%;
+        text-decoration: none;
+        margin-top: 17%;
+    }
+}
+
+    @media only screen and (min-width: 768px) and (max-width: 822px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: 12px;
+            margin-top: -25%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 18%;
+        }
+    }
+
+    @media only screen and (min-width: 823px) and (max-width: 880px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: 12px;
+            margin-top: -24%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 15%;
+        }
+    }
+
+
+    @media only screen and (min-width: 881px) and (max-width: 969px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: 12px;
+            margin-top: -22%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 12%;
+        }
+    }
+
+    @media only screen and (min-width: 970px) and (max-width: 991px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: small;
+            margin-top: -15%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 12%;
+        }
+    }
+
+    @media only screen and (min-width: 992px) and (max-width: 1000px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: small;
+            margin-top: -10%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 13%;
+        }
+    }
+
+
+    @media only screen and (min-width: 1001px) and (max-width: 1300px) {
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: small;
+            margin-top: -15%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 11%;
+        }
+    }
+
+    @media only screen and (min-width: 1301px) and (max-width: 1554px) {
+
+
+        .lorem {
+            margin-left: 30%;
+            text-align: center;
+            color: white;
+            width: 40%;
+            font-size: small;
+            margin-top: -5%;
+        }
+
+        .share-btn {
+            width: auto;
+            height: auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            border: 2px solid white;
+            border-radius: 24px;
+            color: white;
+            padding: 0.5% 1% 0.5% 1%;
+            text-decoration: none;
+            margin-top: 90px;
+        }
     }
