@@ -73,7 +73,7 @@ namespace CIPlatform.Repository.Repositories
 
         }
         List<Mission> FinalMissionList = new List<Mission>();
-        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr , List<long> finalTopTheme2, List<long> finalFavMission)
+        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr , List<long> finalTopTheme2, List<long> finalFavMission, List<long> finalMostRanked, List<long> finalRandomList)
 
         {
             if (themefilter != null)
@@ -154,6 +154,30 @@ namespace CIPlatform.Repository.Repositories
                 {
                     var mission = _db.Missions
                     .Where(b => b.MissionId == topmission).ToList();
+                    FinalMissionList.AddRange(
+                        mission);
+
+                }
+            }
+            if (finalMostRanked.Count != 0)
+            {
+
+                foreach (var mranked in finalMostRanked)
+                {
+                    var mission = _db.Missions
+                    .Where(b => b.MissionId == mranked).ToList();
+                    FinalMissionList.AddRange(
+                        mission);
+
+                }
+            }
+            if (finalRandomList.Count != 0)
+            {
+
+                foreach (var random in finalRandomList)
+                {
+                    var mission = _db.Missions
+                    .Where(b => b.MissionId == random).ToList();
                     FinalMissionList.AddRange(
                         mission);
 
@@ -379,6 +403,12 @@ namespace CIPlatform.Repository.Repositories
         public IEnumerable<FavoriteMission> GetFavMissions()
         {
             return _db.FavoriteMissions.ToList();
+        }
+
+        public IEnumerable<MissionRating> GetMissionRating()
+        {
+            return _db.MissionRatings.ToList();
+
         }
 
 

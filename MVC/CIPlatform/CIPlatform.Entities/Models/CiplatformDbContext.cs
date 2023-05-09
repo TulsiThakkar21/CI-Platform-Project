@@ -595,9 +595,7 @@ public partial class CiplatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("deleted_at");
             entity.Property(e => e.MissionId).HasColumnName("mission_id");
-            entity.Property(e => e.Rating)
-                .HasMaxLength(20)
-                .HasColumnName("rating");
+            entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");

@@ -11,7 +11,7 @@ public partial class MissionRating
 
     public long UserId { get; set; }
 
-    public string Rating { get; set; } = null!;
+    public double Rating { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

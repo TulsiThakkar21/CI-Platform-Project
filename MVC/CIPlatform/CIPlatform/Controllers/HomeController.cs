@@ -254,7 +254,7 @@ namespace CIPlatform.Controllers
 
 
             }
-            
+
 
             return View();
         }
@@ -419,7 +419,7 @@ namespace CIPlatform.Controllers
                         };
                         _ciplatformDbContext.Users.Add(userData);
                         _ciplatformDbContext.SaveChanges();
-                        
+
                         ViewBag.Status = 1;
                         ModelState.Clear();
                         //return RedirectToAction("Index", "Home");
@@ -447,8 +447,8 @@ namespace CIPlatform.Controllers
 
 
 
-   
-        public IActionResult PlatformLandingPage(string selectoption,string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, string? expOrder, int? page = 1, int? pageSize = 6, int id = 0)
+
+        public IActionResult PlatformLandingPage(string selectoption, string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, string? expOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
             if (HttpContext.Session.GetString("userid") == null)
             {
@@ -502,8 +502,8 @@ namespace CIPlatform.Controllers
                 var citylists = _ciplatformDbContext.Cities.ToList();
 
 
-               
-                if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption !=null)
+
+                if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption != null)
                 {
                     string[] cityidarr = null;
                     if (filtercity != null)
@@ -527,11 +527,13 @@ namespace CIPlatform.Controllers
                         countryidarr = filterskill.Split(",");
                     }
 
-                    //good to have - explore - topthemes
+                    //good to have - explore
 
                     List<long> finalTopTheme2 = new List<long>();
                     List<long> finalFavMission = new List<long>();
-                    
+                    List<long> finalMostRanked = new List<long>();
+                    List<long> finalRandomList = new List<long>();
+
                     if (selectoption == "1")
                     {
                         var mission1 = _homeRepository.GetMission();
@@ -548,6 +550,30 @@ namespace CIPlatform.Controllers
 
                         finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
                         ViewBag.finalTopTheme = finalTopTheme2;
+                    }
+                    else if (selectoption == "2")
+                    {
+                        var mission_rating_lst = _homeRepository.GetMissionRating().ToList();
+                        var ratings = "";
+
+                        for (int k = 0; k < mission_rating_lst.Count(); k++)
+                        {
+                            ratings = mission_rating_lst[k].Rating.ToString();
+                        }
+
+                        var mostRanked = (from r in mission_rating_lst
+                                          group r by r.MissionId into g
+                                          let avg_rating = Math.Round(g.Average(r => r.Rating), 2)
+                                          orderby avg_rating descending
+                                          select new { mission_id = g.Key, avg_rating }).Take(1);
+
+                        var obj = mostRanked.FirstOrDefault();
+                        var mostRankedMId = obj.mission_id;
+
+
+
+                        finalMostRanked = _ciplatformDbContext.Missions.Where(a => a.MissionId == mostRankedMId).Select(a => a.MissionId).ToList();
+
                     }
                     else if (selectoption == "3")
                     {
@@ -570,9 +596,20 @@ namespace CIPlatform.Controllers
 
 
                     }
+                    else if (selectoption == "4")
+                    {
+                        var mission_lst = _homeRepository.GetMission();
+
+                        var missionIds = _ciplatformDbContext.Missions
+                                        .OrderBy(m => Guid.NewGuid())
+                                        .Select(m => m.MissionId).ToList();
+
+                        finalRandomList = missionIds;
+
+                    }
 
 
-                    outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr ,finalTopTheme2, finalFavMission);
+                    outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr, finalTopTheme2, finalFavMission, finalMostRanked, finalRandomList);
                 }
                 else
                 {
@@ -703,10 +740,10 @@ namespace CIPlatform.Controllers
 
 
 
-               
 
 
-            
+
+
 
 
                 return View();
@@ -768,7 +805,7 @@ namespace CIPlatform.Controllers
             //{
             //    return RedirectToAction("NoMissionFound", "Home");
             //}
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption !=null)
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption != null)
             {
                 string[] cityidarr = null;
                 if (filtercity != null)
@@ -795,6 +832,8 @@ namespace CIPlatform.Controllers
 
                 List<long> finalTopTheme2 = new List<long>();
                 List<long> finalFavMission = new List<long>();
+                List<long> finalMostRanked = new List<long>();
+                List<long> finalRandomList = new List<long>();
 
                 if (selectoption == "1")
                 {
@@ -813,6 +852,30 @@ namespace CIPlatform.Controllers
                     finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
                     ViewBag.finalTopTheme = finalTopTheme2;
                 }
+                else if (selectoption == "2")
+                {
+                    var mission_rating_lst = _homeRepository.GetMissionRating().ToList();
+                    var ratings = "";
+
+                    for (int k = 0; k < mission_rating_lst.Count(); k++)
+                    {
+                        ratings = mission_rating_lst[k].Rating.ToString();
+                    }
+
+                    var mostRanked = (from r in mission_rating_lst
+                                      group r by r.MissionId into g
+                                      let avg_rating = Math.Round(g.Average(r => r.Rating), 2)
+                                      orderby avg_rating descending
+                                      select new { mission_id = g.Key, avg_rating }).Take(1);
+
+                    var obj = mostRanked.FirstOrDefault();
+                    var mostRankedMId = obj.mission_id;
+
+
+
+                    finalMostRanked = _ciplatformDbContext.Missions.Where(a => a.MissionId == mostRankedMId).Select(a => a.MissionId).ToList();
+
+                }
                 else if (selectoption == "3")
                 {
                     var fav_mission = _homeRepository.GetFavMissions();
@@ -823,9 +886,9 @@ namespace CIPlatform.Controllers
                                           select new { missionid = grp.Key, cnt = grp.Count() }).Take(5).ToList();
 
 
-                    
+
                     var j = 0;
-                    for (j = 0; j< mostFavMission.Count(); j++)
+                    for (j = 0; j < mostFavMission.Count(); j++)
                     {
 
                         finalFavMission.Add(mostFavMission[j].missionid);
@@ -834,10 +897,23 @@ namespace CIPlatform.Controllers
 
 
                 }
+                else if (selectoption == "4")
+                {
+                    var mission_lst = _homeRepository.GetMission();
+
+                    var missionIds = _ciplatformDbContext.Missions
+                                    .OrderBy(m => Guid.NewGuid())
+                                    .Select(m => m.MissionId).ToList();
+
+                    finalRandomList = missionIds;
+
+                    //finalRandomList = _ciplatformDbContext.Missions.Where(a => a.MissionId == missionIds).Select(a => a.MissionId).ToList();
+                }
 
 
 
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr, finalTopTheme2, finalFavMission);
+
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr, finalTopTheme2, finalFavMission, finalMostRanked, finalRandomList);
 
 
             }
@@ -1028,6 +1104,9 @@ namespace CIPlatform.Controllers
 
                 List<long> finalTopTheme2 = new List<long>();
                 List<long> finalFavMission = new List<long>();
+                List<long> finalMostRanked = new List<long>();
+                List<long> finalRandomList = new List<long>();
+
 
                 if (selectoption == "1")
                 {
@@ -1045,6 +1124,30 @@ namespace CIPlatform.Controllers
 
                     finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
                     ViewBag.finalTopTheme = finalTopTheme2;
+                }
+                else if (selectoption == "2")
+                {
+                    var mission_rating_lst = _homeRepository.GetMissionRating().ToList();
+                    var ratings = "";
+
+                    for (int k = 0; k < mission_rating_lst.Count(); k++)
+                    {
+                        ratings = mission_rating_lst[k].Rating.ToString();
+                    }
+
+                    var mostRanked = (from r in mission_rating_lst
+                                      group r by r.MissionId into g
+                                      let avg_rating = Math.Round(g.Average(r => r.Rating), 2)
+                                      orderby avg_rating descending
+                                      select new { mission_id = g.Key, avg_rating }).Take(1);
+
+                    var obj = mostRanked.FirstOrDefault();
+                    var mostRankedMId = obj.mission_id;
+
+
+
+                    finalMostRanked = _ciplatformDbContext.Missions.Where(a => a.MissionId == mostRankedMId).Select(a => a.MissionId).ToList();
+
                 }
                 else if (selectoption == "3")
                 {
@@ -1067,8 +1170,17 @@ namespace CIPlatform.Controllers
 
 
                 }
+                else if (selectoption == "4")
+                {
+                    var mission_lst = _homeRepository.GetMission();
 
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr , finalTopTheme2, finalFavMission);
+                    var random = new Random();
+                    var missionIds = _ciplatformDbContext.Missions
+                        .OrderBy(m => random.Next())
+                        .Select(m => m.MissionId);
+                }
+
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr, finalTopTheme2, finalFavMission, finalMostRanked, finalRandomList);
             }
             else
             {
@@ -1258,7 +1370,7 @@ namespace CIPlatform.Controllers
                 var rating = new MissionRating
                 {
 
-                    Rating = stars.ToString(),
+                    Rating = stars,
                     UserId = Convert.ToInt32(userId),
                     MissionId = missionId
 
@@ -1278,7 +1390,7 @@ namespace CIPlatform.Controllers
                 var query = from r in ratinguserdata select r;
                 foreach (MissionRating r in query)
                 {
-                    r.Rating = stars.ToString();
+                    r.Rating = stars;
                 }
 
                 _ciplatformDbContext.SaveChanges();
@@ -1507,7 +1619,7 @@ namespace CIPlatform.Controllers
 
                 _ciplatformDbContext.SaveChanges();
 
-                
+
 
             }
 

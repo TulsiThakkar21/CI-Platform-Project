@@ -870,8 +870,14 @@ function explorecall() {
     if (selectedOptionId == "topthemes") {
         selectoption = 1;
     }
+    else if (selectedOptionId == "mostranked") {
+        selectoption = 2;
+    }
     else if (selectedOptionId == "topfavmission") {
         selectoption = 3;
+    }
+    else if (selectedOptionId == "random") {
+        selectoption = 4;
     }
 
     $.ajax({

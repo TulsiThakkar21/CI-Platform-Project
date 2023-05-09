@@ -29,7 +29,7 @@ namespace CIPlatform.Repository.Repositories
 
             IEnumerable<Country> GetCountryRecords();
 
-        List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr , List<long> finalTopTheme2, List<long> finalFavMission);
+        List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr , List<long> finalTopTheme2, List<long> finalFavMission, List<long> finalMostRanked, List<long> finalRandomList);
 
         IEnumerable<Story> GetSpecificStory(int id);
 
@@ -68,6 +68,7 @@ namespace CIPlatform.Repository.Repositories
         public void deletemission(int missionid);
 
         public IEnumerable<FavoriteMission> GetFavMissions();
+        public IEnumerable<MissionRating> GetMissionRating();
 
 
 
