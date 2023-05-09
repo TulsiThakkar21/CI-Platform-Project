@@ -68,6 +68,19 @@
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
                         </li>
+                        
+
+                         <select class="form-control stories1" id="exploreselect" onchange="explorecall()">
+                             <option selected disabled>Explore</option>
+                              <option id="topthemes" value="topthemes">Top Themes</option>
+                            <option id="mostranked" value="mostranked">Most Ranked</option>
+                            <option id="topfavmission" value="topfavmission">Top Favourite</option>
+                            <option id="random" value="random">Random</option>
+
+
+                                            
+                           </select>
+
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
                         </li>
@@ -409,7 +422,7 @@
 
             </div>
 
-</div>
+        </div>
     </header>
 
 

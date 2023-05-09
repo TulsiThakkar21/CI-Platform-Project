@@ -240,7 +240,7 @@
 
 
             function editstory() {
-                debugger
+                
                 const selectElement = document.getElementById("exampleFormControlSelect12");
                 const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
 
@@ -283,10 +283,10 @@
 
 
             function handleFiles(files) {
-                debugger
+               
                 files = [...files]
                 console.log(files);
-                debugger
+                
                 initializeProgress(files.length)
                 files.forEach(uploadFile)
                 files.forEach(previewFile)

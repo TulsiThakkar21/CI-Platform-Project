@@ -73,7 +73,7 @@ namespace CIPlatform.Repository.Repositories
 
         }
         List<Mission> FinalMissionList = new List<Mission>();
-        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr)
+        public List<Mission> GetMissionWithMissionThemeRecords(string[]? themefilter, string[]? cityidarr, string[]? countryidarr, string[]? skillidarr , List<long> finalTopTheme2, List<long> finalFavMission)
 
         {
             if (themefilter != null)
@@ -90,7 +90,6 @@ namespace CIPlatform.Repository.Repositories
                 }
 
             }
-
 
             if (cityidarr != null)
             {
@@ -135,6 +134,30 @@ namespace CIPlatform.Repository.Repositories
 
                 }
 
+            }
+
+            if (finalTopTheme2.Count != 0) {
+
+                foreach (var a in finalTopTheme2)
+                {
+                    var mission1 = _db.Missions
+                    .Where(b => b.MissionId == a).ToList();
+                    FinalMissionList.AddRange((IEnumerable<Mission>)mission1);
+
+                }
+            }
+
+            if (finalFavMission.Count != 0)
+            {
+
+                foreach (var topmission in finalFavMission)
+                {
+                    var mission = _db.Missions
+                    .Where(b => b.MissionId == topmission).ToList();
+                    FinalMissionList.AddRange(
+                        mission);
+
+                }
             }
 
             return FinalMissionList;
@@ -353,7 +376,12 @@ namespace CIPlatform.Repository.Repositories
 
         }
 
-      
+        public IEnumerable<FavoriteMission> GetFavMissions()
+        {
+            return _db.FavoriteMissions.ToList();
+        }
+
+
     }
 
 

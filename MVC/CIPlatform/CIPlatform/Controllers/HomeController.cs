@@ -447,8 +447,8 @@ namespace CIPlatform.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult PlatformLandingPage(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
+   
+        public IActionResult PlatformLandingPage(string selectoption,string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, string? expOrder, int? page = 1, int? pageSize = 6, int id = 0)
         {
             if (HttpContext.Session.GetString("userid") == null)
             {
@@ -501,7 +501,9 @@ namespace CIPlatform.Controllers
                 var outputsf = new List<Mission>();
                 var citylists = _ciplatformDbContext.Cities.ToList();
 
-                if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
+
+               
+                if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption !=null)
                 {
                     string[] cityidarr = null;
                     if (filtercity != null)
@@ -524,7 +526,53 @@ namespace CIPlatform.Controllers
                     {
                         countryidarr = filterskill.Split(",");
                     }
-                    outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
+
+                    //good to have - explore - topthemes
+
+                    List<long> finalTopTheme2 = new List<long>();
+                    List<long> finalFavMission = new List<long>();
+                    
+                    if (selectoption == "1")
+                    {
+                        var mission1 = _homeRepository.GetMission();
+
+                        var topthemes = (from m in mission1
+                                         orderby m.ThemeId
+                                         group m by m.ThemeId into grp
+                                         select new { themeid = grp.Key, cnt = grp.Count() }).Take(1);
+
+                        var obj = topthemes.FirstOrDefault();
+                        var topThemeid = obj.themeid;
+
+
+
+                        finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
+                        ViewBag.finalTopTheme = finalTopTheme2;
+                    }
+                    else if (selectoption == "3")
+                    {
+                        var fav_mission = _homeRepository.GetFavMissions();
+
+                        var mostFavMission = (from fm in fav_mission
+                                              orderby fm.MissionId
+                                              group fm by fm.MissionId into grp
+                                              select new { missionid = grp.Key, cnt = grp.Count() }).Take(5).ToList();
+
+
+
+                        var j = 0;
+                        for (j = 0; j < mostFavMission.Count(); j++)
+                        {
+
+                            finalFavMission.Add(mostFavMission[j].missionid);
+
+                        }
+
+
+                    }
+
+
+                    outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr ,finalTopTheme2, finalFavMission);
                 }
                 else
                 {
@@ -653,12 +701,23 @@ namespace CIPlatform.Controllers
                 var avatarimg = _ciplatformDbContext.Users.FirstOrDefault(u => (u.UserId == ids));
                 ViewBag.avatarimg = avatarimg.Avatar;
 
+
+
+               
+
+
+            
+
+
                 return View();
             }
 
         }
 
-        public IActionResult _Grid(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6, int id = 0)
+
+
+
+        public IActionResult _Grid(string selectoption, string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int i, int? page = 1, int? pageSize = 6, int id = 0)
         {
 
             ViewBag.subcats_id = subcats_id;
@@ -709,7 +768,7 @@ namespace CIPlatform.Controllers
             //{
             //    return RedirectToAction("NoMissionFound", "Home");
             //}
-            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill))
+            if (!string.IsNullOrEmpty(subcats_id) || !string.IsNullOrEmpty(filtercity) || !string.IsNullOrEmpty(filtercountry) || !string.IsNullOrEmpty(filterskill) || selectoption !=null)
             {
                 string[] cityidarr = null;
                 if (filtercity != null)
@@ -732,7 +791,53 @@ namespace CIPlatform.Controllers
                 {
                     skillidarr = filterskill.Split(",");
                 }
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
+                //good to have - explore
+
+                List<long> finalTopTheme2 = new List<long>();
+                List<long> finalFavMission = new List<long>();
+
+                if (selectoption == "1")
+                {
+                    var mission1 = _homeRepository.GetMission();
+
+                    var topthemes = (from m in mission1
+                                     orderby m.ThemeId
+                                     group m by m.ThemeId into grp
+                                     select new { themeid = grp.Key, cnt = grp.Count() }).Take(1);
+
+                    var obj = topthemes.FirstOrDefault();
+                    var topThemeid = obj.themeid;
+
+
+
+                    finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
+                    ViewBag.finalTopTheme = finalTopTheme2;
+                }
+                else if (selectoption == "3")
+                {
+                    var fav_mission = _homeRepository.GetFavMissions();
+
+                    var mostFavMission = (from fm in fav_mission
+                                          orderby fm.MissionId
+                                          group fm by fm.MissionId into grp
+                                          select new { missionid = grp.Key, cnt = grp.Count() }).Take(5).ToList();
+
+
+                    
+                    var j = 0;
+                    for (j = 0; j< mostFavMission.Count(); j++)
+                    {
+
+                        finalFavMission.Add(mostFavMission[j].missionid);
+
+                    }
+
+
+                }
+
+
+
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr, finalTopTheme2, finalFavMission);
 
 
             }
@@ -862,7 +967,7 @@ namespace CIPlatform.Controllers
 
 
 
-        public IActionResult _List(string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
+        public IActionResult _List(string selectoption, string? subcats_id, string? filtercity, string? filtercountry, string? filterskill, string? searching, string? filter, string? sortOrder, int? page = 1, int? pageSize = 6)
         {
             ViewBag.subcats_id = subcats_id;
             ViewBag.filtercity = filtercity;
@@ -916,7 +1021,54 @@ namespace CIPlatform.Controllers
                 {
                     skillidarr = filterskill.Split(",");
                 }
-                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr);
+
+
+                //good to have - explore
+
+
+                List<long> finalTopTheme2 = new List<long>();
+                List<long> finalFavMission = new List<long>();
+
+                if (selectoption == "1")
+                {
+                    var mission1 = _homeRepository.GetMission();
+
+                    var topthemes = (from m in mission1
+                                     orderby m.ThemeId
+                                     group m by m.ThemeId into grp
+                                     select new { themeid = grp.Key, cnt = grp.Count() }).Take(1);
+
+                    var obj = topthemes.FirstOrDefault();
+                    var topThemeid = obj.themeid;
+
+
+
+                    finalTopTheme2 = _ciplatformDbContext.Missions.Where(a => a.ThemeId == topThemeid).Select(a => a.MissionId).ToList();
+                    ViewBag.finalTopTheme = finalTopTheme2;
+                }
+                else if (selectoption == "3")
+                {
+                    var fav_mission = _homeRepository.GetFavMissions();
+
+                    var mostFavMission = (from fm in fav_mission
+                                          orderby fm.MissionId
+                                          group fm by fm.MissionId into grp
+                                          select new { missionid = grp.Key, cnt = grp.Count() }).Take(5).ToList();
+
+
+
+                    var j = 0;
+                    for (j = 0; j < mostFavMission.Count(); j++)
+                    {
+
+                        finalFavMission.Add(mostFavMission[j].missionid);
+
+                    }
+
+
+                }
+
+                outputsf = _homeRepository.GetMissionWithMissionThemeRecords(themefilter, cityidarr, countryidarr, skillidarr , finalTopTheme2, finalFavMission);
             }
             else
             {

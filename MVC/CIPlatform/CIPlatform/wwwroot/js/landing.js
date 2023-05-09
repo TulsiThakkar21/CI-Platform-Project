@@ -863,3 +863,33 @@ function onremovegoal(missionId) {
 
 
 
+function explorecall() {
+    const selectElement = document.getElementById("exploreselect");
+    const selectedOptionId = selectElement.selectedOptions[0].getAttribute("id");
+    var selectoption = 0;
+    if (selectedOptionId == "topthemes") {
+        selectoption = 1;
+    }
+    else if (selectedOptionId == "topfavmission") {
+        selectoption = 3;
+    }
+
+    $.ajax({
+       
+        url: '/Home/_Grid',
+        type: "POST",
+        data: {
+            selectoption: selectoption
+ 
+        },
+        success: function (data) {
+            $('#filter_products-grid').html(data);
+            console.log("Data Deleted");
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error: " + errorThrown);
+
+        }
+    });
+}
