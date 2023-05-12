@@ -49,6 +49,8 @@ public partial class CiplatformDbContext : DbContext
 
     public virtual DbSet<MissionTheme> MissionThemes { get; set; }
 
+    public virtual DbSet<Notification> Notifications { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<Skill> Skills { get; set; }
@@ -665,6 +667,30 @@ public partial class CiplatformDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__E05A88471267ABA5");
+
+            entity.ToTable("Notification");
+
+            entity.Property(e => e.NotificationId).HasColumnName("notification_Id");
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Message).HasMaxLength(1024);
+            entity.Property(e => e.MissionId).HasColumnName("mission_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Mission).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.MissionId)
+                .HasConstraintName("FK__Notificat__missi__5DEAEAF5");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Notificat__user___4CC05EF3");
         });
 
         modelBuilder.Entity<PasswordReset>(entity =>

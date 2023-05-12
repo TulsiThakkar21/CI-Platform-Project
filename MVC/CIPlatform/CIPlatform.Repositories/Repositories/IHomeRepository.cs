@@ -70,6 +70,8 @@ namespace CIPlatform.Repository.Repositories
         public IEnumerable<FavoriteMission> GetFavMissions();
         public IEnumerable<MissionRating> GetMissionRating();
 
+        public IEnumerable<Notification> GetNotifications();
+        public IEnumerable<Notification> Getnotiandmissionlist();
 
 
     }

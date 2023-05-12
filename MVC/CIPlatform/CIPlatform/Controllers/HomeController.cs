@@ -740,8 +740,30 @@ namespace CIPlatform.Controllers
 
 
 
+                //var noti_msg = _ciplatformDbContext.Notifications.Where(n => (n.UserId == ids)).ToList();
+                //ViewBag.noti_msg = noti_msg;
 
 
+                var notilst = _ciplatformDbContext.Notifications.ToList();
+                
+
+                var noti_mission_lst = from n in notilst
+                                      join m in missionlst on n.MissionId equals m.MissionId
+                                      where n.MissionId == m.MissionId
+                                      join u in usrlst on n.UserId equals u.UserId
+                                      where n.UserId == u.UserId
+
+                                      select new
+                                      {
+                                          n,
+                                          m,
+                                          u
+                                      };
+
+                ViewBag.noti_mission_lst = noti_mission_lst;
+
+                
+                //ViewBag.newmissionId = missionlist.MissionId;
 
 
 
@@ -3495,6 +3517,26 @@ namespace CIPlatform.Controllers
 
             _ciplatformDbContext.SaveChanges();
 
+
+            // create a notification specific users
+            
+            
+
+            var users = _ciplatformDbContext.Users.FirstOrDefault(u=>u.UserId == uid);
+           
+                var notification = new Notification
+                {
+                    Message = "Mission Approved",
+                    IsRead = false,
+                    UserId = uid,
+                    MissionId = missionId
+                };
+                _ciplatformDbContext.Notifications.Add(notification);
+            
+                _ciplatformDbContext.SaveChanges();
+
+
+
             TempData["Approved"] = "Approved";
 
             return RedirectToAction("Admin_MissionApp", "Home");
@@ -4307,10 +4349,30 @@ namespace CIPlatform.Controllers
                     }
                 }
 
+                // create a notification for all users
+                var ids = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+
+                var users = _ciplatformDbContext.Users.ToList();
+                
+                
+                    foreach (var user in users)
+                    {
+
+                        var notification = new Notification
+                        {
+                            Message = "New mission",
+                            IsRead = false,
+                            UserId = user.UserId,
+                            MissionId = missionobj.MissionId
 
 
+                        };
+                        _ciplatformDbContext.Notifications.Add(notification);
+                    }
+                
+                _ciplatformDbContext.SaveChanges();
 
-
+                
                 ViewBag.Status = 1;
                 TempData["DataAdd"] = "Mission added successfully";
             }

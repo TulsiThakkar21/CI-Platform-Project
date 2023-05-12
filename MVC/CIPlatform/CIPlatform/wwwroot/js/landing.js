@@ -899,3 +899,42 @@ function explorecall() {
         }
     });
 }
+
+//notification - read unread
+
+//function readUnread() {
+
+//    var dott = document.getElementById("dot");
+//    var tickk = document.getElementById("tick");
+
+//    if (dott.style.display == "block" && tickk.style.display == "none") {
+
+//        dott.style.display = "none";
+//        tickk.style.display = "block";
+//    }
+//    else {
+
+//        dott.style.display = "block";
+//        tickk.style.display = "none";
+//    }
+   
+//}
+
+
+
+$(document).ready(function () {
+    $('#notification-link').click(function (event) {
+        event.preventDefault();
+        $('#dot').hide();
+        $('#tick').show();
+    });
+});
+
+
+$(document).ready(function () {
+    $('#notification-link-approve').click(function (event) {
+        event.preventDefault();
+        $('#dot-a').hide();
+        $('#tick-a').show();
+    });
+});

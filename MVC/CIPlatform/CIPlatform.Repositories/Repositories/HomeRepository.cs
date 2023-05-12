@@ -410,6 +410,17 @@ namespace CIPlatform.Repository.Repositories
             return _db.MissionRatings.ToList();
 
         }
+        public IEnumerable<Notification> GetNotifications()
+        {
+            return _db.Notifications.ToList();
+        }
+        public IEnumerable<Notification> Getnotiandmissionlist()
+        {
+            return _db.Notifications
+                .Include(t1 => t1.Mission)
+                .Include(t2 => t2.User)
+                .ToList();
+        }
 
 
     }

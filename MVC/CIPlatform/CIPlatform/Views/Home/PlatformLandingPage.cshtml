@@ -4,6 +4,7 @@
 @{
 }
 
+@using CIPlatform.Entities.Models
 @using CIPlatform.Models.ViewModels
 @model LandingAllModels
 
@@ -68,18 +69,18 @@
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="PlatformLandingPage" asp-controller="Home">Home</a>
                         </li>
-                        
 
-                         <select class="form-control stories1" id="exploreselect" onchange="explorecall()">
-                             <option selected disabled>Explore</option>
-                              <option id="topthemes" value="topthemes">Top Themes</option>
+
+                        <select class="form-control stories1" id="exploreselect" onchange="explorecall()">
+                            <option selected disabled>Explore</option>
+                            <option id="topthemes" value="topthemes">Top Themes</option>
                             <option id="mostranked" value="mostranked">Most Ranked</option>
                             <option id="topfavmission" value="topfavmission">Top Favourite</option>
                             <option id="random" value="random">Random</option>
 
 
-                                            
-                           </select>
+
+                        </select>
 
                         <li class="nav-item stories">
                             <a class="nav-link" asp-action="StoryListing" asp-controller="Home">Stories</a>
@@ -89,6 +90,244 @@
                         </li>
                         <li>
                             <img src="data:image;base64,@ViewBag.avatarimg" alt="" class="user-avatar">
+                        </li>
+                        <li>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn notification" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                <img src="~/NewFolder/bell.png" />
+                                <span class="position-absolute top-22 start-9 translate-middle p-2 border border-light rounded-circle" style="background-color:#F88634;">
+                                    <span class="visually-hidden">1</span>
+                                </span>
+
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModalSettings">
+                                                    <img src="~/NewFolder/settings.png" />
+
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModalSettings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Notification Settings</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-12 old-notifications" style="width:100%;">
+
+
+                                                                        <div class="get" style="width:100%; background:#D8D8D8;text-align:left; padding-left:1%; color:grey;">Get a notification for</div>
+
+                                                                        <br />
+
+                                                                        <ul class="list-group list-group-light">
+                                                                            <li class="list-group-item">
+                                                                                Recommended missions
+                                                                                <input class="form-check-input me-1" style="margin-left:51%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                Volunteering Hours
+                                                                                <input class="form-check-input me-1" style="margin-left:58.5%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                Volunteering Goals
+                                                                                <input class="form-check-input me-1" style="margin-left:59.5%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                My Comments
+                                                                                <input class="form-check-input me-1" style="margin-left:66.5%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                My Stories
+                                                                                <input class="form-check-input me-1" style="margin-left:73%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                New Missions
+                                                                                <input class="form-check-input me-1" style="margin-left:68%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                            <li class="list-group-item">
+                                                                                New Messages
+                                                                                <input class="form-check-input me-1" style="margin-left:66%;" type="checkbox" value="" aria-label="..." />
+
+                                                                            </li>
+                                                                        </ul>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn save-btn">Save</button>
+                                                                <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h5 class="modal-title noti-title" id="exampleModalLabel">Notification</h5>
+                                            @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+                                            <a href="#" class="noti-title">Clear all</a>
+                                        </div>
+                                        <div class="modal-body">
+                                            @{
+                                                foreach (var itemss in ViewBag.noti_mission_lst)
+                                                {
+                                                    if (itemss.n.CreatedOn > DateTime.Now.AddDays(-2))
+                                                    {
+                                                    // show in new noti
+
+                                                        <div class="row">
+
+                                                            <div class="col-12 new-notifications" style="width:100%;">
+                                                                <div class="new" style="width:100%; background:#D8D8D8;text-align:center; color:grey;">New</div>
+                                                                <br />
+                                                                <div>
+                                                                    @{
+
+
+                                                                        foreach (var items in ViewBag.noti_mission_lst)
+                                                                        {
+
+
+                                                                            if (items.n.Message == "New mission" && items.u.UserId == @ViewBag.ids)
+                                                                            {
+                                                                                if (items.n.CreatedOn > DateTime.Now.AddDays(-2))
+                                                                                {
+
+
+                                                                                    <div class="notimsg d-flex" id="notification-link">
+                                                                                        <img class="img-noti" src="~/NewFolder/add.png" />&nbsp;&nbsp;
+                                                                                        @items.n.Message - @items.m.Title
+
+                                                                                        <img src="~/NewFolder/dot.png" id="dot" style="height:20px; width:20px;" />
+                                                                                        <img src="~/NewFolder/tick.png" id="tick" style="height:20px; width:20px; display:none;" />
+                                                                                    </div>
+                                                                                    <br />
+                                                                                }
+
+                                                                            }
+                                                                            else if (items.n.Message == "Mission Approved" && items.u.UserId == @ViewBag.ids)
+                                                                            {
+                                                                                if (items.n.CreatedOn > DateTime.Now.AddDays(-2))
+                                                                                {
+                                                                                    <div class="notimsg" id="notification-link-approve">
+                                                                                        <img class="img-noti" src="~/NewFolder/right.png" />&nbsp;&nbsp;
+                                                                                        @items.n.Message : @items.m.Title
+                                                                                        <img src="~/NewFolder/dot.png" id="dot-a" style="height:20px; width:20px;" />
+                                                                                        <img src="~/NewFolder/tick.png" id="tick-a" style="height:20px; width:20px; display:none;" />
+
+                                                                                    </div>
+                                                                                }
+                                                                                <br />
+
+                                                                            }
+                                                                            
+                                                                        }
+                                                                    }
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        break;
+
+                                                    }
+
+                                                    //<br />
+
+                                                    //<br />
+                                                    else
+                                                    {
+                                                        <div class="row">
+
+                                                            <div class="col-12 old-notifications" style="width:100%;">
+
+
+                                                                <div class="older" style="width:100%; background:#D8D8D8;text-align:center; color:grey;">Older</div>
+                                                                <br/>
+                                                                <div>
+                                                                    @{
+
+
+                                                                        foreach (var items in ViewBag.noti_mission_lst)
+                                                                        {
+
+                                                                            if (items.n.Message == "New mission" && items.u.UserId == @ViewBag.ids)
+                                                                            {
+                                                                                if (items.n.CreatedOn < DateTime.Now.AddDays(-2))
+                                                                                {
+
+
+                                                                                    <div class="notimsg d-flex" id="notification-link">
+                                                                                        <img class="img-noti" src="~/NewFolder/add.png" />&nbsp;&nbsp;
+                                                                                        @items.n.Message - @items.m.Title
+
+                                                                                        <img src="~/NewFolder/dot.png" id="dot" style="height:20px; width:20px;" />
+                                                                                        <img src="~/NewFolder/tick.png" id="tick" style="height:20px; width:20px; display:none;" />
+                                                                                    </div>
+                                                                                }
+                                                                                <br />
+
+                                                                            }
+                                                                            else if (items.n.Message == "Mission Approved" && items.u.UserId == @ViewBag.ids)
+                                                                            {
+                                                                                if (items.n.CreatedOn < DateTime.Now.AddDays(-2))
+                                                                                {
+                                                                                    <div class="notimsg" id="notification-link-approve">
+                                                                                        <img class="img-noti" src="~/NewFolder/right.png" />&nbsp;&nbsp;
+                                                                                        @items.n.Message : @items.m.Title
+                                                                                        <img src="~/NewFolder/dot.png" id="dot-a" style="height:20px; width:20px;" />
+                                                                                        <img src="~/NewFolder/tick.png" id="tick-a" style="height:20px; width:20px; display:none;" />
+
+                                                                                    </div>
+                                                                                }
+                                                                                <br />
+
+                                                                            }
+
+                                                                        }
+                                                                        
+                                                                    }
+
+                                                           
+                                                                    
+                                                                </div>
+
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        //break;
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
 
 

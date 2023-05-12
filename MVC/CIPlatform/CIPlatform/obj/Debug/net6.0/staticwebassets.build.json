@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tTDtIRbH1y1lV6yg314nxZblcMz4V3qWyou1v0u45bc=",
+  "Hash": "AS79tvbsYrWf2BZQ0f4ySEBjkZAoDD/vg7VduXL46Y4=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1547,6 +1547,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\add.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/add.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\add.png"
+    },
+    {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\add1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -1885,6 +1902,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\NewFolder\\doc.png"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\dot.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/dot.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\dot.png"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\drag-and-drop.png",
@@ -2567,6 +2601,23 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\re-vol-4.png"
     },
     {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\right.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/right.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\right.png"
+    },
+    {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\right-arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2635,6 +2686,23 @@
       "OriginalItemSpec": "wwwroot\\NewFolder\\selected-star.png"
     },
     {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\settings.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/settings.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\settings.png"
+    },
+    {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\star-empty.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2667,6 +2735,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\NewFolder\\storydetailmainimg.png"
+    },
+    {
+      "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\tick.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "NewFolder/tick.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\NewFolder\\tick.png"
     },
     {
       "Identity": "C:\\Users\\tatva\\Desktop\\Final CIP Project\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\NewFolder\\user.png",
